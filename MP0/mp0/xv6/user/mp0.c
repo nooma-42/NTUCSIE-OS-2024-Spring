@@ -11,22 +11,29 @@ int count_occurrences(char *str, char key) {
     return count;
 }
 
-void find(char *path, char *key, int depth, int fd[2]) {
-    char buf[512], *p;
+int inspect(char *path) {
     int fd_dir;
-    struct dirent de;
     struct stat st;
     if((fd_dir = open(path, 0)) < 0){
         fprintf(2, "%s [error opening dir]\n", path);
-        return;
+        return 1;
     }
 
     if(fstat(fd_dir, &st) < 0){
         fprintf(2, "Cannot stat %s\n", path);
         close(fd_dir);
-        return;
+        return 1;
     }
+    return 0;
+}
 
+void find(char *path, char *key, int depth, int fd[2]) {
+    char buf[1024], *p;
+    int fd_dir;
+    struct dirent de;
+    struct stat st;
+
+    fd_dir = open(path, 0);
     strcpy(buf, path);
     p = buf+strlen(buf);
     *p++ = '/';
@@ -36,18 +43,22 @@ void find(char *path, char *key, int depth, int fd[2]) {
             continue;
         memmove(p, de.name, DIRSIZ);
         p[DIRSIZ] = 0;
+        
+        int fd1 = open(buf, 0x000);
+        printf("buf: %s, file discripter: %d\n", buf, fd1);
+        close(fd1);
         if(stat(buf, &st) < 0){
             fprintf(2, "Cannot stat %s\n", buf);
             continue;
         }
         if(st.type == T_FILE){
-            printf("%s %d\n", buf, count_occurrences(de.name, key[0]));
+            printf("%s %d\n", buf, count_occurrences(buf, key[0]));
             write(fd[1], &(int){1}, sizeof(int)); // Send file count
             write(fd[1], &(int){0}, sizeof(int)); // Send dir count
         } else if(st.type == T_DIR && depth < 5){
-            printf("%s :Miao\n", path);
-            printf("%s %d\n", buf, count_occurrences(de.name, key[0]));
-            find(buf, key, depth + 1, fd);
+            printf("%s %d\n", buf, count_occurrences(buf, key[0]));
+            if (inspect(buf) == 0)
+                find(buf, key, depth + 1, fd);
             write(fd[1], &(int){0}, sizeof(int)); // Send file count
             write(fd[1], &(int){1}, sizeof(int)); // Send dir count
         }
@@ -77,7 +88,10 @@ int main(int argc, char *argv[]) {
 
     if(pid == 0){
         close(fd[0]);
-        find(argv[1], argv[2], 0, fd);
+        if (inspect(argv[1]) == 0) {
+            printf("%s %d\n", argv[1], count_occurrences(argv[1], argv[2][0]));
+            find(argv[1], argv[2], 0, fd);
+        }
         close(fd[1]);
         exit(0);
     } else {
