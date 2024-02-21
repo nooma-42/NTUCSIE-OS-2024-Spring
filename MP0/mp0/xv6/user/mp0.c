@@ -3,14 +3,19 @@
 #include "user/user.h"
 #include "kernel/fs.h"
 
-#define MAX 512
+int count_occurrences(char *str, char key) {
+    int count = 0;
+    for (; *str != '\0'; str++) {
+        if (*str == key) count++;
+    }
+    return count;
+}
 
-void find(char *path, char *key, int *file_num, int *dir_num, int fd) {
-    char buf[MAX], *p;
+void find(char *path, char *key, int depth, int fd[2]) {
+    char buf[512], *p;
     int fd_dir;
     struct dirent de;
     struct stat st;
-
     if((fd_dir = open(path, 0)) < 0){
         fprintf(2, "%s [error opening dir]\n", path);
         return;
@@ -35,15 +40,16 @@ void find(char *path, char *key, int *file_num, int *dir_num, int fd) {
             fprintf(2, "Cannot stat %s\n", buf);
             continue;
         }
-        switch(st.type){
-            case T_FILE:
-                (*file_num)++;
-                // Logic to count occurrences of key in file names could be added here
-                break;
-            case T_DIR:
-                (*dir_num)++;
-                find(buf, key, file_num, dir_num, fd);
-                break;
+        if(st.type == T_FILE){
+            printf("%s %d\n", buf, count_occurrences(de.name, key[0]));
+            write(fd[1], &(int){1}, sizeof(int)); // Send file count
+            write(fd[1], &(int){0}, sizeof(int)); // Send dir count
+        } else if(st.type == T_DIR && depth < 5){
+            printf("%s :Miao\n", path);
+            printf("%s %d\n", buf, count_occurrences(de.name, key[0]));
+            find(buf, key, depth + 1, fd);
+            write(fd[1], &(int){0}, sizeof(int)); // Send file count
+            write(fd[1], &(int){1}, sizeof(int)); // Send dir count
         }
     }
     close(fd_dir);
@@ -51,7 +57,7 @@ void find(char *path, char *key, int *file_num, int *dir_num, int fd) {
 
 int main(int argc, char *argv[]) {
     int fd[2], pid;
-    int file_num = 0, dir_num = 0;
+    int file_num = 0, dir_num = 0, n;
 
     if(argc < 3){
         fprintf(2, "Usage: mp0 <root_directory> <key>\n");
@@ -71,16 +77,17 @@ int main(int argc, char *argv[]) {
 
     if(pid == 0){
         close(fd[0]);
-        find(argv[1], argv[2], &file_num, &dir_num, fd[1]);
-        write(fd[1], &file_num, sizeof(file_num));
-        write(fd[1], &dir_num, sizeof(dir_num));
+        find(argv[1], argv[2], 0, fd);
         close(fd[1]);
         exit(0);
     } else {
         close(fd[1]);
         wait((int *) 0);
-        read(fd[0], &file_num, sizeof(file_num));
-        read(fd[0], &dir_num, sizeof(dir_num));
+        while(read(fd[0], &n, sizeof(int)) > 0){
+            file_num += n;
+            read(fd[0], &n, sizeof(int));
+            dir_num += n;
+        }
         printf("\n%d directories, %d files\n", dir_num, file_num);
         close(fd[0]);
     }
