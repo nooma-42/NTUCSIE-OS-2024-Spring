@@ -16,6 +16,7 @@ int inspect(char *path) {
     struct stat st;
     if((fd_dir = open(path, 0)) < 0){
         fprintf(2, "%s [error opening dir]\n", path);
+        close(fd_dir);
         return 1;
     }
 
@@ -24,11 +25,12 @@ int inspect(char *path) {
         close(fd_dir);
         return 1;
     }
+    close(fd_dir);
     return 0;
 }
 
 void find(char *path, char *key, int depth, int fd[2]) {
-    char buf[1024], *p;
+    char buf[100], *p;
     int fd_dir;
     struct dirent de;
     struct stat st;
@@ -44,9 +46,6 @@ void find(char *path, char *key, int depth, int fd[2]) {
         memmove(p, de.name, DIRSIZ);
         p[DIRSIZ] = 0;
         
-        int fd1 = open(buf, 0x000);
-        printf("buf: %s, file discripter: %d\n", buf, fd1);
-        close(fd1);
         if(stat(buf, &st) < 0){
             fprintf(2, "Cannot stat %s\n", buf);
             continue;
@@ -57,8 +56,9 @@ void find(char *path, char *key, int depth, int fd[2]) {
             write(fd[1], &(int){0}, sizeof(int)); // Send dir count
         } else if(st.type == T_DIR && depth < 5){
             printf("%s %d\n", buf, count_occurrences(buf, key[0]));
-            if (inspect(buf) == 0)
+            if (inspect(buf) == 0){
                 find(buf, key, depth + 1, fd);
+            }
             write(fd[1], &(int){0}, sizeof(int)); // Send file count
             write(fd[1], &(int){1}, sizeof(int)); // Send dir count
         }

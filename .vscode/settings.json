@@ -2,6 +2,10 @@
     "files.associations": {
         "types.h": "c",
         "stat.h": "c",
-        "user.h": "c"
+        "user.h": "c",
+        "__config": "c",
+        "istream": "c",
+        "locale": "c",
+        "param.h": "c"
     }
 }
