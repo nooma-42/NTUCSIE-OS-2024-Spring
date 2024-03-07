@@ -6,6 +6,7 @@
         "__config": "c",
         "istream": "c",
         "locale": "c",
-        "param.h": "c"
+        "param.h": "c",
+        "setjmp.h": "c"
     }
 }

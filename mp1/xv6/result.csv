@@ -1,0 +1,16 @@
+== Test thread package with public testcase part1-0 (10%) ==
+thread package with public testcase part1-0: FAIL (3.6s)
+    [Error] Output on line 26: '$ qemu-system-riscv64: terminating on signal 15 from pid 6712 (make)', should be ''
+== Test thread package with public testcase part1-1 (10%) ==
+thread package with public testcase part1-1: FAIL (0.9s)
+    [Error] Output on line 34: '$ qemu-system-riscv64: terminating on signal 15 from pid 7217 (make)', should be ''
+== Test thread package with public testcase part2-0 (5%) ==
+thread package with public testcase part2-0: FAIL (0.8s)
+    [Error] Output on line 2: 'thread 2: 0', should be 'task 2: 101'
+== Test thread package with public testcase part2-1 (5%) ==
+thread package with public testcase part2-1: FAIL (1.0s)
+    [Error] Output on line 3: 'thread 3: 10000', should be 'task 3: 0'
+== Test thread package with public testcase part2-2 (5%) ==
+thread package with public testcase part2-2: FAIL (1.0s)
+    [Error] Output on line 2: '$ qemu-system-riscv64: terminating on signal 15 from pid 7307 (make)', should be 'task 1: 1'
+Score: 0/35
