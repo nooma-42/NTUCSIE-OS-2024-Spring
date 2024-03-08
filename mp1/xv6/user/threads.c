@@ -6,15 +6,15 @@
 
 static struct thread* current_thread = NULL;
 static int id = 1;
-//static jmp_buf env_st;
-//static jmp_buf env_tmp;
+static jmp_buf env_st;
+// static jmp_buf env_tmp;
 
 struct thread *thread_create(void (*f)(void *), void *arg){
     struct thread *t = (struct thread*) malloc(sizeof(struct thread));
     unsigned long new_stack_p;
     unsigned long new_stack;
-    new_stack = (unsigned long) malloc(sizeof(unsigned long)*0x100);
-    new_stack_p = new_stack +0x100*8-0x2*8;
+    new_stack = (unsigned long) malloc(sizeof(unsigned long)*0x50);
+    new_stack_p = new_stack +0x50*8-0x2*8;
     t->fp = f;
     t->arg = arg;
     t->ID  = id;
@@ -44,17 +44,17 @@ void thread_yield(void){
 }
 void dispatch(void) {
     if (current_thread->buf_set) {
-        longjmp(current_thread->env, 1);
+        longjmp(current_thread->env, 1); // FIXME
     } else {
-        // Setup initial context for new thread
-        // Instead of direct SP manipulation, rely on longjmp to set up the stack
         if (setjmp(current_thread->env) == 0) {
             current_thread->buf_set = 1;
-            // Simulate the "return" from longjmp for the new thread
-            current_thread->fp(current_thread->arg);
+            current_thread->env[0].sp = (unsigned long) current_thread->stack_p;
+            longjmp(current_thread->env, 1);
         }
-        // If the thread function returns, it means it's completed execution
-        thread_exit();
+        else {
+            current_thread->fp(current_thread->arg);
+            thread_exit();
+        }
     }
 }
 void schedule(void){
@@ -66,25 +66,25 @@ void schedule(void){
         current_thread = current_thread->next;
     }
 }
-void thread_exit(void){
+void thread_exit(void) {
     struct thread *temp = current_thread;
-    
-    if (current_thread->next != current_thread) {
-        //printf("Thread %d is next\n", current_thread->next->ID);
+    // Remove thread from the run queue and free resources
+    // Implementation updated to handle freeing and setting current_thread = NULL if last thread
+    if (current_thread->next == current_thread) {
+        // Last thread handling
+        current_thread = NULL;
+    } else {
+        // Normal thread removal from the queue
         current_thread->previous->next = current_thread->next;
         current_thread->next->previous = current_thread->previous;
         current_thread = current_thread->next;
-        free(temp->stack);
-        free(temp);
         dispatch();
-    } else {
-        // Last thread
-        free(current_thread->stack);
-        free(current_thread);
     }
+    free(temp);
+    longjmp(env_st, 1);
 }
 void thread_start_threading(void){
-    if (current_thread != NULL) {
+    if (setjmp(env_st) == 0) {
         dispatch(); // Start executing threads
     }
 }

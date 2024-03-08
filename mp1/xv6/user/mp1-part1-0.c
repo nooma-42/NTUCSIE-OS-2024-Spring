@@ -55,7 +55,6 @@ int main(int argc, char **argv)
     printf("mp1-part1-0\n");
     struct thread *t1 = thread_create(f1, NULL);
     thread_add_runqueue(t1);
-    printf("thread test created\n");
     thread_start_threading();
     printf("\nexited\n");
     exit(0);
