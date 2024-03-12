@@ -22,6 +22,7 @@ void f4(void *arg)
 
     while(1) {
         printf("thread 4: %d\n", i++);
+        //if(i == 1008) for(;;);
         if (i == 1009) {
             thread_exit();
         }
