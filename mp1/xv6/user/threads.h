@@ -5,6 +5,18 @@
 #include "user/setjmp.h"
 // TODO: necessary defines, if any
 
+struct task {
+    void (*fp)(void *arg);
+    void *arg;
+    void *stack;
+    void *stack_p;
+    jmp_buf env;
+    int buf_set; // 1: indicate jmp_buf (env) has been set, 0: indicate jmp_buf (env) not set
+    int ID;
+    struct task *previous;
+    struct task *next;
+};
+
 struct thread {
     void (*fp)(void *arg);
     void *arg;
@@ -15,6 +27,7 @@ struct thread {
     int ID;
     struct thread *previous;
     struct thread *next;
+    struct task *tasks;
 };
 
 struct thread *thread_create(void (*f)(void *), void *arg);
