@@ -51,6 +51,7 @@ void dispatch(void) {
         struct task *current_task = current_thread->tasks;
         if (!current_task->buf_set && setjmp(current_task->env) == 0) {
             current_task->buf_set = 1;
+            current_thread->in_task = 1;
             current_task->fp(current_task->arg);
         }
         task_exit();
@@ -78,9 +79,13 @@ void dispatch(void) {
     }
 }
 void schedule(void){
-    if (current_thread->tasks != NULL) {
+    // Finish the task first and if the task just finished, return to the original thread
+    // printf("%d\n", current_thread->in_task); // 1 true
+    if (current_thread->tasks != NULL || current_thread->in_task) {
+        current_thread->in_task = 0;
         return;
-    }
+    } 
+    // FIXME how to know we come from a task or a thread
     if(current_thread->next != current_thread){
         current_thread = current_thread->next;
     }

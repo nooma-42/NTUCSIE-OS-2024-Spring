@@ -24,6 +24,7 @@ struct thread {
     jmp_buf env; // for thread function
     int buf_set; // 1: indicate jmp_buf (env) has been set, 0: indicate jmp_buf (env) not set
     int ID;
+    int in_task; // Flag indicating if currently in a task
     struct thread *previous;
     struct thread *next;
     struct task *tasks;
