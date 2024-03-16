@@ -1,0 +1,13 @@
+#!/usr/bin/env python
+
+from gradelib import *
+
+r = Runner()
+
+@test(10, "local test")
+def test():
+    r.run_qemu(shell_script([
+        'mp1-part1-0',
+    ]))
+
+run_tests()

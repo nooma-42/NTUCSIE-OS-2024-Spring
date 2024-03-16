@@ -11,9 +11,8 @@ struct task {
     void *stack;
     void *stack_p;
     jmp_buf env;
-    int buf_set; // 1: indicate jmp_buf (env) has been set, 0: indicate jmp_buf (env) not set
+    int buf_set;
     int ID;
-    struct task *previous;
     struct task *next;
 };
 
@@ -36,6 +35,7 @@ void thread_yield(void);
 void dispatch(void);
 void schedule(void);
 void thread_exit(void);
+void task_exit(void);
 void thread_start_threading(void);
 
 // part 2

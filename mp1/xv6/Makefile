@@ -228,4 +228,7 @@ zip:
 	rm -rf $(STUDENT_ID).zip
 	zip -r $(STUDENT_ID).zip $(STUDENT_ID)
 
+local:
+	@python test-mp1 2>&1
+
 .PHONY: clean grade
