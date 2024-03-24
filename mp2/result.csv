@@ -6,10 +6,6 @@ riscv64-linux-gnu-gcc -Wall  -O -fno-omit-frame-pointer -ggdb -DSOL_PGTBL -DLAB_
 riscv64-linux-gnu-gcc -Wall  -O -fno-omit-frame-pointer -ggdb -DSOL_PGTBL -DLAB_PGTBL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie  -c -o kernel/string.o kernel/string.c
 riscv64-linux-gnu-gcc -Wall  -O -fno-omit-frame-pointer -ggdb -DSOL_PGTBL -DLAB_PGTBL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie  -c -o kernel/main.o kernel/main.c
 riscv64-linux-gnu-gcc -Wall  -O -fno-omit-frame-pointer -ggdb -DSOL_PGTBL -DLAB_PGTBL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie  -c -o kernel/vm.o kernel/vm.c
-kernel/vm.c: In function ‘madvise’:
-kernel/vm.c:531:1: warning: control reaches end of non-void function [-Wreturn-type]
-  531 | }
-      | ^
 riscv64-linux-gnu-gcc -Wall  -O -fno-omit-frame-pointer -ggdb -DSOL_PGTBL -DLAB_PGTBL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie  -c -o kernel/proc.o kernel/proc.c
 riscv64-linux-gnu-gcc    -c -o kernel/swtch.o kernel/swtch.S
 riscv64-linux-gnu-gcc    -c -o kernel/trampoline.o kernel/trampoline.S
@@ -49,12 +45,9 @@ make[1]: Leaving directory '/root'
 == Test mp2_1 (6%) ==
 fatal: not a git repository (or any parent up to mount point /)
 Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
-mp2_1: OK (3.2s) 
+mp2_1: OK (2.6s) 
 == Test mp2_2 (12%) ==
-mp2_2: OK (0.8s) 
-    (Old mp2_2.out.mp2_2 failure log removed)
+mp2_2: OK (0.7s) 
 == Test mp2_3 (12%) ==
-mp2_3: FAIL (0.8s) 
-    Line 117 do not match.
-    QEMU output saved to mp2_3.out.mp2_3
+mp2_3: OK (1.0s) 
 == Test mp2_4 (12%) ==

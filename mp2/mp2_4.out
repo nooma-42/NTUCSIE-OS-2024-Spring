@@ -89,8 +89,8 @@ balloc: write bitmap block at sector 45
 
 xv6 kernel is booting
 
-hart 1 starting
 hart 2 starting
+hart 1 starting
 init: starting sh
 $ mp2_4
 page table 0x0000000087f49000

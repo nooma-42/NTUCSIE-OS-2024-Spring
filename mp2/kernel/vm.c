@@ -18,6 +18,7 @@
 // TODO
 #elif defined(PG_REPLACEMENT_USE_FIFO)
 // TODO
+queue_t fifo_queue; // Defined in fifo.h
 #endif
 
 #define MAX_IDX 512
@@ -489,8 +490,37 @@ int madvise(uint64 base, uint64 len, int advice) {
 
   if (advice == MADV_NORMAL) {
     // TODO
+    return 0;  // FIXME
   } else if (advice == MADV_WILLNEED) {
     // TODO
+    for (uint64 va = begin; va <= last; va += PGSIZE) {
+      pte_t *pte = walk(pgtbl, va, 0);
+      // Check if the page has been swapped out
+      if (pte && (*pte & PTE_S) && !(*pte & PTE_V)) {
+          // Retrieve the block number from the PTE
+          uint64 blockno = PTE2BLOCKNO(*pte);
+
+          // Allocate a new physical page
+          char *pa = kalloc();
+          if (pa == 0) {
+              panic("MADV_WILLNEED: kalloc failed");
+          }
+
+          // Read the page from disk into the newly allocated memory
+          read_page_from_disk(ROOTDEV, pa, blockno);
+
+          // Clear the PTE and set it to the new physical address with the appropriate flags
+          *pte = PA2PTE(pa) | PTE_FLAGS(*pte) | PTE_V;
+
+          // Optionally, clear the swapped-out bit if you are using one to indicate swap status
+          *pte &= ~PTE_S;
+
+          // Note: Depending on the system design, you might also need to free the disk block
+          // that was previously holding the swapped-out page. This could be something like:
+          // bfree_page(ROOTDEV, blockno);
+      }
+    }
+    return 0;
   } else if (advice == MADV_DONTNEED) {
     begin_op();
 
@@ -522,8 +552,20 @@ int madvise(uint64 base, uint64 len, int advice) {
 
   } else if(advice == MADV_PIN) {
     // TODO
+    // Pins pages in memory
+    for (uint64 va = begin; va <= last; va += PGSIZE) {
+        pte_t *pte = walk(pgtbl, va, 1); // Ensure the PTE exists
+        if (pte) *pte |= PTE_P; // Set a hypothetical PTE_P (pinned) flag
+    }
+    return 0;
   } else if(advice == MADV_UNPIN) {
     // TODO
+    // Unpins pages, allowing them to be swapped out again
+    for (uint64 va = begin; va <= last; va += PGSIZE) {
+        pte_t *pte = walk(pgtbl, va, 0); // No need to allocate
+        if (pte) *pte &= ~PTE_P; // Clear the PTE_P flag
+    }
+    return 0;
   }
   else {
     return -1;

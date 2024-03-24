@@ -10,6 +10,7 @@
         "setjmp.h": "c",
         "threads.h": "c",
         "proc.h": "c",
-        "paging.h": "c"
+        "paging.h": "c",
+        "fifo.h": "c"
     }
 }
