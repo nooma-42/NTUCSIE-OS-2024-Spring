@@ -1,7 +1,8 @@
 #ifndef PAGING_H
 #define PAGING_H
 
-/* void handle_pgfault(); */
+#include "types.h"
+int handle_pgfault(uint64 va);
 /* pte_t* select_a_victim(pde_t *pgdir); */
 /* void clearaccessbit(pde_t *pgdir); */
 /* int getswappedblk(pde_t *pgdir, uint va); */

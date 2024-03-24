@@ -5,6 +5,7 @@
 #include "spinlock.h"
 #include "proc.h"
 #include "defs.h"
+#include "paging.h"
 
 struct spinlock tickslock;
 uint ticks;
@@ -54,7 +55,11 @@ usertrap(void)
 
   uint64 scause = r_scause();
 
-  if(scause == 8) {
+  if (scause == 13 || scause == 15) { // Page fault load or store
+      uint64 va = r_stval(); // Get the faulting address
+      handle_pgfault(va); // Handle the page fault
+  } 
+  else if(scause == 8) {
     // system call
 
     if(p->killed)

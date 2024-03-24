@@ -20,6 +20,8 @@
 // TODO
 #endif
 
+#define MAX_IDX 512
+
 /*
  * the kernel's page table.
  */
@@ -541,9 +543,65 @@ void pgprint() {
 }
 #endif
 
+void pteprint(pagetable_t PGTBL, unsigned long counter, int level) {
+  pte_t *pte;
+  for (int i = 0; i < MAX_IDX; i++) {
+    pte = &PGTBL[i];
+
+    if ((*pte & (PTE_V | PTE_S)) != 0) {
+      // output style formatting
+      if (level > 0 && i < 256) {
+        printf("|   ");
+        for (int j = 0; j < level-1; j++) { printf("    "); }  
+      }
+      else {
+        for (int j = 0; j < level; j++) { printf("    "); }
+      }
+
+      // calculate virtual memory
+      unsigned long cur_va = counter;
+      if (level == 0) {
+        cur_va = counter + i * MAX_IDX * MAX_IDX;
+      }
+      else if (level == 1) {
+        cur_va = counter + i * MAX_IDX;
+      }
+      else {
+        cur_va = counter + i;
+      }
+
+      // print addrs info
+      if (*pte & PTE_V) {
+        printf("+-- %d: pte=%p va=%p pa=%p", i, pte, cur_va * PGSIZE, PTE2PA(*pte));
+      }
+      else if (*pte & PTE_S) {
+        printf("+-- %d: pte=%p va=%p blockno=%p", i, pte, cur_va * PGSIZE, PTE2BLOCKNO(*pte));
+      }
+
+      // check all flag
+      if (*pte & PTE_V) { printf(" V"); }
+      if (*pte & PTE_R) { printf(" R"); }
+      if (*pte & PTE_W) { printf(" W"); }
+      if (*pte & PTE_X) { printf(" X"); }
+      if (*pte & PTE_U) { printf(" U"); }
+      if (*pte & PTE_S) { printf(" S"); }
+      if (*pte & PTE_D) { printf(" D"); }
+      printf("\n");
+
+      // if only valid mem addr -> it's a child table
+      if ((*pte & PTE_V) && (*pte & (PTE_R | PTE_W | PTE_X | PTE_U)) == 0) {
+        pagetable_t childPGTBL = (pagetable_t)PTE2PA(*pte);
+        pteprint(childPGTBL, cur_va, level + 1);
+      }
+    }
+  }
+}
+
 /* NTU OS 2024 */
 /* Print multi layer page table. */
 void vmprint(pagetable_t pagetable) {
   /* TODO */
-  panic("not implemented yet\n");
+  // panic("not implemented yet\n");
+  printf("page table %p\n", pagetable);
+  pteprint(pagetable, 0, 0);
 }
