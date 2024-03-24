@@ -7,6 +7,10 @@
         "istream": "c",
         "locale": "c",
         "param.h": "c",
-        "setjmp.h": "c"
+        "setjmp.h": "c",
+        "threads.h": "c",
+        "proc.h": "c",
+        "paging.h": "c",
+        "fifo.h": "c"
     }
 }
