@@ -1,3 +1,10 @@
+kernel/paging.c:49:1: warning: control reaches end of non-void function [-Wreturn-type]
+   49 | }
+      | ^
+kernel/sysvm.c: In function ‘sys_pgprint’:
+kernel/sysvm.c:43:16: warning: unused variable ‘p’ [-Wunused-variable]
+   43 |   struct proc *p = myproc();
+      |                ^
 user/mp2_2.c: In function ‘main’:
 user/mp2_2.c:13:24: warning: passing argument 1 of ‘madvise’ makes pointer from integer without a cast [-Wint-conversion]
    13 |   madvise((uint64) ptr + 10*PG_SIZE, 2*PG_SIZE , MADV_DONTNEED);
@@ -89,8 +96,8 @@ balloc: write bitmap block at sector 45
 
 xv6 kernel is booting
 
-hart 2 starting
 hart 1 starting
+hart 2 starting
 init: starting sh
 $ mp2_5
 page table 0x0000000087f49000
@@ -190,4 +197,4 @@ page table 0x0000000087f49000
 Page replacement buffers
 ------Start------------
 ------End--------------
-$ qemu-system-riscv64: terminating on signal 15 from pid 50894 (make)
+$ qemu-system-riscv64: terminating on signal 15 from pid 57076 (make)

@@ -27,11 +27,13 @@ int q_push(queue_t *q, uint64 e){
 uint64 q_pop_idx(queue_t *q, int idx){
 	if (idx >= 0 && idx < q->size) {
         uint64 element = q->bucket[idx];
-        for (int i = idx; i < q->size - 1; i++) {
+        for (int i = idx; i < q->size; i++) {
             q->bucket[i] = q->bucket[i + 1];
         }
+        for (int i = q->size; i < PG_BUF_SIZE; i++) {
+            q->bucket[i] = 0;
+        }
         q->size--;
-        q->bucket[q->size] = 0; // Clear the last element
         return element;
     }
     return 0; // Failure or invalid index

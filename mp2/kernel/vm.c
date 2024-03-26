@@ -19,6 +19,7 @@
 #elif defined(PG_REPLACEMENT_USE_FIFO)
 // TODO
 queue_t fifo_queue; // Defined in fifo.h
+static int is_initialized = 0;
 #endif
 
 #define MAX_IDX 512
@@ -121,7 +122,6 @@ walk(pagetable_t pagetable, uint64 va, int alloc)
 // TODO
 #elif defined(PG_REPLACEMENT_USE_FIFO)
 // TODO
-  static int is_initialized = 0;
   if (!is_initialized) {
       q_init(&fifo_queue);
       is_initialized = 1;
@@ -139,9 +139,15 @@ walk(pagetable_t pagetable, uint64 va, int alloc)
 // Push the new or accessed page onto the FIFO queue if not already present.
 // This simplistic approach does not handle duplicate entries and assumes
 // all accessed pages are added. Adjust according to your requirements.
-//if (q_find(&fifo_queue, pte) == -1) {
-  q_push(&fifo_queue, pte);
-//}
+if (alloc && (PX(0, va) >= 3)) {
+    // Assuming here that 'alloc' being true implies we're potentially modifying the table
+    // and that PX(0, va) >= 3 ensures we skip the first three PTEs.
+    
+    // uint64 page_id = va >> 12; // Get the page number from the virtual address.
+    if (q_find(&fifo_queue, pte) == -1) {
+      q_push(&fifo_queue, pte);
+    }
+}
 #endif
   return pte;
 }

@@ -1,4 +1,3 @@
-user/mp2_2.c: In function ‘main’:
 user/mp2_2.c:13:24: warning: passing argument 1 of ‘madvise’ makes pointer from integer without a cast [-Wint-conversion]
    13 |   madvise((uint64) ptr + 10*PG_SIZE, 2*PG_SIZE , MADV_DONTNEED);
       |                        ^
@@ -103,4 +102,4 @@ page table 0x0000000087f49000
     +-- 511: pte=0x0000000087f48ff8 va=0x0000003fffe00000 pa=0x0000000087f47000 V
         +-- 510: pte=0x0000000087f47ff0 va=0x0000003fffffe000 pa=0x0000000087f65000 V R W D
         +-- 511: pte=0x0000000087f47ff8 va=0x0000003ffffff000 pa=0x0000000080007000 V R X
-$ qemu-system-riscv64: terminating on signal 15 from pid 49450 (make)
+$ qemu-system-riscv64: terminating on signal 15 from pid 55632 (make)

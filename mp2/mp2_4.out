@@ -1,3 +1,28 @@
+In file included from kernel/vm.c:11:
+kernel/fifo.h:20:31: note: expected ‘uint64’ {aka ‘long unsigned int’} but argument is of type ‘pte_t *’ {aka ‘long unsigned int *’}
+   20 | int q_find(queue_t *q, uint64 e);
+      |                        ~~~~~~~^
+kernel/vm.c:148:27: warning: passing argument 2 of ‘q_push’ makes integer from pointer without a cast [-Wint-conversion]
+  148 |       q_push(&fifo_queue, pte);
+      |                           ^~~
+      |                           |
+      |                           pte_t * {aka long unsigned int *}
+In file included from kernel/vm.c:11:
+kernel/fifo.h:18:31: note: expected ‘uint64’ {aka ‘long unsigned int’} but argument is of type ‘pte_t *’ {aka ‘long unsigned int *’}
+   18 | int q_push(queue_t *q, uint64 e);
+      |                        ~~~~~~~^
+kernel/vm.c: In function ‘madvise’:
+kernel/vm.c:578:15: warning: ‘pte’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+  578 |     int idx = q_find(&fifo_queue, (uint64)pte);
+      |               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel/paging.c: In function ‘handle_pgfault’:
+kernel/paging.c:49:1: warning: control reaches end of non-void function [-Wreturn-type]
+   49 | }
+      | ^
+kernel/sysvm.c: In function ‘sys_pgprint’:
+kernel/sysvm.c:43:16: warning: unused variable ‘p’ [-Wunused-variable]
+   43 |   struct proc *p = myproc();
+      |                ^
 user/mp2_2.c: In function ‘main’:
 user/mp2_2.c:13:24: warning: passing argument 1 of ‘madvise’ makes pointer from integer without a cast [-Wint-conversion]
    13 |   madvise((uint64) ptr + 10*PG_SIZE, 2*PG_SIZE , MADV_DONTNEED);
@@ -89,8 +114,8 @@ balloc: write bitmap block at sector 45
 
 xv6 kernel is booting
 
-hart 1 starting
 hart 2 starting
+hart 1 starting
 init: starting sh
 $ mp2_4
 page table 0x0000000087f49000
@@ -189,13 +214,12 @@ page table 0x0000000087f49000
         +-- 511: pte=0x0000000087f47ff8 va=0x0000003ffffff000 pa=0x0000000080007000 V R X
 Page replacement buffers
 ------Start------------
-pte: 0x0000000087f44010
-pte: 0x0000000087f44010
-pte: 0x0000000087f44010
-pte: 0x0000000087f44010
-pte: 0x0000000087f44010
-pte: 0x0000000087f44010
-pte: 0x0000000087f44010
-pte: 0x0000000087f44010
+pte: 0x0000000087f44078
+pte: 0x0000000087f44080
+pte: 0x0000000087f44088
+pte: 0x0000000087f44090
+pte: 0x0000000087f44098
+pte: 0x0000000087f44060
+pte: 0x0000000087f44028
 ------End--------------
-$ qemu-system-riscv64: terminating on signal 15 from pid 50033 (make)
+$ qemu-system-riscv64: terminating on signal 15 from pid 56215 (make)
