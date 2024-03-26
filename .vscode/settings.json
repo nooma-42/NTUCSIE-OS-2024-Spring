@@ -11,6 +11,9 @@
         "threads.h": "c",
         "proc.h": "c",
         "paging.h": "c",
-        "fifo.h": "c"
+        "fifo.h": "c",
+        "fs.h": "c",
+        "__hash_table": "c",
+        "unordered_map": "c"
     }
 }

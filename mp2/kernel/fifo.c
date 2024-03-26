@@ -9,7 +9,7 @@
 #include "proc.h"
 
 void q_init(queue_t *q){
-	    q->size = 0;
+	q->size = 0;
     for (int i = 0; i < PG_BUF_SIZE; i++) {
         q->bucket[i] = 0;
     }

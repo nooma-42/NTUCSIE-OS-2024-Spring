@@ -121,6 +121,27 @@ walk(pagetable_t pagetable, uint64 va, int alloc)
 // TODO
 #elif defined(PG_REPLACEMENT_USE_FIFO)
 // TODO
+  static int is_initialized = 0;
+  if (!is_initialized) {
+      q_init(&fifo_queue);
+      is_initialized = 1;
+  }
+  // When a page table entry is accessed, consider adding its virtual address
+  // to the FIFO queue. This example simply shows conceptual integration and
+  // may need adaptation based on the specific semantics of your FIFO implementation.
+  //uint64 page_id = va >> 12; // Assuming va is the full virtual address and we want the page number.
+
+  // Check if the FIFO queue is full; if so, pop the oldest entry.
+  if (q_full(&fifo_queue)) {
+    q_pop_idx(&fifo_queue, 0); // Remove the first (oldest) entry.
+  }
+
+// Push the new or accessed page onto the FIFO queue if not already present.
+// This simplistic approach does not handle duplicate entries and assumes
+// all accessed pages are added. Adjust according to your requirements.
+//if (q_find(&fifo_queue, pte) == -1) {
+  q_push(&fifo_queue, pte);
+//}
 #endif
   return pte;
 }
@@ -497,8 +518,9 @@ int madvise(uint64 base, uint64 len, int advice) {
       pte_t *pte = walk(pgtbl, va, 0);
       // Check if the page has been swapped out
       if (pte && (*pte & PTE_S) && !(*pte & PTE_V)) {
+          begin_op();
           // Retrieve the block number from the PTE
-          uint64 blockno = PTE2BLOCKNO(*pte);
+          uint64 blockno = balloc_page(ROOTDEV); // PTE2BLOCKNO(*pte);
 
           // Allocate a new physical page
           char *pa = kalloc();
@@ -507,7 +529,8 @@ int madvise(uint64 base, uint64 len, int advice) {
           }
 
           // Read the page from disk into the newly allocated memory
-          read_page_from_disk(ROOTDEV, pa, blockno);
+          read_page_from_disk(ROOTDEV, pa, blockno); // FIXME blockno, blk from balloc
+          
 
           // Clear the PTE and set it to the new physical address with the appropriate flags
           *pte = PA2PTE(pa) | PTE_FLAGS(*pte) | PTE_V;
@@ -515,9 +538,9 @@ int madvise(uint64 base, uint64 len, int advice) {
           // Optionally, clear the swapped-out bit if you are using one to indicate swap status
           *pte &= ~PTE_S;
 
-          // Note: Depending on the system design, you might also need to free the disk block
-          // that was previously holding the swapped-out page. This could be something like:
-          // bfree_page(ROOTDEV, blockno);
+          // Free the disk block that was previously holding the swapped-out page.
+          bfree_page(ROOTDEV, blockno);
+          end_op();
       }
     }
     return 0;
@@ -545,6 +568,9 @@ int madvise(uint64 base, uint64 len, int advice) {
     // TODO
     #elif defined(PG_REPLACEMENT_USE_FIFO)
     // TODO
+    
+    int idx = q_find(&fifo_queue, (uint64)pte);
+    if (idx != -1) q_pop_idx(&fifo_queue, idx);
     #endif
 
     end_op();
@@ -576,12 +602,17 @@ int madvise(uint64 base, uint64 len, int advice) {
 /* print pages from page replacement buffers */
 #if defined(PG_REPLACEMENT_USE_LRU) || defined(PG_REPLACEMENT_USE_FIFO)
 void pgprint() {
+  printf("Page replacement buffers\n------Start------------\n");
   #ifdef PG_REPLACEMENT_USE_LRU
   // TODO
   #elif defined(PG_REPLACEMENT_USE_FIFO)
   // TODO
+  // printf("FIFO queue size: %d\n", fifo_queue.size);
+  for (int i = 0; i < fifo_queue.size; i++) {
+    printf("pte: %p\n", fifo_queue.bucket[i]);
+  }
   #endif
-  panic("not implemented yet\n");
+  printf("------End--------------\n");
 }
 #endif
 
