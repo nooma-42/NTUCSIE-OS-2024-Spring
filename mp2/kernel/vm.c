@@ -126,28 +126,21 @@ walk(pagetable_t pagetable, uint64 va, int alloc)
       q_init(&fifo_queue);
       is_initialized = 1;
   }
-  // When a page table entry is accessed, consider adding its virtual address
-  // to the FIFO queue. This example simply shows conceptual integration and
-  // may need adaptation based on the specific semantics of your FIFO implementation.
-  //uint64 page_id = va >> 12; // Assuming va is the full virtual address and we want the page number.
-
-  // Check if the FIFO queue is full; if so, pop the oldest entry.
-  if (q_full(&fifo_queue)) {
-    q_pop_idx(&fifo_queue, 0); // Remove the first (oldest) entry.
+  
+  // Check if the page is PTE_U and PTE_V
+  // 要判斷是不是 PTE_U PTE_V
+  // 只要維護 malloc，只針對 process 不是針對系統
+  // remove: !((*pte & PTE_V) == 0) ref https://cool.ntu.edu.tw/courses/33481/discussion_topics/282982
+  // remove: !((*pte & PTE_U) == 0) && ref https://cool.ntu.edu.tw/courses/33481/discussion_topics/284191
+  if (
+    ((va != 0x0000) && (va != 0x1000) && (va != 0x2000)) &&   //PX(0, va) >= 3
+    q_find(&fifo_queue, (uint64)pte) == -1
+  ) {  
+      q_push(&fifo_queue, (uint64)pte);
   }
 
-// Push the new or accessed page onto the FIFO queue if not already present.
-// This simplistic approach does not handle duplicate entries and assumes
-// all accessed pages are added. Adjust according to your requirements.
-if (alloc && (PX(0, va) >= 3)) {
-    // Assuming here that 'alloc' being true implies we're potentially modifying the table
-    // and that PX(0, va) >= 3 ensures we skip the first three PTEs.
-    
-    // uint64 page_id = va >> 12; // Get the page number from the virtual address.
-    if (q_find(&fifo_queue, pte) == -1) {
-      q_push(&fifo_queue, pte);
-    }
-}
+// FIXME 前三個 直接忽略 這做法是對的嗎
+// 直接抓 va 這樣這操作不用
 #endif
   return pte;
 }
@@ -564,20 +557,19 @@ int madvise(uint64 base, uint64 len, int advice) {
           return -1;
         }
         kfree(pa);
+        // NTU OS 2024
+        // Swapped out page should not appear in
+        // page replacement buffer
+        #ifdef PG_REPLACEMENT_USE_LRU
+        // TODO
+        #elif defined(PG_REPLACEMENT_USE_FIFO)
+        // TODO
+        // FIXME 不需要的這五個都要拿掉 每走五個如果都不要
+        int idx = q_find(&fifo_queue, (uint64)pte);
+        if (idx != -1 && (*pte & PTE_P) == 0) q_pop_idx(&fifo_queue, idx); // remove ((*pte & PTE_P) == 0) no such testcase
+        #endif
       }
     }
-
-    // NTU OS 2024
-    // Swapped out page should not appear in
-    // page replacement buffer
-    #ifdef PG_REPLACEMENT_USE_LRU
-    // TODO
-    #elif defined(PG_REPLACEMENT_USE_FIFO)
-    // TODO
-    
-    int idx = q_find(&fifo_queue, (uint64)pte);
-    if (idx != -1) q_pop_idx(&fifo_queue, idx);
-    #endif
 
     end_op();
     return 0;
@@ -665,6 +657,7 @@ void pteprint(pagetable_t PGTBL, unsigned long counter, int level) {
       if (*pte & PTE_U) { printf(" U"); }
       if (*pte & PTE_S) { printf(" S"); }
       if (*pte & PTE_D) { printf(" D"); }
+      if (*pte & PTE_P) { printf(" P"); }
       printf("\n");
 
       // if only valid mem addr -> it's a child table

@@ -8,6 +8,10 @@
 #include "defs.h"
 #include "proc.h"
 
+// FIXME LRU 要為 pin 更改順序
+// 正確來說是 pin 就是一種存取就要改順序，但是對 FIFO 來說就不用改順序
+// LRU 最近存取最晚換出去
+
 void q_init(queue_t *q){
 	q->size = 0;
     for (int i = 0; i < PG_BUF_SIZE; i++) {
@@ -20,20 +24,31 @@ int q_push(queue_t *q, uint64 e){
         q->bucket[q->size] = e;
         q->size++;
         return 1; // Success
+    } else {
+        // Queue is full, attempt to find a non-pinned page to replace.
+        for (int i = 0; i < q->size; i++) {
+            if ((*((pte_t*)q->bucket[i]) & PTE_P) == 0) { // FIXME pte_t *
+                // Found a non-pinned page; replace it.
+                q_pop_idx(q, i);
+                q->bucket[q->size] = e;
+                q->size++;
+                return 1; // Success
+            }
+        }
     }
-    return 0; // Failure: Queue is full
+    // Failure: Queue is full and no non-pinned pages found.
+    return 0;
 }
 
 uint64 q_pop_idx(queue_t *q, int idx){
-	if (idx >= 0 && idx < q->size) {
+    if (idx >= 0 && idx < q->size) {
         uint64 element = q->bucket[idx];
-        for (int i = idx; i < q->size; i++) {
+        // Shift elements down one position to fill the gap.
+        for (int i = idx; i < q->size - 1; i++) {
             q->bucket[i] = q->bucket[i + 1];
         }
-        for (int i = q->size; i < PG_BUF_SIZE; i++) {
-            q->bucket[i] = 0;
-        }
         q->size--;
+        q->bucket[q->size] = 0; // Clear the now-unused last element.
         return element;
     }
     return 0; // Failure or invalid index
