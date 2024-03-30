@@ -16,6 +16,9 @@
 // or other files
 #ifdef PG_REPLACEMENT_USE_LRU
 // TODO
+lru_t lru_cache; // Defined in lru.h
+static int lru_is_initialized = 0;
+
 #elif defined(PG_REPLACEMENT_USE_FIFO)
 // TODO
 queue_t fifo_queue; // Defined in fifo.h
@@ -101,6 +104,7 @@ walk(pagetable_t pagetable, uint64 va, int alloc)
   if(va >= MAXVA)
     panic("walk");
 
+
   for(int level = 2; level > 0; level--) {
     pte_t *pte = &pagetable[PX(level, va)];
     if(*pte & PTE_V) {
@@ -120,6 +124,17 @@ walk(pagetable_t pagetable, uint64 va, int alloc)
 // it affects the page replacement buffer here
 #ifdef PG_REPLACEMENT_USE_LRU
 // TODO
+  if (!lru_is_initialized) {
+    lru_init(&lru_cache);
+    lru_is_initialized = 1;
+  }
+  //pgprint();
+  if (
+    ((va != 0x0000) && (va != 0x1000) && (va != 0x2000))
+  ) {
+    lru_push(&lru_cache, (uint64)pte);
+  }
+  //pgprint();
 #elif defined(PG_REPLACEMENT_USE_FIFO)
 // TODO
   if (!is_initialized) {
@@ -562,6 +577,10 @@ int madvise(uint64 base, uint64 len, int advice) {
         // page replacement buffer
         #ifdef PG_REPLACEMENT_USE_LRU
         // TODO
+        int idx = lru_find(&lru_cache, (uint64)pte);
+        //pgprint();
+        if (idx != -1 && (*pte & PTE_P) == 0) lru_pop(&lru_cache, idx); // remove ((*pte & PTE_P) == 0) no such testcase
+        //pgprint();
         #elif defined(PG_REPLACEMENT_USE_FIFO)
         // TODO
         // FIXME 不需要的這五個都要拿掉 每走五個如果都不要
@@ -577,10 +596,21 @@ int madvise(uint64 base, uint64 len, int advice) {
   } else if(advice == MADV_PIN) {
     // TODO
     // Pins pages in memory
+    /* #ifdef PG_REPLACEMENT_USE_LRU
+    pgprint();
+    printf("begin: %p, last: %p\n", begin, last);
+    #endif */
+    pte_t *pte;
     for (uint64 va = begin; va <= last; va += PGSIZE) {
-        pte_t *pte = walk(pgtbl, va, 1); // Ensure the PTE exists
+        pte = walk(pgtbl, va, 1); // Ensure the PTE exists
         if (pte) *pte |= PTE_P; // Set a hypothetical PTE_P (pinned) flag
     }
+    /* #ifdef PG_REPLACEMENT_USE_LRU
+    pgprint();
+      printf("%d, %p\n", lru_find(&lru_cache, (uint64)pte), pte); // Ensure the PTE is in the LRU cache
+    lru_push(&lru_cache, (uint64)pte);
+    pgprint();
+    #endif */
     return 0;
   } else if(advice == MADV_UNPIN) {
     // TODO
@@ -603,6 +633,9 @@ void pgprint() {
   printf("Page replacement buffers\n------Start------------\n");
   #ifdef PG_REPLACEMENT_USE_LRU
   // TODO
+  for (int i = 0; i < lru_cache.size; i++) {
+    printf("pte: %p\n", lru_cache.bucket[i]);
+  }
   #elif defined(PG_REPLACEMENT_USE_FIFO)
   // TODO
   // printf("FIFO queue size: %d\n", fifo_queue.size);

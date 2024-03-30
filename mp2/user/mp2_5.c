@@ -16,14 +16,17 @@
 int main(int argc, char *argv[]) {
   vmprint();
   char *ptr = malloc(NR_PG * PG_SIZE);
+  //pgprint();
 
   madvise((uint64) ptr + 9*PG_SIZE, PG_SIZE - 1,  MADV_PIN); // pin the tenth pte
   printf("After madvise(MADV_PIN)\n");
   vmprint();
+  //pgprint();
 
   madvise((uint64) ptr + 5*PG_SIZE, PG_SIZE - 1,  MADV_DONTNEED); // sixth page are swapped out
   printf("After madvise(MADV_DONTNEED)\n");
   vmprint();
+  //pgprint();
 
   char *qtr = ptr + 5*PG_SIZE;
   *qtr = 'a'; // page fault and swap in, should skip tenth pte

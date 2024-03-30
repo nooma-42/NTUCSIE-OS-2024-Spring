@@ -45,16 +45,14 @@ make[1]: Leaving directory '/root'
 == Test mp2_1 (6%) ==
 fatal: not a git repository (or any parent up to mount point /)
 Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
-mp2_1: OK (2.4s) 
+mp2_1: OK (2.3s) 
 == Test mp2_2 (12%) ==
 mp2_2: OK (0.8s) 
 == Test mp2_3 (12%) ==
 mp2_3: OK (1.0s) 
 == Test mp2_4 (12%) ==
-mp2_4: OK (3.4s) 
-    (Old mp2_4.out.mp2_4 failure log removed)
+mp2_4: OK (3.1s) 
 == Test mp2_5 (18%) ==
-mp2_5: FAIL (3.0s) 
-    Line 201 do not match.
-    QEMU output saved to mp2_5.out.mp2_5
-Score: 42/60
+mp2_5: OK (3.1s) 
+    (Old mp2_5.out.mp2_5 failure log removed)
+Score: 60/60
