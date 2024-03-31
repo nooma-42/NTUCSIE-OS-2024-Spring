@@ -231,7 +231,6 @@ UPROGS=\
 
 
 
-
 ifeq ($(LAB),$(filter $(LAB), lock))
 UPROGS += \
 	$U/_stats
@@ -389,9 +388,6 @@ grade:
           (echo "'make clean' failed.  HINT: Do you have another running instance of xv6?" && exit 1)
 	@python3 run_mp2.py 2>&1 | tee result.csv
 	@$(MAKE) clean > /dev/null
-
-test:
-	@python3 run_mp2_test.py
 
 ##
 ## FOR web handin

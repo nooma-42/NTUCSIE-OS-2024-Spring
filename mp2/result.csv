@@ -24,10 +24,6 @@ riscv64-linux-gnu-gcc    -c -o kernel/kernelvec.o kernel/kernelvec.S
 riscv64-linux-gnu-gcc -Wall  -O -fno-omit-frame-pointer -ggdb -DSOL_PGTBL -DLAB_PGTBL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie  -c -o kernel/plic.o kernel/plic.c
 riscv64-linux-gnu-gcc -Wall  -O -fno-omit-frame-pointer -ggdb -DSOL_PGTBL -DLAB_PGTBL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie  -c -o kernel/virtio_disk.o kernel/virtio_disk.c
 riscv64-linux-gnu-gcc -Wall  -O -fno-omit-frame-pointer -ggdb -DSOL_PGTBL -DLAB_PGTBL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie  -c -o kernel/paging.o kernel/paging.c
-kernel/paging.c: In function ‘handle_pgfault’:
-kernel/paging.c:50:1: warning: control reaches end of non-void function [-Wreturn-type]
-   50 | }
-      | ^
 riscv64-linux-gnu-gcc -Wall  -O -fno-omit-frame-pointer -ggdb -DSOL_PGTBL -DLAB_PGTBL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie  -c -o kernel/sysvm.o kernel/sysvm.c
 riscv64-linux-gnu-gcc -Wall  -O -fno-omit-frame-pointer -ggdb -DSOL_PGTBL -DLAB_PGTBL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie  -c -o kernel/start.o kernel/start.c
 riscv64-linux-gnu-gcc -Wall  -O -fno-omit-frame-pointer -ggdb -DSOL_PGTBL -DLAB_PGTBL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie  -c -o kernel/console.o kernel/console.c
@@ -45,14 +41,33 @@ make[1]: Leaving directory '/root'
 == Test mp2_1 (6%) ==
 fatal: not a git repository (or any parent up to mount point /)
 Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
-mp2_1: OK (2.3s) 
+mp2_1: OK (3.7s) 
 == Test mp2_2 (12%) ==
-mp2_2: OK (0.8s) 
+mp2_2: OK (3.1s) 
+    (Old mp2_2.out. failure log removed)
 == Test mp2_3 (12%) ==
-mp2_3: OK (1.0s) 
+mp2_3: OK (3.2s) 
+    (Old mp2_3.out. failure log removed)
 == Test mp2_4 (12%) ==
 mp2_4: OK (3.1s) 
+    (Old mp2_4.out. failure log removed)
 == Test mp2_5 (18%) ==
-mp2_5: OK (3.1s) 
-    (Old mp2_5.out.mp2_5 failure log removed)
-Score: 60/60
+mp2_5: OK (3.2s) 
+    (Old mp2_5.out. failure log removed)
+== Test custom_1 (4%) ==
+custom_1: FAIL (7.4s) 
+    Line 351 do not match. Expected: |   |   +-- 0: pte=0x0000000087f44000 va=0x0000000000000000 pa=0x0000000087f46000 V R W X U D
+    QEMU output saved to custom_1.out.
+== Test custom_2 (8%) ==
+custom_2: FAIL (12.1s) 
+    Line 495 do not match. Expected: |       +-- 3: pte=0x0000000087f44018 va=0x0000000000003000 blockno=0x0000000000000378 R W X U S
+    QEMU output saved to custom_2.out.
+== Test custom_3 (8%) ==
+custom_3: FAIL (3.2s) 
+    Line 558 do not match. Expected: |       +-- 10: pte=0x0000000087f44050 va=0x000000000000a000 blockno=0x0000000000000378 R W X U S
+    QEMU output saved to custom_3.out.
+== Test custom_4 (8%) ==
+custom_4: OK (3.4s) 
+== Test custom_5 (12%) ==
+custom_5: OK (3.3s) 
+Score: 80/100

@@ -17,7 +17,7 @@ TOTAL = POSSIBLE = 0
 PART_TOTAL = PART_POSSIBLE = 0
 CURRENT_TEST = None
 
-def test(points, title=None, parent=None, base="qemu"):
+def test(points, title=None, parent=None):
     """Decorator for declaring test functions.  If title is None, the
     title of the test will be derived from the function name by
     stripping the leading "test_" and replacing underscores with
@@ -52,7 +52,7 @@ def test(points, title=None, parent=None, base="qemu"):
             try:
                 if parent_failed:
                     raise AssertionError('Parent failed: %s' % parent.__name__)
-                fn(title, base)
+                fn()
             except AssertionError as e:
                 fail = str(e)
 
@@ -172,7 +172,7 @@ def assert_lines_match(text, *regexps, **kw):
                 return
             else:
                 # Found the first match, but the following lines do not match
-                raise AssertionError(f"Line {i} do not match. Expected: {regexps[j]}")
+                raise AssertionError(f"Line {i} do not match.")
     
     # If no starting line is found that matches the first regexp
     raise AssertionError("No line found that matches the first regexp.")

@@ -534,7 +534,7 @@ int madvise(uint64 base, uint64 len, int advice) {
       if (pte && (*pte & PTE_S) && !(*pte & PTE_V)) {
           begin_op();
           // Retrieve the block number from the PTE
-          uint64 blockno = balloc_page(ROOTDEV); // PTE2BLOCKNO(*pte);
+          uint64 blockno = PTE2BLOCKNO(*pte);
 
           // Allocate a new physical page
           char *pa = kalloc();
