@@ -689,8 +689,10 @@ void pteprint(pagetable_t PGTBL, unsigned long counter, int level) {
       if (*pte & PTE_X) { printf(" X"); }
       if (*pte & PTE_U) { printf(" U"); }
       if (*pte & PTE_S) { printf(" S"); }
-      if (*pte & PTE_D) { printf(" D"); }
-      if (*pte & PTE_P) { printf(" P"); }
+      if (!(*pte & PTE_S)) { // Only print D if the page is not swapped
+        if (*pte & PTE_D) { printf(" D"); }
+        if (*pte & PTE_P) { printf(" P"); } // Assume PTE_P represents the pin bit
+      }
       printf("\n");
 
       // if only valid mem addr -> it's a child table

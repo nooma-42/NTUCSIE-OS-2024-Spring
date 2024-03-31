@@ -1,4 +1,73 @@
-t len, int advise);
+user/mp2_2.c: In function ‘main’:
+user/mp2_2.c:13:24: warning: passing argument 1 of ‘madvise’ makes pointer from integer without a cast [-Wint-conversion]
+   13 |   madvise((uint64) ptr + 10*PG_SIZE, 2*PG_SIZE , MADV_DONTNEED);
+      |                        ^
+      |                        |
+      |                        long unsigned int
+In file included from user/mp2_2.c:3:
+./user/user.h:36:19: note: expected ‘void *’ but argument is of type ‘long unsigned int’
+   36 | int madvise(void *base, int len, int advise);
+      |             ~~~~~~^~~~
+user/mp2_3.c: In function ‘main’:
+user/mp2_3.c:13:24: warning: passing argument 1 of ‘madvise’ makes pointer from integer without a cast [-Wint-conversion]
+   13 |   madvise((uint64) ptr + 10*PG_SIZE, 2*PG_SIZE , MADV_NORMAL);
+      |                        ^
+      |                        |
+      |                        long unsigned int
+In file included from user/mp2_3.c:3:
+./user/user.h:36:19: note: expected ‘void *’ but argument is of type ‘long unsigned int’
+   36 | int madvise(void *base, int len, int advise);
+      |             ~~~~~~^~~~
+user/mp2_3.c:15:24: warning: passing argument 1 of ‘madvise’ makes pointer from integer without a cast [-Wint-conversion]
+   15 |   madvise((uint64) ptr + 10*PG_SIZE, 2*PG_SIZE , MADV_DONTNEED);
+      |                        ^
+      |                        |
+      |                        long unsigned int
+In file included from user/mp2_3.c:3:
+./user/user.h:36:19: note: expected ‘void *’ but argument is of type ‘long unsigned int’
+   36 | int madvise(void *base, int len, int advise);
+      |             ~~~~~~^~~~
+user/mp2_3.c:17:24: warning: passing argument 1 of ‘madvise’ makes pointer from integer without a cast [-Wint-conversion]
+   17 |   madvise((uint64) ptr + 10*PG_SIZE, 2*PG_SIZE , MADV_WILLNEED);
+      |                        ^
+      |                        |
+      |                        long unsigned int
+In file included from user/mp2_3.c:3:
+./user/user.h:36:19: note: expected ‘void *’ but argument is of type ‘long unsigned int’
+   36 | int madvise(void *base, int len, int advise);
+      |             ~~~~~~^~~~
+user/mp2_4.c: In function ‘main’:
+user/mp2_4.c:21:24: warning: passing argument 1 of ‘madvise’ makes pointer from integer without a cast [-Wint-conversion]
+   21 |   madvise((uint64) ptr + 9*PG_SIZE, PG_SIZE - 1,  MADV_PIN); // pin the tenth pte
+      |                        ^
+      |                        |
+      |                        long unsigned int
+In file included from user/mp2_4.c:3:
+./user/user.h:36:19: note: expected ‘void *’ but argument is of type ‘long unsigned int’
+   36 | int madvise(void *base, int len, int advise);
+      |             ~~~~~~^~~~
+user/mp2_4.c:25:24: warning: passing argument 1 of ‘madvise’ makes pointer from integer without a cast [-Wint-conversion]
+   25 |   madvise((uint64) ptr + 2*PG_SIZE, PG_SIZE - 1,  MADV_DONTNEED); // 3rd pages are swapped out
+      |                        ^
+      |                        |
+      |                        long unsigned int
+In file included from user/mp2_4.c:3:
+./user/user.h:36:19: note: expected ‘void *’ but argument is of type ‘long unsigned int’
+   36 | int madvise(void *base, int len, int advise);
+      |             ~~~~~~^~~~
+user/mp2_4.c:34:3: warning: implicit declaration of function ‘pgprint’; did you mean ‘vmprint’? [-Wimplicit-function-declaration]
+   34 |   pgprint();
+      |   ^~~~~~~
+      |   vmprint
+user/mp2_5.c: In function ‘main’:
+user/mp2_5.c:21:24: warning: passing argument 1 of ‘madvise’ makes pointer from integer without a cast [-Wint-conversion]
+   21 |   madvise((uint64) ptr + 9*PG_SIZE, PG_SIZE - 1,  MADV_PIN); // pin the tenth pte
+      |                        ^
+      |                        |
+      |                        long unsigned int
+In file included from user/mp2_5.c:3:
+./user/user.h:36:19: note: expected ‘void *’ but argument is of type ‘long unsigned int’
+   36 | int madvise(void *base, int len, int advise);
       |             ~~~~~~^~~~
 user/mp2_5.c:26:24: warning: passing argument 1 of ‘madvise’ makes pointer from integer without a cast [-Wint-conversion]
    26 |   madvise((uint64) ptr + 5*PG_SIZE, PG_SIZE - 1,  MADV_DONTNEED); // sixth page are swapped out
@@ -261,8 +330,8 @@ balloc: write bitmap block at sector 45
 
 xv6 kernel is booting
 
-hart 1 starting
 hart 2 starting
+hart 1 starting
 init: starting sh
 $ custom_3
 page table 0x0000000087f49000
@@ -485,7 +554,7 @@ page table 0x0000000087f49000
 |       +-- 7: pte=0x0000000087f44038 va=0x0000000000007000 blockno=0x0000000000000370 R W X U S
 |       +-- 8: pte=0x0000000087f44040 va=0x0000000000008000 pa=0x0000000087f4b000 V R W X U D
 |       +-- 9: pte=0x0000000087f44048 va=0x0000000000009000 blockno=0x0000000000000380 R W X U S
-|       +-- 10: pte=0x0000000087f44050 va=0x000000000000a000 blockno=0x0000000000000378 R W X U S D
+|       +-- 10: pte=0x0000000087f44050 va=0x000000000000a000 blockno=0x0000000000000378 R W X U S
 |       +-- 11: pte=0x0000000087f44058 va=0x000000000000b000 pa=0x0000000087f4d000 V R W X U
 |       +-- 12: pte=0x0000000087f44060 va=0x000000000000c000 pa=0x0000000087f4e000 V R W X U
 |       +-- 13: pte=0x0000000087f44068 va=0x000000000000d000 pa=0x0000000087f4f000 V R W X U
@@ -542,7 +611,7 @@ page table 0x0000000087f49000
 |       +-- 7: pte=0x0000000087f44038 va=0x0000000000007000 blockno=0x0000000000000370 R W X U S
 |       +-- 8: pte=0x0000000087f44040 va=0x0000000000008000 pa=0x0000000087f4b000 V R W X U D
 |       +-- 9: pte=0x0000000087f44048 va=0x0000000000009000 blockno=0x0000000000000380 R W X U S
-|       +-- 10: pte=0x0000000087f44050 va=0x000000000000a000 blockno=0x0000000000000378 R W X U S D
+|       +-- 10: pte=0x0000000087f44050 va=0x000000000000a000 blockno=0x0000000000000378 R W X U S
 |       +-- 11: pte=0x0000000087f44058 va=0x000000000000b000 pa=0x0000000087f4d000 V R W X U
 |       +-- 12: pte=0x0000000087f44060 va=0x000000000000c000 pa=0x0000000087f4e000 V R W X U
 |       +-- 13: pte=0x0000000087f44068 va=0x000000000000d000 pa=0x0000000087f4f000 V R W X U
@@ -585,4 +654,4 @@ page table 0x0000000087f49000
         +-- 510: pte=0x0000000087f47ff0 va=0x0000003fffffe000 pa=0x0000000087f65000 V R W D
         +-- 511: pte=0x0000000087f47ff8 va=0x0000003ffffff000 pa=0x0000000080007000 V R X
 Saved string: abcd
-$ qemu-system-riscv64: terminating on signal 15 from pid 30559 (make)
+$ qemu-system-riscv64: terminating on signal 15 from pid 74333 (make)
