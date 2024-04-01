@@ -647,19 +647,25 @@ void pgprint() {
 }
 #endif
 
-void pteprint(pagetable_t PGTBL, unsigned long counter, int level) {
+void pteprint(pagetable_t PGTBL, unsigned long counter, int level, int max_level[]) {
   pte_t *pte;
   for (int i = 0; i < MAX_IDX; i++) {
     pte = &PGTBL[i];
 
     if ((*pte & (PTE_V | PTE_S)) != 0) {
       // output style formatting
-      if (level > 0 && i < 256) {
+      if (level > 0 && max_level[0] > 1) {
         printf("|   ");
-        for (int j = 0; j < level-1; j++) { printf("    "); }  
-      }
-      else {
-        for (int j = 0; j < level; j++) { printf("    "); }
+        if (level == 2 && max_level[1] > 1) {
+          printf("|   ");
+        } else if (level == 2 && max_level[1] <= 1) {
+          printf("    ");
+        }
+      } else if (level > 0 && max_level[0] <= 1) {
+        printf("    ");
+        if (level > 1) {
+          printf("    ");
+        } 
       }
 
       // calculate virtual memory
@@ -694,12 +700,21 @@ void pteprint(pagetable_t PGTBL, unsigned long counter, int level) {
         if (*pte & PTE_P) { printf(" P"); } // Assume PTE_P represents the pin bit
       }
       printf("\n");
+      //for (int j = 0; j < level; j++) { printf("    "); }  
+      //printf("max_level[1] %d level %d\n", max_level[1], level);
 
       // if only valid mem addr -> it's a child table
       if ((*pte & PTE_V) && (*pte & (PTE_R | PTE_W | PTE_X | PTE_U)) == 0) {
         pagetable_t childPGTBL = (pagetable_t)PTE2PA(*pte);
-        pteprint(childPGTBL, cur_va, level + 1);
+        // check if there are multiple pte in the same level for next level pte
+        max_level[level + 1] = 0;
+        for (int i = 0; i < MAX_IDX; i++) {
+          if ((childPGTBL[i] & (PTE_V | PTE_S)) != 0)
+            max_level[level + 1]++;
+        }
+        pteprint(childPGTBL, cur_va, level + 1, max_level);
       }
+      max_level[level]--;
     }
   }
 }
@@ -710,5 +725,12 @@ void vmprint(pagetable_t pagetable) {
   /* TODO */
   // panic("not implemented yet\n");
   printf("page table %p\n", pagetable);
-  pteprint(pagetable, 0, 0);
+
+  // count the max_level in the same level
+  int max_level[3] = {0, 0, 0};
+  for (int i = 0; i < MAX_IDX; i++) {
+    if ((pagetable[i] & (PTE_V | PTE_S))!= 0)
+      max_level[0]++;
+  }
+  pteprint(pagetable, 0, 0, max_level);
 }
