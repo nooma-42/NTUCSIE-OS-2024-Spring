@@ -1,0 +1,36 @@
+user/mp2_5.c: In function ‘main’:
+user/mp2_5.c:21:24: warning: passing argument 1 of ‘madvise’ makes pointer from integer without a cast [-Wint-conversion]
+   21 |   madvise((uint64) ptr + 9*PG_SIZE, PG_SIZE - 1,  MADV_PIN); // pin the tenth pte
+      |                        ^
+      |                        |
+      |                        long unsigned int
+In file included from user/mp2_5.c:3:
+./user/user.h:36:19: note: expected ‘void *’ but argument is of type ‘long unsigned int’
+   36 | int madvise(void *base, int len, int advise);
+      |             ~~~~~~^~~~
+user/mp2_5.c:26:24: warning: passing argument 1 of ‘madvise’ makes pointer from integer without a cast [-Wint-conversion]
+   26 |   madvise((uint64) ptr + 5*PG_SIZE, PG_SIZE - 1,  MADV_DONTNEED); // sixth page are swapped out
+      |                        ^
+      |                        |
+      |                        long unsigned int
+In file included from user/mp2_5.c:3:
+./user/user.h:36:19: note: expected ‘void *’ but argument is of type ‘long unsigned int’
+   36 | int madvise(void *base, int len, int advise);
+      |             ~~~~~~^~~~
+user/mp2_5.c:36:3: warning: implicit declaration of function ‘pgprint’; did you mean ‘vmprint’? [-Wimplicit-function-declaration]
+   36 |   pgprint();
+      |   ^~~~~~~
+      |   vmprint
+nmeta 46 (boot, super, log blocks 30 inode blocks 13, bitmap blocks 1) blocks 954 total 1000
+balloc: first 750 blocks have been allocated
+balloc: write bitmap block at sector 45
+*** Now run 'gdb' in another window.
+
+xv6 kernel is booting
+
+hart 1 starting
+hart 2 starting
+init: starting sh
+$ custom_1
+exec custom_1 failed
+$ qemu-system-riscv64: terminating on signal 15 from pid 88484 (make)
