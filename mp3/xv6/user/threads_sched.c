@@ -46,16 +46,14 @@ struct threads_sched_result schedule_wrr(struct threads_sched_args args)
     }
 
     // Find the first thread that is ready to run
-    candidate = list_entry(args.run_queue, struct thread, thread_list); // 
-    if (!last_thread && candidate->remaining_time > 0)
-        selected_thread = candidate;
-    else
-        list_for_each_entry(candidate, args.run_queue, thread_list) {
-            if (candidate->remaining_time > 0) {
-                selected_thread = candidate;
-                break;
-            }
+    list_for_each_entry(candidate, args.run_queue, thread_list) {
+        if (!last_thread && candidate->remaining_time > 0)
+            selected_thread = candidate;
+        if (candidate->remaining_time > 0) {
+            selected_thread = candidate;
+            break;
         }
+    }
 
     // Fall back to the last_thread if no other thread is selected and it still has remaining time
     if (!selected_thread && last_thread && last_thread->remaining_time > 0) {
