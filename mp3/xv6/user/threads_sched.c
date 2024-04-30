@@ -78,25 +78,6 @@ struct threads_sched_result schedule_wrr(struct threads_sched_args args)
     return r;
 }
 
-/* Shortest-Job-First Scheduling */
-int find_next_release_time(struct list_head *release_queue, int current_time) {
-    struct release_queue_entry *next_release = NULL;
-    int next_release_time = INT_MAX;
-
-    list_for_each_entry(next_release, release_queue, thread_list) {
-        if (next_release->release_time > current_time &&
-            next_release->release_time < next_release_time) {
-            next_release_time = next_release->release_time;
-        }
-    }
-
-    if (next_release_time == INT_MAX)
-        return -1; // No threads in the release queue
-
-    return next_release_time - current_time;
-}
-
-
 struct threads_sched_result schedule_sjf(struct threads_sched_args args)
 {
     struct threads_sched_result r;
@@ -107,6 +88,7 @@ struct threads_sched_result schedule_sjf(struct threads_sched_args args)
 
     // Find the thread with the shortest remaining time that is ready to run
     list_for_each_entry(t, args.run_queue, thread_list) {
+        // printf("Thread ID: %d, Remaining Time: %d\n", t->ID, t->remaining_time);
         if (t->remaining_time < shortest_time) {
             shortest_time = t->remaining_time;
             shortest_job = t;
@@ -122,6 +104,23 @@ struct threads_sched_result schedule_sjf(struct threads_sched_args args)
         r.allocated_time = 1;  // Default minimal quantum if unsure
     }
     return r;
+}
+
+int find_next_release_time(struct list_head *release_queue, int current_time) {
+    struct release_queue_entry *next_release = NULL;
+    int next_release_time = INT_MAX;
+
+    list_for_each_entry(next_release, release_queue, thread_list) {
+        if (next_release->release_time > current_time &&
+            next_release->release_time < next_release_time) {
+            next_release_time = next_release->release_time;
+        }
+    }
+
+    if (next_release_time == INT_MAX)
+        return -1; // No threads in the release queue
+
+    return next_release_time - current_time;
 }
 
 /* MP3 Part 2 - Real-Time Scheduling*/
