@@ -59,7 +59,7 @@ copyin(char *s)
     int fd = open("copyin1", O_CREATE|O_WRONLY);
       4c:	20100593          	li	a1,513
       50:	00008517          	auipc	a0,0x8
-      54:	33050513          	addi	a0,a0,816 # 8380 <schedule_dm+0x530>
+      54:	32850513          	addi	a0,a0,808 # 8378 <schedule_dm+0x52a>
       58:	00007097          	auipc	ra,0x7
       5c:	062080e7          	jalr	98(ra) # 70ba <open>
       60:	87aa                	mv	a5,a0
@@ -70,7 +70,7 @@ copyin(char *s)
       6c:	0007df63          	bgez	a5,8a <copyin+0x72>
       printf("open(copyin1) failed\n");
       70:	00008517          	auipc	a0,0x8
-      74:	31850513          	addi	a0,a0,792 # 8388 <schedule_dm+0x538>
+      74:	31050513          	addi	a0,a0,784 # 8380 <schedule_dm+0x532>
       78:	00007097          	auipc	ra,0x7
       7c:	548080e7          	jalr	1352(ra) # 75c0 <printf>
       exit(1);
@@ -97,7 +97,7 @@ copyin(char *s)
       b4:	863e                	mv	a2,a5
       b6:	fe043583          	ld	a1,-32(s0)
       ba:	00008517          	auipc	a0,0x8
-      be:	2e650513          	addi	a0,a0,742 # 83a0 <schedule_dm+0x550>
+      be:	2de50513          	addi	a0,a0,734 # 8398 <schedule_dm+0x54a>
       c2:	00007097          	auipc	ra,0x7
       c6:	4fe080e7          	jalr	1278(ra) # 75c0 <printf>
       exit(1);
@@ -112,7 +112,7 @@ copyin(char *s)
       de:	fc8080e7          	jalr	-56(ra) # 70a2 <close>
     unlink("copyin1");
       e2:	00008517          	auipc	a0,0x8
-      e6:	29e50513          	addi	a0,a0,670 # 8380 <schedule_dm+0x530>
+      e6:	29650513          	addi	a0,a0,662 # 8378 <schedule_dm+0x52a>
       ea:	00007097          	auipc	ra,0x7
       ee:	fe0080e7          	jalr	-32(ra) # 70ca <unlink>
     
@@ -134,7 +134,7 @@ copyin(char *s)
      118:	863e                	mv	a2,a5
      11a:	fe043583          	ld	a1,-32(s0)
      11e:	00008517          	auipc	a0,0x8
-     122:	2b250513          	addi	a0,a0,690 # 83d0 <schedule_dm+0x580>
+     122:	2aa50513          	addi	a0,a0,682 # 83c8 <schedule_dm+0x57a>
      126:	00007097          	auipc	ra,0x7
      12a:	49a080e7          	jalr	1178(ra) # 75c0 <printf>
       exit(1);
@@ -153,7 +153,7 @@ copyin(char *s)
      148:	0007df63          	bgez	a5,166 <copyin+0x14e>
       printf("pipe() failed\n");
      14c:	00008517          	auipc	a0,0x8
-     150:	2b450513          	addi	a0,a0,692 # 8400 <schedule_dm+0x5b0>
+     150:	2ac50513          	addi	a0,a0,684 # 83f8 <schedule_dm+0x5aa>
      154:	00007097          	auipc	ra,0x7
      158:	46c080e7          	jalr	1132(ra) # 75c0 <printf>
       exit(1);
@@ -180,7 +180,7 @@ copyin(char *s)
      190:	863e                	mv	a2,a5
      192:	fe043583          	ld	a1,-32(s0)
      196:	00008517          	auipc	a0,0x8
-     19a:	27a50513          	addi	a0,a0,634 # 8410 <schedule_dm+0x5c0>
+     19a:	27250513          	addi	a0,a0,626 # 8408 <schedule_dm+0x5ba>
      19e:	00007097          	auipc	ra,0x7
      1a2:	422080e7          	jalr	1058(ra) # 75c0 <printf>
       exit(1);
@@ -248,7 +248,7 @@ copyout(char *s)
     int fd = open("README", 0);
      224:	4581                	li	a1,0
      226:	00008517          	auipc	a0,0x8
-     22a:	21a50513          	addi	a0,a0,538 # 8440 <schedule_dm+0x5f0>
+     22a:	21250513          	addi	a0,a0,530 # 8438 <schedule_dm+0x5ea>
      22e:	00007097          	auipc	ra,0x7
      232:	e8c080e7          	jalr	-372(ra) # 70ba <open>
      236:	87aa                	mv	a5,a0
@@ -259,7 +259,7 @@ copyout(char *s)
      242:	0007df63          	bgez	a5,260 <copyout+0x70>
       printf("open(README) failed\n");
      246:	00008517          	auipc	a0,0x8
-     24a:	20250513          	addi	a0,a0,514 # 8448 <schedule_dm+0x5f8>
+     24a:	1fa50513          	addi	a0,a0,506 # 8440 <schedule_dm+0x5f2>
      24e:	00007097          	auipc	ra,0x7
      252:	372080e7          	jalr	882(ra) # 75c0 <printf>
       exit(1);
@@ -286,7 +286,7 @@ copyout(char *s)
      28a:	863e                	mv	a2,a5
      28c:	fe043583          	ld	a1,-32(s0)
      290:	00008517          	auipc	a0,0x8
-     294:	1d050513          	addi	a0,a0,464 # 8460 <schedule_dm+0x610>
+     294:	1c850513          	addi	a0,a0,456 # 8458 <schedule_dm+0x60a>
      298:	00007097          	auipc	ra,0x7
      29c:	328080e7          	jalr	808(ra) # 75c0 <printf>
       exit(1);
@@ -310,7 +310,7 @@ copyout(char *s)
      2c8:	0007df63          	bgez	a5,2e6 <copyout+0xf6>
       printf("pipe() failed\n");
      2cc:	00008517          	auipc	a0,0x8
-     2d0:	13450513          	addi	a0,a0,308 # 8400 <schedule_dm+0x5b0>
+     2d0:	12c50513          	addi	a0,a0,300 # 83f8 <schedule_dm+0x5aa>
      2d4:	00007097          	auipc	ra,0x7
      2d8:	2ec080e7          	jalr	748(ra) # 75c0 <printf>
       exit(1);
@@ -322,7 +322,7 @@ copyout(char *s)
      2e6:	fc442783          	lw	a5,-60(s0)
      2ea:	4605                	li	a2,1
      2ec:	00008597          	auipc	a1,0x8
-     2f0:	1a458593          	addi	a1,a1,420 # 8490 <schedule_dm+0x640>
+     2f0:	19c58593          	addi	a1,a1,412 # 8488 <schedule_dm+0x63a>
      2f4:	853e                	mv	a0,a5
      2f6:	00007097          	auipc	ra,0x7
      2fa:	da4080e7          	jalr	-604(ra) # 709a <write>
@@ -335,7 +335,7 @@ copyout(char *s)
      30e:	00f70f63          	beq	a4,a5,32c <copyout+0x13c>
       printf("pipe write failed\n");
      312:	00008517          	auipc	a0,0x8
-     316:	18650513          	addi	a0,a0,390 # 8498 <schedule_dm+0x648>
+     316:	17e50513          	addi	a0,a0,382 # 8490 <schedule_dm+0x642>
      31a:	00007097          	auipc	ra,0x7
      31e:	2a6080e7          	jalr	678(ra) # 75c0 <printf>
       exit(1);
@@ -362,7 +362,7 @@ copyout(char *s)
      356:	863e                	mv	a2,a5
      358:	fe043583          	ld	a1,-32(s0)
      35c:	00008517          	auipc	a0,0x8
-     360:	15450513          	addi	a0,a0,340 # 84b0 <schedule_dm+0x660>
+     360:	14c50513          	addi	a0,a0,332 # 84a8 <schedule_dm+0x65a>
      364:	00007097          	auipc	ra,0x7
      368:	25c080e7          	jalr	604(ra) # 75c0 <printf>
       exit(1);
@@ -443,7 +443,7 @@ copyinstr1(char *s)
      410:	863e                	mv	a2,a5
      412:	fe043583          	ld	a1,-32(s0)
      416:	00008517          	auipc	a0,0x8
-     41a:	0ca50513          	addi	a0,a0,202 # 84e0 <schedule_dm+0x690>
+     41a:	0c250513          	addi	a0,a0,194 # 84d8 <schedule_dm+0x68a>
      41e:	00007097          	auipc	ra,0x7
      422:	1a2080e7          	jalr	418(ra) # 75c0 <printf>
       exit(1);
@@ -520,7 +520,7 @@ copyinstr2(char *s)
      4c0:	863a                	mv	a2,a4
      4c2:	85be                	mv	a1,a5
      4c4:	00008517          	auipc	a0,0x8
-     4c8:	03c50513          	addi	a0,a0,60 # 8500 <schedule_dm+0x6b0>
+     4c8:	03450513          	addi	a0,a0,52 # 84f8 <schedule_dm+0x6aa>
      4cc:	00007097          	auipc	ra,0x7
      4d0:	0f4080e7          	jalr	244(ra) # 75c0 <printf>
     exit(1);
@@ -548,7 +548,7 @@ copyinstr2(char *s)
      50c:	863a                	mv	a2,a4
      50e:	85be                	mv	a1,a5
      510:	00008517          	auipc	a0,0x8
-     514:	01050513          	addi	a0,a0,16 # 8520 <schedule_dm+0x6d0>
+     514:	00850513          	addi	a0,a0,8 # 8518 <schedule_dm+0x6ca>
      518:	00007097          	auipc	ra,0x7
      51c:	0a8080e7          	jalr	168(ra) # 75c0 <printf>
     exit(1);
@@ -578,7 +578,7 @@ copyinstr2(char *s)
      55e:	863a                	mv	a2,a4
      560:	85be                	mv	a1,a5
      562:	00008517          	auipc	a0,0x8
-     566:	fde50513          	addi	a0,a0,-34 # 8540 <schedule_dm+0x6f0>
+     566:	fd650513          	addi	a0,a0,-42 # 8538 <schedule_dm+0x6ea>
      56a:	00007097          	auipc	ra,0x7
      56e:	056080e7          	jalr	86(ra) # 75c0 <printf>
     exit(1);
@@ -589,7 +589,7 @@ copyinstr2(char *s)
 
   char *args[] = { "xx", 0 };
      57c:	00008797          	auipc	a5,0x8
-     580:	fec78793          	addi	a5,a5,-20 # 8568 <schedule_dm+0x718>
+     580:	fe478793          	addi	a5,a5,-28 # 8560 <schedule_dm+0x712>
      584:	f4f43423          	sd	a5,-184(s0)
      588:	f4043823          	sd	zero,-176(s0)
   ret = exec(b, args);
@@ -612,7 +612,7 @@ copyinstr2(char *s)
      5bc:	863a                	mv	a2,a4
      5be:	85be                	mv	a1,a5
      5c0:	00008517          	auipc	a0,0x8
-     5c4:	fb050513          	addi	a0,a0,-80 # 8570 <schedule_dm+0x720>
+     5c4:	fa850513          	addi	a0,a0,-88 # 8568 <schedule_dm+0x71a>
      5c8:	00007097          	auipc	ra,0x7
      5cc:	ff8080e7          	jalr	-8(ra) # 75c0 <printf>
     exit(1);
@@ -632,7 +632,7 @@ copyinstr2(char *s)
      5ee:	0007df63          	bgez	a5,60c <copyinstr2+0x1b8>
     printf("fork failed\n");
      5f2:	00008517          	auipc	a0,0x8
-     5f6:	f9e50513          	addi	a0,a0,-98 # 8590 <schedule_dm+0x740>
+     5f6:	f9650513          	addi	a0,a0,-106 # 8588 <schedule_dm+0x73a>
      5fa:	00007097          	auipc	ra,0x7
      5fe:	fc6080e7          	jalr	-58(ra) # 75c0 <printf>
     exit(1);
@@ -650,7 +650,7 @@ copyinstr2(char *s)
      618:	a00d                	j	63a <copyinstr2+0x1e6>
       big[i] = 'x';
      61a:	00010717          	auipc	a4,0x10
-     61e:	8fe70713          	addi	a4,a4,-1794 # ff18 <big.1275>
+     61e:	8f670713          	addi	a4,a4,-1802 # ff10 <big.1275>
      622:	fe842783          	lw	a5,-24(s0)
      626:	97ba                	add	a5,a5,a4
      628:	07800713          	li	a4,120
@@ -665,13 +665,13 @@ copyinstr2(char *s)
      644:	fcf74be3          	blt	a4,a5,61a <copyinstr2+0x1c6>
     big[PGSIZE] = '\0';
      648:	00010717          	auipc	a4,0x10
-     64c:	8d070713          	addi	a4,a4,-1840 # ff18 <big.1275>
+     64c:	8c870713          	addi	a4,a4,-1848 # ff10 <big.1275>
      650:	6785                	lui	a5,0x1
      652:	97ba                	add	a5,a5,a4
      654:	00078023          	sb	zero,0(a5) # 1000 <truncate3+0x1aa>
     char *args2[] = { big, big, big, 0 };
      658:	00008797          	auipc	a5,0x8
-     65c:	fa878793          	addi	a5,a5,-88 # 8600 <schedule_dm+0x7b0>
+     65c:	fa078793          	addi	a5,a5,-96 # 85f8 <schedule_dm+0x7aa>
      660:	6390                	ld	a2,0(a5)
      662:	6794                	ld	a3,8(a5)
      664:	6b98                	ld	a4,16(a5)
@@ -684,7 +684,7 @@ copyinstr2(char *s)
      678:	f2040793          	addi	a5,s0,-224
      67c:	85be                	mv	a1,a5
      67e:	00008517          	auipc	a0,0x8
-     682:	f2250513          	addi	a0,a0,-222 # 85a0 <schedule_dm+0x750>
+     682:	f1a50513          	addi	a0,a0,-230 # 8598 <schedule_dm+0x74a>
      686:	00007097          	auipc	ra,0x7
      68a:	a2c080e7          	jalr	-1492(ra) # 70b2 <exec>
      68e:	87aa                	mv	a5,a0
@@ -698,7 +698,7 @@ copyinstr2(char *s)
      6a2:	fe042783          	lw	a5,-32(s0)
      6a6:	85be                	mv	a1,a5
      6a8:	00008517          	auipc	a0,0x8
-     6ac:	f0050513          	addi	a0,a0,-256 # 85a8 <schedule_dm+0x758>
+     6ac:	ef850513          	addi	a0,a0,-264 # 85a0 <schedule_dm+0x752>
      6b0:	00007097          	auipc	ra,0x7
      6b4:	f10080e7          	jalr	-240(ra) # 75c0 <printf>
       exit(1);
@@ -726,7 +726,7 @@ copyinstr2(char *s)
      6ea:	00f70f63          	beq	a4,a5,708 <copyinstr2+0x2b4>
     printf("exec(echo, BIG) succeeded, should have failed\n");
      6ee:	00008517          	auipc	a0,0x8
-     6f2:	ee250513          	addi	a0,a0,-286 # 85d0 <schedule_dm+0x780>
+     6f2:	eda50513          	addi	a0,a0,-294 # 85c8 <schedule_dm+0x77a>
      6f6:	00007097          	auipc	ra,0x7
      6fa:	eca080e7          	jalr	-310(ra) # 75c0 <printf>
     exit(1);
@@ -798,7 +798,7 @@ copyinstr3(char *s)
      782:	cf91                	beqz	a5,79e <copyinstr3+0x8c>
     printf("oops\n");
      784:	00008517          	auipc	a0,0x8
-     788:	e9c50513          	addi	a0,a0,-356 # 8620 <schedule_dm+0x7d0>
+     788:	e9450513          	addi	a0,a0,-364 # 8618 <schedule_dm+0x7ca>
      78c:	00007097          	auipc	ra,0x7
      790:	e34080e7          	jalr	-460(ra) # 75c0 <printf>
     exit(1);
@@ -832,7 +832,7 @@ copyinstr3(char *s)
      7d8:	863e                	mv	a2,a5
      7da:	fe043583          	ld	a1,-32(s0)
      7de:	00008517          	auipc	a0,0x8
-     7e2:	d2250513          	addi	a0,a0,-734 # 8500 <schedule_dm+0x6b0>
+     7e2:	d1a50513          	addi	a0,a0,-742 # 84f8 <schedule_dm+0x6aa>
      7e6:	00007097          	auipc	ra,0x7
      7ea:	dda080e7          	jalr	-550(ra) # 75c0 <printf>
     exit(1);
@@ -858,7 +858,7 @@ copyinstr3(char *s)
      820:	863e                	mv	a2,a5
      822:	fe043583          	ld	a1,-32(s0)
      826:	00008517          	auipc	a0,0x8
-     82a:	cfa50513          	addi	a0,a0,-774 # 8520 <schedule_dm+0x6d0>
+     82a:	cf250513          	addi	a0,a0,-782 # 8518 <schedule_dm+0x6ca>
      82e:	00007097          	auipc	ra,0x7
      832:	d92080e7          	jalr	-622(ra) # 75c0 <printf>
     exit(1);
@@ -885,7 +885,7 @@ copyinstr3(char *s)
      86a:	fe043603          	ld	a2,-32(s0)
      86e:	fe043583          	ld	a1,-32(s0)
      872:	00008517          	auipc	a0,0x8
-     876:	cce50513          	addi	a0,a0,-818 # 8540 <schedule_dm+0x6f0>
+     876:	cc650513          	addi	a0,a0,-826 # 8538 <schedule_dm+0x6ea>
      87a:	00007097          	auipc	ra,0x7
      87e:	d46080e7          	jalr	-698(ra) # 75c0 <printf>
     exit(1);
@@ -896,7 +896,7 @@ copyinstr3(char *s)
 
   char *args[] = { "xx", 0 };
      88c:	00008797          	auipc	a5,0x8
-     890:	cdc78793          	addi	a5,a5,-804 # 8568 <schedule_dm+0x718>
+     890:	cd478793          	addi	a5,a5,-812 # 8560 <schedule_dm+0x712>
      894:	fcf43423          	sd	a5,-56(s0)
      898:	fc043823          	sd	zero,-48(s0)
   ret = exec(b, args);
@@ -917,7 +917,7 @@ copyinstr3(char *s)
      8c6:	863e                	mv	a2,a5
      8c8:	fe043583          	ld	a1,-32(s0)
      8cc:	00008517          	auipc	a0,0x8
-     8d0:	ca450513          	addi	a0,a0,-860 # 8570 <schedule_dm+0x720>
+     8d0:	c9c50513          	addi	a0,a0,-868 # 8568 <schedule_dm+0x71a>
      8d4:	00007097          	auipc	ra,0x7
      8d8:	cec080e7          	jalr	-788(ra) # 75c0 <printf>
     exit(1);
@@ -958,7 +958,7 @@ rwsbrk()
      90e:	00f71f63          	bne	a4,a5,92c <rwsbrk+0x3c>
     printf("sbrk(rwsbrk) failed\n");
      912:	00008517          	auipc	a0,0x8
-     916:	d1650513          	addi	a0,a0,-746 # 8628 <schedule_dm+0x7d8>
+     916:	d0e50513          	addi	a0,a0,-754 # 8620 <schedule_dm+0x7d2>
      91a:	00007097          	auipc	ra,0x7
      91e:	ca6080e7          	jalr	-858(ra) # 75c0 <printf>
     exit(1);
@@ -976,7 +976,7 @@ rwsbrk()
      93a:	00f71f63          	bne	a4,a5,958 <rwsbrk+0x68>
     printf("sbrk(rwsbrk) shrink failed\n");
      93e:	00008517          	auipc	a0,0x8
-     942:	d0250513          	addi	a0,a0,-766 # 8640 <schedule_dm+0x7f0>
+     942:	cfa50513          	addi	a0,a0,-774 # 8638 <schedule_dm+0x7ea>
      946:	00007097          	auipc	ra,0x7
      94a:	c7a080e7          	jalr	-902(ra) # 75c0 <printf>
     exit(1);
@@ -988,7 +988,7 @@ rwsbrk()
   fd = open("rwsbrk", O_CREATE|O_WRONLY);
      958:	20100593          	li	a1,513
      95c:	00007517          	auipc	a0,0x7
-     960:	77c50513          	addi	a0,a0,1916 # 80d8 <schedule_dm+0x288>
+     960:	77450513          	addi	a0,a0,1908 # 80d0 <schedule_dm+0x282>
      964:	00006097          	auipc	ra,0x6
      968:	756080e7          	jalr	1878(ra) # 70ba <open>
      96c:	87aa                	mv	a5,a0
@@ -999,7 +999,7 @@ rwsbrk()
      978:	0007df63          	bgez	a5,996 <rwsbrk+0xa6>
     printf("open(rwsbrk) failed\n");
      97c:	00008517          	auipc	a0,0x8
-     980:	ce450513          	addi	a0,a0,-796 # 8660 <schedule_dm+0x810>
+     980:	cdc50513          	addi	a0,a0,-804 # 8658 <schedule_dm+0x80a>
      984:	00007097          	auipc	ra,0x7
      988:	c3c080e7          	jalr	-964(ra) # 75c0 <printf>
     exit(1);
@@ -1032,7 +1032,7 @@ rwsbrk()
      9d0:	863a                	mv	a2,a4
      9d2:	85be                	mv	a1,a5
      9d4:	00008517          	auipc	a0,0x8
-     9d8:	ca450513          	addi	a0,a0,-860 # 8678 <schedule_dm+0x828>
+     9d8:	c9c50513          	addi	a0,a0,-868 # 8670 <schedule_dm+0x822>
      9dc:	00007097          	auipc	ra,0x7
      9e0:	be4080e7          	jalr	-1052(ra) # 75c0 <printf>
     exit(1);
@@ -1047,14 +1047,14 @@ rwsbrk()
      9f8:	6ae080e7          	jalr	1710(ra) # 70a2 <close>
   unlink("rwsbrk");
      9fc:	00007517          	auipc	a0,0x7
-     a00:	6dc50513          	addi	a0,a0,1756 # 80d8 <schedule_dm+0x288>
+     a00:	6d450513          	addi	a0,a0,1748 # 80d0 <schedule_dm+0x282>
      a04:	00006097          	auipc	ra,0x6
      a08:	6c6080e7          	jalr	1734(ra) # 70ca <unlink>
 
   fd = open("README", O_RDONLY);
      a0c:	4581                	li	a1,0
      a0e:	00008517          	auipc	a0,0x8
-     a12:	a3250513          	addi	a0,a0,-1486 # 8440 <schedule_dm+0x5f0>
+     a12:	a2a50513          	addi	a0,a0,-1494 # 8438 <schedule_dm+0x5ea>
      a16:	00006097          	auipc	ra,0x6
      a1a:	6a4080e7          	jalr	1700(ra) # 70ba <open>
      a1e:	87aa                	mv	a5,a0
@@ -1065,7 +1065,7 @@ rwsbrk()
      a2a:	0007df63          	bgez	a5,a48 <rwsbrk+0x158>
     printf("open(rwsbrk) failed\n");
      a2e:	00008517          	auipc	a0,0x8
-     a32:	c3250513          	addi	a0,a0,-974 # 8660 <schedule_dm+0x810>
+     a32:	c2a50513          	addi	a0,a0,-982 # 8658 <schedule_dm+0x80a>
      a36:	00007097          	auipc	ra,0x7
      a3a:	b8a080e7          	jalr	-1142(ra) # 75c0 <printf>
     exit(1);
@@ -1098,7 +1098,7 @@ rwsbrk()
      a80:	863a                	mv	a2,a4
      a82:	85be                	mv	a1,a5
      a84:	00008517          	auipc	a0,0x8
-     a88:	c2450513          	addi	a0,a0,-988 # 86a8 <schedule_dm+0x858>
+     a88:	c1c50513          	addi	a0,a0,-996 # 86a0 <schedule_dm+0x852>
      a8c:	00007097          	auipc	ra,0x7
      a90:	b34080e7          	jalr	-1228(ra) # 75c0 <printf>
     exit(1);
@@ -1133,13 +1133,13 @@ truncate1(char *s)
   
   unlink("truncfile");
      ac2:	00008517          	auipc	a0,0x8
-     ac6:	c0e50513          	addi	a0,a0,-1010 # 86d0 <schedule_dm+0x880>
+     ac6:	c0650513          	addi	a0,a0,-1018 # 86c8 <schedule_dm+0x87a>
      aca:	00006097          	auipc	ra,0x6
      ace:	600080e7          	jalr	1536(ra) # 70ca <unlink>
   int fd1 = open("truncfile", O_CREATE|O_WRONLY|O_TRUNC);
      ad2:	60100593          	li	a1,1537
      ad6:	00008517          	auipc	a0,0x8
-     ada:	bfa50513          	addi	a0,a0,-1030 # 86d0 <schedule_dm+0x880>
+     ada:	bf250513          	addi	a0,a0,-1038 # 86c8 <schedule_dm+0x87a>
      ade:	00006097          	auipc	ra,0x6
      ae2:	5dc080e7          	jalr	1500(ra) # 70ba <open>
      ae6:	87aa                	mv	a5,a0
@@ -1148,7 +1148,7 @@ truncate1(char *s)
      aec:	fec42783          	lw	a5,-20(s0)
      af0:	4611                	li	a2,4
      af2:	00008597          	auipc	a1,0x8
-     af6:	bee58593          	addi	a1,a1,-1042 # 86e0 <schedule_dm+0x890>
+     af6:	be658593          	addi	a1,a1,-1050 # 86d8 <schedule_dm+0x88a>
      afa:	853e                	mv	a0,a5
      afc:	00006097          	auipc	ra,0x6
      b00:	59e080e7          	jalr	1438(ra) # 709a <write>
@@ -1161,7 +1161,7 @@ truncate1(char *s)
   int fd2 = open("truncfile", O_RDONLY);
      b12:	4581                	li	a1,0
      b14:	00008517          	auipc	a0,0x8
-     b18:	bbc50513          	addi	a0,a0,-1092 # 86d0 <schedule_dm+0x880>
+     b18:	bb450513          	addi	a0,a0,-1100 # 86c8 <schedule_dm+0x87a>
      b1c:	00006097          	auipc	ra,0x6
      b20:	59e080e7          	jalr	1438(ra) # 70ba <open>
      b24:	87aa                	mv	a5,a0
@@ -1186,7 +1186,7 @@ truncate1(char *s)
      b5a:	863e                	mv	a2,a5
      b5c:	fb843583          	ld	a1,-72(s0)
      b60:	00008517          	auipc	a0,0x8
-     b64:	b8850513          	addi	a0,a0,-1144 # 86e8 <schedule_dm+0x898>
+     b64:	b8050513          	addi	a0,a0,-1152 # 86e0 <schedule_dm+0x892>
      b68:	00007097          	auipc	ra,0x7
      b6c:	a58080e7          	jalr	-1448(ra) # 75c0 <printf>
     exit(1);
@@ -1198,7 +1198,7 @@ truncate1(char *s)
   fd1 = open("truncfile", O_WRONLY|O_TRUNC);
      b7a:	40100593          	li	a1,1025
      b7e:	00008517          	auipc	a0,0x8
-     b82:	b5250513          	addi	a0,a0,-1198 # 86d0 <schedule_dm+0x880>
+     b82:	b4a50513          	addi	a0,a0,-1206 # 86c8 <schedule_dm+0x87a>
      b86:	00006097          	auipc	ra,0x6
      b8a:	534080e7          	jalr	1332(ra) # 70ba <open>
      b8e:	87aa                	mv	a5,a0
@@ -1207,7 +1207,7 @@ truncate1(char *s)
   int fd3 = open("truncfile", O_RDONLY);
      b94:	4581                	li	a1,0
      b96:	00008517          	auipc	a0,0x8
-     b9a:	b3a50513          	addi	a0,a0,-1222 # 86d0 <schedule_dm+0x880>
+     b9a:	b3250513          	addi	a0,a0,-1230 # 86c8 <schedule_dm+0x87a>
      b9e:	00006097          	auipc	ra,0x6
      ba2:	51c080e7          	jalr	1308(ra) # 70ba <open>
      ba6:	87aa                	mv	a5,a0
@@ -1230,7 +1230,7 @@ truncate1(char *s)
      bd2:	fe042783          	lw	a5,-32(s0)
      bd6:	85be                	mv	a1,a5
      bd8:	00008517          	auipc	a0,0x8
-     bdc:	b3050513          	addi	a0,a0,-1232 # 8708 <schedule_dm+0x8b8>
+     bdc:	b2850513          	addi	a0,a0,-1240 # 8700 <schedule_dm+0x8b2>
      be0:	00007097          	auipc	ra,0x7
      be4:	9e0080e7          	jalr	-1568(ra) # 75c0 <printf>
     printf("%s: read %d bytes, wanted 0\n", s, n);
@@ -1238,7 +1238,7 @@ truncate1(char *s)
      bec:	863e                	mv	a2,a5
      bee:	fb843583          	ld	a1,-72(s0)
      bf2:	00008517          	auipc	a0,0x8
-     bf6:	b2650513          	addi	a0,a0,-1242 # 8718 <schedule_dm+0x8c8>
+     bf6:	b1e50513          	addi	a0,a0,-1250 # 8710 <schedule_dm+0x8c2>
      bfa:	00007097          	auipc	ra,0x7
      bfe:	9c6080e7          	jalr	-1594(ra) # 75c0 <printf>
     exit(1);
@@ -1265,7 +1265,7 @@ truncate1(char *s)
      c32:	fe842783          	lw	a5,-24(s0)
      c36:	85be                	mv	a1,a5
      c38:	00008517          	auipc	a0,0x8
-     c3c:	b0050513          	addi	a0,a0,-1280 # 8738 <schedule_dm+0x8e8>
+     c3c:	af850513          	addi	a0,a0,-1288 # 8730 <schedule_dm+0x8e2>
      c40:	00007097          	auipc	ra,0x7
      c44:	980080e7          	jalr	-1664(ra) # 75c0 <printf>
     printf("%s: read %d bytes, wanted 0\n", s, n);
@@ -1273,7 +1273,7 @@ truncate1(char *s)
      c4c:	863e                	mv	a2,a5
      c4e:	fb843583          	ld	a1,-72(s0)
      c52:	00008517          	auipc	a0,0x8
-     c56:	ac650513          	addi	a0,a0,-1338 # 8718 <schedule_dm+0x8c8>
+     c56:	abe50513          	addi	a0,a0,-1346 # 8710 <schedule_dm+0x8c2>
      c5a:	00007097          	auipc	ra,0x7
      c5e:	966080e7          	jalr	-1690(ra) # 75c0 <printf>
     exit(1);
@@ -1286,7 +1286,7 @@ truncate1(char *s)
      c6c:	fec42783          	lw	a5,-20(s0)
      c70:	4619                	li	a2,6
      c72:	00008597          	auipc	a1,0x8
-     c76:	ad658593          	addi	a1,a1,-1322 # 8748 <schedule_dm+0x8f8>
+     c76:	ace58593          	addi	a1,a1,-1330 # 8740 <schedule_dm+0x8f2>
      c7a:	853e                	mv	a0,a5
      c7c:	00006097          	auipc	ra,0x6
      c80:	41e080e7          	jalr	1054(ra) # 709a <write>
@@ -1311,7 +1311,7 @@ truncate1(char *s)
      cb4:	863e                	mv	a2,a5
      cb6:	fb843583          	ld	a1,-72(s0)
      cba:	00008517          	auipc	a0,0x8
-     cbe:	a9650513          	addi	a0,a0,-1386 # 8750 <schedule_dm+0x900>
+     cbe:	a8e50513          	addi	a0,a0,-1394 # 8748 <schedule_dm+0x8fa>
      cc2:	00007097          	auipc	ra,0x7
      cc6:	8fe080e7          	jalr	-1794(ra) # 75c0 <printf>
     exit(1);
@@ -1340,7 +1340,7 @@ truncate1(char *s)
      d04:	863e                	mv	a2,a5
      d06:	fb843583          	ld	a1,-72(s0)
      d0a:	00008517          	auipc	a0,0x8
-     d0e:	a6650513          	addi	a0,a0,-1434 # 8770 <schedule_dm+0x920>
+     d0e:	a5e50513          	addi	a0,a0,-1442 # 8768 <schedule_dm+0x91a>
      d12:	00007097          	auipc	ra,0x7
      d16:	8ae080e7          	jalr	-1874(ra) # 75c0 <printf>
     exit(1);
@@ -1351,7 +1351,7 @@ truncate1(char *s)
 
   unlink("truncfile");
      d24:	00008517          	auipc	a0,0x8
-     d28:	9ac50513          	addi	a0,a0,-1620 # 86d0 <schedule_dm+0x880>
+     d28:	9a450513          	addi	a0,a0,-1628 # 86c8 <schedule_dm+0x87a>
      d2c:	00006097          	auipc	ra,0x6
      d30:	39e080e7          	jalr	926(ra) # 70ca <unlink>
 
@@ -1391,14 +1391,14 @@ truncate2(char *s)
      d70:	fca43c23          	sd	a0,-40(s0)
   unlink("truncfile");
      d74:	00008517          	auipc	a0,0x8
-     d78:	95c50513          	addi	a0,a0,-1700 # 86d0 <schedule_dm+0x880>
+     d78:	95450513          	addi	a0,a0,-1708 # 86c8 <schedule_dm+0x87a>
      d7c:	00006097          	auipc	ra,0x6
      d80:	34e080e7          	jalr	846(ra) # 70ca <unlink>
 
   int fd1 = open("truncfile", O_CREATE|O_TRUNC|O_WRONLY);
      d84:	60100593          	li	a1,1537
      d88:	00008517          	auipc	a0,0x8
-     d8c:	94850513          	addi	a0,a0,-1720 # 86d0 <schedule_dm+0x880>
+     d8c:	94050513          	addi	a0,a0,-1728 # 86c8 <schedule_dm+0x87a>
      d90:	00006097          	auipc	ra,0x6
      d94:	32a080e7          	jalr	810(ra) # 70ba <open>
      d98:	87aa                	mv	a5,a0
@@ -1407,7 +1407,7 @@ truncate2(char *s)
      d9e:	fec42783          	lw	a5,-20(s0)
      da2:	4611                	li	a2,4
      da4:	00008597          	auipc	a1,0x8
-     da8:	93c58593          	addi	a1,a1,-1732 # 86e0 <schedule_dm+0x890>
+     da8:	93458593          	addi	a1,a1,-1740 # 86d8 <schedule_dm+0x88a>
      dac:	853e                	mv	a0,a5
      dae:	00006097          	auipc	ra,0x6
      db2:	2ec080e7          	jalr	748(ra) # 709a <write>
@@ -1415,7 +1415,7 @@ truncate2(char *s)
   int fd2 = open("truncfile", O_TRUNC|O_WRONLY);
      db6:	40100593          	li	a1,1025
      dba:	00008517          	auipc	a0,0x8
-     dbe:	91650513          	addi	a0,a0,-1770 # 86d0 <schedule_dm+0x880>
+     dbe:	90e50513          	addi	a0,a0,-1778 # 86c8 <schedule_dm+0x87a>
      dc2:	00006097          	auipc	ra,0x6
      dc6:	2f8080e7          	jalr	760(ra) # 70ba <open>
      dca:	87aa                	mv	a5,a0
@@ -1425,7 +1425,7 @@ truncate2(char *s)
      dd0:	fec42783          	lw	a5,-20(s0)
      dd4:	4605                	li	a2,1
      dd6:	00007597          	auipc	a1,0x7
-     dda:	6ba58593          	addi	a1,a1,1722 # 8490 <schedule_dm+0x640>
+     dda:	6b258593          	addi	a1,a1,1714 # 8488 <schedule_dm+0x63a>
      dde:	853e                	mv	a0,a5
      de0:	00006097          	auipc	ra,0x6
      de4:	2ba080e7          	jalr	698(ra) # 709a <write>
@@ -1441,7 +1441,7 @@ truncate2(char *s)
      e00:	863e                	mv	a2,a5
      e02:	fd843583          	ld	a1,-40(s0)
      e06:	00008517          	auipc	a0,0x8
-     e0a:	98a50513          	addi	a0,a0,-1654 # 8790 <schedule_dm+0x940>
+     e0a:	98250513          	addi	a0,a0,-1662 # 8788 <schedule_dm+0x93a>
      e0e:	00006097          	auipc	ra,0x6
      e12:	7b2080e7          	jalr	1970(ra) # 75c0 <printf>
     exit(1);
@@ -1452,7 +1452,7 @@ truncate2(char *s)
 
   unlink("truncfile");
      e20:	00008517          	auipc	a0,0x8
-     e24:	8b050513          	addi	a0,a0,-1872 # 86d0 <schedule_dm+0x880>
+     e24:	8a850513          	addi	a0,a0,-1880 # 86c8 <schedule_dm+0x87a>
      e28:	00006097          	auipc	ra,0x6
      e2c:	2a2080e7          	jalr	674(ra) # 70ca <unlink>
   close(fd1);
@@ -1487,7 +1487,7 @@ truncate3(char *s)
   close(open("truncfile", O_CREATE|O_TRUNC|O_WRONLY));
      e62:	60100593          	li	a1,1537
      e66:	00008517          	auipc	a0,0x8
-     e6a:	86a50513          	addi	a0,a0,-1942 # 86d0 <schedule_dm+0x880>
+     e6a:	86250513          	addi	a0,a0,-1950 # 86c8 <schedule_dm+0x87a>
      e6e:	00006097          	auipc	ra,0x6
      e72:	24c080e7          	jalr	588(ra) # 70ba <open>
      e76:	87aa                	mv	a5,a0
@@ -1507,7 +1507,7 @@ truncate3(char *s)
     printf("%s: fork failed\n", s);
      e9a:	fa843583          	ld	a1,-88(s0)
      e9e:	00008517          	auipc	a0,0x8
-     ea2:	91a50513          	addi	a0,a0,-1766 # 87b8 <schedule_dm+0x968>
+     ea2:	91250513          	addi	a0,a0,-1774 # 87b0 <schedule_dm+0x962>
      ea6:	00006097          	auipc	ra,0x6
      eaa:	71a080e7          	jalr	1818(ra) # 75c0 <printf>
     exit(1);
@@ -1526,8 +1526,8 @@ truncate3(char *s)
       char buf[32];
       int fd = open("truncfile", O_WRONLY);
      ec8:	4585                	li	a1,1
-     eca:	00008517          	auipc	a0,0x8
-     ece:	80650513          	addi	a0,a0,-2042 # 86d0 <schedule_dm+0x880>
+     eca:	00007517          	auipc	a0,0x7
+     ece:	7fe50513          	addi	a0,a0,2046 # 86c8 <schedule_dm+0x87a>
      ed2:	00006097          	auipc	ra,0x6
      ed6:	1e8080e7          	jalr	488(ra) # 70ba <open>
      eda:	87aa                	mv	a5,a0
@@ -1539,7 +1539,7 @@ truncate3(char *s)
         printf("%s: open failed\n", s);
      eea:	fa843583          	ld	a1,-88(s0)
      eee:	00008517          	auipc	a0,0x8
-     ef2:	8e250513          	addi	a0,a0,-1822 # 87d0 <schedule_dm+0x980>
+     ef2:	8da50513          	addi	a0,a0,-1830 # 87c8 <schedule_dm+0x97a>
      ef6:	00006097          	auipc	ra,0x6
      efa:	6ca080e7          	jalr	1738(ra) # 75c0 <printf>
         exit(1);
@@ -1551,7 +1551,7 @@ truncate3(char *s)
      f08:	fd842783          	lw	a5,-40(s0)
      f0c:	4629                	li	a2,10
      f0e:	00008597          	auipc	a1,0x8
-     f12:	8da58593          	addi	a1,a1,-1830 # 87e8 <schedule_dm+0x998>
+     f12:	8d258593          	addi	a1,a1,-1838 # 87e0 <schedule_dm+0x992>
      f16:	853e                	mv	a0,a5
      f18:	00006097          	auipc	ra,0x6
      f1c:	182080e7          	jalr	386(ra) # 709a <write>
@@ -1567,7 +1567,7 @@ truncate3(char *s)
      f38:	863e                	mv	a2,a5
      f3a:	fa843583          	ld	a1,-88(s0)
      f3e:	00008517          	auipc	a0,0x8
-     f42:	8ba50513          	addi	a0,a0,-1862 # 87f8 <schedule_dm+0x9a8>
+     f42:	8b250513          	addi	a0,a0,-1870 # 87f0 <schedule_dm+0x9a2>
      f46:	00006097          	auipc	ra,0x6
      f4a:	67a080e7          	jalr	1658(ra) # 75c0 <printf>
         exit(1);
@@ -1583,7 +1583,7 @@ truncate3(char *s)
       fd = open("truncfile", O_RDONLY);
      f66:	4581                	li	a1,0
      f68:	00007517          	auipc	a0,0x7
-     f6c:	76850513          	addi	a0,a0,1896 # 86d0 <schedule_dm+0x880>
+     f6c:	76050513          	addi	a0,a0,1888 # 86c8 <schedule_dm+0x87a>
      f70:	00006097          	auipc	ra,0x6
      f74:	14a080e7          	jalr	330(ra) # 70ba <open>
      f78:	87aa                	mv	a5,a0
@@ -1622,7 +1622,7 @@ truncate3(char *s)
     int fd = open("truncfile", O_CREATE|O_WRONLY|O_TRUNC);
      fce:	60100593          	li	a1,1537
      fd2:	00007517          	auipc	a0,0x7
-     fd6:	6fe50513          	addi	a0,a0,1790 # 86d0 <schedule_dm+0x880>
+     fd6:	6f650513          	addi	a0,a0,1782 # 86c8 <schedule_dm+0x87a>
      fda:	00006097          	auipc	ra,0x6
      fde:	0e0080e7          	jalr	224(ra) # 70ba <open>
      fe2:	87aa                	mv	a5,a0
@@ -1634,7 +1634,7 @@ truncate3(char *s)
       printf("%s: open failed\n", s);
      ff2:	fa843583          	ld	a1,-88(s0)
      ff6:	00007517          	auipc	a0,0x7
-     ffa:	7da50513          	addi	a0,a0,2010 # 87d0 <schedule_dm+0x980>
+     ffa:	7d250513          	addi	a0,a0,2002 # 87c8 <schedule_dm+0x97a>
      ffe:	00006097          	auipc	ra,0x6
     1002:	5c2080e7          	jalr	1474(ra) # 75c0 <printf>
       exit(1);
@@ -1645,8 +1645,8 @@ truncate3(char *s)
     int n = write(fd, "xxx", 3);
     1010:	fe042783          	lw	a5,-32(s0)
     1014:	460d                	li	a2,3
-    1016:	00008597          	auipc	a1,0x8
-    101a:	80258593          	addi	a1,a1,-2046 # 8818 <schedule_dm+0x9c8>
+    1016:	00007597          	auipc	a1,0x7
+    101a:	7fa58593          	addi	a1,a1,2042 # 8810 <schedule_dm+0x9c2>
     101e:	853e                	mv	a0,a5
     1020:	00006097          	auipc	ra,0x6
     1024:	07a080e7          	jalr	122(ra) # 709a <write>
@@ -1662,7 +1662,7 @@ truncate3(char *s)
     1040:	863e                	mv	a2,a5
     1042:	fa843583          	ld	a1,-88(s0)
     1046:	00007517          	auipc	a0,0x7
-    104a:	7da50513          	addi	a0,a0,2010 # 8820 <schedule_dm+0x9d0>
+    104a:	7d250513          	addi	a0,a0,2002 # 8818 <schedule_dm+0x9ca>
     104e:	00006097          	auipc	ra,0x6
     1052:	572080e7          	jalr	1394(ra) # 75c0 <printf>
       exit(1);
@@ -1692,7 +1692,7 @@ truncate3(char *s)
     1092:	ff4080e7          	jalr	-12(ra) # 7082 <wait>
   unlink("truncfile");
     1096:	00007517          	auipc	a0,0x7
-    109a:	63a50513          	addi	a0,a0,1594 # 86d0 <schedule_dm+0x880>
+    109a:	63250513          	addi	a0,a0,1586 # 86c8 <schedule_dm+0x87a>
     109e:	00006097          	auipc	ra,0x6
     10a2:	02c080e7          	jalr	44(ra) # 70ca <unlink>
   exit(xstatus);
@@ -1715,7 +1715,7 @@ iputtest(char *s)
     10bc:	fea43423          	sd	a0,-24(s0)
   if(mkdir("iputdir") < 0){
     10c0:	00007517          	auipc	a0,0x7
-    10c4:	78050513          	addi	a0,a0,1920 # 8840 <schedule_dm+0x9f0>
+    10c4:	77850513          	addi	a0,a0,1912 # 8838 <schedule_dm+0x9ea>
     10c8:	00006097          	auipc	ra,0x6
     10cc:	01a080e7          	jalr	26(ra) # 70e2 <mkdir>
     10d0:	87aa                	mv	a5,a0
@@ -1723,7 +1723,7 @@ iputtest(char *s)
     printf("%s: mkdir failed\n", s);
     10d6:	fe843583          	ld	a1,-24(s0)
     10da:	00007517          	auipc	a0,0x7
-    10de:	76e50513          	addi	a0,a0,1902 # 8848 <schedule_dm+0x9f8>
+    10de:	76650513          	addi	a0,a0,1894 # 8840 <schedule_dm+0x9f2>
     10e2:	00006097          	auipc	ra,0x6
     10e6:	4de080e7          	jalr	1246(ra) # 75c0 <printf>
     exit(1);
@@ -1733,7 +1733,7 @@ iputtest(char *s)
   }
   if(chdir("iputdir") < 0){
     10f4:	00007517          	auipc	a0,0x7
-    10f8:	74c50513          	addi	a0,a0,1868 # 8840 <schedule_dm+0x9f0>
+    10f8:	74450513          	addi	a0,a0,1860 # 8838 <schedule_dm+0x9ea>
     10fc:	00006097          	auipc	ra,0x6
     1100:	fee080e7          	jalr	-18(ra) # 70ea <chdir>
     1104:	87aa                	mv	a5,a0
@@ -1741,7 +1741,7 @@ iputtest(char *s)
     printf("%s: chdir iputdir failed\n", s);
     110a:	fe843583          	ld	a1,-24(s0)
     110e:	00007517          	auipc	a0,0x7
-    1112:	75250513          	addi	a0,a0,1874 # 8860 <schedule_dm+0xa10>
+    1112:	74a50513          	addi	a0,a0,1866 # 8858 <schedule_dm+0xa0a>
     1116:	00006097          	auipc	ra,0x6
     111a:	4aa080e7          	jalr	1194(ra) # 75c0 <printf>
     exit(1);
@@ -1751,7 +1751,7 @@ iputtest(char *s)
   }
   if(unlink("../iputdir") < 0){
     1128:	00007517          	auipc	a0,0x7
-    112c:	75850513          	addi	a0,a0,1880 # 8880 <schedule_dm+0xa30>
+    112c:	75050513          	addi	a0,a0,1872 # 8878 <schedule_dm+0xa2a>
     1130:	00006097          	auipc	ra,0x6
     1134:	f9a080e7          	jalr	-102(ra) # 70ca <unlink>
     1138:	87aa                	mv	a5,a0
@@ -1759,7 +1759,7 @@ iputtest(char *s)
     printf("%s: unlink ../iputdir failed\n", s);
     113e:	fe843583          	ld	a1,-24(s0)
     1142:	00007517          	auipc	a0,0x7
-    1146:	74e50513          	addi	a0,a0,1870 # 8890 <schedule_dm+0xa40>
+    1146:	74650513          	addi	a0,a0,1862 # 8888 <schedule_dm+0xa3a>
     114a:	00006097          	auipc	ra,0x6
     114e:	476080e7          	jalr	1142(ra) # 75c0 <printf>
     exit(1);
@@ -1769,7 +1769,7 @@ iputtest(char *s)
   }
   if(chdir("/") < 0){
     115c:	00007517          	auipc	a0,0x7
-    1160:	75450513          	addi	a0,a0,1876 # 88b0 <schedule_dm+0xa60>
+    1160:	74c50513          	addi	a0,a0,1868 # 88a8 <schedule_dm+0xa5a>
     1164:	00006097          	auipc	ra,0x6
     1168:	f86080e7          	jalr	-122(ra) # 70ea <chdir>
     116c:	87aa                	mv	a5,a0
@@ -1777,7 +1777,7 @@ iputtest(char *s)
     printf("%s: chdir / failed\n", s);
     1172:	fe843583          	ld	a1,-24(s0)
     1176:	00007517          	auipc	a0,0x7
-    117a:	74250513          	addi	a0,a0,1858 # 88b8 <schedule_dm+0xa68>
+    117a:	73a50513          	addi	a0,a0,1850 # 88b0 <schedule_dm+0xa62>
     117e:	00006097          	auipc	ra,0x6
     1182:	442080e7          	jalr	1090(ra) # 75c0 <printf>
     exit(1);
@@ -1817,7 +1817,7 @@ exitiputtest(char *s)
     printf("%s: fork failed\n", s);
     11be:	fd843583          	ld	a1,-40(s0)
     11c2:	00007517          	auipc	a0,0x7
-    11c6:	5f650513          	addi	a0,a0,1526 # 87b8 <schedule_dm+0x968>
+    11c6:	5ee50513          	addi	a0,a0,1518 # 87b0 <schedule_dm+0x962>
     11ca:	00006097          	auipc	ra,0x6
     11ce:	3f6080e7          	jalr	1014(ra) # 75c0 <printf>
     exit(1);
@@ -1831,7 +1831,7 @@ exitiputtest(char *s)
     11e2:	e7c5                	bnez	a5,128a <exitiputtest+0xf0>
     if(mkdir("iputdir") < 0){
     11e4:	00007517          	auipc	a0,0x7
-    11e8:	65c50513          	addi	a0,a0,1628 # 8840 <schedule_dm+0x9f0>
+    11e8:	65450513          	addi	a0,a0,1620 # 8838 <schedule_dm+0x9ea>
     11ec:	00006097          	auipc	ra,0x6
     11f0:	ef6080e7          	jalr	-266(ra) # 70e2 <mkdir>
     11f4:	87aa                	mv	a5,a0
@@ -1839,7 +1839,7 @@ exitiputtest(char *s)
       printf("%s: mkdir failed\n", s);
     11fa:	fd843583          	ld	a1,-40(s0)
     11fe:	00007517          	auipc	a0,0x7
-    1202:	64a50513          	addi	a0,a0,1610 # 8848 <schedule_dm+0x9f8>
+    1202:	64250513          	addi	a0,a0,1602 # 8840 <schedule_dm+0x9f2>
     1206:	00006097          	auipc	ra,0x6
     120a:	3ba080e7          	jalr	954(ra) # 75c0 <printf>
       exit(1);
@@ -1849,7 +1849,7 @@ exitiputtest(char *s)
     }
     if(chdir("iputdir") < 0){
     1218:	00007517          	auipc	a0,0x7
-    121c:	62850513          	addi	a0,a0,1576 # 8840 <schedule_dm+0x9f0>
+    121c:	62050513          	addi	a0,a0,1568 # 8838 <schedule_dm+0x9ea>
     1220:	00006097          	auipc	ra,0x6
     1224:	eca080e7          	jalr	-310(ra) # 70ea <chdir>
     1228:	87aa                	mv	a5,a0
@@ -1857,7 +1857,7 @@ exitiputtest(char *s)
       printf("%s: child chdir failed\n", s);
     122e:	fd843583          	ld	a1,-40(s0)
     1232:	00007517          	auipc	a0,0x7
-    1236:	69e50513          	addi	a0,a0,1694 # 88d0 <schedule_dm+0xa80>
+    1236:	69650513          	addi	a0,a0,1686 # 88c8 <schedule_dm+0xa7a>
     123a:	00006097          	auipc	ra,0x6
     123e:	386080e7          	jalr	902(ra) # 75c0 <printf>
       exit(1);
@@ -1867,7 +1867,7 @@ exitiputtest(char *s)
     }
     if(unlink("../iputdir") < 0){
     124c:	00007517          	auipc	a0,0x7
-    1250:	63450513          	addi	a0,a0,1588 # 8880 <schedule_dm+0xa30>
+    1250:	62c50513          	addi	a0,a0,1580 # 8878 <schedule_dm+0xa2a>
     1254:	00006097          	auipc	ra,0x6
     1258:	e76080e7          	jalr	-394(ra) # 70ca <unlink>
     125c:	87aa                	mv	a5,a0
@@ -1875,7 +1875,7 @@ exitiputtest(char *s)
       printf("%s: unlink ../iputdir failed\n", s);
     1262:	fd843583          	ld	a1,-40(s0)
     1266:	00007517          	auipc	a0,0x7
-    126a:	62a50513          	addi	a0,a0,1578 # 8890 <schedule_dm+0xa40>
+    126a:	62250513          	addi	a0,a0,1570 # 8888 <schedule_dm+0xa3a>
     126e:	00006097          	auipc	ra,0x6
     1272:	352080e7          	jalr	850(ra) # 75c0 <printf>
       exit(1);
@@ -1915,7 +1915,7 @@ openiputtest(char *s)
 
   if(mkdir("oidir") < 0){
     12b2:	00007517          	auipc	a0,0x7
-    12b6:	63650513          	addi	a0,a0,1590 # 88e8 <schedule_dm+0xa98>
+    12b6:	62e50513          	addi	a0,a0,1582 # 88e0 <schedule_dm+0xa92>
     12ba:	00006097          	auipc	ra,0x6
     12be:	e28080e7          	jalr	-472(ra) # 70e2 <mkdir>
     12c2:	87aa                	mv	a5,a0
@@ -1923,7 +1923,7 @@ openiputtest(char *s)
     printf("%s: mkdir oidir failed\n", s);
     12c8:	fd843583          	ld	a1,-40(s0)
     12cc:	00007517          	auipc	a0,0x7
-    12d0:	62450513          	addi	a0,a0,1572 # 88f0 <schedule_dm+0xaa0>
+    12d0:	61c50513          	addi	a0,a0,1564 # 88e8 <schedule_dm+0xa9a>
     12d4:	00006097          	auipc	ra,0x6
     12d8:	2ec080e7          	jalr	748(ra) # 75c0 <printf>
     exit(1);
@@ -1943,7 +1943,7 @@ openiputtest(char *s)
     printf("%s: fork failed\n", s);
     12fe:	fd843583          	ld	a1,-40(s0)
     1302:	00007517          	auipc	a0,0x7
-    1306:	4b650513          	addi	a0,a0,1206 # 87b8 <schedule_dm+0x968>
+    1306:	4ae50513          	addi	a0,a0,1198 # 87b0 <schedule_dm+0x962>
     130a:	00006097          	auipc	ra,0x6
     130e:	2b6080e7          	jalr	694(ra) # 75c0 <printf>
     exit(1);
@@ -1958,7 +1958,7 @@ openiputtest(char *s)
     int fd = open("oidir", O_RDWR);
     1324:	4589                	li	a1,2
     1326:	00007517          	auipc	a0,0x7
-    132a:	5c250513          	addi	a0,a0,1474 # 88e8 <schedule_dm+0xa98>
+    132a:	5ba50513          	addi	a0,a0,1466 # 88e0 <schedule_dm+0xa92>
     132e:	00006097          	auipc	ra,0x6
     1332:	d8c080e7          	jalr	-628(ra) # 70ba <open>
     1336:	87aa                	mv	a5,a0
@@ -1970,7 +1970,7 @@ openiputtest(char *s)
       printf("%s: open directory for write succeeded\n", s);
     1346:	fd843583          	ld	a1,-40(s0)
     134a:	00007517          	auipc	a0,0x7
-    134e:	5be50513          	addi	a0,a0,1470 # 8908 <schedule_dm+0xab8>
+    134e:	5b650513          	addi	a0,a0,1462 # 8900 <schedule_dm+0xab2>
     1352:	00006097          	auipc	ra,0x6
     1356:	26e080e7          	jalr	622(ra) # 75c0 <printf>
       exit(1);
@@ -1989,7 +1989,7 @@ openiputtest(char *s)
     1374:	d9a080e7          	jalr	-614(ra) # 710a <sleep>
   if(unlink("oidir") != 0){
     1378:	00007517          	auipc	a0,0x7
-    137c:	57050513          	addi	a0,a0,1392 # 88e8 <schedule_dm+0xa98>
+    137c:	56850513          	addi	a0,a0,1384 # 88e0 <schedule_dm+0xa92>
     1380:	00006097          	auipc	ra,0x6
     1384:	d4a080e7          	jalr	-694(ra) # 70ca <unlink>
     1388:	87aa                	mv	a5,a0
@@ -1997,7 +1997,7 @@ openiputtest(char *s)
     printf("%s: unlink failed\n", s);
     138c:	fd843583          	ld	a1,-40(s0)
     1390:	00007517          	auipc	a0,0x7
-    1394:	5a050513          	addi	a0,a0,1440 # 8930 <schedule_dm+0xae0>
+    1394:	59850513          	addi	a0,a0,1432 # 8928 <schedule_dm+0xada>
     1398:	00006097          	auipc	ra,0x6
     139c:	228080e7          	jalr	552(ra) # 75c0 <printf>
     exit(1);
@@ -2033,7 +2033,7 @@ opentest(char *s)
   fd = open("echo", 0);
     13d2:	4581                	li	a1,0
     13d4:	00007517          	auipc	a0,0x7
-    13d8:	1cc50513          	addi	a0,a0,460 # 85a0 <schedule_dm+0x750>
+    13d8:	1c450513          	addi	a0,a0,452 # 8598 <schedule_dm+0x74a>
     13dc:	00006097          	auipc	ra,0x6
     13e0:	cde080e7          	jalr	-802(ra) # 70ba <open>
     13e4:	87aa                	mv	a5,a0
@@ -2045,7 +2045,7 @@ opentest(char *s)
     printf("%s: open echo failed!\n", s);
     13f4:	fd843583          	ld	a1,-40(s0)
     13f8:	00007517          	auipc	a0,0x7
-    13fc:	55050513          	addi	a0,a0,1360 # 8948 <schedule_dm+0xaf8>
+    13fc:	54850513          	addi	a0,a0,1352 # 8940 <schedule_dm+0xaf2>
     1400:	00006097          	auipc	ra,0x6
     1404:	1c0080e7          	jalr	448(ra) # 75c0 <printf>
     exit(1);
@@ -2061,7 +2061,7 @@ opentest(char *s)
   fd = open("doesnotexist", 0);
     1420:	4581                	li	a1,0
     1422:	00007517          	auipc	a0,0x7
-    1426:	53e50513          	addi	a0,a0,1342 # 8960 <schedule_dm+0xb10>
+    1426:	53650513          	addi	a0,a0,1334 # 8958 <schedule_dm+0xb0a>
     142a:	00006097          	auipc	ra,0x6
     142e:	c90080e7          	jalr	-880(ra) # 70ba <open>
     1432:	87aa                	mv	a5,a0
@@ -2073,7 +2073,7 @@ opentest(char *s)
     printf("%s: open doesnotexist succeeded!\n", s);
     1442:	fd843583          	ld	a1,-40(s0)
     1446:	00007517          	auipc	a0,0x7
-    144a:	52a50513          	addi	a0,a0,1322 # 8970 <schedule_dm+0xb20>
+    144a:	52250513          	addi	a0,a0,1314 # 8968 <schedule_dm+0xb1a>
     144e:	00006097          	auipc	ra,0x6
     1452:	172080e7          	jalr	370(ra) # 75c0 <printf>
     exit(1);
@@ -2105,7 +2105,7 @@ writetest(char *s)
   fd = open("small", O_CREATE|O_RDWR);
     1476:	20200593          	li	a1,514
     147a:	00007517          	auipc	a0,0x7
-    147e:	51e50513          	addi	a0,a0,1310 # 8998 <schedule_dm+0xb48>
+    147e:	51650513          	addi	a0,a0,1302 # 8990 <schedule_dm+0xb42>
     1482:	00006097          	auipc	ra,0x6
     1486:	c38080e7          	jalr	-968(ra) # 70ba <open>
     148a:	87aa                	mv	a5,a0
@@ -2117,7 +2117,7 @@ writetest(char *s)
     printf("%s: error: creat small failed!\n", s);
     149a:	fd843583          	ld	a1,-40(s0)
     149e:	00007517          	auipc	a0,0x7
-    14a2:	50250513          	addi	a0,a0,1282 # 89a0 <schedule_dm+0xb50>
+    14a2:	4fa50513          	addi	a0,a0,1274 # 8998 <schedule_dm+0xb4a>
     14a6:	00006097          	auipc	ra,0x6
     14aa:	11a080e7          	jalr	282(ra) # 75c0 <printf>
     exit(1);
@@ -2132,7 +2132,7 @@ writetest(char *s)
     14be:	fe842783          	lw	a5,-24(s0)
     14c2:	4629                	li	a2,10
     14c4:	00007597          	auipc	a1,0x7
-    14c8:	4fc58593          	addi	a1,a1,1276 # 89c0 <schedule_dm+0xb70>
+    14c8:	4f458593          	addi	a1,a1,1268 # 89b8 <schedule_dm+0xb6a>
     14cc:	853e                	mv	a0,a5
     14ce:	00006097          	auipc	ra,0x6
     14d2:	bcc080e7          	jalr	-1076(ra) # 709a <write>
@@ -2145,7 +2145,7 @@ writetest(char *s)
     14e4:	863e                	mv	a2,a5
     14e6:	fd843583          	ld	a1,-40(s0)
     14ea:	00007517          	auipc	a0,0x7
-    14ee:	4e650513          	addi	a0,a0,1254 # 89d0 <schedule_dm+0xb80>
+    14ee:	4de50513          	addi	a0,a0,1246 # 89c8 <schedule_dm+0xb7a>
     14f2:	00006097          	auipc	ra,0x6
     14f6:	0ce080e7          	jalr	206(ra) # 75c0 <printf>
       exit(1);
@@ -2157,7 +2157,7 @@ writetest(char *s)
     1504:	fe842783          	lw	a5,-24(s0)
     1508:	4629                	li	a2,10
     150a:	00007597          	auipc	a1,0x7
-    150e:	4ee58593          	addi	a1,a1,1262 # 89f8 <schedule_dm+0xba8>
+    150e:	4e658593          	addi	a1,a1,1254 # 89f0 <schedule_dm+0xba2>
     1512:	853e                	mv	a0,a5
     1514:	00006097          	auipc	ra,0x6
     1518:	b86080e7          	jalr	-1146(ra) # 709a <write>
@@ -2170,7 +2170,7 @@ writetest(char *s)
     152a:	863e                	mv	a2,a5
     152c:	fd843583          	ld	a1,-40(s0)
     1530:	00007517          	auipc	a0,0x7
-    1534:	4d850513          	addi	a0,a0,1240 # 8a08 <schedule_dm+0xbb8>
+    1534:	4d050513          	addi	a0,a0,1232 # 8a00 <schedule_dm+0xbb2>
     1538:	00006097          	auipc	ra,0x6
     153c:	088080e7          	jalr	136(ra) # 75c0 <printf>
       exit(1);
@@ -2195,7 +2195,7 @@ writetest(char *s)
   fd = open("small", O_RDONLY);
     1572:	4581                	li	a1,0
     1574:	00007517          	auipc	a0,0x7
-    1578:	42450513          	addi	a0,a0,1060 # 8998 <schedule_dm+0xb48>
+    1578:	41c50513          	addi	a0,a0,1052 # 8990 <schedule_dm+0xb42>
     157c:	00006097          	auipc	ra,0x6
     1580:	b3e080e7          	jalr	-1218(ra) # 70ba <open>
     1584:	87aa                	mv	a5,a0
@@ -2207,7 +2207,7 @@ writetest(char *s)
     printf("%s: error: open small failed!\n", s);
     1594:	fd843583          	ld	a1,-40(s0)
     1598:	00007517          	auipc	a0,0x7
-    159c:	49850513          	addi	a0,a0,1176 # 8a30 <schedule_dm+0xbe0>
+    159c:	49050513          	addi	a0,a0,1168 # 8a28 <schedule_dm+0xbda>
     15a0:	00006097          	auipc	ra,0x6
     15a4:	020080e7          	jalr	32(ra) # 75c0 <printf>
     exit(1);
@@ -2219,7 +2219,7 @@ writetest(char *s)
     15b2:	fe842783          	lw	a5,-24(s0)
     15b6:	7d000613          	li	a2,2000
     15ba:	00009597          	auipc	a1,0x9
-    15be:	24e58593          	addi	a1,a1,590 # a808 <buf>
+    15be:	24658593          	addi	a1,a1,582 # a800 <buf>
     15c2:	853e                	mv	a0,a5
     15c4:	00006097          	auipc	ra,0x6
     15c8:	ace080e7          	jalr	-1330(ra) # 7092 <read>
@@ -2233,7 +2233,7 @@ writetest(char *s)
     printf("%s: read failed\n", s);
     15e2:	fd843583          	ld	a1,-40(s0)
     15e6:	00007517          	auipc	a0,0x7
-    15ea:	46a50513          	addi	a0,a0,1130 # 8a50 <schedule_dm+0xc00>
+    15ea:	46250513          	addi	a0,a0,1122 # 8a48 <schedule_dm+0xbfa>
     15ee:	00006097          	auipc	ra,0x6
     15f2:	fd2080e7          	jalr	-46(ra) # 75c0 <printf>
     exit(1);
@@ -2249,7 +2249,7 @@ writetest(char *s)
 
   if(unlink("small") < 0){
     160e:	00007517          	auipc	a0,0x7
-    1612:	38a50513          	addi	a0,a0,906 # 8998 <schedule_dm+0xb48>
+    1612:	38250513          	addi	a0,a0,898 # 8990 <schedule_dm+0xb42>
     1616:	00006097          	auipc	ra,0x6
     161a:	ab4080e7          	jalr	-1356(ra) # 70ca <unlink>
     161e:	87aa                	mv	a5,a0
@@ -2257,7 +2257,7 @@ writetest(char *s)
     printf("%s: unlink small failed\n", s);
     1624:	fd843583          	ld	a1,-40(s0)
     1628:	00007517          	auipc	a0,0x7
-    162c:	44050513          	addi	a0,a0,1088 # 8a68 <schedule_dm+0xc18>
+    162c:	43850513          	addi	a0,a0,1080 # 8a60 <schedule_dm+0xc12>
     1630:	00006097          	auipc	ra,0x6
     1634:	f90080e7          	jalr	-112(ra) # 75c0 <printf>
     exit(1);
@@ -2287,7 +2287,7 @@ writebig(char *s)
   fd = open("big", O_CREATE|O_RDWR);
     1658:	20200593          	li	a1,514
     165c:	00007517          	auipc	a0,0x7
-    1660:	42c50513          	addi	a0,a0,1068 # 8a88 <schedule_dm+0xc38>
+    1660:	42450513          	addi	a0,a0,1060 # 8a80 <schedule_dm+0xc32>
     1664:	00006097          	auipc	ra,0x6
     1668:	a56080e7          	jalr	-1450(ra) # 70ba <open>
     166c:	87aa                	mv	a5,a0
@@ -2299,7 +2299,7 @@ writebig(char *s)
     printf("%s: error: creat big failed!\n", s);
     167c:	fd843583          	ld	a1,-40(s0)
     1680:	00007517          	auipc	a0,0x7
-    1684:	41050513          	addi	a0,a0,1040 # 8a90 <schedule_dm+0xc40>
+    1684:	40850513          	addi	a0,a0,1032 # 8a88 <schedule_dm+0xc3a>
     1688:	00006097          	auipc	ra,0x6
     168c:	f38080e7          	jalr	-200(ra) # 75c0 <printf>
     exit(1);
@@ -2313,14 +2313,14 @@ writebig(char *s)
     169e:	a095                	j	1702 <writebig+0xb6>
     ((int*)buf)[0] = i;
     16a0:	00009797          	auipc	a5,0x9
-    16a4:	16878793          	addi	a5,a5,360 # a808 <buf>
+    16a4:	16078793          	addi	a5,a5,352 # a800 <buf>
     16a8:	fec42703          	lw	a4,-20(s0)
     16ac:	c398                	sw	a4,0(a5)
     if(write(fd, buf, BSIZE) != BSIZE){
     16ae:	fe442783          	lw	a5,-28(s0)
     16b2:	40000613          	li	a2,1024
     16b6:	00009597          	auipc	a1,0x9
-    16ba:	15258593          	addi	a1,a1,338 # a808 <buf>
+    16ba:	14a58593          	addi	a1,a1,330 # a800 <buf>
     16be:	853e                	mv	a0,a5
     16c0:	00006097          	auipc	ra,0x6
     16c4:	9da080e7          	jalr	-1574(ra) # 709a <write>
@@ -2333,7 +2333,7 @@ writebig(char *s)
     16d8:	863e                	mv	a2,a5
     16da:	fd843583          	ld	a1,-40(s0)
     16de:	00007517          	auipc	a0,0x7
-    16e2:	3d250513          	addi	a0,a0,978 # 8ab0 <schedule_dm+0xc60>
+    16e2:	3ca50513          	addi	a0,a0,970 # 8aa8 <schedule_dm+0xc5a>
     16e6:	00006097          	auipc	ra,0x6
     16ea:	eda080e7          	jalr	-294(ra) # 75c0 <printf>
       exit(1);
@@ -2360,7 +2360,7 @@ writebig(char *s)
   fd = open("big", O_RDONLY);
     1720:	4581                	li	a1,0
     1722:	00007517          	auipc	a0,0x7
-    1726:	36650513          	addi	a0,a0,870 # 8a88 <schedule_dm+0xc38>
+    1726:	35e50513          	addi	a0,a0,862 # 8a80 <schedule_dm+0xc32>
     172a:	00006097          	auipc	ra,0x6
     172e:	990080e7          	jalr	-1648(ra) # 70ba <open>
     1732:	87aa                	mv	a5,a0
@@ -2372,7 +2372,7 @@ writebig(char *s)
     printf("%s: error: open big failed!\n", s);
     1742:	fd843583          	ld	a1,-40(s0)
     1746:	00007517          	auipc	a0,0x7
-    174a:	39250513          	addi	a0,a0,914 # 8ad8 <schedule_dm+0xc88>
+    174a:	38a50513          	addi	a0,a0,906 # 8ad0 <schedule_dm+0xc82>
     174e:	00006097          	auipc	ra,0x6
     1752:	e72080e7          	jalr	-398(ra) # 75c0 <printf>
     exit(1);
@@ -2388,7 +2388,7 @@ writebig(char *s)
     1764:	fe442783          	lw	a5,-28(s0)
     1768:	40000613          	li	a2,1024
     176c:	00009597          	auipc	a1,0x9
-    1770:	09c58593          	addi	a1,a1,156 # a808 <buf>
+    1770:	09458593          	addi	a1,a1,148 # a800 <buf>
     1774:	853e                	mv	a0,a5
     1776:	00006097          	auipc	ra,0x6
     177a:	91c080e7          	jalr	-1764(ra) # 7092 <read>
@@ -2408,7 +2408,7 @@ writebig(char *s)
     17a0:	863e                	mv	a2,a5
     17a2:	fd843583          	ld	a1,-40(s0)
     17a6:	00007517          	auipc	a0,0x7
-    17aa:	35250513          	addi	a0,a0,850 # 8af8 <schedule_dm+0xca8>
+    17aa:	34a50513          	addi	a0,a0,842 # 8af0 <schedule_dm+0xca2>
     17ae:	00006097          	auipc	ra,0x6
     17b2:	e12080e7          	jalr	-494(ra) # 75c0 <printf>
         exit(1);
@@ -2427,7 +2427,7 @@ writebig(char *s)
     17d4:	863e                	mv	a2,a5
     17d6:	fd843583          	ld	a1,-40(s0)
     17da:	00007517          	auipc	a0,0x7
-    17de:	34650513          	addi	a0,a0,838 # 8b20 <schedule_dm+0xcd0>
+    17de:	33e50513          	addi	a0,a0,830 # 8b18 <schedule_dm+0xcca>
     17e2:	00006097          	auipc	ra,0x6
     17e6:	dde080e7          	jalr	-546(ra) # 75c0 <printf>
       exit(1);
@@ -2437,7 +2437,7 @@ writebig(char *s)
     }
     if(((int*)buf)[0] != n){
     17f4:	00009797          	auipc	a5,0x9
-    17f8:	01478793          	addi	a5,a5,20 # a808 <buf>
+    17f8:	00c78793          	addi	a5,a5,12 # a800 <buf>
     17fc:	4398                	lw	a4,0(a5)
     17fe:	fe842783          	lw	a5,-24(s0)
     1802:	2781                	sext.w	a5,a5
@@ -2445,7 +2445,7 @@ writebig(char *s)
       printf("%s: read content of block %d is %d\n", s,
              n, ((int*)buf)[0]);
     1808:	00009797          	auipc	a5,0x9
-    180c:	00078793          	mv	a5,a5
+    180c:	ff878793          	addi	a5,a5,-8 # a800 <buf>
       printf("%s: read content of block %d is %d\n", s,
     1810:	4398                	lw	a4,0(a5)
     1812:	fe842783          	lw	a5,-24(s0)
@@ -2453,7 +2453,7 @@ writebig(char *s)
     1818:	863e                	mv	a2,a5
     181a:	fd843583          	ld	a1,-40(s0)
     181e:	00007517          	auipc	a0,0x7
-    1822:	31a50513          	addi	a0,a0,794 # 8b38 <schedule_dm+0xce8>
+    1822:	31250513          	addi	a0,a0,786 # 8b30 <schedule_dm+0xce2>
     1826:	00006097          	auipc	ra,0x6
     182a:	d9a080e7          	jalr	-614(ra) # 75c0 <printf>
       exit(1);
@@ -2477,7 +2477,7 @@ writebig(char *s)
     1850:	856080e7          	jalr	-1962(ra) # 70a2 <close>
   if(unlink("big") < 0){
     1854:	00007517          	auipc	a0,0x7
-    1858:	23450513          	addi	a0,a0,564 # 8a88 <schedule_dm+0xc38>
+    1858:	22c50513          	addi	a0,a0,556 # 8a80 <schedule_dm+0xc32>
     185c:	00006097          	auipc	ra,0x6
     1860:	86e080e7          	jalr	-1938(ra) # 70ca <unlink>
     1864:	87aa                	mv	a5,a0
@@ -2485,7 +2485,7 @@ writebig(char *s)
     printf("%s: unlink big failed\n", s);
     186a:	fd843583          	ld	a1,-40(s0)
     186e:	00007517          	auipc	a0,0x7
-    1872:	2f250513          	addi	a0,a0,754 # 8b60 <schedule_dm+0xd10>
+    1872:	2ea50513          	addi	a0,a0,746 # 8b58 <schedule_dm+0xd0a>
     1876:	00006097          	auipc	ra,0x6
     187a:	d4a080e7          	jalr	-694(ra) # 75c0 <printf>
     exit(1);
@@ -2598,7 +2598,7 @@ void dirtest(char *s)
     1966:	fea43423          	sd	a0,-24(s0)
   if(mkdir("dir0") < 0){
     196a:	00007517          	auipc	a0,0x7
-    196e:	20e50513          	addi	a0,a0,526 # 8b78 <schedule_dm+0xd28>
+    196e:	20650513          	addi	a0,a0,518 # 8b70 <schedule_dm+0xd22>
     1972:	00005097          	auipc	ra,0x5
     1976:	770080e7          	jalr	1904(ra) # 70e2 <mkdir>
     197a:	87aa                	mv	a5,a0
@@ -2606,7 +2606,7 @@ void dirtest(char *s)
     printf("%s: mkdir failed\n", s);
     1980:	fe843583          	ld	a1,-24(s0)
     1984:	00007517          	auipc	a0,0x7
-    1988:	ec450513          	addi	a0,a0,-316 # 8848 <schedule_dm+0x9f8>
+    1988:	ebc50513          	addi	a0,a0,-324 # 8840 <schedule_dm+0x9f2>
     198c:	00006097          	auipc	ra,0x6
     1990:	c34080e7          	jalr	-972(ra) # 75c0 <printf>
     exit(1);
@@ -2617,7 +2617,7 @@ void dirtest(char *s)
 
   if(chdir("dir0") < 0){
     199e:	00007517          	auipc	a0,0x7
-    19a2:	1da50513          	addi	a0,a0,474 # 8b78 <schedule_dm+0xd28>
+    19a2:	1d250513          	addi	a0,a0,466 # 8b70 <schedule_dm+0xd22>
     19a6:	00005097          	auipc	ra,0x5
     19aa:	744080e7          	jalr	1860(ra) # 70ea <chdir>
     19ae:	87aa                	mv	a5,a0
@@ -2625,7 +2625,7 @@ void dirtest(char *s)
     printf("%s: chdir dir0 failed\n", s);
     19b4:	fe843583          	ld	a1,-24(s0)
     19b8:	00007517          	auipc	a0,0x7
-    19bc:	1c850513          	addi	a0,a0,456 # 8b80 <schedule_dm+0xd30>
+    19bc:	1c050513          	addi	a0,a0,448 # 8b78 <schedule_dm+0xd2a>
     19c0:	00006097          	auipc	ra,0x6
     19c4:	c00080e7          	jalr	-1024(ra) # 75c0 <printf>
     exit(1);
@@ -2636,7 +2636,7 @@ void dirtest(char *s)
 
   if(chdir("..") < 0){
     19d2:	00007517          	auipc	a0,0x7
-    19d6:	1c650513          	addi	a0,a0,454 # 8b98 <schedule_dm+0xd48>
+    19d6:	1be50513          	addi	a0,a0,446 # 8b90 <schedule_dm+0xd42>
     19da:	00005097          	auipc	ra,0x5
     19de:	710080e7          	jalr	1808(ra) # 70ea <chdir>
     19e2:	87aa                	mv	a5,a0
@@ -2644,7 +2644,7 @@ void dirtest(char *s)
     printf("%s: chdir .. failed\n", s);
     19e8:	fe843583          	ld	a1,-24(s0)
     19ec:	00007517          	auipc	a0,0x7
-    19f0:	1b450513          	addi	a0,a0,436 # 8ba0 <schedule_dm+0xd50>
+    19f0:	1ac50513          	addi	a0,a0,428 # 8b98 <schedule_dm+0xd4a>
     19f4:	00006097          	auipc	ra,0x6
     19f8:	bcc080e7          	jalr	-1076(ra) # 75c0 <printf>
     exit(1);
@@ -2655,7 +2655,7 @@ void dirtest(char *s)
 
   if(unlink("dir0") < 0){
     1a06:	00007517          	auipc	a0,0x7
-    1a0a:	17250513          	addi	a0,a0,370 # 8b78 <schedule_dm+0xd28>
+    1a0a:	16a50513          	addi	a0,a0,362 # 8b70 <schedule_dm+0xd22>
     1a0e:	00005097          	auipc	ra,0x5
     1a12:	6bc080e7          	jalr	1724(ra) # 70ca <unlink>
     1a16:	87aa                	mv	a5,a0
@@ -2663,7 +2663,7 @@ void dirtest(char *s)
     printf("%s: unlink dir0 failed\n", s);
     1a1c:	fe843583          	ld	a1,-24(s0)
     1a20:	00007517          	auipc	a0,0x7
-    1a24:	19850513          	addi	a0,a0,408 # 8bb8 <schedule_dm+0xd68>
+    1a24:	19050513          	addi	a0,a0,400 # 8bb0 <schedule_dm+0xd62>
     1a28:	00006097          	auipc	ra,0x6
     1a2c:	b98080e7          	jalr	-1128(ra) # 75c0 <printf>
     exit(1);
@@ -2691,17 +2691,17 @@ exectest(char *s)
   int fd, xstatus, pid;
   char *echoargv[] = { "echo", "OK", 0 };
     1a50:	00007797          	auipc	a5,0x7
-    1a54:	b5078793          	addi	a5,a5,-1200 # 85a0 <schedule_dm+0x750>
+    1a54:	b4878793          	addi	a5,a5,-1208 # 8598 <schedule_dm+0x74a>
     1a58:	fcf43423          	sd	a5,-56(s0)
     1a5c:	00007797          	auipc	a5,0x7
-    1a60:	17478793          	addi	a5,a5,372 # 8bd0 <schedule_dm+0xd80>
+    1a60:	16c78793          	addi	a5,a5,364 # 8bc8 <schedule_dm+0xd7a>
     1a64:	fcf43823          	sd	a5,-48(s0)
     1a68:	fc043c23          	sd	zero,-40(s0)
   char buf[3];
 
   unlink("echo-ok");
     1a6c:	00007517          	auipc	a0,0x7
-    1a70:	16c50513          	addi	a0,a0,364 # 8bd8 <schedule_dm+0xd88>
+    1a70:	16450513          	addi	a0,a0,356 # 8bd0 <schedule_dm+0xd82>
     1a74:	00005097          	auipc	ra,0x5
     1a78:	656080e7          	jalr	1622(ra) # 70ca <unlink>
   pid = fork();
@@ -2716,7 +2716,7 @@ exectest(char *s)
      printf("%s: fork failed\n", s);
     1a94:	fb843583          	ld	a1,-72(s0)
     1a98:	00007517          	auipc	a0,0x7
-    1a9c:	d2050513          	addi	a0,a0,-736 # 87b8 <schedule_dm+0x968>
+    1a9c:	d1850513          	addi	a0,a0,-744 # 87b0 <schedule_dm+0x962>
     1aa0:	00006097          	auipc	ra,0x6
     1aa4:	b20080e7          	jalr	-1248(ra) # 75c0 <printf>
      exit(1);
@@ -2735,7 +2735,7 @@ exectest(char *s)
     fd = open("echo-ok", O_CREATE|O_WRONLY);
     1ac4:	20100593          	li	a1,513
     1ac8:	00007517          	auipc	a0,0x7
-    1acc:	11050513          	addi	a0,a0,272 # 8bd8 <schedule_dm+0xd88>
+    1acc:	10850513          	addi	a0,a0,264 # 8bd0 <schedule_dm+0xd82>
     1ad0:	00005097          	auipc	ra,0x5
     1ad4:	5ea080e7          	jalr	1514(ra) # 70ba <open>
     1ad8:	87aa                	mv	a5,a0
@@ -2747,7 +2747,7 @@ exectest(char *s)
       printf("%s: create failed\n", s);
     1ae8:	fb843583          	ld	a1,-72(s0)
     1aec:	00007517          	auipc	a0,0x7
-    1af0:	0f450513          	addi	a0,a0,244 # 8be0 <schedule_dm+0xd90>
+    1af0:	0ec50513          	addi	a0,a0,236 # 8bd8 <schedule_dm+0xd8a>
     1af4:	00006097          	auipc	ra,0x6
     1af8:	acc080e7          	jalr	-1332(ra) # 75c0 <printf>
       exit(1);
@@ -2763,7 +2763,7 @@ exectest(char *s)
       printf("%s: wrong fd\n", s);
     1b14:	fb843583          	ld	a1,-72(s0)
     1b18:	00007517          	auipc	a0,0x7
-    1b1c:	0e050513          	addi	a0,a0,224 # 8bf8 <schedule_dm+0xda8>
+    1b1c:	0d850513          	addi	a0,a0,216 # 8bf0 <schedule_dm+0xda2>
     1b20:	00006097          	auipc	ra,0x6
     1b24:	aa0080e7          	jalr	-1376(ra) # 75c0 <printf>
       exit(1);
@@ -2775,7 +2775,7 @@ exectest(char *s)
     1b32:	fc840793          	addi	a5,s0,-56
     1b36:	85be                	mv	a1,a5
     1b38:	00007517          	auipc	a0,0x7
-    1b3c:	a6850513          	addi	a0,a0,-1432 # 85a0 <schedule_dm+0x750>
+    1b3c:	a6050513          	addi	a0,a0,-1440 # 8598 <schedule_dm+0x74a>
     1b40:	00005097          	auipc	ra,0x5
     1b44:	572080e7          	jalr	1394(ra) # 70b2 <exec>
     1b48:	87aa                	mv	a5,a0
@@ -2783,7 +2783,7 @@ exectest(char *s)
       printf("%s: exec echo failed\n", s);
     1b4e:	fb843583          	ld	a1,-72(s0)
     1b52:	00007517          	auipc	a0,0x7
-    1b56:	0b650513          	addi	a0,a0,182 # 8c08 <schedule_dm+0xdb8>
+    1b56:	0ae50513          	addi	a0,a0,174 # 8c00 <schedule_dm+0xdb2>
     1b5a:	00006097          	auipc	ra,0x6
     1b5e:	a66080e7          	jalr	-1434(ra) # 75c0 <printf>
       exit(1);
@@ -2806,7 +2806,7 @@ exectest(char *s)
     printf("%s: wait failed!\n", s);
     1b88:	fb843583          	ld	a1,-72(s0)
     1b8c:	00007517          	auipc	a0,0x7
-    1b90:	09450513          	addi	a0,a0,148 # 8c20 <schedule_dm+0xdd0>
+    1b90:	08c50513          	addi	a0,a0,140 # 8c18 <schedule_dm+0xdca>
     1b94:	00006097          	auipc	ra,0x6
     1b98:	a2c080e7          	jalr	-1492(ra) # 75c0 <printf>
   }
@@ -2822,7 +2822,7 @@ exectest(char *s)
   fd = open("echo-ok", O_RDONLY);
     1bb0:	4581                	li	a1,0
     1bb2:	00007517          	auipc	a0,0x7
-    1bb6:	02650513          	addi	a0,a0,38 # 8bd8 <schedule_dm+0xd88>
+    1bb6:	01e50513          	addi	a0,a0,30 # 8bd0 <schedule_dm+0xd82>
     1bba:	00005097          	auipc	ra,0x5
     1bbe:	500080e7          	jalr	1280(ra) # 70ba <open>
     1bc2:	87aa                	mv	a5,a0
@@ -2834,7 +2834,7 @@ exectest(char *s)
     printf("%s: open failed\n", s);
     1bd2:	fb843583          	ld	a1,-72(s0)
     1bd6:	00007517          	auipc	a0,0x7
-    1bda:	bfa50513          	addi	a0,a0,-1030 # 87d0 <schedule_dm+0x980>
+    1bda:	bf250513          	addi	a0,a0,-1038 # 87c8 <schedule_dm+0x97a>
     1bde:	00006097          	auipc	ra,0x6
     1be2:	9e2080e7          	jalr	-1566(ra) # 75c0 <printf>
     exit(1);
@@ -2857,7 +2857,7 @@ exectest(char *s)
     printf("%s: read failed\n", s);
     1c10:	fb843583          	ld	a1,-72(s0)
     1c14:	00007517          	auipc	a0,0x7
-    1c18:	e3c50513          	addi	a0,a0,-452 # 8a50 <schedule_dm+0xc00>
+    1c18:	e3450513          	addi	a0,a0,-460 # 8a48 <schedule_dm+0xbfa>
     1c1c:	00006097          	auipc	ra,0x6
     1c20:	9a4080e7          	jalr	-1628(ra) # 75c0 <printf>
     exit(1);
@@ -2867,7 +2867,7 @@ exectest(char *s)
   }
   unlink("echo-ok");
     1c2e:	00007517          	auipc	a0,0x7
-    1c32:	faa50513          	addi	a0,a0,-86 # 8bd8 <schedule_dm+0xd88>
+    1c32:	fa250513          	addi	a0,a0,-94 # 8bd0 <schedule_dm+0xd82>
     1c36:	00005097          	auipc	ra,0x5
     1c3a:	494080e7          	jalr	1172(ra) # 70ca <unlink>
   if(buf[0] == 'O' && buf[1] == 'K')
@@ -2887,7 +2887,7 @@ exectest(char *s)
     printf("%s: wrong output\n", s);
     1c64:	fb843583          	ld	a1,-72(s0)
     1c68:	00007517          	auipc	a0,0x7
-    1c6c:	fd050513          	addi	a0,a0,-48 # 8c38 <schedule_dm+0xde8>
+    1c6c:	fc850513          	addi	a0,a0,-56 # 8c30 <schedule_dm+0xde2>
     1c70:	00006097          	auipc	ra,0x6
     1c74:	950080e7          	jalr	-1712(ra) # 75c0 <printf>
     exit(1);
@@ -2921,7 +2921,7 @@ pipe1(char *s)
     printf("%s: pipe() failed\n", s);
     1ca0:	fb843583          	ld	a1,-72(s0)
     1ca4:	00007517          	auipc	a0,0x7
-    1ca8:	fac50513          	addi	a0,a0,-84 # 8c50 <schedule_dm+0xe00>
+    1ca8:	fa450513          	addi	a0,a0,-92 # 8c48 <schedule_dm+0xdfa>
     1cac:	00006097          	auipc	ra,0x6
     1cb0:	914080e7          	jalr	-1772(ra) # 75c0 <printf>
     exit(1);
@@ -2957,7 +2957,7 @@ pipe1(char *s)
     1cfa:	fee42623          	sw	a4,-20(s0)
     1cfe:	0ff7f713          	andi	a4,a5,255
     1d02:	00009697          	auipc	a3,0x9
-    1d06:	b0668693          	addi	a3,a3,-1274 # a808 <buf>
+    1d06:	afe68693          	addi	a3,a3,-1282 # a800 <buf>
     1d0a:	fe842783          	lw	a5,-24(s0)
     1d0e:	97b6                	add	a5,a5,a3
     1d10:	00e78023          	sb	a4,0(a5)
@@ -2973,7 +2973,7 @@ pipe1(char *s)
     1d2e:	fd442783          	lw	a5,-44(s0)
     1d32:	40900613          	li	a2,1033
     1d36:	00009597          	auipc	a1,0x9
-    1d3a:	ad258593          	addi	a1,a1,-1326 # a808 <buf>
+    1d3a:	aca58593          	addi	a1,a1,-1334 # a800 <buf>
     1d3e:	853e                	mv	a0,a5
     1d40:	00005097          	auipc	ra,0x5
     1d44:	35a080e7          	jalr	858(ra) # 709a <write>
@@ -2984,7 +2984,7 @@ pipe1(char *s)
         printf("%s: pipe1 oops 1\n", s);
     1d54:	fb843583          	ld	a1,-72(s0)
     1d58:	00007517          	auipc	a0,0x7
-    1d5c:	f1050513          	addi	a0,a0,-240 # 8c68 <schedule_dm+0xe18>
+    1d5c:	f0850513          	addi	a0,a0,-248 # 8c60 <schedule_dm+0xe12>
     1d60:	00006097          	auipc	ra,0x6
     1d64:	860080e7          	jalr	-1952(ra) # 75c0 <printf>
         exit(1);
@@ -3026,7 +3026,7 @@ pipe1(char *s)
     1dbc:	a881                	j	1e0c <pipe1+0x18a>
         if((buf[i] & 0xff) != (seq++ & 0xff)){
     1dbe:	00009717          	auipc	a4,0x9
-    1dc2:	a4a70713          	addi	a4,a4,-1462 # a808 <buf>
+    1dc2:	a4270713          	addi	a4,a4,-1470 # a800 <buf>
     1dc6:	fe842783          	lw	a5,-24(s0)
     1dca:	97ba                	add	a5,a5,a4
     1dcc:	0007c783          	lbu	a5,0(a5)
@@ -3041,7 +3041,7 @@ pipe1(char *s)
           printf("%s: pipe1 oops 2\n", s);
     1dec:	fb843583          	ld	a1,-72(s0)
     1df0:	00007517          	auipc	a0,0x7
-    1df4:	e9050513          	addi	a0,a0,-368 # 8c80 <schedule_dm+0xe30>
+    1df4:	e8850513          	addi	a0,a0,-376 # 8c78 <schedule_dm+0xe2a>
     1df8:	00005097          	auipc	ra,0x5
     1dfc:	7c8080e7          	jalr	1992(ra) # 75c0 <printf>
           return;
@@ -3079,7 +3079,7 @@ pipe1(char *s)
     1e4c:	fe042703          	lw	a4,-32(s0)
     1e50:	863a                	mv	a2,a4
     1e52:	00009597          	auipc	a1,0x9
-    1e56:	9b658593          	addi	a1,a1,-1610 # a808 <buf>
+    1e56:	9ae58593          	addi	a1,a1,-1618 # a800 <buf>
     1e5a:	853e                	mv	a0,a5
     1e5c:	00005097          	auipc	ra,0x5
     1e60:	236080e7          	jalr	566(ra) # 7092 <read>
@@ -3099,7 +3099,7 @@ pipe1(char *s)
     1e86:	fdc42783          	lw	a5,-36(s0)
     1e8a:	85be                	mv	a1,a5
     1e8c:	00007517          	auipc	a0,0x7
-    1e90:	e0c50513          	addi	a0,a0,-500 # 8c98 <schedule_dm+0xe48>
+    1e90:	e0450513          	addi	a0,a0,-508 # 8c90 <schedule_dm+0xe42>
     1e94:	00005097          	auipc	ra,0x5
     1e98:	72c080e7          	jalr	1836(ra) # 75c0 <printf>
       exit(1);
@@ -3126,7 +3126,7 @@ pipe1(char *s)
     printf("%s: fork() failed\n", s);
     1ed0:	fb843583          	ld	a1,-72(s0)
     1ed4:	00007517          	auipc	a0,0x7
-    1ed8:	de450513          	addi	a0,a0,-540 # 8cb8 <schedule_dm+0xe68>
+    1ed8:	ddc50513          	addi	a0,a0,-548 # 8cb0 <schedule_dm+0xe62>
     1edc:	00005097          	auipc	ra,0x5
     1ee0:	6e4080e7          	jalr	1764(ra) # 75c0 <printf>
     exit(1);
@@ -3166,7 +3166,7 @@ preempt(char *s)
     printf("%s: fork failed", s);
     1f1a:	fc843583          	ld	a1,-56(s0)
     1f1e:	00007517          	auipc	a0,0x7
-    1f22:	db250513          	addi	a0,a0,-590 # 8cd0 <schedule_dm+0xe80>
+    1f22:	daa50513          	addi	a0,a0,-598 # 8cc8 <schedule_dm+0xe7a>
     1f26:	00005097          	auipc	ra,0x5
     1f2a:	69a080e7          	jalr	1690(ra) # 75c0 <printf>
     exit(1);
@@ -3194,7 +3194,7 @@ preempt(char *s)
     printf("%s: fork failed\n", s);
     1f5a:	fc843583          	ld	a1,-56(s0)
     1f5e:	00007517          	auipc	a0,0x7
-    1f62:	85a50513          	addi	a0,a0,-1958 # 87b8 <schedule_dm+0x968>
+    1f62:	85250513          	addi	a0,a0,-1966 # 87b0 <schedule_dm+0x962>
     1f66:	00005097          	auipc	ra,0x5
     1f6a:	65a080e7          	jalr	1626(ra) # 75c0 <printf>
     exit(1);
@@ -3227,7 +3227,7 @@ preempt(char *s)
      printf("%s: fork failed\n", s);
     1fa8:	fc843583          	ld	a1,-56(s0)
     1fac:	00007517          	auipc	a0,0x7
-    1fb0:	80c50513          	addi	a0,a0,-2036 # 87b8 <schedule_dm+0x968>
+    1fb0:	80450513          	addi	a0,a0,-2044 # 87b0 <schedule_dm+0x962>
     1fb4:	00005097          	auipc	ra,0x5
     1fb8:	60c080e7          	jalr	1548(ra) # 75c0 <printf>
      exit(1);
@@ -3248,7 +3248,7 @@ preempt(char *s)
     1fdc:	fdc42783          	lw	a5,-36(s0)
     1fe0:	4605                	li	a2,1
     1fe2:	00006597          	auipc	a1,0x6
-    1fe6:	4ae58593          	addi	a1,a1,1198 # 8490 <schedule_dm+0x640>
+    1fe6:	4a658593          	addi	a1,a1,1190 # 8488 <schedule_dm+0x63a>
     1fea:	853e                	mv	a0,a5
     1fec:	00005097          	auipc	ra,0x5
     1ff0:	0ae080e7          	jalr	174(ra) # 709a <write>
@@ -3259,7 +3259,7 @@ preempt(char *s)
       printf("%s: preempt write error", s);
     1ffe:	fc843583          	ld	a1,-56(s0)
     2002:	00007517          	auipc	a0,0x7
-    2006:	cde50513          	addi	a0,a0,-802 # 8ce0 <schedule_dm+0xe90>
+    2006:	cd650513          	addi	a0,a0,-810 # 8cd8 <schedule_dm+0xe8a>
     200a:	00005097          	auipc	ra,0x5
     200e:	5b6080e7          	jalr	1462(ra) # 75c0 <printf>
     close(pfds[1]);
@@ -3281,7 +3281,7 @@ preempt(char *s)
     2030:	fd842783          	lw	a5,-40(s0)
     2034:	660d                	lui	a2,0x3
     2036:	00008597          	auipc	a1,0x8
-    203a:	7d258593          	addi	a1,a1,2002 # a808 <buf>
+    203a:	7ca58593          	addi	a1,a1,1994 # a800 <buf>
     203e:	853e                	mv	a0,a5
     2040:	00005097          	auipc	ra,0x5
     2044:	052080e7          	jalr	82(ra) # 7092 <read>
@@ -3292,7 +3292,7 @@ preempt(char *s)
     printf("%s: preempt read error", s);
     2052:	fc843583          	ld	a1,-56(s0)
     2056:	00007517          	auipc	a0,0x7
-    205a:	ca250513          	addi	a0,a0,-862 # 8cf8 <schedule_dm+0xea8>
+    205a:	c9a50513          	addi	a0,a0,-870 # 8cf0 <schedule_dm+0xea2>
     205e:	00005097          	auipc	ra,0x5
     2062:	562080e7          	jalr	1378(ra) # 75c0 <printf>
     2066:	a8a5                	j	20de <preempt+0x1e8>
@@ -3305,7 +3305,7 @@ preempt(char *s)
     2072:	034080e7          	jalr	52(ra) # 70a2 <close>
   printf("kill... ");
     2076:	00007517          	auipc	a0,0x7
-    207a:	c9a50513          	addi	a0,a0,-870 # 8d10 <schedule_dm+0xec0>
+    207a:	c9250513          	addi	a0,a0,-878 # 8d08 <schedule_dm+0xeba>
     207e:	00005097          	auipc	ra,0x5
     2082:	542080e7          	jalr	1346(ra) # 75c0 <printf>
   kill(pid1);
@@ -3325,7 +3325,7 @@ preempt(char *s)
     20ac:	002080e7          	jalr	2(ra) # 70aa <kill>
   printf("wait... ");
     20b0:	00007517          	auipc	a0,0x7
-    20b4:	c7050513          	addi	a0,a0,-912 # 8d20 <schedule_dm+0xed0>
+    20b4:	c6850513          	addi	a0,a0,-920 # 8d18 <schedule_dm+0xeca>
     20b8:	00005097          	auipc	ra,0x5
     20bc:	508080e7          	jalr	1288(ra) # 75c0 <printf>
   wait(0);
@@ -3374,7 +3374,7 @@ exitwait(char *s)
       printf("%s: fork failed\n", s);
     2110:	fd843583          	ld	a1,-40(s0)
     2114:	00006517          	auipc	a0,0x6
-    2118:	6a450513          	addi	a0,a0,1700 # 87b8 <schedule_dm+0x968>
+    2118:	69c50513          	addi	a0,a0,1692 # 87b0 <schedule_dm+0x962>
     211c:	00005097          	auipc	ra,0x5
     2120:	4a4080e7          	jalr	1188(ra) # 75c0 <printf>
       exit(1);
@@ -3400,7 +3400,7 @@ exitwait(char *s)
         printf("%s: wait wrong pid\n", s);
     2152:	fd843583          	ld	a1,-40(s0)
     2156:	00007517          	auipc	a0,0x7
-    215a:	bda50513          	addi	a0,a0,-1062 # 8d30 <schedule_dm+0xee0>
+    215a:	bd250513          	addi	a0,a0,-1070 # 8d28 <schedule_dm+0xeda>
     215e:	00005097          	auipc	ra,0x5
     2162:	462080e7          	jalr	1122(ra) # 75c0 <printf>
         exit(1);
@@ -3416,7 +3416,7 @@ exitwait(char *s)
         printf("%s: wait wrong exit status\n", s);
     217e:	fd843583          	ld	a1,-40(s0)
     2182:	00007517          	auipc	a0,0x7
-    2186:	bc650513          	addi	a0,a0,-1082 # 8d48 <schedule_dm+0xef8>
+    2186:	bbe50513          	addi	a0,a0,-1090 # 8d40 <schedule_dm+0xef2>
     218a:	00005097          	auipc	ra,0x5
     218e:	436080e7          	jalr	1078(ra) # 75c0 <printf>
         exit(1);
@@ -3480,7 +3480,7 @@ reparent(char *s)
       printf("%s: fork failed\n", s);
     2208:	fd843583          	ld	a1,-40(s0)
     220c:	00006517          	auipc	a0,0x6
-    2210:	5ac50513          	addi	a0,a0,1452 # 87b8 <schedule_dm+0x968>
+    2210:	5a450513          	addi	a0,a0,1444 # 87b0 <schedule_dm+0x962>
     2214:	00005097          	auipc	ra,0x5
     2218:	3ac080e7          	jalr	940(ra) # 75c0 <printf>
       exit(1);
@@ -3504,7 +3504,7 @@ reparent(char *s)
         printf("%s: wait wrong pid\n", s);
     2246:	fd843583          	ld	a1,-40(s0)
     224a:	00007517          	auipc	a0,0x7
-    224e:	ae650513          	addi	a0,a0,-1306 # 8d30 <schedule_dm+0xee0>
+    224e:	ade50513          	addi	a0,a0,-1314 # 8d28 <schedule_dm+0xeda>
     2252:	00005097          	auipc	ra,0x5
     2256:	36e080e7          	jalr	878(ra) # 75c0 <printf>
         exit(1);
@@ -3578,7 +3578,7 @@ twochildren(char *s)
       printf("%s: fork failed\n", s);
     22ec:	fd843583          	ld	a1,-40(s0)
     22f0:	00006517          	auipc	a0,0x6
-    22f4:	4c850513          	addi	a0,a0,1224 # 87b8 <schedule_dm+0x968>
+    22f4:	4c050513          	addi	a0,a0,1216 # 87b0 <schedule_dm+0x962>
     22f8:	00005097          	auipc	ra,0x5
     22fc:	2c8080e7          	jalr	712(ra) # 75c0 <printf>
       exit(1);
@@ -3607,7 +3607,7 @@ twochildren(char *s)
         printf("%s: fork failed\n", s);
     2334:	fd843583          	ld	a1,-40(s0)
     2338:	00006517          	auipc	a0,0x6
-    233c:	48050513          	addi	a0,a0,1152 # 87b8 <schedule_dm+0x968>
+    233c:	47850513          	addi	a0,a0,1144 # 87b0 <schedule_dm+0x962>
     2340:	00005097          	auipc	ra,0x5
     2344:	280080e7          	jalr	640(ra) # 75c0 <printf>
         exit(1);
@@ -3679,7 +3679,7 @@ forkfork(char *s)
       printf("%s: fork failed", s);
     23c8:	fc843583          	ld	a1,-56(s0)
     23cc:	00007517          	auipc	a0,0x7
-    23d0:	90450513          	addi	a0,a0,-1788 # 8cd0 <schedule_dm+0xe80>
+    23d0:	8fc50513          	addi	a0,a0,-1796 # 8cc8 <schedule_dm+0xe7a>
     23d4:	00005097          	auipc	ra,0x5
     23d8:	1ec080e7          	jalr	492(ra) # 75c0 <printf>
       exit(1);
@@ -3760,7 +3760,7 @@ forkfork(char *s)
       printf("%s: fork in child failed", s);
     2488:	fc843583          	ld	a1,-56(s0)
     248c:	00007517          	auipc	a0,0x7
-    2490:	8dc50513          	addi	a0,a0,-1828 # 8d68 <schedule_dm+0xf18>
+    2490:	8d450513          	addi	a0,a0,-1836 # 8d60 <schedule_dm+0xf12>
     2494:	00005097          	auipc	ra,0x5
     2498:	12c080e7          	jalr	300(ra) # 75c0 <printf>
       exit(1);
@@ -3797,7 +3797,7 @@ forkforkfork(char *s)
     24d2:	fca43c23          	sd	a0,-40(s0)
   unlink("stopforking");
     24d6:	00007517          	auipc	a0,0x7
-    24da:	8b250513          	addi	a0,a0,-1870 # 8d88 <schedule_dm+0xf38>
+    24da:	8aa50513          	addi	a0,a0,-1878 # 8d80 <schedule_dm+0xf32>
     24de:	00005097          	auipc	ra,0x5
     24e2:	bec080e7          	jalr	-1044(ra) # 70ca <unlink>
 
@@ -3813,7 +3813,7 @@ forkforkfork(char *s)
     printf("%s: fork failed", s);
     24fe:	fd843583          	ld	a1,-40(s0)
     2502:	00006517          	auipc	a0,0x6
-    2506:	7ce50513          	addi	a0,a0,1998 # 8cd0 <schedule_dm+0xe80>
+    2506:	7c650513          	addi	a0,a0,1990 # 8cc8 <schedule_dm+0xe7a>
     250a:	00005097          	auipc	ra,0x5
     250e:	0b6080e7          	jalr	182(ra) # 75c0 <printf>
     exit(1);
@@ -3829,7 +3829,7 @@ forkforkfork(char *s)
       int fd = open("stopforking", 0);
     2524:	4581                	li	a1,0
     2526:	00007517          	auipc	a0,0x7
-    252a:	86250513          	addi	a0,a0,-1950 # 8d88 <schedule_dm+0xf38>
+    252a:	85a50513          	addi	a0,a0,-1958 # 8d80 <schedule_dm+0xf32>
     252e:	00005097          	auipc	ra,0x5
     2532:	b8c080e7          	jalr	-1140(ra) # 70ba <open>
     2536:	87aa                	mv	a5,a0
@@ -3851,7 +3851,7 @@ forkforkfork(char *s)
         close(open("stopforking", O_CREATE|O_RDWR));
     255e:	20200593          	li	a1,514
     2562:	00007517          	auipc	a0,0x7
-    2566:	82650513          	addi	a0,a0,-2010 # 8d88 <schedule_dm+0xf38>
+    2566:	81e50513          	addi	a0,a0,-2018 # 8d80 <schedule_dm+0xf32>
     256a:	00005097          	auipc	ra,0x5
     256e:	b50080e7          	jalr	-1200(ra) # 70ba <open>
     2572:	87aa                	mv	a5,a0
@@ -3872,7 +3872,7 @@ forkforkfork(char *s)
   close(open("stopforking", O_CREATE|O_RDWR));
     258a:	20200593          	li	a1,514
     258e:	00006517          	auipc	a0,0x6
-    2592:	7fa50513          	addi	a0,a0,2042 # 8d88 <schedule_dm+0xf38>
+    2592:	7f250513          	addi	a0,a0,2034 # 8d80 <schedule_dm+0xf32>
     2596:	00005097          	auipc	ra,0x5
     259a:	b24080e7          	jalr	-1244(ra) # 70ba <open>
     259e:	87aa                	mv	a5,a0
@@ -3920,7 +3920,7 @@ reparent2(char *s)
     25ee:	0007df63          	bgez	a5,260c <reparent2+0x44>
       printf("fork failed\n");
     25f2:	00006517          	auipc	a0,0x6
-    25f6:	f9e50513          	addi	a0,a0,-98 # 8590 <schedule_dm+0x740>
+    25f6:	f9650513          	addi	a0,a0,-106 # 8588 <schedule_dm+0x73a>
     25fa:	00005097          	auipc	ra,0x5
     25fe:	fc6080e7          	jalr	-58(ra) # 75c0 <printf>
       exit(1);
@@ -4033,7 +4033,7 @@ mem(char *s)
       printf("couldn't allocate mem?!!\n", s);
     26e8:	fc843583          	ld	a1,-56(s0)
     26ec:	00006517          	auipc	a0,0x6
-    26f0:	6ac50513          	addi	a0,a0,1708 # 8d98 <schedule_dm+0xf48>
+    26f0:	6a450513          	addi	a0,a0,1700 # 8d90 <schedule_dm+0xf42>
     26f4:	00005097          	auipc	ra,0x5
     26f8:	ecc080e7          	jalr	-308(ra) # 75c0 <printf>
       exit(1);
@@ -4092,13 +4092,13 @@ sharedfd(char *s)
 
   unlink("sharedfd");
     275a:	00006517          	auipc	a0,0x6
-    275e:	a9e50513          	addi	a0,a0,-1378 # 81f8 <schedule_dm+0x3a8>
+    275e:	a9650513          	addi	a0,a0,-1386 # 81f0 <schedule_dm+0x3a2>
     2762:	00005097          	auipc	ra,0x5
     2766:	968080e7          	jalr	-1688(ra) # 70ca <unlink>
   fd = open("sharedfd", O_CREATE|O_RDWR);
     276a:	20200593          	li	a1,514
     276e:	00006517          	auipc	a0,0x6
-    2772:	a8a50513          	addi	a0,a0,-1398 # 81f8 <schedule_dm+0x3a8>
+    2772:	a8250513          	addi	a0,a0,-1406 # 81f0 <schedule_dm+0x3a2>
     2776:	00005097          	auipc	ra,0x5
     277a:	944080e7          	jalr	-1724(ra) # 70ba <open>
     277e:	87aa                	mv	a5,a0
@@ -4110,7 +4110,7 @@ sharedfd(char *s)
     printf("%s: cannot open sharedfd for writing", s);
     278e:	fb843583          	ld	a1,-72(s0)
     2792:	00006517          	auipc	a0,0x6
-    2796:	62650513          	addi	a0,a0,1574 # 8db8 <schedule_dm+0xf68>
+    2796:	61e50513          	addi	a0,a0,1566 # 8db0 <schedule_dm+0xf62>
     279a:	00005097          	auipc	ra,0x5
     279e:	e26080e7          	jalr	-474(ra) # 75c0 <printf>
     exit(1);
@@ -4154,7 +4154,7 @@ sharedfd(char *s)
       printf("%s: write sharedfd failed\n", s);
     2804:	fb843583          	ld	a1,-72(s0)
     2808:	00006517          	auipc	a0,0x6
-    280c:	5d850513          	addi	a0,a0,1496 # 8de0 <schedule_dm+0xf90>
+    280c:	5d050513          	addi	a0,a0,1488 # 8dd8 <schedule_dm+0xf8a>
     2810:	00005097          	auipc	ra,0x5
     2814:	db0080e7          	jalr	-592(ra) # 75c0 <printf>
       exit(1);
@@ -4204,7 +4204,7 @@ sharedfd(char *s)
   fd = open("sharedfd", 0);
     287e:	4581                	li	a1,0
     2880:	00006517          	auipc	a0,0x6
-    2884:	97850513          	addi	a0,a0,-1672 # 81f8 <schedule_dm+0x3a8>
+    2884:	97050513          	addi	a0,a0,-1680 # 81f0 <schedule_dm+0x3a2>
     2888:	00005097          	auipc	ra,0x5
     288c:	832080e7          	jalr	-1998(ra) # 70ba <open>
     2890:	87aa                	mv	a5,a0
@@ -4216,7 +4216,7 @@ sharedfd(char *s)
     printf("%s: cannot open sharedfd for reading\n", s);
     28a0:	fb843583          	ld	a1,-72(s0)
     28a4:	00006517          	auipc	a0,0x6
-    28a8:	55c50513          	addi	a0,a0,1372 # 8e00 <schedule_dm+0xfb0>
+    28a8:	55450513          	addi	a0,a0,1364 # 8df8 <schedule_dm+0xfaa>
     28ac:	00005097          	auipc	ra,0x5
     28b0:	d14080e7          	jalr	-748(ra) # 75c0 <printf>
     exit(1);
@@ -4287,7 +4287,7 @@ sharedfd(char *s)
     295c:	74a080e7          	jalr	1866(ra) # 70a2 <close>
   unlink("sharedfd");
     2960:	00006517          	auipc	a0,0x6
-    2964:	89850513          	addi	a0,a0,-1896 # 81f8 <schedule_dm+0x3a8>
+    2964:	89050513          	addi	a0,a0,-1904 # 81f0 <schedule_dm+0x3a2>
     2968:	00004097          	auipc	ra,0x4
     296c:	762080e7          	jalr	1890(ra) # 70ca <unlink>
   if(nc == N*SZ && np == N*SZ){
@@ -4309,7 +4309,7 @@ sharedfd(char *s)
     printf("%s: nc/np test fails\n", s);
     299e:	fb843583          	ld	a1,-72(s0)
     29a2:	00006517          	auipc	a0,0x6
-    29a6:	48650513          	addi	a0,a0,1158 # 8e28 <schedule_dm+0xfd8>
+    29a6:	47e50513          	addi	a0,a0,1150 # 8e20 <schedule_dm+0xfd2>
     29aa:	00005097          	auipc	ra,0x5
     29ae:	c16080e7          	jalr	-1002(ra) # 75c0 <printf>
     exit(1);
@@ -4332,7 +4332,7 @@ fourfiles(char *s)
   int fd, pid, i, j, n, total, pi;
   char *names[] = { "f0", "f1", "f2", "f3" };
     29c8:	00006797          	auipc	a5,0x6
-    29cc:	4c878793          	addi	a5,a5,1224 # 8e90 <schedule_dm+0x1040>
+    29cc:	4c078793          	addi	a5,a5,1216 # 8e88 <schedule_dm+0x103a>
     29d0:	6390                	ld	a2,0(a5)
     29d2:	6794                	ld	a3,8(a5)
     29d4:	6b98                	ld	a4,16(a5)
@@ -4371,7 +4371,7 @@ fourfiles(char *s)
       printf("fork failed\n", s);
     2a26:	f9843583          	ld	a1,-104(s0)
     2a2a:	00006517          	auipc	a0,0x6
-    2a2e:	b6650513          	addi	a0,a0,-1178 # 8590 <schedule_dm+0x740>
+    2a2e:	b5e50513          	addi	a0,a0,-1186 # 8588 <schedule_dm+0x73a>
     2a32:	00005097          	auipc	ra,0x5
     2a36:	b8e080e7          	jalr	-1138(ra) # 75c0 <printf>
       exit(1);
@@ -4398,7 +4398,7 @@ fourfiles(char *s)
         printf("create failed\n", s);
     2a6c:	f9843583          	ld	a1,-104(s0)
     2a70:	00006517          	auipc	a0,0x6
-    2a74:	3d050513          	addi	a0,a0,976 # 8e40 <schedule_dm+0xff0>
+    2a74:	3c850513          	addi	a0,a0,968 # 8e38 <schedule_dm+0xfea>
     2a78:	00005097          	auipc	ra,0x5
     2a7c:	b48080e7          	jalr	-1208(ra) # 75c0 <printf>
         exit(1);
@@ -4414,7 +4414,7 @@ fourfiles(char *s)
     2a94:	1f400613          	li	a2,500
     2a98:	85be                	mv	a1,a5
     2a9a:	00008517          	auipc	a0,0x8
-    2a9e:	d6e50513          	addi	a0,a0,-658 # a808 <buf>
+    2a9e:	d6650513          	addi	a0,a0,-666 # a800 <buf>
     2aa2:	00004097          	auipc	ra,0x4
     2aa6:	22e080e7          	jalr	558(ra) # 6cd0 <memset>
       for(i = 0; i < N; i++){
@@ -4424,7 +4424,7 @@ fourfiles(char *s)
     2ab0:	fd442783          	lw	a5,-44(s0)
     2ab4:	1f400613          	li	a2,500
     2ab8:	00008597          	auipc	a1,0x8
-    2abc:	d5058593          	addi	a1,a1,-688 # a808 <buf>
+    2abc:	d4858593          	addi	a1,a1,-696 # a800 <buf>
     2ac0:	853e                	mv	a0,a5
     2ac2:	00004097          	auipc	ra,0x4
     2ac6:	5d8080e7          	jalr	1496(ra) # 709a <write>
@@ -4438,7 +4438,7 @@ fourfiles(char *s)
     2ae0:	fd042783          	lw	a5,-48(s0)
     2ae4:	85be                	mv	a1,a5
     2ae6:	00006517          	auipc	a0,0x6
-    2aea:	36a50513          	addi	a0,a0,874 # 8e50 <schedule_dm+0x1000>
+    2aea:	36250513          	addi	a0,a0,866 # 8e48 <schedule_dm+0xffa>
     2aee:	00005097          	auipc	ra,0x5
     2af2:	ad2080e7          	jalr	-1326(ra) # 75c0 <printf>
           exit(1);
@@ -4523,7 +4523,7 @@ fourfiles(char *s)
     2bb2:	a0b9                	j	2c00 <fourfiles+0x244>
         if(buf[j] != '0'+i){
     2bb4:	00008717          	auipc	a4,0x8
-    2bb8:	c5470713          	addi	a4,a4,-940 # a808 <buf>
+    2bb8:	c4c70713          	addi	a4,a4,-948 # a800 <buf>
     2bbc:	fe842783          	lw	a5,-24(s0)
     2bc0:	97ba                	add	a5,a5,a4
     2bc2:	0007c783          	lbu	a5,0(a5)
@@ -4535,7 +4535,7 @@ fourfiles(char *s)
           printf("wrong char\n", s);
     2bd8:	f9843583          	ld	a1,-104(s0)
     2bdc:	00006517          	auipc	a0,0x6
-    2be0:	28c50513          	addi	a0,a0,652 # 8e68 <schedule_dm+0x1018>
+    2be0:	28450513          	addi	a0,a0,644 # 8e60 <schedule_dm+0x1012>
     2be4:	00005097          	auipc	ra,0x5
     2be8:	9dc080e7          	jalr	-1572(ra) # 75c0 <printf>
           exit(1);
@@ -4562,7 +4562,7 @@ fourfiles(char *s)
     2c1e:	fd442783          	lw	a5,-44(s0)
     2c22:	660d                	lui	a2,0x3
     2c24:	00008597          	auipc	a1,0x8
-    2c28:	be458593          	addi	a1,a1,-1052 # a808 <buf>
+    2c28:	bdc58593          	addi	a1,a1,-1060 # a800 <buf>
     2c2c:	853e                	mv	a0,a5
     2c2e:	00004097          	auipc	ra,0x4
     2c32:	464080e7          	jalr	1124(ra) # 7092 <read>
@@ -4587,7 +4587,7 @@ fourfiles(char *s)
     2c66:	fe442783          	lw	a5,-28(s0)
     2c6a:	85be                	mv	a1,a5
     2c6c:	00006517          	auipc	a0,0x6
-    2c70:	20c50513          	addi	a0,a0,524 # 8e78 <schedule_dm+0x1028>
+    2c70:	20450513          	addi	a0,a0,516 # 8e70 <schedule_dm+0x1022>
     2c74:	00005097          	auipc	ra,0x5
     2c78:	94c080e7          	jalr	-1716(ra) # 75c0 <printf>
       exit(1);
@@ -4646,7 +4646,7 @@ createdelete(char *s)
       printf("fork failed\n", s);
     2ce0:	fa843583          	ld	a1,-88(s0)
     2ce4:	00006517          	auipc	a0,0x6
-    2ce8:	8ac50513          	addi	a0,a0,-1876 # 8590 <schedule_dm+0x740>
+    2ce8:	8a450513          	addi	a0,a0,-1884 # 8588 <schedule_dm+0x73a>
     2cec:	00005097          	auipc	ra,0x5
     2cf0:	8d4080e7          	jalr	-1836(ra) # 75c0 <printf>
       exit(1);
@@ -4691,7 +4691,7 @@ createdelete(char *s)
           printf("%s: create failed\n", s);
     2d5c:	fa843583          	ld	a1,-88(s0)
     2d60:	00006517          	auipc	a0,0x6
-    2d64:	e8050513          	addi	a0,a0,-384 # 8be0 <schedule_dm+0xd90>
+    2d64:	e7850513          	addi	a0,a0,-392 # 8bd8 <schedule_dm+0xd8a>
     2d68:	00005097          	auipc	ra,0x5
     2d6c:	858080e7          	jalr	-1960(ra) # 75c0 <printf>
           exit(1);
@@ -4732,7 +4732,7 @@ createdelete(char *s)
             printf("%s: unlink failed\n", s);
     2dd0:	fa843583          	ld	a1,-88(s0)
     2dd4:	00006517          	auipc	a0,0x6
-    2dd8:	b5c50513          	addi	a0,a0,-1188 # 8930 <schedule_dm+0xae0>
+    2dd8:	b5450513          	addi	a0,a0,-1196 # 8928 <schedule_dm+0xada>
     2ddc:	00004097          	auipc	ra,0x4
     2de0:	7e4080e7          	jalr	2020(ra) # 75c0 <printf>
             exit(1);
@@ -4839,7 +4839,7 @@ createdelete(char *s)
     2ee6:	863e                	mv	a2,a5
     2ee8:	fa843583          	ld	a1,-88(s0)
     2eec:	00006517          	auipc	a0,0x6
-    2ef0:	fc450513          	addi	a0,a0,-60 # 8eb0 <schedule_dm+0x1060>
+    2ef0:	fbc50513          	addi	a0,a0,-68 # 8ea8 <schedule_dm+0x105a>
     2ef4:	00004097          	auipc	ra,0x4
     2ef8:	6cc080e7          	jalr	1740(ra) # 75c0 <printf>
         exit(1);
@@ -4862,7 +4862,7 @@ createdelete(char *s)
     2f2c:	863e                	mv	a2,a5
     2f2e:	fa843583          	ld	a1,-88(s0)
     2f32:	00006517          	auipc	a0,0x6
-    2f36:	fa650513          	addi	a0,a0,-90 # 8ed8 <schedule_dm+0x1088>
+    2f36:	f9e50513          	addi	a0,a0,-98 # 8ed0 <schedule_dm+0x1082>
     2f3a:	00004097          	auipc	ra,0x4
     2f3e:	686080e7          	jalr	1670(ra) # 75c0 <printf>
         exit(1);
@@ -4964,7 +4964,7 @@ unlinkread(char *s)
   fd = open("unlinkread", O_CREATE | O_RDWR);
     301e:	20200593          	li	a1,514
     3022:	00005517          	auipc	a0,0x5
-    3026:	19e50513          	addi	a0,a0,414 # 81c0 <schedule_dm+0x370>
+    3026:	19650513          	addi	a0,a0,406 # 81b8 <schedule_dm+0x36a>
     302a:	00004097          	auipc	ra,0x4
     302e:	090080e7          	jalr	144(ra) # 70ba <open>
     3032:	87aa                	mv	a5,a0
@@ -4976,7 +4976,7 @@ unlinkread(char *s)
     printf("%s: create unlinkread failed\n", s);
     3042:	fd843583          	ld	a1,-40(s0)
     3046:	00006517          	auipc	a0,0x6
-    304a:	eba50513          	addi	a0,a0,-326 # 8f00 <schedule_dm+0x10b0>
+    304a:	eb250513          	addi	a0,a0,-334 # 8ef8 <schedule_dm+0x10aa>
     304e:	00004097          	auipc	ra,0x4
     3052:	572080e7          	jalr	1394(ra) # 75c0 <printf>
     exit(1);
@@ -4988,7 +4988,7 @@ unlinkread(char *s)
     3060:	fec42783          	lw	a5,-20(s0)
     3064:	4615                	li	a2,5
     3066:	00006597          	auipc	a1,0x6
-    306a:	eba58593          	addi	a1,a1,-326 # 8f20 <schedule_dm+0x10d0>
+    306a:	eb258593          	addi	a1,a1,-334 # 8f18 <schedule_dm+0x10ca>
     306e:	853e                	mv	a0,a5
     3070:	00004097          	auipc	ra,0x4
     3074:	02a080e7          	jalr	42(ra) # 709a <write>
@@ -5001,7 +5001,7 @@ unlinkread(char *s)
   fd = open("unlinkread", O_RDWR);
     3086:	4589                	li	a1,2
     3088:	00005517          	auipc	a0,0x5
-    308c:	13850513          	addi	a0,a0,312 # 81c0 <schedule_dm+0x370>
+    308c:	13050513          	addi	a0,a0,304 # 81b8 <schedule_dm+0x36a>
     3090:	00004097          	auipc	ra,0x4
     3094:	02a080e7          	jalr	42(ra) # 70ba <open>
     3098:	87aa                	mv	a5,a0
@@ -5013,7 +5013,7 @@ unlinkread(char *s)
     printf("%s: open unlinkread failed\n", s);
     30a8:	fd843583          	ld	a1,-40(s0)
     30ac:	00006517          	auipc	a0,0x6
-    30b0:	e7c50513          	addi	a0,a0,-388 # 8f28 <schedule_dm+0x10d8>
+    30b0:	e7450513          	addi	a0,a0,-396 # 8f20 <schedule_dm+0x10d2>
     30b4:	00004097          	auipc	ra,0x4
     30b8:	50c080e7          	jalr	1292(ra) # 75c0 <printf>
     exit(1);
@@ -5023,7 +5023,7 @@ unlinkread(char *s)
   }
   if(unlink("unlinkread") != 0){
     30c6:	00005517          	auipc	a0,0x5
-    30ca:	0fa50513          	addi	a0,a0,250 # 81c0 <schedule_dm+0x370>
+    30ca:	0f250513          	addi	a0,a0,242 # 81b8 <schedule_dm+0x36a>
     30ce:	00004097          	auipc	ra,0x4
     30d2:	ffc080e7          	jalr	-4(ra) # 70ca <unlink>
     30d6:	87aa                	mv	a5,a0
@@ -5031,7 +5031,7 @@ unlinkread(char *s)
     printf("%s: unlink unlinkread failed\n", s);
     30da:	fd843583          	ld	a1,-40(s0)
     30de:	00006517          	auipc	a0,0x6
-    30e2:	e6a50513          	addi	a0,a0,-406 # 8f48 <schedule_dm+0x10f8>
+    30e2:	e6250513          	addi	a0,a0,-414 # 8f40 <schedule_dm+0x10f2>
     30e6:	00004097          	auipc	ra,0x4
     30ea:	4da080e7          	jalr	1242(ra) # 75c0 <printf>
     exit(1);
@@ -5043,7 +5043,7 @@ unlinkread(char *s)
   fd1 = open("unlinkread", O_CREATE | O_RDWR);
     30f8:	20200593          	li	a1,514
     30fc:	00005517          	auipc	a0,0x5
-    3100:	0c450513          	addi	a0,a0,196 # 81c0 <schedule_dm+0x370>
+    3100:	0bc50513          	addi	a0,a0,188 # 81b8 <schedule_dm+0x36a>
     3104:	00004097          	auipc	ra,0x4
     3108:	fb6080e7          	jalr	-74(ra) # 70ba <open>
     310c:	87aa                	mv	a5,a0
@@ -5052,7 +5052,7 @@ unlinkread(char *s)
     3112:	fe842783          	lw	a5,-24(s0)
     3116:	460d                	li	a2,3
     3118:	00006597          	auipc	a1,0x6
-    311c:	e5058593          	addi	a1,a1,-432 # 8f68 <schedule_dm+0x1118>
+    311c:	e4858593          	addi	a1,a1,-440 # 8f60 <schedule_dm+0x1112>
     3120:	853e                	mv	a0,a5
     3122:	00004097          	auipc	ra,0x4
     3126:	f78080e7          	jalr	-136(ra) # 709a <write>
@@ -5066,7 +5066,7 @@ unlinkread(char *s)
     3138:	fec42783          	lw	a5,-20(s0)
     313c:	660d                	lui	a2,0x3
     313e:	00007597          	auipc	a1,0x7
-    3142:	6ca58593          	addi	a1,a1,1738 # a808 <buf>
+    3142:	6c258593          	addi	a1,a1,1730 # a800 <buf>
     3146:	853e                	mv	a0,a5
     3148:	00004097          	auipc	ra,0x4
     314c:	f4a080e7          	jalr	-182(ra) # 7092 <read>
@@ -5077,7 +5077,7 @@ unlinkread(char *s)
     printf("%s: unlinkread read failed", s);
     315a:	fd843583          	ld	a1,-40(s0)
     315e:	00006517          	auipc	a0,0x6
-    3162:	e1250513          	addi	a0,a0,-494 # 8f70 <schedule_dm+0x1120>
+    3162:	e0a50513          	addi	a0,a0,-502 # 8f68 <schedule_dm+0x111a>
     3166:	00004097          	auipc	ra,0x4
     316a:	45a080e7          	jalr	1114(ra) # 75c0 <printf>
     exit(1);
@@ -5087,7 +5087,7 @@ unlinkread(char *s)
   }
   if(buf[0] != 'h'){
     3178:	00007797          	auipc	a5,0x7
-    317c:	69078793          	addi	a5,a5,1680 # a808 <buf>
+    317c:	68878793          	addi	a5,a5,1672 # a800 <buf>
     3180:	0007c783          	lbu	a5,0(a5)
     3184:	873e                	mv	a4,a5
     3186:	06800793          	li	a5,104
@@ -5095,7 +5095,7 @@ unlinkread(char *s)
     printf("%s: unlinkread wrong data\n", s);
     318e:	fd843583          	ld	a1,-40(s0)
     3192:	00006517          	auipc	a0,0x6
-    3196:	dfe50513          	addi	a0,a0,-514 # 8f90 <schedule_dm+0x1140>
+    3196:	df650513          	addi	a0,a0,-522 # 8f88 <schedule_dm+0x113a>
     319a:	00004097          	auipc	ra,0x4
     319e:	426080e7          	jalr	1062(ra) # 75c0 <printf>
     exit(1);
@@ -5107,7 +5107,7 @@ unlinkread(char *s)
     31ac:	fec42783          	lw	a5,-20(s0)
     31b0:	4629                	li	a2,10
     31b2:	00007597          	auipc	a1,0x7
-    31b6:	65658593          	addi	a1,a1,1622 # a808 <buf>
+    31b6:	64e58593          	addi	a1,a1,1614 # a800 <buf>
     31ba:	853e                	mv	a0,a5
     31bc:	00004097          	auipc	ra,0x4
     31c0:	ede080e7          	jalr	-290(ra) # 709a <write>
@@ -5118,7 +5118,7 @@ unlinkread(char *s)
     printf("%s: unlinkread write failed\n", s);
     31ce:	fd843583          	ld	a1,-40(s0)
     31d2:	00006517          	auipc	a0,0x6
-    31d6:	dde50513          	addi	a0,a0,-546 # 8fb0 <schedule_dm+0x1160>
+    31d6:	dd650513          	addi	a0,a0,-554 # 8fa8 <schedule_dm+0x115a>
     31da:	00004097          	auipc	ra,0x4
     31de:	3e6080e7          	jalr	998(ra) # 75c0 <printf>
     exit(1);
@@ -5133,7 +5133,7 @@ unlinkread(char *s)
     31f6:	eb0080e7          	jalr	-336(ra) # 70a2 <close>
   unlink("unlinkread");
     31fa:	00005517          	auipc	a0,0x5
-    31fe:	fc650513          	addi	a0,a0,-58 # 81c0 <schedule_dm+0x370>
+    31fe:	fbe50513          	addi	a0,a0,-66 # 81b8 <schedule_dm+0x36a>
     3202:	00004097          	auipc	ra,0x4
     3206:	ec8080e7          	jalr	-312(ra) # 70ca <unlink>
 }
@@ -5158,19 +5158,19 @@ linktest(char *s)
 
   unlink("lf1");
     3220:	00006517          	auipc	a0,0x6
-    3224:	db050513          	addi	a0,a0,-592 # 8fd0 <schedule_dm+0x1180>
+    3224:	da850513          	addi	a0,a0,-600 # 8fc8 <schedule_dm+0x117a>
     3228:	00004097          	auipc	ra,0x4
     322c:	ea2080e7          	jalr	-350(ra) # 70ca <unlink>
   unlink("lf2");
     3230:	00006517          	auipc	a0,0x6
-    3234:	da850513          	addi	a0,a0,-600 # 8fd8 <schedule_dm+0x1188>
+    3234:	da050513          	addi	a0,a0,-608 # 8fd0 <schedule_dm+0x1182>
     3238:	00004097          	auipc	ra,0x4
     323c:	e92080e7          	jalr	-366(ra) # 70ca <unlink>
 
   fd = open("lf1", O_CREATE|O_RDWR);
     3240:	20200593          	li	a1,514
     3244:	00006517          	auipc	a0,0x6
-    3248:	d8c50513          	addi	a0,a0,-628 # 8fd0 <schedule_dm+0x1180>
+    3248:	d8450513          	addi	a0,a0,-636 # 8fc8 <schedule_dm+0x117a>
     324c:	00004097          	auipc	ra,0x4
     3250:	e6e080e7          	jalr	-402(ra) # 70ba <open>
     3254:	87aa                	mv	a5,a0
@@ -5182,7 +5182,7 @@ linktest(char *s)
     printf("%s: create lf1 failed\n", s);
     3264:	fd843583          	ld	a1,-40(s0)
     3268:	00006517          	auipc	a0,0x6
-    326c:	d7850513          	addi	a0,a0,-648 # 8fe0 <schedule_dm+0x1190>
+    326c:	d7050513          	addi	a0,a0,-656 # 8fd8 <schedule_dm+0x118a>
     3270:	00004097          	auipc	ra,0x4
     3274:	350080e7          	jalr	848(ra) # 75c0 <printf>
     exit(1);
@@ -5194,7 +5194,7 @@ linktest(char *s)
     3282:	fec42783          	lw	a5,-20(s0)
     3286:	4615                	li	a2,5
     3288:	00006597          	auipc	a1,0x6
-    328c:	c9858593          	addi	a1,a1,-872 # 8f20 <schedule_dm+0x10d0>
+    328c:	c9058593          	addi	a1,a1,-880 # 8f18 <schedule_dm+0x10ca>
     3290:	853e                	mv	a0,a5
     3292:	00004097          	auipc	ra,0x4
     3296:	e08080e7          	jalr	-504(ra) # 709a <write>
@@ -5205,7 +5205,7 @@ linktest(char *s)
     printf("%s: write lf1 failed\n", s);
     32a4:	fd843583          	ld	a1,-40(s0)
     32a8:	00006517          	auipc	a0,0x6
-    32ac:	d5050513          	addi	a0,a0,-688 # 8ff8 <schedule_dm+0x11a8>
+    32ac:	d4850513          	addi	a0,a0,-696 # 8ff0 <schedule_dm+0x11a2>
     32b0:	00004097          	auipc	ra,0x4
     32b4:	310080e7          	jalr	784(ra) # 75c0 <printf>
     exit(1);
@@ -5221,9 +5221,9 @@ linktest(char *s)
 
   if(link("lf1", "lf2") < 0){
     32d0:	00006597          	auipc	a1,0x6
-    32d4:	d0858593          	addi	a1,a1,-760 # 8fd8 <schedule_dm+0x1188>
+    32d4:	d0058593          	addi	a1,a1,-768 # 8fd0 <schedule_dm+0x1182>
     32d8:	00006517          	auipc	a0,0x6
-    32dc:	cf850513          	addi	a0,a0,-776 # 8fd0 <schedule_dm+0x1180>
+    32dc:	cf050513          	addi	a0,a0,-784 # 8fc8 <schedule_dm+0x117a>
     32e0:	00004097          	auipc	ra,0x4
     32e4:	dfa080e7          	jalr	-518(ra) # 70da <link>
     32e8:	87aa                	mv	a5,a0
@@ -5231,7 +5231,7 @@ linktest(char *s)
     printf("%s: link lf1 lf2 failed\n", s);
     32ee:	fd843583          	ld	a1,-40(s0)
     32f2:	00006517          	auipc	a0,0x6
-    32f6:	d1e50513          	addi	a0,a0,-738 # 9010 <schedule_dm+0x11c0>
+    32f6:	d1650513          	addi	a0,a0,-746 # 9008 <schedule_dm+0x11ba>
     32fa:	00004097          	auipc	ra,0x4
     32fe:	2c6080e7          	jalr	710(ra) # 75c0 <printf>
     exit(1);
@@ -5241,14 +5241,14 @@ linktest(char *s)
   }
   unlink("lf1");
     330c:	00006517          	auipc	a0,0x6
-    3310:	cc450513          	addi	a0,a0,-828 # 8fd0 <schedule_dm+0x1180>
+    3310:	cbc50513          	addi	a0,a0,-836 # 8fc8 <schedule_dm+0x117a>
     3314:	00004097          	auipc	ra,0x4
     3318:	db6080e7          	jalr	-586(ra) # 70ca <unlink>
 
   if(open("lf1", 0) >= 0){
     331c:	4581                	li	a1,0
     331e:	00006517          	auipc	a0,0x6
-    3322:	cb250513          	addi	a0,a0,-846 # 8fd0 <schedule_dm+0x1180>
+    3322:	caa50513          	addi	a0,a0,-854 # 8fc8 <schedule_dm+0x117a>
     3326:	00004097          	auipc	ra,0x4
     332a:	d94080e7          	jalr	-620(ra) # 70ba <open>
     332e:	87aa                	mv	a5,a0
@@ -5256,7 +5256,7 @@ linktest(char *s)
     printf("%s: unlinked lf1 but it is still there!\n", s);
     3334:	fd843583          	ld	a1,-40(s0)
     3338:	00006517          	auipc	a0,0x6
-    333c:	cf850513          	addi	a0,a0,-776 # 9030 <schedule_dm+0x11e0>
+    333c:	cf050513          	addi	a0,a0,-784 # 9028 <schedule_dm+0x11da>
     3340:	00004097          	auipc	ra,0x4
     3344:	280080e7          	jalr	640(ra) # 75c0 <printf>
     exit(1);
@@ -5268,7 +5268,7 @@ linktest(char *s)
   fd = open("lf2", 0);
     3352:	4581                	li	a1,0
     3354:	00006517          	auipc	a0,0x6
-    3358:	c8450513          	addi	a0,a0,-892 # 8fd8 <schedule_dm+0x1188>
+    3358:	c7c50513          	addi	a0,a0,-900 # 8fd0 <schedule_dm+0x1182>
     335c:	00004097          	auipc	ra,0x4
     3360:	d5e080e7          	jalr	-674(ra) # 70ba <open>
     3364:	87aa                	mv	a5,a0
@@ -5280,7 +5280,7 @@ linktest(char *s)
     printf("%s: open lf2 failed\n", s);
     3374:	fd843583          	ld	a1,-40(s0)
     3378:	00006517          	auipc	a0,0x6
-    337c:	ce850513          	addi	a0,a0,-792 # 9060 <schedule_dm+0x1210>
+    337c:	ce050513          	addi	a0,a0,-800 # 9058 <schedule_dm+0x120a>
     3380:	00004097          	auipc	ra,0x4
     3384:	240080e7          	jalr	576(ra) # 75c0 <printf>
     exit(1);
@@ -5292,7 +5292,7 @@ linktest(char *s)
     3392:	fec42783          	lw	a5,-20(s0)
     3396:	660d                	lui	a2,0x3
     3398:	00007597          	auipc	a1,0x7
-    339c:	47058593          	addi	a1,a1,1136 # a808 <buf>
+    339c:	46858593          	addi	a1,a1,1128 # a800 <buf>
     33a0:	853e                	mv	a0,a5
     33a2:	00004097          	auipc	ra,0x4
     33a6:	cf0080e7          	jalr	-784(ra) # 7092 <read>
@@ -5303,7 +5303,7 @@ linktest(char *s)
     printf("%s: read lf2 failed\n", s);
     33b4:	fd843583          	ld	a1,-40(s0)
     33b8:	00006517          	auipc	a0,0x6
-    33bc:	cc050513          	addi	a0,a0,-832 # 9078 <schedule_dm+0x1228>
+    33bc:	cb850513          	addi	a0,a0,-840 # 9070 <schedule_dm+0x1222>
     33c0:	00004097          	auipc	ra,0x4
     33c4:	200080e7          	jalr	512(ra) # 75c0 <printf>
     exit(1);
@@ -5319,9 +5319,9 @@ linktest(char *s)
 
   if(link("lf2", "lf2") >= 0){
     33e0:	00006597          	auipc	a1,0x6
-    33e4:	bf858593          	addi	a1,a1,-1032 # 8fd8 <schedule_dm+0x1188>
+    33e4:	bf058593          	addi	a1,a1,-1040 # 8fd0 <schedule_dm+0x1182>
     33e8:	00006517          	auipc	a0,0x6
-    33ec:	bf050513          	addi	a0,a0,-1040 # 8fd8 <schedule_dm+0x1188>
+    33ec:	be850513          	addi	a0,a0,-1048 # 8fd0 <schedule_dm+0x1182>
     33f0:	00004097          	auipc	ra,0x4
     33f4:	cea080e7          	jalr	-790(ra) # 70da <link>
     33f8:	87aa                	mv	a5,a0
@@ -5329,7 +5329,7 @@ linktest(char *s)
     printf("%s: link lf2 lf2 succeeded! oops\n", s);
     33fe:	fd843583          	ld	a1,-40(s0)
     3402:	00006517          	auipc	a0,0x6
-    3406:	c8e50513          	addi	a0,a0,-882 # 9090 <schedule_dm+0x1240>
+    3406:	c8650513          	addi	a0,a0,-890 # 9088 <schedule_dm+0x123a>
     340a:	00004097          	auipc	ra,0x4
     340e:	1b6080e7          	jalr	438(ra) # 75c0 <printf>
     exit(1);
@@ -5340,14 +5340,14 @@ linktest(char *s)
 
   unlink("lf2");
     341c:	00006517          	auipc	a0,0x6
-    3420:	bbc50513          	addi	a0,a0,-1092 # 8fd8 <schedule_dm+0x1188>
+    3420:	bb450513          	addi	a0,a0,-1100 # 8fd0 <schedule_dm+0x1182>
     3424:	00004097          	auipc	ra,0x4
     3428:	ca6080e7          	jalr	-858(ra) # 70ca <unlink>
   if(link("lf2", "lf1") >= 0){
     342c:	00006597          	auipc	a1,0x6
-    3430:	ba458593          	addi	a1,a1,-1116 # 8fd0 <schedule_dm+0x1180>
+    3430:	b9c58593          	addi	a1,a1,-1124 # 8fc8 <schedule_dm+0x117a>
     3434:	00006517          	auipc	a0,0x6
-    3438:	ba450513          	addi	a0,a0,-1116 # 8fd8 <schedule_dm+0x1188>
+    3438:	b9c50513          	addi	a0,a0,-1124 # 8fd0 <schedule_dm+0x1182>
     343c:	00004097          	auipc	ra,0x4
     3440:	c9e080e7          	jalr	-866(ra) # 70da <link>
     3444:	87aa                	mv	a5,a0
@@ -5355,7 +5355,7 @@ linktest(char *s)
     printf("%s: link non-existant succeeded! oops\n", s);
     344a:	fd843583          	ld	a1,-40(s0)
     344e:	00006517          	auipc	a0,0x6
-    3452:	c6a50513          	addi	a0,a0,-918 # 90b8 <schedule_dm+0x1268>
+    3452:	c6250513          	addi	a0,a0,-926 # 90b0 <schedule_dm+0x1262>
     3456:	00004097          	auipc	ra,0x4
     345a:	16a080e7          	jalr	362(ra) # 75c0 <printf>
     exit(1);
@@ -5366,9 +5366,9 @@ linktest(char *s)
 
   if(link(".", "lf1") >= 0){
     3468:	00006597          	auipc	a1,0x6
-    346c:	b6858593          	addi	a1,a1,-1176 # 8fd0 <schedule_dm+0x1180>
+    346c:	b6058593          	addi	a1,a1,-1184 # 8fc8 <schedule_dm+0x117a>
     3470:	00006517          	auipc	a0,0x6
-    3474:	c7050513          	addi	a0,a0,-912 # 90e0 <schedule_dm+0x1290>
+    3474:	c6850513          	addi	a0,a0,-920 # 90d8 <schedule_dm+0x128a>
     3478:	00004097          	auipc	ra,0x4
     347c:	c62080e7          	jalr	-926(ra) # 70da <link>
     3480:	87aa                	mv	a5,a0
@@ -5376,7 +5376,7 @@ linktest(char *s)
     printf("%s: link . lf1 succeeded! oops\n", s);
     3486:	fd843583          	ld	a1,-40(s0)
     348a:	00006517          	auipc	a0,0x6
-    348e:	c5e50513          	addi	a0,a0,-930 # 90e8 <schedule_dm+0x1298>
+    348e:	c5650513          	addi	a0,a0,-938 # 90e0 <schedule_dm+0x1292>
     3492:	00004097          	auipc	ra,0x4
     3496:	12e080e7          	jalr	302(ra) # 75c0 <printf>
     exit(1);
@@ -5446,7 +5446,7 @@ concreate(char *s)
     3518:	fd840793          	addi	a5,s0,-40
     351c:	85be                	mv	a1,a5
     351e:	00006517          	auipc	a0,0x6
-    3522:	bea50513          	addi	a0,a0,-1046 # 9108 <schedule_dm+0x12b8>
+    3522:	be250513          	addi	a0,a0,-1054 # 9100 <schedule_dm+0x12b2>
     3526:	00004097          	auipc	ra,0x4
     352a:	bb4080e7          	jalr	-1100(ra) # 70da <link>
     352e:	a059                	j	35b4 <concreate+0x106>
@@ -5465,7 +5465,7 @@ concreate(char *s)
     354c:	fd840793          	addi	a5,s0,-40
     3550:	85be                	mv	a1,a5
     3552:	00006517          	auipc	a0,0x6
-    3556:	bb650513          	addi	a0,a0,-1098 # 9108 <schedule_dm+0x12b8>
+    3556:	bae50513          	addi	a0,a0,-1106 # 9100 <schedule_dm+0x12b2>
     355a:	00004097          	auipc	ra,0x4
     355e:	b80080e7          	jalr	-1152(ra) # 70da <link>
     3562:	a889                	j	35b4 <concreate+0x106>
@@ -5486,7 +5486,7 @@ concreate(char *s)
     3586:	fd840793          	addi	a5,s0,-40
     358a:	85be                	mv	a1,a5
     358c:	00006517          	auipc	a0,0x6
-    3590:	b8450513          	addi	a0,a0,-1148 # 9110 <schedule_dm+0x12c0>
+    3590:	b7c50513          	addi	a0,a0,-1156 # 9108 <schedule_dm+0x12ba>
     3594:	00004097          	auipc	ra,0x4
     3598:	02c080e7          	jalr	44(ra) # 75c0 <printf>
         exit(1);
@@ -5543,7 +5543,7 @@ concreate(char *s)
   fd = open(".", 0);
     3612:	4581                	li	a1,0
     3614:	00006517          	auipc	a0,0x6
-    3618:	acc50513          	addi	a0,a0,-1332 # 90e0 <schedule_dm+0x1290>
+    3618:	ac450513          	addi	a0,a0,-1340 # 90d8 <schedule_dm+0x128a>
     361c:	00004097          	auipc	ra,0x4
     3620:	a9e080e7          	jalr	-1378(ra) # 70ba <open>
     3624:	87aa                	mv	a5,a0
@@ -5583,7 +5583,7 @@ concreate(char *s)
     3678:	863e                	mv	a2,a5
     367a:	f8843583          	ld	a1,-120(s0)
     367e:	00006517          	auipc	a0,0x6
-    3682:	ab250513          	addi	a0,a0,-1358 # 9130 <schedule_dm+0x12e0>
+    3682:	aaa50513          	addi	a0,a0,-1366 # 9128 <schedule_dm+0x12da>
     3686:	00004097          	auipc	ra,0x4
     368a:	f3a080e7          	jalr	-198(ra) # 75c0 <printf>
         exit(1);
@@ -5603,7 +5603,7 @@ concreate(char *s)
     36ae:	863e                	mv	a2,a5
     36b0:	f8843583          	ld	a1,-120(s0)
     36b4:	00006517          	auipc	a0,0x6
-    36b8:	a9c50513          	addi	a0,a0,-1380 # 9150 <schedule_dm+0x1300>
+    36b8:	a9450513          	addi	a0,a0,-1388 # 9148 <schedule_dm+0x12fa>
     36bc:	00004097          	auipc	ra,0x4
     36c0:	f04080e7          	jalr	-252(ra) # 75c0 <printf>
         exit(1);
@@ -5647,7 +5647,7 @@ concreate(char *s)
     printf("%s: concreate not enough files in directory listing\n", s);
     3722:	f8843583          	ld	a1,-120(s0)
     3726:	00006517          	auipc	a0,0x6
-    372a:	a5250513          	addi	a0,a0,-1454 # 9178 <schedule_dm+0x1328>
+    372a:	a4a50513          	addi	a0,a0,-1462 # 9170 <schedule_dm+0x1322>
     372e:	00004097          	auipc	ra,0x4
     3732:	e92080e7          	jalr	-366(ra) # 75c0 <printf>
     exit(1);
@@ -5677,7 +5677,7 @@ concreate(char *s)
       printf("%s: fork failed\n", s);
     3772:	f8843583          	ld	a1,-120(s0)
     3776:	00005517          	auipc	a0,0x5
-    377a:	04250513          	addi	a0,a0,66 # 87b8 <schedule_dm+0x968>
+    377a:	03a50513          	addi	a0,a0,58 # 87b0 <schedule_dm+0x962>
     377e:	00004097          	auipc	ra,0x4
     3782:	e42080e7          	jalr	-446(ra) # 75c0 <printf>
       exit(1);
@@ -5846,7 +5846,7 @@ linkunlink(char *s)
 
   unlink("x");
     390e:	00005517          	auipc	a0,0x5
-    3912:	b8250513          	addi	a0,a0,-1150 # 8490 <schedule_dm+0x640>
+    3912:	b7a50513          	addi	a0,a0,-1158 # 8488 <schedule_dm+0x63a>
     3916:	00003097          	auipc	ra,0x3
     391a:	7b4080e7          	jalr	1972(ra) # 70ca <unlink>
   pid = fork();
@@ -5861,7 +5861,7 @@ linkunlink(char *s)
     printf("%s: fork failed\n", s);
     3936:	fd843583          	ld	a1,-40(s0)
     393a:	00005517          	auipc	a0,0x5
-    393e:	e7e50513          	addi	a0,a0,-386 # 87b8 <schedule_dm+0x968>
+    393e:	e7650513          	addi	a0,a0,-394 # 87b0 <schedule_dm+0x962>
     3942:	00004097          	auipc	ra,0x4
     3946:	c7e080e7          	jalr	-898(ra) # 75c0 <printf>
     exit(1);
@@ -5900,7 +5900,7 @@ linkunlink(char *s)
       close(open("x", O_RDWR | O_CREATE));
     399c:	20200593          	li	a1,514
     39a0:	00005517          	auipc	a0,0x5
-    39a4:	af050513          	addi	a0,a0,-1296 # 8490 <schedule_dm+0x640>
+    39a4:	ae850513          	addi	a0,a0,-1304 # 8488 <schedule_dm+0x63a>
     39a8:	00003097          	auipc	ra,0x3
     39ac:	712080e7          	jalr	1810(ra) # 70ba <open>
     39b0:	87aa                	mv	a5,a0
@@ -5918,16 +5918,16 @@ linkunlink(char *s)
     39ce:	00f71f63          	bne	a4,a5,39ec <linkunlink+0xea>
       link("cat", "x");
     39d2:	00005597          	auipc	a1,0x5
-    39d6:	abe58593          	addi	a1,a1,-1346 # 8490 <schedule_dm+0x640>
+    39d6:	ab658593          	addi	a1,a1,-1354 # 8488 <schedule_dm+0x63a>
     39da:	00005517          	auipc	a0,0x5
-    39de:	7d650513          	addi	a0,a0,2006 # 91b0 <schedule_dm+0x1360>
+    39de:	7ce50513          	addi	a0,a0,1998 # 91a8 <schedule_dm+0x135a>
     39e2:	00003097          	auipc	ra,0x3
     39e6:	6f8080e7          	jalr	1784(ra) # 70da <link>
     39ea:	a809                	j	39fc <linkunlink+0xfa>
     } else {
       unlink("x");
     39ec:	00005517          	auipc	a0,0x5
-    39f0:	aa450513          	addi	a0,a0,-1372 # 8490 <schedule_dm+0x640>
+    39f0:	a9c50513          	addi	a0,a0,-1380 # 8488 <schedule_dm+0x63a>
     39f4:	00003097          	auipc	ra,0x3
     39f8:	6d6080e7          	jalr	1750(ra) # 70ca <unlink>
   for(i = 0; i < 100; i++){
@@ -5980,14 +5980,14 @@ bigdir(char *s)
 
   unlink("bd");
     3a48:	00005517          	auipc	a0,0x5
-    3a4c:	77050513          	addi	a0,a0,1904 # 91b8 <schedule_dm+0x1368>
+    3a4c:	76850513          	addi	a0,a0,1896 # 91b0 <schedule_dm+0x1362>
     3a50:	00003097          	auipc	ra,0x3
     3a54:	67a080e7          	jalr	1658(ra) # 70ca <unlink>
 
   fd = open("bd", O_CREATE);
     3a58:	20000593          	li	a1,512
     3a5c:	00005517          	auipc	a0,0x5
-    3a60:	75c50513          	addi	a0,a0,1884 # 91b8 <schedule_dm+0x1368>
+    3a60:	75450513          	addi	a0,a0,1876 # 91b0 <schedule_dm+0x1362>
     3a64:	00003097          	auipc	ra,0x3
     3a68:	656080e7          	jalr	1622(ra) # 70ba <open>
     3a6c:	87aa                	mv	a5,a0
@@ -5999,7 +5999,7 @@ bigdir(char *s)
     printf("%s: bigdir create failed\n", s);
     3a7c:	fc843583          	ld	a1,-56(s0)
     3a80:	00005517          	auipc	a0,0x5
-    3a84:	74050513          	addi	a0,a0,1856 # 91c0 <schedule_dm+0x1370>
+    3a84:	73850513          	addi	a0,a0,1848 # 91b8 <schedule_dm+0x136a>
     3a88:	00004097          	auipc	ra,0x4
     3a8c:	b38080e7          	jalr	-1224(ra) # 75c0 <printf>
     exit(1);
@@ -6048,7 +6048,7 @@ bigdir(char *s)
     3b06:	fd840793          	addi	a5,s0,-40
     3b0a:	85be                	mv	a1,a5
     3b0c:	00005517          	auipc	a0,0x5
-    3b10:	6ac50513          	addi	a0,a0,1708 # 91b8 <schedule_dm+0x1368>
+    3b10:	6a450513          	addi	a0,a0,1700 # 91b0 <schedule_dm+0x1362>
     3b14:	00003097          	auipc	ra,0x3
     3b18:	5c6080e7          	jalr	1478(ra) # 70da <link>
     3b1c:	87aa                	mv	a5,a0
@@ -6058,7 +6058,7 @@ bigdir(char *s)
     3b24:	863e                	mv	a2,a5
     3b26:	fc843583          	ld	a1,-56(s0)
     3b2a:	00005517          	auipc	a0,0x5
-    3b2e:	6b650513          	addi	a0,a0,1718 # 91e0 <schedule_dm+0x1390>
+    3b2e:	6ae50513          	addi	a0,a0,1710 # 91d8 <schedule_dm+0x138a>
     3b32:	00004097          	auipc	ra,0x4
     3b36:	a8e080e7          	jalr	-1394(ra) # 75c0 <printf>
       exit(1);
@@ -6078,7 +6078,7 @@ bigdir(char *s)
 
   unlink("bd");
     3b5e:	00005517          	auipc	a0,0x5
-    3b62:	65a50513          	addi	a0,a0,1626 # 91b8 <schedule_dm+0x1368>
+    3b62:	65250513          	addi	a0,a0,1618 # 91b0 <schedule_dm+0x1362>
     3b66:	00003097          	auipc	ra,0x3
     3b6a:	564080e7          	jalr	1380(ra) # 70ca <unlink>
   for(i = 0; i < N; i++){
@@ -6122,7 +6122,7 @@ bigdir(char *s)
       printf("%s: bigdir unlink failed", s);
     3bde:	fc843583          	ld	a1,-56(s0)
     3be2:	00005517          	auipc	a0,0x5
-    3be6:	61e50513          	addi	a0,a0,1566 # 9200 <schedule_dm+0x13b0>
+    3be6:	61650513          	addi	a0,a0,1558 # 91f8 <schedule_dm+0x13aa>
     3bea:	00004097          	auipc	ra,0x4
     3bee:	9d6080e7          	jalr	-1578(ra) # 75c0 <printf>
       exit(1);
@@ -6161,12 +6161,12 @@ subdir(char *s)
 
   unlink("ff");
     3c2e:	00005517          	auipc	a0,0x5
-    3c32:	5f250513          	addi	a0,a0,1522 # 9220 <schedule_dm+0x13d0>
+    3c32:	5ea50513          	addi	a0,a0,1514 # 9218 <schedule_dm+0x13ca>
     3c36:	00003097          	auipc	ra,0x3
     3c3a:	494080e7          	jalr	1172(ra) # 70ca <unlink>
   if(mkdir("dd") != 0){
     3c3e:	00005517          	auipc	a0,0x5
-    3c42:	5ea50513          	addi	a0,a0,1514 # 9228 <schedule_dm+0x13d8>
+    3c42:	5e250513          	addi	a0,a0,1506 # 9220 <schedule_dm+0x13d2>
     3c46:	00003097          	auipc	ra,0x3
     3c4a:	49c080e7          	jalr	1180(ra) # 70e2 <mkdir>
     3c4e:	87aa                	mv	a5,a0
@@ -6174,7 +6174,7 @@ subdir(char *s)
     printf("%s: mkdir dd failed\n", s);
     3c52:	fd843583          	ld	a1,-40(s0)
     3c56:	00005517          	auipc	a0,0x5
-    3c5a:	5da50513          	addi	a0,a0,1498 # 9230 <schedule_dm+0x13e0>
+    3c5a:	5d250513          	addi	a0,a0,1490 # 9228 <schedule_dm+0x13da>
     3c5e:	00004097          	auipc	ra,0x4
     3c62:	962080e7          	jalr	-1694(ra) # 75c0 <printf>
     exit(1);
@@ -6186,7 +6186,7 @@ subdir(char *s)
   fd = open("dd/ff", O_CREATE | O_RDWR);
     3c70:	20200593          	li	a1,514
     3c74:	00005517          	auipc	a0,0x5
-    3c78:	5d450513          	addi	a0,a0,1492 # 9248 <schedule_dm+0x13f8>
+    3c78:	5cc50513          	addi	a0,a0,1484 # 9240 <schedule_dm+0x13f2>
     3c7c:	00003097          	auipc	ra,0x3
     3c80:	43e080e7          	jalr	1086(ra) # 70ba <open>
     3c84:	87aa                	mv	a5,a0
@@ -6198,7 +6198,7 @@ subdir(char *s)
     printf("%s: create dd/ff failed\n", s);
     3c94:	fd843583          	ld	a1,-40(s0)
     3c98:	00005517          	auipc	a0,0x5
-    3c9c:	5b850513          	addi	a0,a0,1464 # 9250 <schedule_dm+0x1400>
+    3c9c:	5b050513          	addi	a0,a0,1456 # 9248 <schedule_dm+0x13fa>
     3ca0:	00004097          	auipc	ra,0x4
     3ca4:	920080e7          	jalr	-1760(ra) # 75c0 <printf>
     exit(1);
@@ -6210,7 +6210,7 @@ subdir(char *s)
     3cb2:	fec42783          	lw	a5,-20(s0)
     3cb6:	4609                	li	a2,2
     3cb8:	00005597          	auipc	a1,0x5
-    3cbc:	56858593          	addi	a1,a1,1384 # 9220 <schedule_dm+0x13d0>
+    3cbc:	56058593          	addi	a1,a1,1376 # 9218 <schedule_dm+0x13ca>
     3cc0:	853e                	mv	a0,a5
     3cc2:	00003097          	auipc	ra,0x3
     3cc6:	3d8080e7          	jalr	984(ra) # 709a <write>
@@ -6222,7 +6222,7 @@ subdir(char *s)
 
   if(unlink("dd") >= 0){
     3cd8:	00005517          	auipc	a0,0x5
-    3cdc:	55050513          	addi	a0,a0,1360 # 9228 <schedule_dm+0x13d8>
+    3cdc:	54850513          	addi	a0,a0,1352 # 9220 <schedule_dm+0x13d2>
     3ce0:	00003097          	auipc	ra,0x3
     3ce4:	3ea080e7          	jalr	1002(ra) # 70ca <unlink>
     3ce8:	87aa                	mv	a5,a0
@@ -6230,7 +6230,7 @@ subdir(char *s)
     printf("%s: unlink dd (non-empty dir) succeeded!\n", s);
     3cee:	fd843583          	ld	a1,-40(s0)
     3cf2:	00005517          	auipc	a0,0x5
-    3cf6:	57e50513          	addi	a0,a0,1406 # 9270 <schedule_dm+0x1420>
+    3cf6:	57650513          	addi	a0,a0,1398 # 9268 <schedule_dm+0x141a>
     3cfa:	00004097          	auipc	ra,0x4
     3cfe:	8c6080e7          	jalr	-1850(ra) # 75c0 <printf>
     exit(1);
@@ -6241,7 +6241,7 @@ subdir(char *s)
 
   if(mkdir("/dd/dd") != 0){
     3d0c:	00005517          	auipc	a0,0x5
-    3d10:	59450513          	addi	a0,a0,1428 # 92a0 <schedule_dm+0x1450>
+    3d10:	58c50513          	addi	a0,a0,1420 # 9298 <schedule_dm+0x144a>
     3d14:	00003097          	auipc	ra,0x3
     3d18:	3ce080e7          	jalr	974(ra) # 70e2 <mkdir>
     3d1c:	87aa                	mv	a5,a0
@@ -6249,7 +6249,7 @@ subdir(char *s)
     printf("subdir mkdir dd/dd failed\n", s);
     3d20:	fd843583          	ld	a1,-40(s0)
     3d24:	00005517          	auipc	a0,0x5
-    3d28:	58450513          	addi	a0,a0,1412 # 92a8 <schedule_dm+0x1458>
+    3d28:	57c50513          	addi	a0,a0,1404 # 92a0 <schedule_dm+0x1452>
     3d2c:	00004097          	auipc	ra,0x4
     3d30:	894080e7          	jalr	-1900(ra) # 75c0 <printf>
     exit(1);
@@ -6261,7 +6261,7 @@ subdir(char *s)
   fd = open("dd/dd/ff", O_CREATE | O_RDWR);
     3d3e:	20200593          	li	a1,514
     3d42:	00005517          	auipc	a0,0x5
-    3d46:	58650513          	addi	a0,a0,1414 # 92c8 <schedule_dm+0x1478>
+    3d46:	57e50513          	addi	a0,a0,1406 # 92c0 <schedule_dm+0x1472>
     3d4a:	00003097          	auipc	ra,0x3
     3d4e:	370080e7          	jalr	880(ra) # 70ba <open>
     3d52:	87aa                	mv	a5,a0
@@ -6273,7 +6273,7 @@ subdir(char *s)
     printf("%s: create dd/dd/ff failed\n", s);
     3d62:	fd843583          	ld	a1,-40(s0)
     3d66:	00005517          	auipc	a0,0x5
-    3d6a:	57250513          	addi	a0,a0,1394 # 92d8 <schedule_dm+0x1488>
+    3d6a:	56a50513          	addi	a0,a0,1386 # 92d0 <schedule_dm+0x1482>
     3d6e:	00004097          	auipc	ra,0x4
     3d72:	852080e7          	jalr	-1966(ra) # 75c0 <printf>
     exit(1);
@@ -6285,7 +6285,7 @@ subdir(char *s)
     3d80:	fec42783          	lw	a5,-20(s0)
     3d84:	4609                	li	a2,2
     3d86:	00005597          	auipc	a1,0x5
-    3d8a:	57258593          	addi	a1,a1,1394 # 92f8 <schedule_dm+0x14a8>
+    3d8a:	56a58593          	addi	a1,a1,1386 # 92f0 <schedule_dm+0x14a2>
     3d8e:	853e                	mv	a0,a5
     3d90:	00003097          	auipc	ra,0x3
     3d94:	30a080e7          	jalr	778(ra) # 709a <write>
@@ -6298,7 +6298,7 @@ subdir(char *s)
   fd = open("dd/dd/../ff", 0);
     3da6:	4581                	li	a1,0
     3da8:	00005517          	auipc	a0,0x5
-    3dac:	55850513          	addi	a0,a0,1368 # 9300 <schedule_dm+0x14b0>
+    3dac:	55050513          	addi	a0,a0,1360 # 92f8 <schedule_dm+0x14aa>
     3db0:	00003097          	auipc	ra,0x3
     3db4:	30a080e7          	jalr	778(ra) # 70ba <open>
     3db8:	87aa                	mv	a5,a0
@@ -6310,7 +6310,7 @@ subdir(char *s)
     printf("%s: open dd/dd/../ff failed\n", s);
     3dc8:	fd843583          	ld	a1,-40(s0)
     3dcc:	00005517          	auipc	a0,0x5
-    3dd0:	54450513          	addi	a0,a0,1348 # 9310 <schedule_dm+0x14c0>
+    3dd0:	53c50513          	addi	a0,a0,1340 # 9308 <schedule_dm+0x14ba>
     3dd4:	00003097          	auipc	ra,0x3
     3dd8:	7ec080e7          	jalr	2028(ra) # 75c0 <printf>
     exit(1);
@@ -6322,7 +6322,7 @@ subdir(char *s)
     3de6:	fec42783          	lw	a5,-20(s0)
     3dea:	660d                	lui	a2,0x3
     3dec:	00007597          	auipc	a1,0x7
-    3df0:	a1c58593          	addi	a1,a1,-1508 # a808 <buf>
+    3df0:	a1458593          	addi	a1,a1,-1516 # a800 <buf>
     3df4:	853e                	mv	a0,a5
     3df6:	00003097          	auipc	ra,0x3
     3dfa:	29c080e7          	jalr	668(ra) # 7092 <read>
@@ -6334,7 +6334,7 @@ subdir(char *s)
     3e0c:	4789                	li	a5,2
     3e0e:	00f71d63          	bne	a4,a5,3e28 <subdir+0x206>
     3e12:	00007797          	auipc	a5,0x7
-    3e16:	9f678793          	addi	a5,a5,-1546 # a808 <buf>
+    3e16:	9ee78793          	addi	a5,a5,-1554 # a800 <buf>
     3e1a:	0007c783          	lbu	a5,0(a5)
     3e1e:	873e                	mv	a4,a5
     3e20:	06600793          	li	a5,102
@@ -6342,7 +6342,7 @@ subdir(char *s)
     printf("%s: dd/dd/../ff wrong content\n", s);
     3e28:	fd843583          	ld	a1,-40(s0)
     3e2c:	00005517          	auipc	a0,0x5
-    3e30:	50450513          	addi	a0,a0,1284 # 9330 <schedule_dm+0x14e0>
+    3e30:	4fc50513          	addi	a0,a0,1276 # 9328 <schedule_dm+0x14da>
     3e34:	00003097          	auipc	ra,0x3
     3e38:	78c080e7          	jalr	1932(ra) # 75c0 <printf>
     exit(1);
@@ -6358,9 +6358,9 @@ subdir(char *s)
 
   if(link("dd/dd/ff", "dd/dd/ffff") != 0){
     3e54:	00005597          	auipc	a1,0x5
-    3e58:	4fc58593          	addi	a1,a1,1276 # 9350 <schedule_dm+0x1500>
+    3e58:	4f458593          	addi	a1,a1,1268 # 9348 <schedule_dm+0x14fa>
     3e5c:	00005517          	auipc	a0,0x5
-    3e60:	46c50513          	addi	a0,a0,1132 # 92c8 <schedule_dm+0x1478>
+    3e60:	46450513          	addi	a0,a0,1124 # 92c0 <schedule_dm+0x1472>
     3e64:	00003097          	auipc	ra,0x3
     3e68:	276080e7          	jalr	630(ra) # 70da <link>
     3e6c:	87aa                	mv	a5,a0
@@ -6368,7 +6368,7 @@ subdir(char *s)
     printf("link dd/dd/ff dd/dd/ffff failed\n", s);
     3e70:	fd843583          	ld	a1,-40(s0)
     3e74:	00005517          	auipc	a0,0x5
-    3e78:	4ec50513          	addi	a0,a0,1260 # 9360 <schedule_dm+0x1510>
+    3e78:	4e450513          	addi	a0,a0,1252 # 9358 <schedule_dm+0x150a>
     3e7c:	00003097          	auipc	ra,0x3
     3e80:	744080e7          	jalr	1860(ra) # 75c0 <printf>
     exit(1);
@@ -6379,7 +6379,7 @@ subdir(char *s)
 
   if(unlink("dd/dd/ff") != 0){
     3e8e:	00005517          	auipc	a0,0x5
-    3e92:	43a50513          	addi	a0,a0,1082 # 92c8 <schedule_dm+0x1478>
+    3e92:	43250513          	addi	a0,a0,1074 # 92c0 <schedule_dm+0x1472>
     3e96:	00003097          	auipc	ra,0x3
     3e9a:	234080e7          	jalr	564(ra) # 70ca <unlink>
     3e9e:	87aa                	mv	a5,a0
@@ -6387,7 +6387,7 @@ subdir(char *s)
     printf("%s: unlink dd/dd/ff failed\n", s);
     3ea2:	fd843583          	ld	a1,-40(s0)
     3ea6:	00005517          	auipc	a0,0x5
-    3eaa:	4e250513          	addi	a0,a0,1250 # 9388 <schedule_dm+0x1538>
+    3eaa:	4da50513          	addi	a0,a0,1242 # 9380 <schedule_dm+0x1532>
     3eae:	00003097          	auipc	ra,0x3
     3eb2:	712080e7          	jalr	1810(ra) # 75c0 <printf>
     exit(1);
@@ -6398,7 +6398,7 @@ subdir(char *s)
   if(open("dd/dd/ff", O_RDONLY) >= 0){
     3ec0:	4581                	li	a1,0
     3ec2:	00005517          	auipc	a0,0x5
-    3ec6:	40650513          	addi	a0,a0,1030 # 92c8 <schedule_dm+0x1478>
+    3ec6:	3fe50513          	addi	a0,a0,1022 # 92c0 <schedule_dm+0x1472>
     3eca:	00003097          	auipc	ra,0x3
     3ece:	1f0080e7          	jalr	496(ra) # 70ba <open>
     3ed2:	87aa                	mv	a5,a0
@@ -6406,7 +6406,7 @@ subdir(char *s)
     printf("%s: open (unlinked) dd/dd/ff succeeded\n", s);
     3ed8:	fd843583          	ld	a1,-40(s0)
     3edc:	00005517          	auipc	a0,0x5
-    3ee0:	4cc50513          	addi	a0,a0,1228 # 93a8 <schedule_dm+0x1558>
+    3ee0:	4c450513          	addi	a0,a0,1220 # 93a0 <schedule_dm+0x1552>
     3ee4:	00003097          	auipc	ra,0x3
     3ee8:	6dc080e7          	jalr	1756(ra) # 75c0 <printf>
     exit(1);
@@ -6417,7 +6417,7 @@ subdir(char *s)
 
   if(chdir("dd") != 0){
     3ef6:	00005517          	auipc	a0,0x5
-    3efa:	33250513          	addi	a0,a0,818 # 9228 <schedule_dm+0x13d8>
+    3efa:	32a50513          	addi	a0,a0,810 # 9220 <schedule_dm+0x13d2>
     3efe:	00003097          	auipc	ra,0x3
     3f02:	1ec080e7          	jalr	492(ra) # 70ea <chdir>
     3f06:	87aa                	mv	a5,a0
@@ -6425,7 +6425,7 @@ subdir(char *s)
     printf("%s: chdir dd failed\n", s);
     3f0a:	fd843583          	ld	a1,-40(s0)
     3f0e:	00005517          	auipc	a0,0x5
-    3f12:	4c250513          	addi	a0,a0,1218 # 93d0 <schedule_dm+0x1580>
+    3f12:	4ba50513          	addi	a0,a0,1210 # 93c8 <schedule_dm+0x157a>
     3f16:	00003097          	auipc	ra,0x3
     3f1a:	6aa080e7          	jalr	1706(ra) # 75c0 <printf>
     exit(1);
@@ -6435,7 +6435,7 @@ subdir(char *s)
   }
   if(chdir("dd/../../dd") != 0){
     3f28:	00005517          	auipc	a0,0x5
-    3f2c:	4c050513          	addi	a0,a0,1216 # 93e8 <schedule_dm+0x1598>
+    3f2c:	4b850513          	addi	a0,a0,1208 # 93e0 <schedule_dm+0x1592>
     3f30:	00003097          	auipc	ra,0x3
     3f34:	1ba080e7          	jalr	442(ra) # 70ea <chdir>
     3f38:	87aa                	mv	a5,a0
@@ -6443,7 +6443,7 @@ subdir(char *s)
     printf("%s: chdir dd/../../dd failed\n", s);
     3f3c:	fd843583          	ld	a1,-40(s0)
     3f40:	00005517          	auipc	a0,0x5
-    3f44:	4b850513          	addi	a0,a0,1208 # 93f8 <schedule_dm+0x15a8>
+    3f44:	4b050513          	addi	a0,a0,1200 # 93f0 <schedule_dm+0x15a2>
     3f48:	00003097          	auipc	ra,0x3
     3f4c:	678080e7          	jalr	1656(ra) # 75c0 <printf>
     exit(1);
@@ -6453,7 +6453,7 @@ subdir(char *s)
   }
   if(chdir("dd/../../../dd") != 0){
     3f5a:	00005517          	auipc	a0,0x5
-    3f5e:	4be50513          	addi	a0,a0,1214 # 9418 <schedule_dm+0x15c8>
+    3f5e:	4b650513          	addi	a0,a0,1206 # 9410 <schedule_dm+0x15c2>
     3f62:	00003097          	auipc	ra,0x3
     3f66:	188080e7          	jalr	392(ra) # 70ea <chdir>
     3f6a:	87aa                	mv	a5,a0
@@ -6461,7 +6461,7 @@ subdir(char *s)
     printf("chdir dd/../../dd failed\n", s);
     3f6e:	fd843583          	ld	a1,-40(s0)
     3f72:	00005517          	auipc	a0,0x5
-    3f76:	4b650513          	addi	a0,a0,1206 # 9428 <schedule_dm+0x15d8>
+    3f76:	4ae50513          	addi	a0,a0,1198 # 9420 <schedule_dm+0x15d2>
     3f7a:	00003097          	auipc	ra,0x3
     3f7e:	646080e7          	jalr	1606(ra) # 75c0 <printf>
     exit(1);
@@ -6471,7 +6471,7 @@ subdir(char *s)
   }
   if(chdir("./..") != 0){
     3f8c:	00005517          	auipc	a0,0x5
-    3f90:	4bc50513          	addi	a0,a0,1212 # 9448 <schedule_dm+0x15f8>
+    3f90:	4b450513          	addi	a0,a0,1204 # 9440 <schedule_dm+0x15f2>
     3f94:	00003097          	auipc	ra,0x3
     3f98:	156080e7          	jalr	342(ra) # 70ea <chdir>
     3f9c:	87aa                	mv	a5,a0
@@ -6479,7 +6479,7 @@ subdir(char *s)
     printf("%s: chdir ./.. failed\n", s);
     3fa0:	fd843583          	ld	a1,-40(s0)
     3fa4:	00005517          	auipc	a0,0x5
-    3fa8:	4ac50513          	addi	a0,a0,1196 # 9450 <schedule_dm+0x1600>
+    3fa8:	4a450513          	addi	a0,a0,1188 # 9448 <schedule_dm+0x15fa>
     3fac:	00003097          	auipc	ra,0x3
     3fb0:	614080e7          	jalr	1556(ra) # 75c0 <printf>
     exit(1);
@@ -6491,7 +6491,7 @@ subdir(char *s)
   fd = open("dd/dd/ffff", 0);
     3fbe:	4581                	li	a1,0
     3fc0:	00005517          	auipc	a0,0x5
-    3fc4:	39050513          	addi	a0,a0,912 # 9350 <schedule_dm+0x1500>
+    3fc4:	38850513          	addi	a0,a0,904 # 9348 <schedule_dm+0x14fa>
     3fc8:	00003097          	auipc	ra,0x3
     3fcc:	0f2080e7          	jalr	242(ra) # 70ba <open>
     3fd0:	87aa                	mv	a5,a0
@@ -6503,7 +6503,7 @@ subdir(char *s)
     printf("%s: open dd/dd/ffff failed\n", s);
     3fe0:	fd843583          	ld	a1,-40(s0)
     3fe4:	00005517          	auipc	a0,0x5
-    3fe8:	48450513          	addi	a0,a0,1156 # 9468 <schedule_dm+0x1618>
+    3fe8:	47c50513          	addi	a0,a0,1148 # 9460 <schedule_dm+0x1612>
     3fec:	00003097          	auipc	ra,0x3
     3ff0:	5d4080e7          	jalr	1492(ra) # 75c0 <printf>
     exit(1);
@@ -6514,8 +6514,8 @@ subdir(char *s)
   if(read(fd, buf, sizeof(buf)) != 2){
     3ffe:	fec42783          	lw	a5,-20(s0)
     4002:	660d                	lui	a2,0x3
-    4004:	00007597          	auipc	a1,0x7
-    4008:	80458593          	addi	a1,a1,-2044 # a808 <buf>
+    4004:	00006597          	auipc	a1,0x6
+    4008:	7fc58593          	addi	a1,a1,2044 # a800 <buf>
     400c:	853e                	mv	a0,a5
     400e:	00003097          	auipc	ra,0x3
     4012:	084080e7          	jalr	132(ra) # 7092 <read>
@@ -6526,7 +6526,7 @@ subdir(char *s)
     printf("%s: read dd/dd/ffff wrong len\n", s);
     4020:	fd843583          	ld	a1,-40(s0)
     4024:	00005517          	auipc	a0,0x5
-    4028:	46450513          	addi	a0,a0,1124 # 9488 <schedule_dm+0x1638>
+    4028:	45c50513          	addi	a0,a0,1116 # 9480 <schedule_dm+0x1632>
     402c:	00003097          	auipc	ra,0x3
     4030:	594080e7          	jalr	1428(ra) # 75c0 <printf>
     exit(1);
@@ -6543,7 +6543,7 @@ subdir(char *s)
   if(open("dd/dd/ff", O_RDONLY) >= 0){
     404c:	4581                	li	a1,0
     404e:	00005517          	auipc	a0,0x5
-    4052:	27a50513          	addi	a0,a0,634 # 92c8 <schedule_dm+0x1478>
+    4052:	27250513          	addi	a0,a0,626 # 92c0 <schedule_dm+0x1472>
     4056:	00003097          	auipc	ra,0x3
     405a:	064080e7          	jalr	100(ra) # 70ba <open>
     405e:	87aa                	mv	a5,a0
@@ -6551,7 +6551,7 @@ subdir(char *s)
     printf("%s: open (unlinked) dd/dd/ff succeeded!\n", s);
     4064:	fd843583          	ld	a1,-40(s0)
     4068:	00005517          	auipc	a0,0x5
-    406c:	44050513          	addi	a0,a0,1088 # 94a8 <schedule_dm+0x1658>
+    406c:	43850513          	addi	a0,a0,1080 # 94a0 <schedule_dm+0x1652>
     4070:	00003097          	auipc	ra,0x3
     4074:	550080e7          	jalr	1360(ra) # 75c0 <printf>
     exit(1);
@@ -6563,7 +6563,7 @@ subdir(char *s)
   if(open("dd/ff/ff", O_CREATE|O_RDWR) >= 0){
     4082:	20200593          	li	a1,514
     4086:	00005517          	auipc	a0,0x5
-    408a:	45250513          	addi	a0,a0,1106 # 94d8 <schedule_dm+0x1688>
+    408a:	44a50513          	addi	a0,a0,1098 # 94d0 <schedule_dm+0x1682>
     408e:	00003097          	auipc	ra,0x3
     4092:	02c080e7          	jalr	44(ra) # 70ba <open>
     4096:	87aa                	mv	a5,a0
@@ -6571,7 +6571,7 @@ subdir(char *s)
     printf("%s: create dd/ff/ff succeeded!\n", s);
     409c:	fd843583          	ld	a1,-40(s0)
     40a0:	00005517          	auipc	a0,0x5
-    40a4:	44850513          	addi	a0,a0,1096 # 94e8 <schedule_dm+0x1698>
+    40a4:	44050513          	addi	a0,a0,1088 # 94e0 <schedule_dm+0x1692>
     40a8:	00003097          	auipc	ra,0x3
     40ac:	518080e7          	jalr	1304(ra) # 75c0 <printf>
     exit(1);
@@ -6582,7 +6582,7 @@ subdir(char *s)
   if(open("dd/xx/ff", O_CREATE|O_RDWR) >= 0){
     40ba:	20200593          	li	a1,514
     40be:	00005517          	auipc	a0,0x5
-    40c2:	44a50513          	addi	a0,a0,1098 # 9508 <schedule_dm+0x16b8>
+    40c2:	44250513          	addi	a0,a0,1090 # 9500 <schedule_dm+0x16b2>
     40c6:	00003097          	auipc	ra,0x3
     40ca:	ff4080e7          	jalr	-12(ra) # 70ba <open>
     40ce:	87aa                	mv	a5,a0
@@ -6590,7 +6590,7 @@ subdir(char *s)
     printf("%s: create dd/xx/ff succeeded!\n", s);
     40d4:	fd843583          	ld	a1,-40(s0)
     40d8:	00005517          	auipc	a0,0x5
-    40dc:	44050513          	addi	a0,a0,1088 # 9518 <schedule_dm+0x16c8>
+    40dc:	43850513          	addi	a0,a0,1080 # 9510 <schedule_dm+0x16c2>
     40e0:	00003097          	auipc	ra,0x3
     40e4:	4e0080e7          	jalr	1248(ra) # 75c0 <printf>
     exit(1);
@@ -6601,7 +6601,7 @@ subdir(char *s)
   if(open("dd", O_CREATE) >= 0){
     40f2:	20000593          	li	a1,512
     40f6:	00005517          	auipc	a0,0x5
-    40fa:	13250513          	addi	a0,a0,306 # 9228 <schedule_dm+0x13d8>
+    40fa:	12a50513          	addi	a0,a0,298 # 9220 <schedule_dm+0x13d2>
     40fe:	00003097          	auipc	ra,0x3
     4102:	fbc080e7          	jalr	-68(ra) # 70ba <open>
     4106:	87aa                	mv	a5,a0
@@ -6609,7 +6609,7 @@ subdir(char *s)
     printf("%s: create dd succeeded!\n", s);
     410c:	fd843583          	ld	a1,-40(s0)
     4110:	00005517          	auipc	a0,0x5
-    4114:	42850513          	addi	a0,a0,1064 # 9538 <schedule_dm+0x16e8>
+    4114:	42050513          	addi	a0,a0,1056 # 9530 <schedule_dm+0x16e2>
     4118:	00003097          	auipc	ra,0x3
     411c:	4a8080e7          	jalr	1192(ra) # 75c0 <printf>
     exit(1);
@@ -6620,7 +6620,7 @@ subdir(char *s)
   if(open("dd", O_RDWR) >= 0){
     412a:	4589                	li	a1,2
     412c:	00005517          	auipc	a0,0x5
-    4130:	0fc50513          	addi	a0,a0,252 # 9228 <schedule_dm+0x13d8>
+    4130:	0f450513          	addi	a0,a0,244 # 9220 <schedule_dm+0x13d2>
     4134:	00003097          	auipc	ra,0x3
     4138:	f86080e7          	jalr	-122(ra) # 70ba <open>
     413c:	87aa                	mv	a5,a0
@@ -6628,7 +6628,7 @@ subdir(char *s)
     printf("%s: open dd rdwr succeeded!\n", s);
     4142:	fd843583          	ld	a1,-40(s0)
     4146:	00005517          	auipc	a0,0x5
-    414a:	41250513          	addi	a0,a0,1042 # 9558 <schedule_dm+0x1708>
+    414a:	40a50513          	addi	a0,a0,1034 # 9550 <schedule_dm+0x1702>
     414e:	00003097          	auipc	ra,0x3
     4152:	472080e7          	jalr	1138(ra) # 75c0 <printf>
     exit(1);
@@ -6639,7 +6639,7 @@ subdir(char *s)
   if(open("dd", O_WRONLY) >= 0){
     4160:	4585                	li	a1,1
     4162:	00005517          	auipc	a0,0x5
-    4166:	0c650513          	addi	a0,a0,198 # 9228 <schedule_dm+0x13d8>
+    4166:	0be50513          	addi	a0,a0,190 # 9220 <schedule_dm+0x13d2>
     416a:	00003097          	auipc	ra,0x3
     416e:	f50080e7          	jalr	-176(ra) # 70ba <open>
     4172:	87aa                	mv	a5,a0
@@ -6647,7 +6647,7 @@ subdir(char *s)
     printf("%s: open dd wronly succeeded!\n", s);
     4178:	fd843583          	ld	a1,-40(s0)
     417c:	00005517          	auipc	a0,0x5
-    4180:	3fc50513          	addi	a0,a0,1020 # 9578 <schedule_dm+0x1728>
+    4180:	3f450513          	addi	a0,a0,1012 # 9570 <schedule_dm+0x1722>
     4184:	00003097          	auipc	ra,0x3
     4188:	43c080e7          	jalr	1084(ra) # 75c0 <printf>
     exit(1);
@@ -6657,9 +6657,9 @@ subdir(char *s)
   }
   if(link("dd/ff/ff", "dd/dd/xx") == 0){
     4196:	00005597          	auipc	a1,0x5
-    419a:	40258593          	addi	a1,a1,1026 # 9598 <schedule_dm+0x1748>
+    419a:	3fa58593          	addi	a1,a1,1018 # 9590 <schedule_dm+0x1742>
     419e:	00005517          	auipc	a0,0x5
-    41a2:	33a50513          	addi	a0,a0,826 # 94d8 <schedule_dm+0x1688>
+    41a2:	33250513          	addi	a0,a0,818 # 94d0 <schedule_dm+0x1682>
     41a6:	00003097          	auipc	ra,0x3
     41aa:	f34080e7          	jalr	-204(ra) # 70da <link>
     41ae:	87aa                	mv	a5,a0
@@ -6667,7 +6667,7 @@ subdir(char *s)
     printf("%s: link dd/ff/ff dd/dd/xx succeeded!\n", s);
     41b2:	fd843583          	ld	a1,-40(s0)
     41b6:	00005517          	auipc	a0,0x5
-    41ba:	3f250513          	addi	a0,a0,1010 # 95a8 <schedule_dm+0x1758>
+    41ba:	3ea50513          	addi	a0,a0,1002 # 95a0 <schedule_dm+0x1752>
     41be:	00003097          	auipc	ra,0x3
     41c2:	402080e7          	jalr	1026(ra) # 75c0 <printf>
     exit(1);
@@ -6677,9 +6677,9 @@ subdir(char *s)
   }
   if(link("dd/xx/ff", "dd/dd/xx") == 0){
     41d0:	00005597          	auipc	a1,0x5
-    41d4:	3c858593          	addi	a1,a1,968 # 9598 <schedule_dm+0x1748>
+    41d4:	3c058593          	addi	a1,a1,960 # 9590 <schedule_dm+0x1742>
     41d8:	00005517          	auipc	a0,0x5
-    41dc:	33050513          	addi	a0,a0,816 # 9508 <schedule_dm+0x16b8>
+    41dc:	32850513          	addi	a0,a0,808 # 9500 <schedule_dm+0x16b2>
     41e0:	00003097          	auipc	ra,0x3
     41e4:	efa080e7          	jalr	-262(ra) # 70da <link>
     41e8:	87aa                	mv	a5,a0
@@ -6687,7 +6687,7 @@ subdir(char *s)
     printf("%s: link dd/xx/ff dd/dd/xx succeeded!\n", s);
     41ec:	fd843583          	ld	a1,-40(s0)
     41f0:	00005517          	auipc	a0,0x5
-    41f4:	3e050513          	addi	a0,a0,992 # 95d0 <schedule_dm+0x1780>
+    41f4:	3d850513          	addi	a0,a0,984 # 95c8 <schedule_dm+0x177a>
     41f8:	00003097          	auipc	ra,0x3
     41fc:	3c8080e7          	jalr	968(ra) # 75c0 <printf>
     exit(1);
@@ -6697,9 +6697,9 @@ subdir(char *s)
   }
   if(link("dd/ff", "dd/dd/ffff") == 0){
     420a:	00005597          	auipc	a1,0x5
-    420e:	14658593          	addi	a1,a1,326 # 9350 <schedule_dm+0x1500>
+    420e:	13e58593          	addi	a1,a1,318 # 9348 <schedule_dm+0x14fa>
     4212:	00005517          	auipc	a0,0x5
-    4216:	03650513          	addi	a0,a0,54 # 9248 <schedule_dm+0x13f8>
+    4216:	02e50513          	addi	a0,a0,46 # 9240 <schedule_dm+0x13f2>
     421a:	00003097          	auipc	ra,0x3
     421e:	ec0080e7          	jalr	-320(ra) # 70da <link>
     4222:	87aa                	mv	a5,a0
@@ -6707,7 +6707,7 @@ subdir(char *s)
     printf("%s: link dd/ff dd/dd/ffff succeeded!\n", s);
     4226:	fd843583          	ld	a1,-40(s0)
     422a:	00005517          	auipc	a0,0x5
-    422e:	3ce50513          	addi	a0,a0,974 # 95f8 <schedule_dm+0x17a8>
+    422e:	3c650513          	addi	a0,a0,966 # 95f0 <schedule_dm+0x17a2>
     4232:	00003097          	auipc	ra,0x3
     4236:	38e080e7          	jalr	910(ra) # 75c0 <printf>
     exit(1);
@@ -6717,7 +6717,7 @@ subdir(char *s)
   }
   if(mkdir("dd/ff/ff") == 0){
     4244:	00005517          	auipc	a0,0x5
-    4248:	29450513          	addi	a0,a0,660 # 94d8 <schedule_dm+0x1688>
+    4248:	28c50513          	addi	a0,a0,652 # 94d0 <schedule_dm+0x1682>
     424c:	00003097          	auipc	ra,0x3
     4250:	e96080e7          	jalr	-362(ra) # 70e2 <mkdir>
     4254:	87aa                	mv	a5,a0
@@ -6725,7 +6725,7 @@ subdir(char *s)
     printf("%s: mkdir dd/ff/ff succeeded!\n", s);
     4258:	fd843583          	ld	a1,-40(s0)
     425c:	00005517          	auipc	a0,0x5
-    4260:	3c450513          	addi	a0,a0,964 # 9620 <schedule_dm+0x17d0>
+    4260:	3bc50513          	addi	a0,a0,956 # 9618 <schedule_dm+0x17ca>
     4264:	00003097          	auipc	ra,0x3
     4268:	35c080e7          	jalr	860(ra) # 75c0 <printf>
     exit(1);
@@ -6735,7 +6735,7 @@ subdir(char *s)
   }
   if(mkdir("dd/xx/ff") == 0){
     4276:	00005517          	auipc	a0,0x5
-    427a:	29250513          	addi	a0,a0,658 # 9508 <schedule_dm+0x16b8>
+    427a:	28a50513          	addi	a0,a0,650 # 9500 <schedule_dm+0x16b2>
     427e:	00003097          	auipc	ra,0x3
     4282:	e64080e7          	jalr	-412(ra) # 70e2 <mkdir>
     4286:	87aa                	mv	a5,a0
@@ -6743,7 +6743,7 @@ subdir(char *s)
     printf("%s: mkdir dd/xx/ff succeeded!\n", s);
     428a:	fd843583          	ld	a1,-40(s0)
     428e:	00005517          	auipc	a0,0x5
-    4292:	3b250513          	addi	a0,a0,946 # 9640 <schedule_dm+0x17f0>
+    4292:	3aa50513          	addi	a0,a0,938 # 9638 <schedule_dm+0x17ea>
     4296:	00003097          	auipc	ra,0x3
     429a:	32a080e7          	jalr	810(ra) # 75c0 <printf>
     exit(1);
@@ -6753,7 +6753,7 @@ subdir(char *s)
   }
   if(mkdir("dd/dd/ffff") == 0){
     42a8:	00005517          	auipc	a0,0x5
-    42ac:	0a850513          	addi	a0,a0,168 # 9350 <schedule_dm+0x1500>
+    42ac:	0a050513          	addi	a0,a0,160 # 9348 <schedule_dm+0x14fa>
     42b0:	00003097          	auipc	ra,0x3
     42b4:	e32080e7          	jalr	-462(ra) # 70e2 <mkdir>
     42b8:	87aa                	mv	a5,a0
@@ -6761,7 +6761,7 @@ subdir(char *s)
     printf("%s: mkdir dd/dd/ffff succeeded!\n", s);
     42bc:	fd843583          	ld	a1,-40(s0)
     42c0:	00005517          	auipc	a0,0x5
-    42c4:	3a050513          	addi	a0,a0,928 # 9660 <schedule_dm+0x1810>
+    42c4:	39850513          	addi	a0,a0,920 # 9658 <schedule_dm+0x180a>
     42c8:	00003097          	auipc	ra,0x3
     42cc:	2f8080e7          	jalr	760(ra) # 75c0 <printf>
     exit(1);
@@ -6771,7 +6771,7 @@ subdir(char *s)
   }
   if(unlink("dd/xx/ff") == 0){
     42da:	00005517          	auipc	a0,0x5
-    42de:	22e50513          	addi	a0,a0,558 # 9508 <schedule_dm+0x16b8>
+    42de:	22650513          	addi	a0,a0,550 # 9500 <schedule_dm+0x16b2>
     42e2:	00003097          	auipc	ra,0x3
     42e6:	de8080e7          	jalr	-536(ra) # 70ca <unlink>
     42ea:	87aa                	mv	a5,a0
@@ -6779,7 +6779,7 @@ subdir(char *s)
     printf("%s: unlink dd/xx/ff succeeded!\n", s);
     42ee:	fd843583          	ld	a1,-40(s0)
     42f2:	00005517          	auipc	a0,0x5
-    42f6:	39650513          	addi	a0,a0,918 # 9688 <schedule_dm+0x1838>
+    42f6:	38e50513          	addi	a0,a0,910 # 9680 <schedule_dm+0x1832>
     42fa:	00003097          	auipc	ra,0x3
     42fe:	2c6080e7          	jalr	710(ra) # 75c0 <printf>
     exit(1);
@@ -6789,7 +6789,7 @@ subdir(char *s)
   }
   if(unlink("dd/ff/ff") == 0){
     430c:	00005517          	auipc	a0,0x5
-    4310:	1cc50513          	addi	a0,a0,460 # 94d8 <schedule_dm+0x1688>
+    4310:	1c450513          	addi	a0,a0,452 # 94d0 <schedule_dm+0x1682>
     4314:	00003097          	auipc	ra,0x3
     4318:	db6080e7          	jalr	-586(ra) # 70ca <unlink>
     431c:	87aa                	mv	a5,a0
@@ -6797,7 +6797,7 @@ subdir(char *s)
     printf("%s: unlink dd/ff/ff succeeded!\n", s);
     4320:	fd843583          	ld	a1,-40(s0)
     4324:	00005517          	auipc	a0,0x5
-    4328:	38450513          	addi	a0,a0,900 # 96a8 <schedule_dm+0x1858>
+    4328:	37c50513          	addi	a0,a0,892 # 96a0 <schedule_dm+0x1852>
     432c:	00003097          	auipc	ra,0x3
     4330:	294080e7          	jalr	660(ra) # 75c0 <printf>
     exit(1);
@@ -6807,7 +6807,7 @@ subdir(char *s)
   }
   if(chdir("dd/ff") == 0){
     433e:	00005517          	auipc	a0,0x5
-    4342:	f0a50513          	addi	a0,a0,-246 # 9248 <schedule_dm+0x13f8>
+    4342:	f0250513          	addi	a0,a0,-254 # 9240 <schedule_dm+0x13f2>
     4346:	00003097          	auipc	ra,0x3
     434a:	da4080e7          	jalr	-604(ra) # 70ea <chdir>
     434e:	87aa                	mv	a5,a0
@@ -6815,7 +6815,7 @@ subdir(char *s)
     printf("%s: chdir dd/ff succeeded!\n", s);
     4352:	fd843583          	ld	a1,-40(s0)
     4356:	00005517          	auipc	a0,0x5
-    435a:	37250513          	addi	a0,a0,882 # 96c8 <schedule_dm+0x1878>
+    435a:	36a50513          	addi	a0,a0,874 # 96c0 <schedule_dm+0x1872>
     435e:	00003097          	auipc	ra,0x3
     4362:	262080e7          	jalr	610(ra) # 75c0 <printf>
     exit(1);
@@ -6825,7 +6825,7 @@ subdir(char *s)
   }
   if(chdir("dd/xx") == 0){
     4370:	00005517          	auipc	a0,0x5
-    4374:	37850513          	addi	a0,a0,888 # 96e8 <schedule_dm+0x1898>
+    4374:	37050513          	addi	a0,a0,880 # 96e0 <schedule_dm+0x1892>
     4378:	00003097          	auipc	ra,0x3
     437c:	d72080e7          	jalr	-654(ra) # 70ea <chdir>
     4380:	87aa                	mv	a5,a0
@@ -6833,7 +6833,7 @@ subdir(char *s)
     printf("%s: chdir dd/xx succeeded!\n", s);
     4384:	fd843583          	ld	a1,-40(s0)
     4388:	00005517          	auipc	a0,0x5
-    438c:	36850513          	addi	a0,a0,872 # 96f0 <schedule_dm+0x18a0>
+    438c:	36050513          	addi	a0,a0,864 # 96e8 <schedule_dm+0x189a>
     4390:	00003097          	auipc	ra,0x3
     4394:	230080e7          	jalr	560(ra) # 75c0 <printf>
     exit(1);
@@ -6844,7 +6844,7 @@ subdir(char *s)
 
   if(unlink("dd/dd/ffff") != 0){
     43a2:	00005517          	auipc	a0,0x5
-    43a6:	fae50513          	addi	a0,a0,-82 # 9350 <schedule_dm+0x1500>
+    43a6:	fa650513          	addi	a0,a0,-90 # 9348 <schedule_dm+0x14fa>
     43aa:	00003097          	auipc	ra,0x3
     43ae:	d20080e7          	jalr	-736(ra) # 70ca <unlink>
     43b2:	87aa                	mv	a5,a0
@@ -6852,7 +6852,7 @@ subdir(char *s)
     printf("%s: unlink dd/dd/ff failed\n", s);
     43b6:	fd843583          	ld	a1,-40(s0)
     43ba:	00005517          	auipc	a0,0x5
-    43be:	fce50513          	addi	a0,a0,-50 # 9388 <schedule_dm+0x1538>
+    43be:	fc650513          	addi	a0,a0,-58 # 9380 <schedule_dm+0x1532>
     43c2:	00003097          	auipc	ra,0x3
     43c6:	1fe080e7          	jalr	510(ra) # 75c0 <printf>
     exit(1);
@@ -6862,7 +6862,7 @@ subdir(char *s)
   }
   if(unlink("dd/ff") != 0){
     43d4:	00005517          	auipc	a0,0x5
-    43d8:	e7450513          	addi	a0,a0,-396 # 9248 <schedule_dm+0x13f8>
+    43d8:	e6c50513          	addi	a0,a0,-404 # 9240 <schedule_dm+0x13f2>
     43dc:	00003097          	auipc	ra,0x3
     43e0:	cee080e7          	jalr	-786(ra) # 70ca <unlink>
     43e4:	87aa                	mv	a5,a0
@@ -6870,7 +6870,7 @@ subdir(char *s)
     printf("%s: unlink dd/ff failed\n", s);
     43e8:	fd843583          	ld	a1,-40(s0)
     43ec:	00005517          	auipc	a0,0x5
-    43f0:	32450513          	addi	a0,a0,804 # 9710 <schedule_dm+0x18c0>
+    43f0:	31c50513          	addi	a0,a0,796 # 9708 <schedule_dm+0x18ba>
     43f4:	00003097          	auipc	ra,0x3
     43f8:	1cc080e7          	jalr	460(ra) # 75c0 <printf>
     exit(1);
@@ -6880,7 +6880,7 @@ subdir(char *s)
   }
   if(unlink("dd") == 0){
     4406:	00005517          	auipc	a0,0x5
-    440a:	e2250513          	addi	a0,a0,-478 # 9228 <schedule_dm+0x13d8>
+    440a:	e1a50513          	addi	a0,a0,-486 # 9220 <schedule_dm+0x13d2>
     440e:	00003097          	auipc	ra,0x3
     4412:	cbc080e7          	jalr	-836(ra) # 70ca <unlink>
     4416:	87aa                	mv	a5,a0
@@ -6888,7 +6888,7 @@ subdir(char *s)
     printf("%s: unlink non-empty dd succeeded!\n", s);
     441a:	fd843583          	ld	a1,-40(s0)
     441e:	00005517          	auipc	a0,0x5
-    4422:	31250513          	addi	a0,a0,786 # 9730 <schedule_dm+0x18e0>
+    4422:	30a50513          	addi	a0,a0,778 # 9728 <schedule_dm+0x18da>
     4426:	00003097          	auipc	ra,0x3
     442a:	19a080e7          	jalr	410(ra) # 75c0 <printf>
     exit(1);
@@ -6898,7 +6898,7 @@ subdir(char *s)
   }
   if(unlink("dd/dd") < 0){
     4438:	00005517          	auipc	a0,0x5
-    443c:	32050513          	addi	a0,a0,800 # 9758 <schedule_dm+0x1908>
+    443c:	31850513          	addi	a0,a0,792 # 9750 <schedule_dm+0x1902>
     4440:	00003097          	auipc	ra,0x3
     4444:	c8a080e7          	jalr	-886(ra) # 70ca <unlink>
     4448:	87aa                	mv	a5,a0
@@ -6906,7 +6906,7 @@ subdir(char *s)
     printf("%s: unlink dd/dd failed\n", s);
     444e:	fd843583          	ld	a1,-40(s0)
     4452:	00005517          	auipc	a0,0x5
-    4456:	30e50513          	addi	a0,a0,782 # 9760 <schedule_dm+0x1910>
+    4456:	30650513          	addi	a0,a0,774 # 9758 <schedule_dm+0x190a>
     445a:	00003097          	auipc	ra,0x3
     445e:	166080e7          	jalr	358(ra) # 75c0 <printf>
     exit(1);
@@ -6916,7 +6916,7 @@ subdir(char *s)
   }
   if(unlink("dd") < 0){
     446c:	00005517          	auipc	a0,0x5
-    4470:	dbc50513          	addi	a0,a0,-580 # 9228 <schedule_dm+0x13d8>
+    4470:	db450513          	addi	a0,a0,-588 # 9220 <schedule_dm+0x13d2>
     4474:	00003097          	auipc	ra,0x3
     4478:	c56080e7          	jalr	-938(ra) # 70ca <unlink>
     447c:	87aa                	mv	a5,a0
@@ -6924,7 +6924,7 @@ subdir(char *s)
     printf("%s: unlink dd failed\n", s);
     4482:	fd843583          	ld	a1,-40(s0)
     4486:	00005517          	auipc	a0,0x5
-    448a:	2fa50513          	addi	a0,a0,762 # 9780 <schedule_dm+0x1930>
+    448a:	2f250513          	addi	a0,a0,754 # 9778 <schedule_dm+0x192a>
     448e:	00003097          	auipc	ra,0x3
     4492:	132080e7          	jalr	306(ra) # 75c0 <printf>
     exit(1);
@@ -6954,7 +6954,7 @@ bigwrite(char *s)
 
   unlink("bigwrite");
     44b6:	00004517          	auipc	a0,0x4
-    44ba:	d7a50513          	addi	a0,a0,-646 # 8230 <schedule_dm+0x3e0>
+    44ba:	d7250513          	addi	a0,a0,-654 # 8228 <schedule_dm+0x3da>
     44be:	00003097          	auipc	ra,0x3
     44c2:	c0c080e7          	jalr	-1012(ra) # 70ca <unlink>
   for(sz = 499; sz < (MAXOPBLOCKS+2)*BSIZE; sz += 471){
@@ -6964,7 +6964,7 @@ bigwrite(char *s)
     fd = open("bigwrite", O_CREATE | O_RDWR);
     44d0:	20200593          	li	a1,514
     44d4:	00004517          	auipc	a0,0x4
-    44d8:	d5c50513          	addi	a0,a0,-676 # 8230 <schedule_dm+0x3e0>
+    44d8:	d5450513          	addi	a0,a0,-684 # 8228 <schedule_dm+0x3da>
     44dc:	00003097          	auipc	ra,0x3
     44e0:	bde080e7          	jalr	-1058(ra) # 70ba <open>
     44e4:	87aa                	mv	a5,a0
@@ -6976,7 +6976,7 @@ bigwrite(char *s)
       printf("%s: cannot create bigwrite\n", s);
     44f4:	fd843583          	ld	a1,-40(s0)
     44f8:	00005517          	auipc	a0,0x5
-    44fc:	2a050513          	addi	a0,a0,672 # 9798 <schedule_dm+0x1948>
+    44fc:	29850513          	addi	a0,a0,664 # 9790 <schedule_dm+0x1942>
     4500:	00003097          	auipc	ra,0x3
     4504:	0c0080e7          	jalr	192(ra) # 75c0 <printf>
       exit(1);
@@ -6993,7 +6993,7 @@ bigwrite(char *s)
     451c:	fe442783          	lw	a5,-28(s0)
     4520:	863a                	mv	a2,a4
     4522:	00006597          	auipc	a1,0x6
-    4526:	2e658593          	addi	a1,a1,742 # a808 <buf>
+    4526:	2de58593          	addi	a1,a1,734 # a800 <buf>
     452a:	853e                	mv	a0,a5
     452c:	00003097          	auipc	ra,0x3
     4530:	b6e080e7          	jalr	-1170(ra) # 709a <write>
@@ -7012,7 +7012,7 @@ bigwrite(char *s)
     4554:	863e                	mv	a2,a5
     4556:	fd843583          	ld	a1,-40(s0)
     455a:	00005517          	auipc	a0,0x5
-    455e:	25e50513          	addi	a0,a0,606 # 97b8 <schedule_dm+0x1968>
+    455e:	25650513          	addi	a0,a0,598 # 97b0 <schedule_dm+0x1962>
     4562:	00003097          	auipc	ra,0x3
     4566:	05e080e7          	jalr	94(ra) # 75c0 <printf>
         exit(1);
@@ -7036,7 +7036,7 @@ bigwrite(char *s)
     4596:	b10080e7          	jalr	-1264(ra) # 70a2 <close>
     unlink("bigwrite");
     459a:	00004517          	auipc	a0,0x4
-    459e:	c9650513          	addi	a0,a0,-874 # 8230 <schedule_dm+0x3e0>
+    459e:	c8e50513          	addi	a0,a0,-882 # 8228 <schedule_dm+0x3da>
     45a2:	00003097          	auipc	ra,0x3
     45a6:	b28080e7          	jalr	-1240(ra) # 70ca <unlink>
   for(sz = 499; sz < (MAXOPBLOCKS+2)*BSIZE; sz += 471){
@@ -7089,7 +7089,7 @@ manywrites(char *s)
     4602:	0007df63          	bgez	a5,4620 <manywrites+0x50>
       printf("fork failed\n");
     4606:	00004517          	auipc	a0,0x4
-    460a:	f8a50513          	addi	a0,a0,-118 # 8590 <schedule_dm+0x740>
+    460a:	f8250513          	addi	a0,a0,-126 # 8588 <schedule_dm+0x73a>
     460e:	00003097          	auipc	ra,0x3
     4612:	fb2080e7          	jalr	-78(ra) # 75c0 <printf>
       exit(1);
@@ -7143,7 +7143,7 @@ manywrites(char *s)
     468a:	863e                	mv	a2,a5
     468c:	fa843583          	ld	a1,-88(s0)
     4690:	00005517          	auipc	a0,0x5
-    4694:	14050513          	addi	a0,a0,320 # 97d0 <schedule_dm+0x1980>
+    4694:	13850513          	addi	a0,a0,312 # 97c8 <schedule_dm+0x197a>
     4698:	00003097          	auipc	ra,0x3
     469c:	f28080e7          	jalr	-216(ra) # 75c0 <printf>
             exit(1);
@@ -7159,7 +7159,7 @@ manywrites(char *s)
     46b4:	fd042783          	lw	a5,-48(s0)
     46b8:	863a                	mv	a2,a4
     46ba:	00006597          	auipc	a1,0x6
-    46be:	14e58593          	addi	a1,a1,334 # a808 <buf>
+    46be:	14658593          	addi	a1,a1,326 # a800 <buf>
     46c2:	853e                	mv	a0,a5
     46c4:	00003097          	auipc	ra,0x3
     46c8:	9d6080e7          	jalr	-1578(ra) # 709a <write>
@@ -7178,7 +7178,7 @@ manywrites(char *s)
     46ec:	863e                	mv	a2,a5
     46ee:	fa843583          	ld	a1,-88(s0)
     46f2:	00005517          	auipc	a0,0x5
-    46f6:	0c650513          	addi	a0,a0,198 # 97b8 <schedule_dm+0x1968>
+    46f6:	0be50513          	addi	a0,a0,190 # 97b0 <schedule_dm+0x1962>
     46fa:	00003097          	auipc	ra,0x3
     46fe:	ec6080e7          	jalr	-314(ra) # 75c0 <printf>
             exit(1);
@@ -7287,13 +7287,13 @@ bigfile(char *s)
 
   unlink("bigfile.dat");
     47ea:	00005517          	auipc	a0,0x5
-    47ee:	ffe50513          	addi	a0,a0,-2 # 97e8 <schedule_dm+0x1998>
+    47ee:	ff650513          	addi	a0,a0,-10 # 97e0 <schedule_dm+0x1992>
     47f2:	00003097          	auipc	ra,0x3
     47f6:	8d8080e7          	jalr	-1832(ra) # 70ca <unlink>
   fd = open("bigfile.dat", O_CREATE | O_RDWR);
     47fa:	20200593          	li	a1,514
     47fe:	00005517          	auipc	a0,0x5
-    4802:	fea50513          	addi	a0,a0,-22 # 97e8 <schedule_dm+0x1998>
+    4802:	fe250513          	addi	a0,a0,-30 # 97e0 <schedule_dm+0x1992>
     4806:	00003097          	auipc	ra,0x3
     480a:	8b4080e7          	jalr	-1868(ra) # 70ba <open>
     480e:	87aa                	mv	a5,a0
@@ -7305,7 +7305,7 @@ bigfile(char *s)
     printf("%s: cannot create bigfile", s);
     481e:	fd843583          	ld	a1,-40(s0)
     4822:	00005517          	auipc	a0,0x5
-    4826:	fd650513          	addi	a0,a0,-42 # 97f8 <schedule_dm+0x19a8>
+    4826:	fce50513          	addi	a0,a0,-50 # 97f0 <schedule_dm+0x19a2>
     482a:	00003097          	auipc	ra,0x3
     482e:	d96080e7          	jalr	-618(ra) # 75c0 <printf>
     exit(1);
@@ -7321,14 +7321,14 @@ bigfile(char *s)
     4846:	25800613          	li	a2,600
     484a:	85be                	mv	a1,a5
     484c:	00006517          	auipc	a0,0x6
-    4850:	fbc50513          	addi	a0,a0,-68 # a808 <buf>
+    4850:	fb450513          	addi	a0,a0,-76 # a800 <buf>
     4854:	00002097          	auipc	ra,0x2
     4858:	47c080e7          	jalr	1148(ra) # 6cd0 <memset>
     if(write(fd, buf, SZ) != SZ){
     485c:	fe442783          	lw	a5,-28(s0)
     4860:	25800613          	li	a2,600
     4864:	00006597          	auipc	a1,0x6
-    4868:	fa458593          	addi	a1,a1,-92 # a808 <buf>
+    4868:	f9c58593          	addi	a1,a1,-100 # a800 <buf>
     486c:	853e                	mv	a0,a5
     486e:	00003097          	auipc	ra,0x3
     4872:	82c080e7          	jalr	-2004(ra) # 709a <write>
@@ -7339,7 +7339,7 @@ bigfile(char *s)
       printf("%s: write bigfile failed\n", s);
     4882:	fd843583          	ld	a1,-40(s0)
     4886:	00005517          	auipc	a0,0x5
-    488a:	f9250513          	addi	a0,a0,-110 # 9818 <schedule_dm+0x19c8>
+    488a:	f8a50513          	addi	a0,a0,-118 # 9810 <schedule_dm+0x19c2>
     488e:	00003097          	auipc	ra,0x3
     4892:	d32080e7          	jalr	-718(ra) # 75c0 <printf>
       exit(1);
@@ -7365,7 +7365,7 @@ bigfile(char *s)
   fd = open("bigfile.dat", 0);
     48c6:	4581                	li	a1,0
     48c8:	00005517          	auipc	a0,0x5
-    48cc:	f2050513          	addi	a0,a0,-224 # 97e8 <schedule_dm+0x1998>
+    48cc:	f1850513          	addi	a0,a0,-232 # 97e0 <schedule_dm+0x1992>
     48d0:	00002097          	auipc	ra,0x2
     48d4:	7ea080e7          	jalr	2026(ra) # 70ba <open>
     48d8:	87aa                	mv	a5,a0
@@ -7377,7 +7377,7 @@ bigfile(char *s)
     printf("%s: cannot open bigfile\n", s);
     48e8:	fd843583          	ld	a1,-40(s0)
     48ec:	00005517          	auipc	a0,0x5
-    48f0:	f4c50513          	addi	a0,a0,-180 # 9838 <schedule_dm+0x19e8>
+    48f0:	f4450513          	addi	a0,a0,-188 # 9830 <schedule_dm+0x19e2>
     48f4:	00003097          	auipc	ra,0x3
     48f8:	ccc080e7          	jalr	-820(ra) # 75c0 <printf>
     exit(1);
@@ -7393,7 +7393,7 @@ bigfile(char *s)
     490e:	fe442783          	lw	a5,-28(s0)
     4912:	12c00613          	li	a2,300
     4916:	00006597          	auipc	a1,0x6
-    491a:	ef258593          	addi	a1,a1,-270 # a808 <buf>
+    491a:	eea58593          	addi	a1,a1,-278 # a800 <buf>
     491e:	853e                	mv	a0,a5
     4920:	00002097          	auipc	ra,0x2
     4924:	772080e7          	jalr	1906(ra) # 7092 <read>
@@ -7406,7 +7406,7 @@ bigfile(char *s)
       printf("%s: read bigfile failed\n", s);
     4938:	fd843583          	ld	a1,-40(s0)
     493c:	00005517          	auipc	a0,0x5
-    4940:	f1c50513          	addi	a0,a0,-228 # 9858 <schedule_dm+0x1a08>
+    4940:	f1450513          	addi	a0,a0,-236 # 9850 <schedule_dm+0x1a02>
     4944:	00003097          	auipc	ra,0x3
     4948:	c7c080e7          	jalr	-900(ra) # 75c0 <printf>
       exit(1);
@@ -7427,7 +7427,7 @@ bigfile(char *s)
       printf("%s: short read bigfile\n", s);
     496e:	fd843583          	ld	a1,-40(s0)
     4972:	00005517          	auipc	a0,0x5
-    4976:	f0650513          	addi	a0,a0,-250 # 9878 <schedule_dm+0x1a28>
+    4976:	efe50513          	addi	a0,a0,-258 # 9870 <schedule_dm+0x1a22>
     497a:	00003097          	auipc	ra,0x3
     497e:	c46080e7          	jalr	-954(ra) # 75c0 <printf>
       exit(1);
@@ -7437,7 +7437,7 @@ bigfile(char *s)
     }
     if(buf[0] != i/2 || buf[SZ/2-1] != i/2){
     498c:	00006797          	auipc	a5,0x6
-    4990:	e7c78793          	addi	a5,a5,-388 # a808 <buf>
+    4990:	e7478793          	addi	a5,a5,-396 # a800 <buf>
     4994:	0007c783          	lbu	a5,0(a5)
     4998:	0007869b          	sext.w	a3,a5
     499c:	fec42783          	lw	a5,-20(s0)
@@ -7448,7 +7448,7 @@ bigfile(char *s)
     49ac:	8736                	mv	a4,a3
     49ae:	02f71563          	bne	a4,a5,49d8 <bigfile+0x1fa>
     49b2:	00006797          	auipc	a5,0x6
-    49b6:	e5678793          	addi	a5,a5,-426 # a808 <buf>
+    49b6:	e4e78793          	addi	a5,a5,-434 # a800 <buf>
     49ba:	12b7c783          	lbu	a5,299(a5)
     49be:	0007869b          	sext.w	a3,a5
     49c2:	fec42783          	lw	a5,-20(s0)
@@ -7461,7 +7461,7 @@ bigfile(char *s)
       printf("%s: read bigfile wrong data\n", s);
     49d8:	fd843583          	ld	a1,-40(s0)
     49dc:	00005517          	auipc	a0,0x5
-    49e0:	eb450513          	addi	a0,a0,-332 # 9890 <schedule_dm+0x1a40>
+    49e0:	eac50513          	addi	a0,a0,-340 # 9888 <schedule_dm+0x1a3a>
     49e4:	00003097          	auipc	ra,0x3
     49e8:	bdc080e7          	jalr	-1060(ra) # 75c0 <printf>
       exit(1);
@@ -7497,7 +7497,7 @@ bigfile(char *s)
     printf("%s: read bigfile wrong total\n", s);
     4a32:	fd843583          	ld	a1,-40(s0)
     4a36:	00005517          	auipc	a0,0x5
-    4a3a:	e7a50513          	addi	a0,a0,-390 # 98b0 <schedule_dm+0x1a60>
+    4a3a:	e7250513          	addi	a0,a0,-398 # 98a8 <schedule_dm+0x1a5a>
     4a3e:	00003097          	auipc	ra,0x3
     4a42:	b82080e7          	jalr	-1150(ra) # 75c0 <printf>
     exit(1);
@@ -7507,7 +7507,7 @@ bigfile(char *s)
   }
   unlink("bigfile.dat");
     4a50:	00005517          	auipc	a0,0x5
-    4a54:	d9850513          	addi	a0,a0,-616 # 97e8 <schedule_dm+0x1998>
+    4a54:	d9050513          	addi	a0,a0,-624 # 97e0 <schedule_dm+0x1992>
     4a58:	00002097          	auipc	ra,0x2
     4a5c:	672080e7          	jalr	1650(ra) # 70ca <unlink>
 }
@@ -7533,7 +7533,7 @@ fourteen(char *s)
 
   if(mkdir("12345678901234") != 0){
     4a76:	00005517          	auipc	a0,0x5
-    4a7a:	e5a50513          	addi	a0,a0,-422 # 98d0 <schedule_dm+0x1a80>
+    4a7a:	e5250513          	addi	a0,a0,-430 # 98c8 <schedule_dm+0x1a7a>
     4a7e:	00002097          	auipc	ra,0x2
     4a82:	664080e7          	jalr	1636(ra) # 70e2 <mkdir>
     4a86:	87aa                	mv	a5,a0
@@ -7541,7 +7541,7 @@ fourteen(char *s)
     printf("%s: mkdir 12345678901234 failed\n", s);
     4a8a:	fd843583          	ld	a1,-40(s0)
     4a8e:	00005517          	auipc	a0,0x5
-    4a92:	e5250513          	addi	a0,a0,-430 # 98e0 <schedule_dm+0x1a90>
+    4a92:	e4a50513          	addi	a0,a0,-438 # 98d8 <schedule_dm+0x1a8a>
     4a96:	00003097          	auipc	ra,0x3
     4a9a:	b2a080e7          	jalr	-1238(ra) # 75c0 <printf>
     exit(1);
@@ -7551,7 +7551,7 @@ fourteen(char *s)
   }
   if(mkdir("12345678901234/123456789012345") != 0){
     4aa8:	00005517          	auipc	a0,0x5
-    4aac:	e6050513          	addi	a0,a0,-416 # 9908 <schedule_dm+0x1ab8>
+    4aac:	e5850513          	addi	a0,a0,-424 # 9900 <schedule_dm+0x1ab2>
     4ab0:	00002097          	auipc	ra,0x2
     4ab4:	632080e7          	jalr	1586(ra) # 70e2 <mkdir>
     4ab8:	87aa                	mv	a5,a0
@@ -7559,7 +7559,7 @@ fourteen(char *s)
     printf("%s: mkdir 12345678901234/123456789012345 failed\n", s);
     4abc:	fd843583          	ld	a1,-40(s0)
     4ac0:	00005517          	auipc	a0,0x5
-    4ac4:	e6850513          	addi	a0,a0,-408 # 9928 <schedule_dm+0x1ad8>
+    4ac4:	e6050513          	addi	a0,a0,-416 # 9920 <schedule_dm+0x1ad2>
     4ac8:	00003097          	auipc	ra,0x3
     4acc:	af8080e7          	jalr	-1288(ra) # 75c0 <printf>
     exit(1);
@@ -7570,7 +7570,7 @@ fourteen(char *s)
   fd = open("123456789012345/123456789012345/123456789012345", O_CREATE);
     4ada:	20000593          	li	a1,512
     4ade:	00005517          	auipc	a0,0x5
-    4ae2:	e8250513          	addi	a0,a0,-382 # 9960 <schedule_dm+0x1b10>
+    4ae2:	e7a50513          	addi	a0,a0,-390 # 9958 <schedule_dm+0x1b0a>
     4ae6:	00002097          	auipc	ra,0x2
     4aea:	5d4080e7          	jalr	1492(ra) # 70ba <open>
     4aee:	87aa                	mv	a5,a0
@@ -7582,7 +7582,7 @@ fourteen(char *s)
     printf("%s: create 123456789012345/123456789012345/123456789012345 failed\n", s);
     4afe:	fd843583          	ld	a1,-40(s0)
     4b02:	00005517          	auipc	a0,0x5
-    4b06:	e8e50513          	addi	a0,a0,-370 # 9990 <schedule_dm+0x1b40>
+    4b06:	e8650513          	addi	a0,a0,-378 # 9988 <schedule_dm+0x1b3a>
     4b0a:	00003097          	auipc	ra,0x3
     4b0e:	ab6080e7          	jalr	-1354(ra) # 75c0 <printf>
     exit(1);
@@ -7598,7 +7598,7 @@ fourteen(char *s)
   fd = open("12345678901234/12345678901234/12345678901234", 0);
     4b2a:	4581                	li	a1,0
     4b2c:	00005517          	auipc	a0,0x5
-    4b30:	eac50513          	addi	a0,a0,-340 # 99d8 <schedule_dm+0x1b88>
+    4b30:	ea450513          	addi	a0,a0,-348 # 99d0 <schedule_dm+0x1b82>
     4b34:	00002097          	auipc	ra,0x2
     4b38:	586080e7          	jalr	1414(ra) # 70ba <open>
     4b3c:	87aa                	mv	a5,a0
@@ -7610,7 +7610,7 @@ fourteen(char *s)
     printf("%s: open 12345678901234/12345678901234/12345678901234 failed\n", s);
     4b4c:	fd843583          	ld	a1,-40(s0)
     4b50:	00005517          	auipc	a0,0x5
-    4b54:	eb850513          	addi	a0,a0,-328 # 9a08 <schedule_dm+0x1bb8>
+    4b54:	eb050513          	addi	a0,a0,-336 # 9a00 <schedule_dm+0x1bb2>
     4b58:	00003097          	auipc	ra,0x3
     4b5c:	a68080e7          	jalr	-1432(ra) # 75c0 <printf>
     exit(1);
@@ -7626,7 +7626,7 @@ fourteen(char *s)
 
   if(mkdir("12345678901234/12345678901234") == 0){
     4b78:	00005517          	auipc	a0,0x5
-    4b7c:	ed050513          	addi	a0,a0,-304 # 9a48 <schedule_dm+0x1bf8>
+    4b7c:	ec850513          	addi	a0,a0,-312 # 9a40 <schedule_dm+0x1bf2>
     4b80:	00002097          	auipc	ra,0x2
     4b84:	562080e7          	jalr	1378(ra) # 70e2 <mkdir>
     4b88:	87aa                	mv	a5,a0
@@ -7634,7 +7634,7 @@ fourteen(char *s)
     printf("%s: mkdir 12345678901234/12345678901234 succeeded!\n", s);
     4b8c:	fd843583          	ld	a1,-40(s0)
     4b90:	00005517          	auipc	a0,0x5
-    4b94:	ed850513          	addi	a0,a0,-296 # 9a68 <schedule_dm+0x1c18>
+    4b94:	ed050513          	addi	a0,a0,-304 # 9a60 <schedule_dm+0x1c12>
     4b98:	00003097          	auipc	ra,0x3
     4b9c:	a28080e7          	jalr	-1496(ra) # 75c0 <printf>
     exit(1);
@@ -7644,7 +7644,7 @@ fourteen(char *s)
   }
   if(mkdir("123456789012345/12345678901234") == 0){
     4baa:	00005517          	auipc	a0,0x5
-    4bae:	ef650513          	addi	a0,a0,-266 # 9aa0 <schedule_dm+0x1c50>
+    4bae:	eee50513          	addi	a0,a0,-274 # 9a98 <schedule_dm+0x1c4a>
     4bb2:	00002097          	auipc	ra,0x2
     4bb6:	530080e7          	jalr	1328(ra) # 70e2 <mkdir>
     4bba:	87aa                	mv	a5,a0
@@ -7652,7 +7652,7 @@ fourteen(char *s)
     printf("%s: mkdir 12345678901234/123456789012345 succeeded!\n", s);
     4bbe:	fd843583          	ld	a1,-40(s0)
     4bc2:	00005517          	auipc	a0,0x5
-    4bc6:	efe50513          	addi	a0,a0,-258 # 9ac0 <schedule_dm+0x1c70>
+    4bc6:	ef650513          	addi	a0,a0,-266 # 9ab8 <schedule_dm+0x1c6a>
     4bca:	00003097          	auipc	ra,0x3
     4bce:	9f6080e7          	jalr	-1546(ra) # 75c0 <printf>
     exit(1);
@@ -7664,32 +7664,32 @@ fourteen(char *s)
   // clean up
   unlink("123456789012345/12345678901234");
     4bdc:	00005517          	auipc	a0,0x5
-    4be0:	ec450513          	addi	a0,a0,-316 # 9aa0 <schedule_dm+0x1c50>
+    4be0:	ebc50513          	addi	a0,a0,-324 # 9a98 <schedule_dm+0x1c4a>
     4be4:	00002097          	auipc	ra,0x2
     4be8:	4e6080e7          	jalr	1254(ra) # 70ca <unlink>
   unlink("12345678901234/12345678901234");
     4bec:	00005517          	auipc	a0,0x5
-    4bf0:	e5c50513          	addi	a0,a0,-420 # 9a48 <schedule_dm+0x1bf8>
+    4bf0:	e5450513          	addi	a0,a0,-428 # 9a40 <schedule_dm+0x1bf2>
     4bf4:	00002097          	auipc	ra,0x2
     4bf8:	4d6080e7          	jalr	1238(ra) # 70ca <unlink>
   unlink("12345678901234/12345678901234/12345678901234");
     4bfc:	00005517          	auipc	a0,0x5
-    4c00:	ddc50513          	addi	a0,a0,-548 # 99d8 <schedule_dm+0x1b88>
+    4c00:	dd450513          	addi	a0,a0,-556 # 99d0 <schedule_dm+0x1b82>
     4c04:	00002097          	auipc	ra,0x2
     4c08:	4c6080e7          	jalr	1222(ra) # 70ca <unlink>
   unlink("123456789012345/123456789012345/123456789012345");
     4c0c:	00005517          	auipc	a0,0x5
-    4c10:	d5450513          	addi	a0,a0,-684 # 9960 <schedule_dm+0x1b10>
+    4c10:	d4c50513          	addi	a0,a0,-692 # 9958 <schedule_dm+0x1b0a>
     4c14:	00002097          	auipc	ra,0x2
     4c18:	4b6080e7          	jalr	1206(ra) # 70ca <unlink>
   unlink("12345678901234/123456789012345");
     4c1c:	00005517          	auipc	a0,0x5
-    4c20:	cec50513          	addi	a0,a0,-788 # 9908 <schedule_dm+0x1ab8>
+    4c20:	ce450513          	addi	a0,a0,-796 # 9900 <schedule_dm+0x1ab2>
     4c24:	00002097          	auipc	ra,0x2
     4c28:	4a6080e7          	jalr	1190(ra) # 70ca <unlink>
   unlink("12345678901234");
     4c2c:	00005517          	auipc	a0,0x5
-    4c30:	ca450513          	addi	a0,a0,-860 # 98d0 <schedule_dm+0x1a80>
+    4c30:	c9c50513          	addi	a0,a0,-868 # 98c8 <schedule_dm+0x1a7a>
     4c34:	00002097          	auipc	ra,0x2
     4c38:	496080e7          	jalr	1174(ra) # 70ca <unlink>
 }
@@ -7711,7 +7711,7 @@ rmdot(char *s)
     4c4e:	fea43423          	sd	a0,-24(s0)
   if(mkdir("dots") != 0){
     4c52:	00005517          	auipc	a0,0x5
-    4c56:	ea650513          	addi	a0,a0,-346 # 9af8 <schedule_dm+0x1ca8>
+    4c56:	e9e50513          	addi	a0,a0,-354 # 9af0 <schedule_dm+0x1ca2>
     4c5a:	00002097          	auipc	ra,0x2
     4c5e:	488080e7          	jalr	1160(ra) # 70e2 <mkdir>
     4c62:	87aa                	mv	a5,a0
@@ -7719,7 +7719,7 @@ rmdot(char *s)
     printf("%s: mkdir dots failed\n", s);
     4c66:	fe843583          	ld	a1,-24(s0)
     4c6a:	00005517          	auipc	a0,0x5
-    4c6e:	e9650513          	addi	a0,a0,-362 # 9b00 <schedule_dm+0x1cb0>
+    4c6e:	e8e50513          	addi	a0,a0,-370 # 9af8 <schedule_dm+0x1caa>
     4c72:	00003097          	auipc	ra,0x3
     4c76:	94e080e7          	jalr	-1714(ra) # 75c0 <printf>
     exit(1);
@@ -7729,7 +7729,7 @@ rmdot(char *s)
   }
   if(chdir("dots") != 0){
     4c84:	00005517          	auipc	a0,0x5
-    4c88:	e7450513          	addi	a0,a0,-396 # 9af8 <schedule_dm+0x1ca8>
+    4c88:	e6c50513          	addi	a0,a0,-404 # 9af0 <schedule_dm+0x1ca2>
     4c8c:	00002097          	auipc	ra,0x2
     4c90:	45e080e7          	jalr	1118(ra) # 70ea <chdir>
     4c94:	87aa                	mv	a5,a0
@@ -7737,7 +7737,7 @@ rmdot(char *s)
     printf("%s: chdir dots failed\n", s);
     4c98:	fe843583          	ld	a1,-24(s0)
     4c9c:	00005517          	auipc	a0,0x5
-    4ca0:	e7c50513          	addi	a0,a0,-388 # 9b18 <schedule_dm+0x1cc8>
+    4ca0:	e7450513          	addi	a0,a0,-396 # 9b10 <schedule_dm+0x1cc2>
     4ca4:	00003097          	auipc	ra,0x3
     4ca8:	91c080e7          	jalr	-1764(ra) # 75c0 <printf>
     exit(1);
@@ -7747,7 +7747,7 @@ rmdot(char *s)
   }
   if(unlink(".") == 0){
     4cb6:	00004517          	auipc	a0,0x4
-    4cba:	42a50513          	addi	a0,a0,1066 # 90e0 <schedule_dm+0x1290>
+    4cba:	42250513          	addi	a0,a0,1058 # 90d8 <schedule_dm+0x128a>
     4cbe:	00002097          	auipc	ra,0x2
     4cc2:	40c080e7          	jalr	1036(ra) # 70ca <unlink>
     4cc6:	87aa                	mv	a5,a0
@@ -7755,7 +7755,7 @@ rmdot(char *s)
     printf("%s: rm . worked!\n", s);
     4cca:	fe843583          	ld	a1,-24(s0)
     4cce:	00005517          	auipc	a0,0x5
-    4cd2:	e6250513          	addi	a0,a0,-414 # 9b30 <schedule_dm+0x1ce0>
+    4cd2:	e5a50513          	addi	a0,a0,-422 # 9b28 <schedule_dm+0x1cda>
     4cd6:	00003097          	auipc	ra,0x3
     4cda:	8ea080e7          	jalr	-1814(ra) # 75c0 <printf>
     exit(1);
@@ -7765,7 +7765,7 @@ rmdot(char *s)
   }
   if(unlink("..") == 0){
     4ce8:	00004517          	auipc	a0,0x4
-    4cec:	eb050513          	addi	a0,a0,-336 # 8b98 <schedule_dm+0xd48>
+    4cec:	ea850513          	addi	a0,a0,-344 # 8b90 <schedule_dm+0xd42>
     4cf0:	00002097          	auipc	ra,0x2
     4cf4:	3da080e7          	jalr	986(ra) # 70ca <unlink>
     4cf8:	87aa                	mv	a5,a0
@@ -7773,7 +7773,7 @@ rmdot(char *s)
     printf("%s: rm .. worked!\n", s);
     4cfc:	fe843583          	ld	a1,-24(s0)
     4d00:	00005517          	auipc	a0,0x5
-    4d04:	e4850513          	addi	a0,a0,-440 # 9b48 <schedule_dm+0x1cf8>
+    4d04:	e4050513          	addi	a0,a0,-448 # 9b40 <schedule_dm+0x1cf2>
     4d08:	00003097          	auipc	ra,0x3
     4d0c:	8b8080e7          	jalr	-1864(ra) # 75c0 <printf>
     exit(1);
@@ -7783,7 +7783,7 @@ rmdot(char *s)
   }
   if(chdir("/") != 0){
     4d1a:	00004517          	auipc	a0,0x4
-    4d1e:	b9650513          	addi	a0,a0,-1130 # 88b0 <schedule_dm+0xa60>
+    4d1e:	b8e50513          	addi	a0,a0,-1138 # 88a8 <schedule_dm+0xa5a>
     4d22:	00002097          	auipc	ra,0x2
     4d26:	3c8080e7          	jalr	968(ra) # 70ea <chdir>
     4d2a:	87aa                	mv	a5,a0
@@ -7791,7 +7791,7 @@ rmdot(char *s)
     printf("%s: chdir / failed\n", s);
     4d2e:	fe843583          	ld	a1,-24(s0)
     4d32:	00004517          	auipc	a0,0x4
-    4d36:	b8650513          	addi	a0,a0,-1146 # 88b8 <schedule_dm+0xa68>
+    4d36:	b7e50513          	addi	a0,a0,-1154 # 88b0 <schedule_dm+0xa62>
     4d3a:	00003097          	auipc	ra,0x3
     4d3e:	886080e7          	jalr	-1914(ra) # 75c0 <printf>
     exit(1);
@@ -7801,7 +7801,7 @@ rmdot(char *s)
   }
   if(unlink("dots/.") == 0){
     4d4c:	00005517          	auipc	a0,0x5
-    4d50:	e1450513          	addi	a0,a0,-492 # 9b60 <schedule_dm+0x1d10>
+    4d50:	e0c50513          	addi	a0,a0,-500 # 9b58 <schedule_dm+0x1d0a>
     4d54:	00002097          	auipc	ra,0x2
     4d58:	376080e7          	jalr	886(ra) # 70ca <unlink>
     4d5c:	87aa                	mv	a5,a0
@@ -7809,7 +7809,7 @@ rmdot(char *s)
     printf("%s: unlink dots/. worked!\n", s);
     4d60:	fe843583          	ld	a1,-24(s0)
     4d64:	00005517          	auipc	a0,0x5
-    4d68:	e0450513          	addi	a0,a0,-508 # 9b68 <schedule_dm+0x1d18>
+    4d68:	dfc50513          	addi	a0,a0,-516 # 9b60 <schedule_dm+0x1d12>
     4d6c:	00003097          	auipc	ra,0x3
     4d70:	854080e7          	jalr	-1964(ra) # 75c0 <printf>
     exit(1);
@@ -7819,7 +7819,7 @@ rmdot(char *s)
   }
   if(unlink("dots/..") == 0){
     4d7e:	00005517          	auipc	a0,0x5
-    4d82:	e0a50513          	addi	a0,a0,-502 # 9b88 <schedule_dm+0x1d38>
+    4d82:	e0250513          	addi	a0,a0,-510 # 9b80 <schedule_dm+0x1d32>
     4d86:	00002097          	auipc	ra,0x2
     4d8a:	344080e7          	jalr	836(ra) # 70ca <unlink>
     4d8e:	87aa                	mv	a5,a0
@@ -7827,7 +7827,7 @@ rmdot(char *s)
     printf("%s: unlink dots/.. worked!\n", s);
     4d92:	fe843583          	ld	a1,-24(s0)
     4d96:	00005517          	auipc	a0,0x5
-    4d9a:	dfa50513          	addi	a0,a0,-518 # 9b90 <schedule_dm+0x1d40>
+    4d9a:	df250513          	addi	a0,a0,-526 # 9b88 <schedule_dm+0x1d3a>
     4d9e:	00003097          	auipc	ra,0x3
     4da2:	822080e7          	jalr	-2014(ra) # 75c0 <printf>
     exit(1);
@@ -7837,7 +7837,7 @@ rmdot(char *s)
   }
   if(unlink("dots") != 0){
     4db0:	00005517          	auipc	a0,0x5
-    4db4:	d4850513          	addi	a0,a0,-696 # 9af8 <schedule_dm+0x1ca8>
+    4db4:	d4050513          	addi	a0,a0,-704 # 9af0 <schedule_dm+0x1ca2>
     4db8:	00002097          	auipc	ra,0x2
     4dbc:	312080e7          	jalr	786(ra) # 70ca <unlink>
     4dc0:	87aa                	mv	a5,a0
@@ -7845,7 +7845,7 @@ rmdot(char *s)
     printf("%s: unlink dots failed!\n", s);
     4dc4:	fe843583          	ld	a1,-24(s0)
     4dc8:	00005517          	auipc	a0,0x5
-    4dcc:	de850513          	addi	a0,a0,-536 # 9bb0 <schedule_dm+0x1d60>
+    4dcc:	de050513          	addi	a0,a0,-544 # 9ba8 <schedule_dm+0x1d5a>
     4dd0:	00002097          	auipc	ra,0x2
     4dd4:	7f0080e7          	jalr	2032(ra) # 75c0 <printf>
     exit(1);
@@ -7875,7 +7875,7 @@ dirfile(char *s)
   fd = open("dirfile", O_CREATE);
     4df8:	20000593          	li	a1,512
     4dfc:	00003517          	auipc	a0,0x3
-    4e00:	55c50513          	addi	a0,a0,1372 # 8358 <schedule_dm+0x508>
+    4e00:	55450513          	addi	a0,a0,1364 # 8350 <schedule_dm+0x502>
     4e04:	00002097          	auipc	ra,0x2
     4e08:	2b6080e7          	jalr	694(ra) # 70ba <open>
     4e0c:	87aa                	mv	a5,a0
@@ -7887,7 +7887,7 @@ dirfile(char *s)
     printf("%s: create dirfile failed\n", s);
     4e1c:	fd843583          	ld	a1,-40(s0)
     4e20:	00005517          	auipc	a0,0x5
-    4e24:	db050513          	addi	a0,a0,-592 # 9bd0 <schedule_dm+0x1d80>
+    4e24:	da850513          	addi	a0,a0,-600 # 9bc8 <schedule_dm+0x1d7a>
     4e28:	00002097          	auipc	ra,0x2
     4e2c:	798080e7          	jalr	1944(ra) # 75c0 <printf>
     exit(1);
@@ -7902,7 +7902,7 @@ dirfile(char *s)
     4e44:	262080e7          	jalr	610(ra) # 70a2 <close>
   if(chdir("dirfile") == 0){
     4e48:	00003517          	auipc	a0,0x3
-    4e4c:	51050513          	addi	a0,a0,1296 # 8358 <schedule_dm+0x508>
+    4e4c:	50850513          	addi	a0,a0,1288 # 8350 <schedule_dm+0x502>
     4e50:	00002097          	auipc	ra,0x2
     4e54:	29a080e7          	jalr	666(ra) # 70ea <chdir>
     4e58:	87aa                	mv	a5,a0
@@ -7910,7 +7910,7 @@ dirfile(char *s)
     printf("%s: chdir dirfile succeeded!\n", s);
     4e5c:	fd843583          	ld	a1,-40(s0)
     4e60:	00005517          	auipc	a0,0x5
-    4e64:	d9050513          	addi	a0,a0,-624 # 9bf0 <schedule_dm+0x1da0>
+    4e64:	d8850513          	addi	a0,a0,-632 # 9be8 <schedule_dm+0x1d9a>
     4e68:	00002097          	auipc	ra,0x2
     4e6c:	758080e7          	jalr	1880(ra) # 75c0 <printf>
     exit(1);
@@ -7921,7 +7921,7 @@ dirfile(char *s)
   fd = open("dirfile/xx", 0);
     4e7a:	4581                	li	a1,0
     4e7c:	00005517          	auipc	a0,0x5
-    4e80:	d9450513          	addi	a0,a0,-620 # 9c10 <schedule_dm+0x1dc0>
+    4e80:	d8c50513          	addi	a0,a0,-628 # 9c08 <schedule_dm+0x1dba>
     4e84:	00002097          	auipc	ra,0x2
     4e88:	236080e7          	jalr	566(ra) # 70ba <open>
     4e8c:	87aa                	mv	a5,a0
@@ -7933,7 +7933,7 @@ dirfile(char *s)
     printf("%s: create dirfile/xx succeeded!\n", s);
     4e9c:	fd843583          	ld	a1,-40(s0)
     4ea0:	00005517          	auipc	a0,0x5
-    4ea4:	d8050513          	addi	a0,a0,-640 # 9c20 <schedule_dm+0x1dd0>
+    4ea4:	d7850513          	addi	a0,a0,-648 # 9c18 <schedule_dm+0x1dca>
     4ea8:	00002097          	auipc	ra,0x2
     4eac:	718080e7          	jalr	1816(ra) # 75c0 <printf>
     exit(1);
@@ -7944,7 +7944,7 @@ dirfile(char *s)
   fd = open("dirfile/xx", O_CREATE);
     4eba:	20000593          	li	a1,512
     4ebe:	00005517          	auipc	a0,0x5
-    4ec2:	d5250513          	addi	a0,a0,-686 # 9c10 <schedule_dm+0x1dc0>
+    4ec2:	d4a50513          	addi	a0,a0,-694 # 9c08 <schedule_dm+0x1dba>
     4ec6:	00002097          	auipc	ra,0x2
     4eca:	1f4080e7          	jalr	500(ra) # 70ba <open>
     4ece:	87aa                	mv	a5,a0
@@ -7956,7 +7956,7 @@ dirfile(char *s)
     printf("%s: create dirfile/xx succeeded!\n", s);
     4ede:	fd843583          	ld	a1,-40(s0)
     4ee2:	00005517          	auipc	a0,0x5
-    4ee6:	d3e50513          	addi	a0,a0,-706 # 9c20 <schedule_dm+0x1dd0>
+    4ee6:	d3650513          	addi	a0,a0,-714 # 9c18 <schedule_dm+0x1dca>
     4eea:	00002097          	auipc	ra,0x2
     4eee:	6d6080e7          	jalr	1750(ra) # 75c0 <printf>
     exit(1);
@@ -7966,7 +7966,7 @@ dirfile(char *s)
   }
   if(mkdir("dirfile/xx") == 0){
     4efc:	00005517          	auipc	a0,0x5
-    4f00:	d1450513          	addi	a0,a0,-748 # 9c10 <schedule_dm+0x1dc0>
+    4f00:	d0c50513          	addi	a0,a0,-756 # 9c08 <schedule_dm+0x1dba>
     4f04:	00002097          	auipc	ra,0x2
     4f08:	1de080e7          	jalr	478(ra) # 70e2 <mkdir>
     4f0c:	87aa                	mv	a5,a0
@@ -7974,7 +7974,7 @@ dirfile(char *s)
     printf("%s: mkdir dirfile/xx succeeded!\n", s);
     4f10:	fd843583          	ld	a1,-40(s0)
     4f14:	00005517          	auipc	a0,0x5
-    4f18:	d3450513          	addi	a0,a0,-716 # 9c48 <schedule_dm+0x1df8>
+    4f18:	d2c50513          	addi	a0,a0,-724 # 9c40 <schedule_dm+0x1df2>
     4f1c:	00002097          	auipc	ra,0x2
     4f20:	6a4080e7          	jalr	1700(ra) # 75c0 <printf>
     exit(1);
@@ -7984,7 +7984,7 @@ dirfile(char *s)
   }
   if(unlink("dirfile/xx") == 0){
     4f2e:	00005517          	auipc	a0,0x5
-    4f32:	ce250513          	addi	a0,a0,-798 # 9c10 <schedule_dm+0x1dc0>
+    4f32:	cda50513          	addi	a0,a0,-806 # 9c08 <schedule_dm+0x1dba>
     4f36:	00002097          	auipc	ra,0x2
     4f3a:	194080e7          	jalr	404(ra) # 70ca <unlink>
     4f3e:	87aa                	mv	a5,a0
@@ -7992,7 +7992,7 @@ dirfile(char *s)
     printf("%s: unlink dirfile/xx succeeded!\n", s);
     4f42:	fd843583          	ld	a1,-40(s0)
     4f46:	00005517          	auipc	a0,0x5
-    4f4a:	d2a50513          	addi	a0,a0,-726 # 9c70 <schedule_dm+0x1e20>
+    4f4a:	d2250513          	addi	a0,a0,-734 # 9c68 <schedule_dm+0x1e1a>
     4f4e:	00002097          	auipc	ra,0x2
     4f52:	672080e7          	jalr	1650(ra) # 75c0 <printf>
     exit(1);
@@ -8002,9 +8002,9 @@ dirfile(char *s)
   }
   if(link("README", "dirfile/xx") == 0){
     4f60:	00005597          	auipc	a1,0x5
-    4f64:	cb058593          	addi	a1,a1,-848 # 9c10 <schedule_dm+0x1dc0>
+    4f64:	ca858593          	addi	a1,a1,-856 # 9c08 <schedule_dm+0x1dba>
     4f68:	00003517          	auipc	a0,0x3
-    4f6c:	4d850513          	addi	a0,a0,1240 # 8440 <schedule_dm+0x5f0>
+    4f6c:	4d050513          	addi	a0,a0,1232 # 8438 <schedule_dm+0x5ea>
     4f70:	00002097          	auipc	ra,0x2
     4f74:	16a080e7          	jalr	362(ra) # 70da <link>
     4f78:	87aa                	mv	a5,a0
@@ -8012,7 +8012,7 @@ dirfile(char *s)
     printf("%s: link to dirfile/xx succeeded!\n", s);
     4f7c:	fd843583          	ld	a1,-40(s0)
     4f80:	00005517          	auipc	a0,0x5
-    4f84:	d1850513          	addi	a0,a0,-744 # 9c98 <schedule_dm+0x1e48>
+    4f84:	d1050513          	addi	a0,a0,-752 # 9c90 <schedule_dm+0x1e42>
     4f88:	00002097          	auipc	ra,0x2
     4f8c:	638080e7          	jalr	1592(ra) # 75c0 <printf>
     exit(1);
@@ -8022,7 +8022,7 @@ dirfile(char *s)
   }
   if(unlink("dirfile") != 0){
     4f9a:	00003517          	auipc	a0,0x3
-    4f9e:	3be50513          	addi	a0,a0,958 # 8358 <schedule_dm+0x508>
+    4f9e:	3b650513          	addi	a0,a0,950 # 8350 <schedule_dm+0x502>
     4fa2:	00002097          	auipc	ra,0x2
     4fa6:	128080e7          	jalr	296(ra) # 70ca <unlink>
     4faa:	87aa                	mv	a5,a0
@@ -8030,7 +8030,7 @@ dirfile(char *s)
     printf("%s: unlink dirfile failed!\n", s);
     4fae:	fd843583          	ld	a1,-40(s0)
     4fb2:	00005517          	auipc	a0,0x5
-    4fb6:	d0e50513          	addi	a0,a0,-754 # 9cc0 <schedule_dm+0x1e70>
+    4fb6:	d0650513          	addi	a0,a0,-762 # 9cb8 <schedule_dm+0x1e6a>
     4fba:	00002097          	auipc	ra,0x2
     4fbe:	606080e7          	jalr	1542(ra) # 75c0 <printf>
     exit(1);
@@ -8042,7 +8042,7 @@ dirfile(char *s)
   fd = open(".", O_RDWR);
     4fcc:	4589                	li	a1,2
     4fce:	00004517          	auipc	a0,0x4
-    4fd2:	11250513          	addi	a0,a0,274 # 90e0 <schedule_dm+0x1290>
+    4fd2:	10a50513          	addi	a0,a0,266 # 90d8 <schedule_dm+0x128a>
     4fd6:	00002097          	auipc	ra,0x2
     4fda:	0e4080e7          	jalr	228(ra) # 70ba <open>
     4fde:	87aa                	mv	a5,a0
@@ -8054,7 +8054,7 @@ dirfile(char *s)
     printf("%s: open . for writing succeeded!\n", s);
     4fee:	fd843583          	ld	a1,-40(s0)
     4ff2:	00005517          	auipc	a0,0x5
-    4ff6:	cee50513          	addi	a0,a0,-786 # 9ce0 <schedule_dm+0x1e90>
+    4ff6:	ce650513          	addi	a0,a0,-794 # 9cd8 <schedule_dm+0x1e8a>
     4ffa:	00002097          	auipc	ra,0x2
     4ffe:	5c6080e7          	jalr	1478(ra) # 75c0 <printf>
     exit(1);
@@ -8065,7 +8065,7 @@ dirfile(char *s)
   fd = open(".", 0);
     500c:	4581                	li	a1,0
     500e:	00004517          	auipc	a0,0x4
-    5012:	0d250513          	addi	a0,a0,210 # 90e0 <schedule_dm+0x1290>
+    5012:	0ca50513          	addi	a0,a0,202 # 90d8 <schedule_dm+0x128a>
     5016:	00002097          	auipc	ra,0x2
     501a:	0a4080e7          	jalr	164(ra) # 70ba <open>
     501e:	87aa                	mv	a5,a0
@@ -8074,7 +8074,7 @@ dirfile(char *s)
     5024:	fec42783          	lw	a5,-20(s0)
     5028:	4605                	li	a2,1
     502a:	00003597          	auipc	a1,0x3
-    502e:	46658593          	addi	a1,a1,1126 # 8490 <schedule_dm+0x640>
+    502e:	45e58593          	addi	a1,a1,1118 # 8488 <schedule_dm+0x63a>
     5032:	853e                	mv	a0,a5
     5034:	00002097          	auipc	ra,0x2
     5038:	066080e7          	jalr	102(ra) # 709a <write>
@@ -8083,7 +8083,7 @@ dirfile(char *s)
     printf("%s: write . succeeded!\n", s);
     5042:	fd843583          	ld	a1,-40(s0)
     5046:	00005517          	auipc	a0,0x5
-    504a:	cc250513          	addi	a0,a0,-830 # 9d08 <schedule_dm+0x1eb8>
+    504a:	cba50513          	addi	a0,a0,-838 # 9d00 <schedule_dm+0x1eb2>
     504e:	00002097          	auipc	ra,0x2
     5052:	572080e7          	jalr	1394(ra) # 75c0 <printf>
     exit(1);
@@ -8122,7 +8122,7 @@ iref(char *s)
     5088:	a231                	j	5194 <iref+0x11c>
     if(mkdir("irefd") != 0){
     508a:	00005517          	auipc	a0,0x5
-    508e:	c9650513          	addi	a0,a0,-874 # 9d20 <schedule_dm+0x1ed0>
+    508e:	c8e50513          	addi	a0,a0,-882 # 9d18 <schedule_dm+0x1eca>
     5092:	00002097          	auipc	ra,0x2
     5096:	050080e7          	jalr	80(ra) # 70e2 <mkdir>
     509a:	87aa                	mv	a5,a0
@@ -8130,7 +8130,7 @@ iref(char *s)
       printf("%s: mkdir irefd failed\n", s);
     509e:	fd843583          	ld	a1,-40(s0)
     50a2:	00005517          	auipc	a0,0x5
-    50a6:	c8650513          	addi	a0,a0,-890 # 9d28 <schedule_dm+0x1ed8>
+    50a6:	c7e50513          	addi	a0,a0,-898 # 9d20 <schedule_dm+0x1ed2>
     50aa:	00002097          	auipc	ra,0x2
     50ae:	516080e7          	jalr	1302(ra) # 75c0 <printf>
       exit(1);
@@ -8140,7 +8140,7 @@ iref(char *s)
     }
     if(chdir("irefd") != 0){
     50bc:	00005517          	auipc	a0,0x5
-    50c0:	c6450513          	addi	a0,a0,-924 # 9d20 <schedule_dm+0x1ed0>
+    50c0:	c5c50513          	addi	a0,a0,-932 # 9d18 <schedule_dm+0x1eca>
     50c4:	00002097          	auipc	ra,0x2
     50c8:	026080e7          	jalr	38(ra) # 70ea <chdir>
     50cc:	87aa                	mv	a5,a0
@@ -8148,7 +8148,7 @@ iref(char *s)
       printf("%s: chdir irefd failed\n", s);
     50d0:	fd843583          	ld	a1,-40(s0)
     50d4:	00005517          	auipc	a0,0x5
-    50d8:	c6c50513          	addi	a0,a0,-916 # 9d40 <schedule_dm+0x1ef0>
+    50d8:	c6450513          	addi	a0,a0,-924 # 9d38 <schedule_dm+0x1eea>
     50dc:	00002097          	auipc	ra,0x2
     50e0:	4e4080e7          	jalr	1252(ra) # 75c0 <printf>
       exit(1);
@@ -8159,20 +8159,20 @@ iref(char *s)
 
     mkdir("");
     50ee:	00005517          	auipc	a0,0x5
-    50f2:	c6a50513          	addi	a0,a0,-918 # 9d58 <schedule_dm+0x1f08>
+    50f2:	c6250513          	addi	a0,a0,-926 # 9d50 <schedule_dm+0x1f02>
     50f6:	00002097          	auipc	ra,0x2
     50fa:	fec080e7          	jalr	-20(ra) # 70e2 <mkdir>
     link("README", "");
     50fe:	00005597          	auipc	a1,0x5
-    5102:	c5a58593          	addi	a1,a1,-934 # 9d58 <schedule_dm+0x1f08>
+    5102:	c5258593          	addi	a1,a1,-942 # 9d50 <schedule_dm+0x1f02>
     5106:	00003517          	auipc	a0,0x3
-    510a:	33a50513          	addi	a0,a0,826 # 8440 <schedule_dm+0x5f0>
+    510a:	33250513          	addi	a0,a0,818 # 8438 <schedule_dm+0x5ea>
     510e:	00002097          	auipc	ra,0x2
     5112:	fcc080e7          	jalr	-52(ra) # 70da <link>
     fd = open("", O_CREATE);
     5116:	20000593          	li	a1,512
     511a:	00005517          	auipc	a0,0x5
-    511e:	c3e50513          	addi	a0,a0,-962 # 9d58 <schedule_dm+0x1f08>
+    511e:	c3650513          	addi	a0,a0,-970 # 9d50 <schedule_dm+0x1f02>
     5122:	00002097          	auipc	ra,0x2
     5126:	f98080e7          	jalr	-104(ra) # 70ba <open>
     512a:	87aa                	mv	a5,a0
@@ -8189,7 +8189,7 @@ iref(char *s)
     fd = open("xx", O_CREATE);
     5148:	20000593          	li	a1,512
     514c:	00003517          	auipc	a0,0x3
-    5150:	41c50513          	addi	a0,a0,1052 # 8568 <schedule_dm+0x718>
+    5150:	41450513          	addi	a0,a0,1044 # 8560 <schedule_dm+0x712>
     5154:	00002097          	auipc	ra,0x2
     5158:	f66080e7          	jalr	-154(ra) # 70ba <open>
     515c:	87aa                	mv	a5,a0
@@ -8205,7 +8205,7 @@ iref(char *s)
     5176:	f30080e7          	jalr	-208(ra) # 70a2 <close>
     unlink("xx");
     517a:	00003517          	auipc	a0,0x3
-    517e:	3ee50513          	addi	a0,a0,1006 # 8568 <schedule_dm+0x718>
+    517e:	3e650513          	addi	a0,a0,998 # 8560 <schedule_dm+0x712>
     5182:	00002097          	auipc	ra,0x2
     5186:	f48080e7          	jalr	-184(ra) # 70ca <unlink>
   for(i = 0; i < NINODE + 1; i++){
@@ -8224,12 +8224,12 @@ iref(char *s)
     51a8:	a035                	j	51d4 <iref+0x15c>
     chdir("..");
     51aa:	00004517          	auipc	a0,0x4
-    51ae:	9ee50513          	addi	a0,a0,-1554 # 8b98 <schedule_dm+0xd48>
+    51ae:	9e650513          	addi	a0,a0,-1562 # 8b90 <schedule_dm+0xd42>
     51b2:	00002097          	auipc	ra,0x2
     51b6:	f38080e7          	jalr	-200(ra) # 70ea <chdir>
     unlink("irefd");
     51ba:	00005517          	auipc	a0,0x5
-    51be:	b6650513          	addi	a0,a0,-1178 # 9d20 <schedule_dm+0x1ed0>
+    51be:	b5e50513          	addi	a0,a0,-1186 # 9d18 <schedule_dm+0x1eca>
     51c2:	00002097          	auipc	ra,0x2
     51c6:	f08080e7          	jalr	-248(ra) # 70ca <unlink>
   for(i = 0; i < NINODE + 1; i++){
@@ -8244,7 +8244,7 @@ iref(char *s)
 
   chdir("/");
     51e4:	00003517          	auipc	a0,0x3
-    51e8:	6cc50513          	addi	a0,a0,1740 # 88b0 <schedule_dm+0xa60>
+    51e8:	6c450513          	addi	a0,a0,1732 # 88a8 <schedule_dm+0xa5a>
     51ec:	00002097          	auipc	ra,0x2
     51f0:	efe080e7          	jalr	-258(ra) # 70ea <chdir>
 }
@@ -8310,7 +8310,7 @@ forktest(char *s)
     printf("%s: no fork at all!\n", s);
     5260:	fd843583          	ld	a1,-40(s0)
     5264:	00005517          	auipc	a0,0x5
-    5268:	afc50513          	addi	a0,a0,-1284 # 9d60 <schedule_dm+0x1f10>
+    5268:	af450513          	addi	a0,a0,-1292 # 9d58 <schedule_dm+0x1f0a>
     526c:	00002097          	auipc	ra,0x2
     5270:	354080e7          	jalr	852(ra) # 75c0 <printf>
     exit(1);
@@ -8327,7 +8327,7 @@ forktest(char *s)
     printf("%s: fork claimed to work 1000 times!\n", s);
     528e:	fd843583          	ld	a1,-40(s0)
     5292:	00005517          	auipc	a0,0x5
-    5296:	ae650513          	addi	a0,a0,-1306 # 9d78 <schedule_dm+0x1f28>
+    5296:	ade50513          	addi	a0,a0,-1314 # 9d70 <schedule_dm+0x1f22>
     529a:	00002097          	auipc	ra,0x2
     529e:	326080e7          	jalr	806(ra) # 75c0 <printf>
     exit(1);
@@ -8346,7 +8346,7 @@ forktest(char *s)
       printf("%s: wait stopped early\n", s);
     52bc:	fd843583          	ld	a1,-40(s0)
     52c0:	00005517          	auipc	a0,0x5
-    52c4:	ae050513          	addi	a0,a0,-1312 # 9da0 <schedule_dm+0x1f50>
+    52c4:	ad850513          	addi	a0,a0,-1320 # 9d98 <schedule_dm+0x1f4a>
     52c8:	00002097          	auipc	ra,0x2
     52cc:	2f8080e7          	jalr	760(ra) # 75c0 <printf>
       exit(1);
@@ -8374,7 +8374,7 @@ forktest(char *s)
     printf("%s: wait got too many\n", s);
     5302:	fd843583          	ld	a1,-40(s0)
     5306:	00005517          	auipc	a0,0x5
-    530a:	ab250513          	addi	a0,a0,-1358 # 9db8 <schedule_dm+0x1f68>
+    530a:	aaa50513          	addi	a0,a0,-1366 # 9db0 <schedule_dm+0x1f62>
     530e:	00002097          	auipc	ra,0x2
     5312:	2b2080e7          	jalr	690(ra) # 75c0 <printf>
     exit(1);
@@ -8415,7 +8415,7 @@ sbrkbasic(char *s)
     534a:	0007df63          	bgez	a5,5368 <sbrkbasic+0x3e>
     printf("fork failed in sbrkbasic\n");
     534e:	00005517          	auipc	a0,0x5
-    5352:	a8250513          	addi	a0,a0,-1406 # 9dd0 <schedule_dm+0x1f80>
+    5352:	a7a50513          	addi	a0,a0,-1414 # 9dc8 <schedule_dm+0x1f7a>
     5356:	00002097          	auipc	ra,0x2
     535a:	26a080e7          	jalr	618(ra) # 75c0 <printf>
     exit(1);
@@ -8485,7 +8485,7 @@ sbrkbasic(char *s)
     printf("%s: too much memory allocated!\n", s);
     53ec:	fb843583          	ld	a1,-72(s0)
     53f0:	00005517          	auipc	a0,0x5
-    53f4:	a0050513          	addi	a0,a0,-1536 # 9df0 <schedule_dm+0x1fa0>
+    53f4:	9f850513          	addi	a0,a0,-1544 # 9de8 <schedule_dm+0x1f9a>
     53f8:	00002097          	auipc	ra,0x2
     53fc:	1c8080e7          	jalr	456(ra) # 75c0 <printf>
     exit(1);
@@ -8518,7 +8518,7 @@ sbrkbasic(char *s)
     5440:	fe043603          	ld	a2,-32(s0)
     5444:	85be                	mv	a1,a5
     5446:	00005517          	auipc	a0,0x5
-    544a:	9ca50513          	addi	a0,a0,-1590 # 9e10 <schedule_dm+0x1fc0>
+    544a:	9c250513          	addi	a0,a0,-1598 # 9e08 <schedule_dm+0x1fba>
     544e:	00002097          	auipc	ra,0x2
     5452:	172080e7          	jalr	370(ra) # 75c0 <printf>
       exit(1);
@@ -8529,7 +8529,7 @@ sbrkbasic(char *s)
     *b = 1;
     5460:	fd843783          	ld	a5,-40(s0)
     5464:	4705                	li	a4,1
-    5466:	00e78023          	sb	a4,0(a5) # 40000000 <__BSS_END__+0x3ffeefc0>
+    5466:	00e78023          	sb	a4,0(a5) # 40000000 <__BSS_END__+0x3ffeefc8>
     a = b + 1;
     546a:	fd843783          	ld	a5,-40(s0)
     546e:	0785                	addi	a5,a5,1
@@ -8556,7 +8556,7 @@ sbrkbasic(char *s)
     printf("%s: sbrk test fork failed\n", s);
     54a8:	fb843583          	ld	a1,-72(s0)
     54ac:	00005517          	auipc	a0,0x5
-    54b0:	98450513          	addi	a0,a0,-1660 # 9e30 <schedule_dm+0x1fe0>
+    54b0:	97c50513          	addi	a0,a0,-1668 # 9e28 <schedule_dm+0x1fda>
     54b4:	00002097          	auipc	ra,0x2
     54b8:	10c080e7          	jalr	268(ra) # 75c0 <printf>
     exit(1);
@@ -8582,7 +8582,7 @@ sbrkbasic(char *s)
     printf("%s: sbrk test failed post-fork\n", s);
     54f0:	fb843583          	ld	a1,-72(s0)
     54f4:	00005517          	auipc	a0,0x5
-    54f8:	95c50513          	addi	a0,a0,-1700 # 9e50 <schedule_dm+0x2000>
+    54f8:	95450513          	addi	a0,a0,-1708 # 9e48 <schedule_dm+0x1ffa>
     54fc:	00002097          	auipc	ra,0x2
     5500:	0c4080e7          	jalr	196(ra) # 75c0 <printf>
     exit(1);
@@ -8655,7 +8655,7 @@ sbrkmuch(char *s)
     printf("%s: sbrk test failed to grow big address space; enough phys mem?\n", s);
     5594:	fa843583          	ld	a1,-88(s0)
     5598:	00005517          	auipc	a0,0x5
-    559c:	8d850513          	addi	a0,a0,-1832 # 9e70 <schedule_dm+0x2020>
+    559c:	8d050513          	addi	a0,a0,-1840 # 9e68 <schedule_dm+0x201a>
     55a0:	00002097          	auipc	ra,0x2
     55a4:	020080e7          	jalr	32(ra) # 75c0 <printf>
     exit(1);
@@ -8694,7 +8694,7 @@ sbrkmuch(char *s)
   *lastaddr = 99;
     55f6:	fb843783          	ld	a5,-72(s0)
     55fa:	06300713          	li	a4,99
-    55fe:	00e78023          	sb	a4,0(a5) # 6400000 <__BSS_END__+0x63eefc0>
+    55fe:	00e78023          	sb	a4,0(a5) # 6400000 <__BSS_END__+0x63eefc8>
 
   // can one de-allocate?
   a = sbrk(0);
@@ -8714,7 +8714,7 @@ sbrkmuch(char *s)
     printf("%s: sbrk could not deallocate\n", s);
     5628:	fa843583          	ld	a1,-88(s0)
     562c:	00005517          	auipc	a0,0x5
-    5630:	88c50513          	addi	a0,a0,-1908 # 9eb8 <schedule_dm+0x2068>
+    5630:	88450513          	addi	a0,a0,-1916 # 9eb0 <schedule_dm+0x2062>
     5634:	00002097          	auipc	ra,0x2
     5638:	f8c080e7          	jalr	-116(ra) # 75c0 <printf>
     exit(1);
@@ -8738,7 +8738,7 @@ sbrkmuch(char *s)
     5668:	fd843603          	ld	a2,-40(s0)
     566c:	fa843583          	ld	a1,-88(s0)
     5670:	00005517          	auipc	a0,0x5
-    5674:	86850513          	addi	a0,a0,-1944 # 9ed8 <schedule_dm+0x2088>
+    5674:	86050513          	addi	a0,a0,-1952 # 9ed0 <schedule_dm+0x2082>
     5678:	00002097          	auipc	ra,0x2
     567c:	f48080e7          	jalr	-184(ra) # 75c0 <printf>
     exit(1);
@@ -8775,7 +8775,7 @@ sbrkmuch(char *s)
     56ce:	fd843603          	ld	a2,-40(s0)
     56d2:	fa843583          	ld	a1,-88(s0)
     56d6:	00005517          	auipc	a0,0x5
-    56da:	84250513          	addi	a0,a0,-1982 # 9f18 <schedule_dm+0x20c8>
+    56da:	83a50513          	addi	a0,a0,-1990 # 9f10 <schedule_dm+0x20c2>
     56de:	00002097          	auipc	ra,0x2
     56e2:	ee2080e7          	jalr	-286(ra) # 75c0 <printf>
     exit(1);
@@ -8793,7 +8793,7 @@ sbrkmuch(char *s)
     printf("%s: sbrk de-allocation didn't really deallocate\n", s);
     5702:	fa843583          	ld	a1,-88(s0)
     5706:	00005517          	auipc	a0,0x5
-    570a:	84250513          	addi	a0,a0,-1982 # 9f48 <schedule_dm+0x20f8>
+    570a:	83a50513          	addi	a0,a0,-1990 # 9f40 <schedule_dm+0x20f2>
     570e:	00002097          	auipc	ra,0x2
     5712:	eb2080e7          	jalr	-334(ra) # 75c0 <printf>
     exit(1);
@@ -8828,7 +8828,7 @@ sbrkmuch(char *s)
     5760:	fd843603          	ld	a2,-40(s0)
     5764:	fa843583          	ld	a1,-88(s0)
     5768:	00005517          	auipc	a0,0x5
-    576c:	81850513          	addi	a0,a0,-2024 # 9f80 <schedule_dm+0x2130>
+    576c:	81050513          	addi	a0,a0,-2032 # 9f78 <schedule_dm+0x212a>
     5770:	00002097          	auipc	ra,0x2
     5774:	e50080e7          	jalr	-432(ra) # 75c0 <printf>
     exit(1);
@@ -8874,7 +8874,7 @@ kernmem(char *s)
       printf("%s: fork failed\n", s);
     57ba:	fd843583          	ld	a1,-40(s0)
     57be:	00003517          	auipc	a0,0x3
-    57c2:	ffa50513          	addi	a0,a0,-6 # 87b8 <schedule_dm+0x968>
+    57c2:	ff250513          	addi	a0,a0,-14 # 87b0 <schedule_dm+0x962>
     57c6:	00002097          	auipc	ra,0x2
     57ca:	dfa080e7          	jalr	-518(ra) # 75c0 <printf>
       exit(1);
@@ -8894,7 +8894,7 @@ kernmem(char *s)
     57ec:	fe843603          	ld	a2,-24(s0)
     57f0:	fd843583          	ld	a1,-40(s0)
     57f4:	00004517          	auipc	a0,0x4
-    57f8:	7b450513          	addi	a0,a0,1972 # 9fa8 <schedule_dm+0x2158>
+    57f8:	7ac50513          	addi	a0,a0,1964 # 9fa0 <schedule_dm+0x2152>
     57fc:	00002097          	auipc	ra,0x2
     5800:	dc4080e7          	jalr	-572(ra) # 75c0 <printf>
       exit(1);
@@ -8920,13 +8920,13 @@ kernmem(char *s)
   for(a = (char*)(KERNBASE); a < (char*) (KERNBASE+2000000); a += 50000){
     5832:	fe843703          	ld	a4,-24(s0)
     5836:	67b1                	lui	a5,0xc
-    5838:	35078793          	addi	a5,a5,848 # c350 <__global_pointer$+0x1350>
+    5838:	35078793          	addi	a5,a5,848 # c350 <__global_pointer$+0x1358>
     583c:	97ba                	add	a5,a5,a4
     583e:	fef43423          	sd	a5,-24(s0)
     5842:	fe843703          	ld	a4,-24(s0)
     5846:	1003d7b7          	lui	a5,0x1003d
     584a:	078e                	slli	a5,a5,0x3
-    584c:	47f78793          	addi	a5,a5,1151 # 1003d47f <__BSS_END__+0x1002c43f>
+    584c:	47f78793          	addi	a5,a5,1151 # 1003d47f <__BSS_END__+0x1002c447>
     5850:	f4e7f9e3          	bgeu	a5,a4,57a2 <kernmem+0x16>
   }
 }
@@ -8964,7 +8964,7 @@ sbrkfail(char *s)
     printf("%s: pipe() failed\n", s);
     587e:	f8843583          	ld	a1,-120(s0)
     5882:	00003517          	auipc	a0,0x3
-    5886:	3ce50513          	addi	a0,a0,974 # 8c50 <schedule_dm+0xe00>
+    5886:	3c650513          	addi	a0,a0,966 # 8c48 <schedule_dm+0xdfa>
     588a:	00002097          	auipc	ra,0x2
     588e:	d36080e7          	jalr	-714(ra) # 75c0 <printf>
     exit(1);
@@ -9009,7 +9009,7 @@ sbrkfail(char *s)
     58f4:	fc442783          	lw	a5,-60(s0)
     58f8:	4605                	li	a2,1
     58fa:	00003597          	auipc	a1,0x3
-    58fe:	b9658593          	addi	a1,a1,-1130 # 8490 <schedule_dm+0x640>
+    58fe:	b8e58593          	addi	a1,a1,-1138 # 8488 <schedule_dm+0x63a>
     5902:	853e                	mv	a0,a5
     5904:	00001097          	auipc	ra,0x1
     5908:	796080e7          	jalr	1942(ra) # 709a <write>
@@ -9099,7 +9099,7 @@ sbrkfail(char *s)
     printf("%s: failed sbrk leaked memory\n", s);
     59d2:	f8843583          	ld	a1,-120(s0)
     59d6:	00004517          	auipc	a0,0x4
-    59da:	5f250513          	addi	a0,a0,1522 # 9fc8 <schedule_dm+0x2178>
+    59da:	5ea50513          	addi	a0,a0,1514 # 9fc0 <schedule_dm+0x2172>
     59de:	00002097          	auipc	ra,0x2
     59e2:	be2080e7          	jalr	-1054(ra) # 75c0 <printf>
     exit(1);
@@ -9121,7 +9121,7 @@ sbrkfail(char *s)
     printf("%s: fork failed\n", s);
     5a08:	f8843583          	ld	a1,-120(s0)
     5a0c:	00003517          	auipc	a0,0x3
-    5a10:	dac50513          	addi	a0,a0,-596 # 87b8 <schedule_dm+0x968>
+    5a10:	da450513          	addi	a0,a0,-604 # 87b0 <schedule_dm+0x962>
     5a14:	00002097          	auipc	ra,0x2
     5a18:	bac080e7          	jalr	-1108(ra) # 75c0 <printf>
     exit(1);
@@ -9176,7 +9176,7 @@ sbrkfail(char *s)
     5a8c:	863e                	mv	a2,a5
     5a8e:	f8843583          	ld	a1,-120(s0)
     5a92:	00004517          	auipc	a0,0x4
-    5a96:	55650513          	addi	a0,a0,1366 # 9fe8 <schedule_dm+0x2198>
+    5a96:	54e50513          	addi	a0,a0,1358 # 9fe0 <schedule_dm+0x2192>
     5a9a:	00002097          	auipc	ra,0x2
     5a9e:	b26080e7          	jalr	-1242(ra) # 75c0 <printf>
     exit(1);
@@ -9232,14 +9232,14 @@ sbrkarg(char *s)
   fd = open("sbrk", O_CREATE|O_WRONLY);
     5b00:	20100593          	li	a1,513
     5b04:	00004517          	auipc	a0,0x4
-    5b08:	51450513          	addi	a0,a0,1300 # a018 <schedule_dm+0x21c8>
+    5b08:	50c50513          	addi	a0,a0,1292 # a010 <schedule_dm+0x21c2>
     5b0c:	00001097          	auipc	ra,0x1
     5b10:	5ae080e7          	jalr	1454(ra) # 70ba <open>
     5b14:	87aa                	mv	a5,a0
     5b16:	fef42223          	sw	a5,-28(s0)
   unlink("sbrk");
     5b1a:	00004517          	auipc	a0,0x4
-    5b1e:	4fe50513          	addi	a0,a0,1278 # a018 <schedule_dm+0x21c8>
+    5b1e:	4f650513          	addi	a0,a0,1270 # a010 <schedule_dm+0x21c2>
     5b22:	00001097          	auipc	ra,0x1
     5b26:	5a8080e7          	jalr	1448(ra) # 70ca <unlink>
   if(fd < 0)  {
@@ -9249,7 +9249,7 @@ sbrkarg(char *s)
     printf("%s: open sbrk failed\n", s);
     5b34:	fd843583          	ld	a1,-40(s0)
     5b38:	00004517          	auipc	a0,0x4
-    5b3c:	4e850513          	addi	a0,a0,1256 # a020 <schedule_dm+0x21d0>
+    5b3c:	4e050513          	addi	a0,a0,1248 # a018 <schedule_dm+0x21ca>
     5b40:	00002097          	auipc	ra,0x2
     5b44:	a80080e7          	jalr	-1408(ra) # 75c0 <printf>
     exit(1);
@@ -9272,7 +9272,7 @@ sbrkarg(char *s)
     printf("%s: write sbrk failed\n", s);
     5b76:	fd843583          	ld	a1,-40(s0)
     5b7a:	00004517          	auipc	a0,0x4
-    5b7e:	4be50513          	addi	a0,a0,1214 # a038 <schedule_dm+0x21e8>
+    5b7e:	4b650513          	addi	a0,a0,1206 # a030 <schedule_dm+0x21e2>
     5b82:	00002097          	auipc	ra,0x2
     5b86:	a3e080e7          	jalr	-1474(ra) # 75c0 <printf>
     exit(1);
@@ -9301,7 +9301,7 @@ sbrkarg(char *s)
     printf("%s: pipe() failed\n", s);
     5bc0:	fd843583          	ld	a1,-40(s0)
     5bc4:	00003517          	auipc	a0,0x3
-    5bc8:	08c50513          	addi	a0,a0,140 # 8c50 <schedule_dm+0xe00>
+    5bc8:	08450513          	addi	a0,a0,132 # 8c48 <schedule_dm+0xdfa>
     5bcc:	00002097          	auipc	ra,0x2
     5bd0:	9f4080e7          	jalr	-1548(ra) # 75c0 <printf>
     exit(1);
@@ -9340,7 +9340,7 @@ validatetest(char *s)
     5c02:	fe843783          	ld	a5,-24(s0)
     5c06:	85be                	mv	a1,a5
     5c08:	00004517          	auipc	a0,0x4
-    5c0c:	44850513          	addi	a0,a0,1096 # a050 <schedule_dm+0x2200>
+    5c0c:	44050513          	addi	a0,a0,1088 # a048 <schedule_dm+0x21fa>
     5c10:	00001097          	auipc	ra,0x1
     5c14:	4ca080e7          	jalr	1226(ra) # 70da <link>
     5c18:	87aa                	mv	a5,a0
@@ -9350,7 +9350,7 @@ validatetest(char *s)
       printf("%s: link should not succeed\n", s);
     5c22:	fd843583          	ld	a1,-40(s0)
     5c26:	00004517          	auipc	a0,0x4
-    5c2a:	43a50513          	addi	a0,a0,1082 # a060 <schedule_dm+0x2210>
+    5c2a:	43250513          	addi	a0,a0,1074 # a058 <schedule_dm+0x220a>
     5c2e:	00002097          	auipc	ra,0x2
     5c32:	992080e7          	jalr	-1646(ra) # 75c0 <printf>
       exit(1);
@@ -9396,7 +9396,7 @@ bsstest(char *s)
     5c78:	a83d                	j	5cb6 <bsstest+0x4e>
     if(uninit[i] != '\0'){
     5c7a:	00008717          	auipc	a4,0x8
-    5c7e:	b8e70713          	addi	a4,a4,-1138 # d808 <uninit>
+    5c7e:	b8670713          	addi	a4,a4,-1146 # d800 <uninit>
     5c82:	fec42783          	lw	a5,-20(s0)
     5c86:	97ba                	add	a5,a5,a4
     5c88:	0007c783          	lbu	a5,0(a5) # 1000 <truncate3+0x1aa>
@@ -9404,7 +9404,7 @@ bsstest(char *s)
       printf("%s: bss test failed\n", s);
     5c8e:	fd843583          	ld	a1,-40(s0)
     5c92:	00004517          	auipc	a0,0x4
-    5c96:	3ee50513          	addi	a0,a0,1006 # a080 <schedule_dm+0x2230>
+    5c96:	3e650513          	addi	a0,a0,998 # a078 <schedule_dm+0x222a>
     5c9a:	00002097          	auipc	ra,0x2
     5c9e:	926080e7          	jalr	-1754(ra) # 75c0 <printf>
       exit(1);
@@ -9446,7 +9446,7 @@ bigargtest(char *s)
 
   unlink("bigarg-ok");
     5cde:	00004517          	auipc	a0,0x4
-    5ce2:	3ba50513          	addi	a0,a0,954 # a098 <schedule_dm+0x2248>
+    5ce2:	3b250513          	addi	a0,a0,946 # a090 <schedule_dm+0x2242>
     5ce6:	00001097          	auipc	ra,0x1
     5cea:	3e4080e7          	jalr	996(ra) # 70ca <unlink>
   pid = fork();
@@ -9465,12 +9465,12 @@ bigargtest(char *s)
     5d08:	a01d                	j	5d2e <bigargtest+0x5c>
       args[i] = "bigargs test: failed\n                                                                                                                                                                                                       ";
     5d0a:	0000b717          	auipc	a4,0xb
-    5d0e:	21670713          	addi	a4,a4,534 # 10f20 <args.1845>
+    5d0e:	20e70713          	addi	a4,a4,526 # 10f18 <args.1845>
     5d12:	fec42783          	lw	a5,-20(s0)
     5d16:	078e                	slli	a5,a5,0x3
     5d18:	97ba                	add	a5,a5,a4
     5d1a:	00004717          	auipc	a4,0x4
-    5d1e:	38e70713          	addi	a4,a4,910 # a0a8 <schedule_dm+0x2258>
+    5d1e:	38670713          	addi	a4,a4,902 # a0a0 <schedule_dm+0x2252>
     5d22:	e398                	sd	a4,0(a5)
     for(i = 0; i < MAXARG-1; i++)
     5d24:	fec42783          	lw	a5,-20(s0)
@@ -9482,19 +9482,19 @@ bigargtest(char *s)
     5d38:	fce7d9e3          	bge	a5,a4,5d0a <bigargtest+0x38>
     args[MAXARG-1] = 0;
     5d3c:	0000b797          	auipc	a5,0xb
-    5d40:	1e478793          	addi	a5,a5,484 # 10f20 <args.1845>
+    5d40:	1dc78793          	addi	a5,a5,476 # 10f18 <args.1845>
     5d44:	0e07bc23          	sd	zero,248(a5)
     exec("echo", args);
     5d48:	0000b597          	auipc	a1,0xb
-    5d4c:	1d858593          	addi	a1,a1,472 # 10f20 <args.1845>
+    5d4c:	1d058593          	addi	a1,a1,464 # 10f18 <args.1845>
     5d50:	00003517          	auipc	a0,0x3
-    5d54:	85050513          	addi	a0,a0,-1968 # 85a0 <schedule_dm+0x750>
+    5d54:	84850513          	addi	a0,a0,-1976 # 8598 <schedule_dm+0x74a>
     5d58:	00001097          	auipc	ra,0x1
     5d5c:	35a080e7          	jalr	858(ra) # 70b2 <exec>
     fd = open("bigarg-ok", O_CREATE);
     5d60:	20000593          	li	a1,512
     5d64:	00004517          	auipc	a0,0x4
-    5d68:	33450513          	addi	a0,a0,820 # a098 <schedule_dm+0x2248>
+    5d68:	32c50513          	addi	a0,a0,812 # a090 <schedule_dm+0x2242>
     5d6c:	00001097          	auipc	ra,0x1
     5d70:	34e080e7          	jalr	846(ra) # 70ba <open>
     5d74:	87aa                	mv	a5,a0
@@ -9515,7 +9515,7 @@ bigargtest(char *s)
     printf("%s: bigargtest: fork failed\n", s);
     5d9c:	fd843583          	ld	a1,-40(s0)
     5da0:	00004517          	auipc	a0,0x4
-    5da4:	3e850513          	addi	a0,a0,1000 # a188 <schedule_dm+0x2338>
+    5da4:	3e050513          	addi	a0,a0,992 # a180 <schedule_dm+0x2332>
     5da8:	00002097          	auipc	ra,0x2
     5dac:	818080e7          	jalr	-2024(ra) # 75c0 <printf>
     exit(1);
@@ -9540,7 +9540,7 @@ bigargtest(char *s)
   fd = open("bigarg-ok", 0);
     5ddc:	4581                	li	a1,0
     5dde:	00004517          	auipc	a0,0x4
-    5de2:	2ba50513          	addi	a0,a0,698 # a098 <schedule_dm+0x2248>
+    5de2:	2b250513          	addi	a0,a0,690 # a090 <schedule_dm+0x2242>
     5de6:	00001097          	auipc	ra,0x1
     5dea:	2d4080e7          	jalr	724(ra) # 70ba <open>
     5dee:	87aa                	mv	a5,a0
@@ -9552,7 +9552,7 @@ bigargtest(char *s)
     printf("%s: bigarg test failed!\n", s);
     5dfe:	fd843583          	ld	a1,-40(s0)
     5e02:	00004517          	auipc	a0,0x4
-    5e06:	3a650513          	addi	a0,a0,934 # a1a8 <schedule_dm+0x2358>
+    5e06:	39e50513          	addi	a0,a0,926 # a1a0 <schedule_dm+0x2352>
     5e0a:	00001097          	auipc	ra,0x1
     5e0e:	7b6080e7          	jalr	1974(ra) # 75c0 <printf>
     exit(1);
@@ -9589,7 +9589,7 @@ fsfull()
 
   printf("fsfull test\n");
     5e40:	00004517          	auipc	a0,0x4
-    5e44:	38850513          	addi	a0,a0,904 # a1c8 <schedule_dm+0x2378>
+    5e44:	38050513          	addi	a0,a0,896 # a1c0 <schedule_dm+0x2372>
     5e48:	00001097          	auipc	ra,0x1
     5e4c:	778080e7          	jalr	1912(ra) # 75c0 <printf>
 
@@ -9649,7 +9649,7 @@ fsfull()
     5eec:	f9840793          	addi	a5,s0,-104
     5ef0:	85be                	mv	a1,a5
     5ef2:	00004517          	auipc	a0,0x4
-    5ef6:	2e650513          	addi	a0,a0,742 # a1d8 <schedule_dm+0x2388>
+    5ef6:	2de50513          	addi	a0,a0,734 # a1d0 <schedule_dm+0x2382>
     5efa:	00001097          	auipc	ra,0x1
     5efe:	6c6080e7          	jalr	1734(ra) # 75c0 <printf>
     int fd = open(name, O_CREATE|O_RDWR);
@@ -9668,7 +9668,7 @@ fsfull()
     5f24:	f9840793          	addi	a5,s0,-104
     5f28:	85be                	mv	a1,a5
     5f2a:	00004517          	auipc	a0,0x4
-    5f2e:	2be50513          	addi	a0,a0,702 # a1e8 <schedule_dm+0x2398>
+    5f2e:	2b650513          	addi	a0,a0,694 # a1e0 <schedule_dm+0x2392>
     5f32:	00001097          	auipc	ra,0x1
     5f36:	68e080e7          	jalr	1678(ra) # 75c0 <printf>
       break;
@@ -9681,7 +9681,7 @@ fsfull()
     5f40:	fe042783          	lw	a5,-32(s0)
     5f44:	40000613          	li	a2,1024
     5f48:	00005597          	auipc	a1,0x5
-    5f4c:	8c058593          	addi	a1,a1,-1856 # a808 <buf>
+    5f4c:	8b858593          	addi	a1,a1,-1864 # a800 <buf>
     5f50:	853e                	mv	a0,a5
     5f52:	00001097          	auipc	ra,0x1
     5f56:	148080e7          	jalr	328(ra) # 709a <write>
@@ -9711,7 +9711,7 @@ fsfull()
     5f8c:	fe442783          	lw	a5,-28(s0)
     5f90:	85be                	mv	a1,a5
     5f92:	00004517          	auipc	a0,0x4
-    5f96:	26650513          	addi	a0,a0,614 # a1f8 <schedule_dm+0x23a8>
+    5f96:	25e50513          	addi	a0,a0,606 # a1f0 <schedule_dm+0x23a2>
     5f9a:	00001097          	auipc	ra,0x1
     5f9e:	626080e7          	jalr	1574(ra) # 75c0 <printf>
     close(fd);
@@ -9801,7 +9801,7 @@ fsfull()
 
   printf("fsfull test finished\n");
     6082:	00004517          	auipc	a0,0x4
-    6086:	18650513          	addi	a0,a0,390 # a208 <schedule_dm+0x23b8>
+    6086:	17e50513          	addi	a0,a0,382 # a200 <schedule_dm+0x23b2>
     608a:	00001097          	auipc	ra,0x1
     608e:	536080e7          	jalr	1334(ra) # 75c0 <printf>
 }
@@ -9824,7 +9824,7 @@ void argptest(char *s)
   fd = open("init", O_RDONLY);
     60a8:	4581                	li	a1,0
     60aa:	00004517          	auipc	a0,0x4
-    60ae:	17650513          	addi	a0,a0,374 # a220 <schedule_dm+0x23d0>
+    60ae:	16e50513          	addi	a0,a0,366 # a218 <schedule_dm+0x23ca>
     60b2:	00001097          	auipc	ra,0x1
     60b6:	008080e7          	jalr	8(ra) # 70ba <open>
     60ba:	87aa                	mv	a5,a0
@@ -9836,7 +9836,7 @@ void argptest(char *s)
     printf("%s: open failed\n", s);
     60ca:	fd843583          	ld	a1,-40(s0)
     60ce:	00002517          	auipc	a0,0x2
-    60d2:	70250513          	addi	a0,a0,1794 # 87d0 <schedule_dm+0x980>
+    60d2:	6fa50513          	addi	a0,a0,1786 # 87c8 <schedule_dm+0x97a>
     60d6:	00001097          	auipc	ra,0x1
     60da:	4ea080e7          	jalr	1258(ra) # 75c0 <printf>
     exit(1);
@@ -9879,20 +9879,20 @@ rand()
     6126:	0800                	addi	s0,sp,16
   randstate = randstate * 1664525 + 1013904223;
     6128:	00004797          	auipc	a5,0x4
-    612c:	6d878793          	addi	a5,a5,1752 # a800 <randstate>
+    612c:	6d078793          	addi	a5,a5,1744 # a7f8 <randstate>
     6130:	6398                	ld	a4,0(a5)
     6132:	001967b7          	lui	a5,0x196
-    6136:	60d78793          	addi	a5,a5,1549 # 19660d <__BSS_END__+0x1855cd>
+    6136:	60d78793          	addi	a5,a5,1549 # 19660d <__BSS_END__+0x1855d5>
     613a:	02f70733          	mul	a4,a4,a5
     613e:	3c6ef7b7          	lui	a5,0x3c6ef
-    6142:	35f78793          	addi	a5,a5,863 # 3c6ef35f <__BSS_END__+0x3c6de31f>
+    6142:	35f78793          	addi	a5,a5,863 # 3c6ef35f <__BSS_END__+0x3c6de327>
     6146:	973e                	add	a4,a4,a5
     6148:	00004797          	auipc	a5,0x4
-    614c:	6b878793          	addi	a5,a5,1720 # a800 <randstate>
+    614c:	6b078793          	addi	a5,a5,1712 # a7f8 <randstate>
     6150:	e398                	sd	a4,0(a5)
   return randstate;
     6152:	00004797          	auipc	a5,0x4
-    6156:	6ae78793          	addi	a5,a5,1710 # a800 <randstate>
+    6156:	6a678793          	addi	a5,a5,1702 # a7f8 <randstate>
     615a:	639c                	ld	a5,0(a5)
     615c:	2781                	sext.w	a5,a5
 }
@@ -9938,12 +9938,12 @@ stacktest(char *s)
     // the *sp should cause a trap.
     printf("%s: stacktest: read below stack %p\n", s, *sp);
     61a2:	fe043783          	ld	a5,-32(s0)
-    61a6:	0007c783          	lbu	a5,0(a5) # fffffffffffff000 <__BSS_END__+0xfffffffffffedfc0>
+    61a6:	0007c783          	lbu	a5,0(a5) # fffffffffffff000 <__BSS_END__+0xfffffffffffedfc8>
     61aa:	2781                	sext.w	a5,a5
     61ac:	863e                	mv	a2,a5
     61ae:	fc843583          	ld	a1,-56(s0)
     61b2:	00004517          	auipc	a0,0x4
-    61b6:	07650513          	addi	a0,a0,118 # a228 <schedule_dm+0x23d8>
+    61b6:	06e50513          	addi	a0,a0,110 # a220 <schedule_dm+0x23d2>
     61ba:	00001097          	auipc	ra,0x1
     61be:	406080e7          	jalr	1030(ra) # 75c0 <printf>
     exit(1);
@@ -9957,7 +9957,7 @@ stacktest(char *s)
     printf("%s: fork failed\n", s);
     61d6:	fc843583          	ld	a1,-56(s0)
     61da:	00002517          	auipc	a0,0x2
-    61de:	5de50513          	addi	a0,a0,1502 # 87b8 <schedule_dm+0x968>
+    61de:	5d650513          	addi	a0,a0,1494 # 87b0 <schedule_dm+0x962>
     61e2:	00001097          	auipc	ra,0x1
     61e6:	3de080e7          	jalr	990(ra) # 75c0 <printf>
     exit(1);
@@ -10004,7 +10004,7 @@ pgbug(char *s)
   exec((char*)0xeaeb0b5b00002f5e, argv);
     6236:	fe840713          	addi	a4,s0,-24
     623a:	00004797          	auipc	a5,0x4
-    623e:	59e78793          	addi	a5,a5,1438 # a7d8 <schedule_dm+0x2988>
+    623e:	59678793          	addi	a5,a5,1430 # a7d0 <schedule_dm+0x2982>
     6242:	639c                	ld	a5,0(a5)
     6244:	85ba                	mv	a1,a4
     6246:	853e                	mv	a0,a5
@@ -10013,7 +10013,7 @@ pgbug(char *s)
 
   pipe((int*)0xeaeb0b5b00002f5e);
     6250:	00004797          	auipc	a5,0x4
-    6254:	58878793          	addi	a5,a5,1416 # a7d8 <schedule_dm+0x2988>
+    6254:	58078793          	addi	a5,a5,1408 # a7d0 <schedule_dm+0x2982>
     6258:	639c                	ld	a5,0(a5)
     625a:	853e                	mv	a0,a5
     625c:	00001097          	auipc	ra,0x1
@@ -10047,7 +10047,7 @@ sbrkbugs(char *s)
     628e:	0007df63          	bgez	a5,62ac <sbrkbugs+0x3e>
     printf("fork failed\n");
     6292:	00002517          	auipc	a0,0x2
-    6296:	2fe50513          	addi	a0,a0,766 # 8590 <schedule_dm+0x740>
+    6296:	2f650513          	addi	a0,a0,758 # 8588 <schedule_dm+0x73a>
     629a:	00001097          	auipc	ra,0x1
     629e:	326080e7          	jalr	806(ra) # 75c0 <printf>
     exit(1);
@@ -10097,7 +10097,7 @@ sbrkbugs(char *s)
     6300:	0007df63          	bgez	a5,631e <sbrkbugs+0xb0>
     printf("fork failed\n");
     6304:	00002517          	auipc	a0,0x2
-    6308:	28c50513          	addi	a0,a0,652 # 8590 <schedule_dm+0x740>
+    6308:	28450513          	addi	a0,a0,644 # 8588 <schedule_dm+0x73a>
     630c:	00001097          	auipc	ra,0x1
     6310:	2b4080e7          	jalr	692(ra) # 75c0 <printf>
     exit(1);
@@ -10148,7 +10148,7 @@ sbrkbugs(char *s)
     6378:	0007df63          	bgez	a5,6396 <sbrkbugs+0x128>
     printf("fork failed\n");
     637c:	00002517          	auipc	a0,0x2
-    6380:	21450513          	addi	a0,a0,532 # 8590 <schedule_dm+0x740>
+    6380:	20c50513          	addi	a0,a0,524 # 8588 <schedule_dm+0x73a>
     6384:	00001097          	auipc	ra,0x1
     6388:	23c080e7          	jalr	572(ra) # 75c0 <printf>
     exit(1);
@@ -10217,7 +10217,7 @@ badwrite(char *s)
   
   unlink("junk");
     6400:	00004517          	auipc	a0,0x4
-    6404:	e5050513          	addi	a0,a0,-432 # a250 <schedule_dm+0x2400>
+    6404:	e4850513          	addi	a0,a0,-440 # a248 <schedule_dm+0x23fa>
     6408:	00001097          	auipc	ra,0x1
     640c:	cc2080e7          	jalr	-830(ra) # 70ca <unlink>
   for(int i = 0; i < assumed_free; i++){
@@ -10226,7 +10226,7 @@ badwrite(char *s)
     int fd = open("junk", O_CREATE|O_WRONLY);
     6416:	20100593          	li	a1,513
     641a:	00004517          	auipc	a0,0x4
-    641e:	e3650513          	addi	a0,a0,-458 # a250 <schedule_dm+0x2400>
+    641e:	e2e50513          	addi	a0,a0,-466 # a248 <schedule_dm+0x23fa>
     6422:	00001097          	auipc	ra,0x1
     6426:	c98080e7          	jalr	-872(ra) # 70ba <open>
     642a:	87aa                	mv	a5,a0
@@ -10237,7 +10237,7 @@ badwrite(char *s)
     6436:	0007df63          	bgez	a5,6454 <badwrite+0x68>
       printf("open junk failed\n");
     643a:	00004517          	auipc	a0,0x4
-    643e:	e1e50513          	addi	a0,a0,-482 # a258 <schedule_dm+0x2408>
+    643e:	e1650513          	addi	a0,a0,-490 # a250 <schedule_dm+0x2402>
     6442:	00001097          	auipc	ra,0x1
     6446:	17e080e7          	jalr	382(ra) # 75c0 <printf>
       exit(1);
@@ -10260,7 +10260,7 @@ badwrite(char *s)
     6474:	c32080e7          	jalr	-974(ra) # 70a2 <close>
     unlink("junk");
     6478:	00004517          	auipc	a0,0x4
-    647c:	dd850513          	addi	a0,a0,-552 # a250 <schedule_dm+0x2400>
+    647c:	dd050513          	addi	a0,a0,-560 # a248 <schedule_dm+0x23fa>
     6480:	00001097          	auipc	ra,0x1
     6484:	c4a080e7          	jalr	-950(ra) # 70ca <unlink>
   for(int i = 0; i < assumed_free; i++){
@@ -10277,7 +10277,7 @@ badwrite(char *s)
   int fd = open("junk", O_CREATE|O_WRONLY);
     64a2:	20100593          	li	a1,513
     64a6:	00004517          	auipc	a0,0x4
-    64aa:	daa50513          	addi	a0,a0,-598 # a250 <schedule_dm+0x2400>
+    64aa:	da250513          	addi	a0,a0,-606 # a248 <schedule_dm+0x23fa>
     64ae:	00001097          	auipc	ra,0x1
     64b2:	c0c080e7          	jalr	-1012(ra) # 70ba <open>
     64b6:	87aa                	mv	a5,a0
@@ -10288,7 +10288,7 @@ badwrite(char *s)
     64c2:	0007df63          	bgez	a5,64e0 <badwrite+0xf4>
     printf("open junk failed\n");
     64c6:	00004517          	auipc	a0,0x4
-    64ca:	d9250513          	addi	a0,a0,-622 # a258 <schedule_dm+0x2408>
+    64ca:	d8a50513          	addi	a0,a0,-630 # a250 <schedule_dm+0x2402>
     64ce:	00001097          	auipc	ra,0x1
     64d2:	0f2080e7          	jalr	242(ra) # 75c0 <printf>
     exit(1);
@@ -10300,7 +10300,7 @@ badwrite(char *s)
     64e0:	fe442783          	lw	a5,-28(s0)
     64e4:	4605                	li	a2,1
     64e6:	00002597          	auipc	a1,0x2
-    64ea:	faa58593          	addi	a1,a1,-86 # 8490 <schedule_dm+0x640>
+    64ea:	fa258593          	addi	a1,a1,-94 # 8488 <schedule_dm+0x63a>
     64ee:	853e                	mv	a0,a5
     64f0:	00001097          	auipc	ra,0x1
     64f4:	baa080e7          	jalr	-1110(ra) # 709a <write>
@@ -10310,7 +10310,7 @@ badwrite(char *s)
     64fe:	00f70f63          	beq	a4,a5,651c <badwrite+0x130>
     printf("write failed\n");
     6502:	00004517          	auipc	a0,0x4
-    6506:	d6e50513          	addi	a0,a0,-658 # a270 <schedule_dm+0x2420>
+    6506:	d6650513          	addi	a0,a0,-666 # a268 <schedule_dm+0x241a>
     650a:	00001097          	auipc	ra,0x1
     650e:	0b6080e7          	jalr	182(ra) # 75c0 <printf>
     exit(1);
@@ -10325,7 +10325,7 @@ badwrite(char *s)
     6526:	b80080e7          	jalr	-1152(ra) # 70a2 <close>
   unlink("junk");
     652a:	00004517          	auipc	a0,0x4
-    652e:	d2650513          	addi	a0,a0,-730 # a250 <schedule_dm+0x2400>
+    652e:	d1e50513          	addi	a0,a0,-738 # a248 <schedule_dm+0x23fa>
     6532:	00001097          	auipc	ra,0x1
     6536:	b98080e7          	jalr	-1128(ra) # 70ca <unlink>
 
@@ -10360,7 +10360,7 @@ badarg(char *s)
     6562:	fd840793          	addi	a5,s0,-40
     6566:	85be                	mv	a1,a5
     6568:	00002517          	auipc	a0,0x2
-    656c:	03850513          	addi	a0,a0,56 # 85a0 <schedule_dm+0x750>
+    656c:	03050513          	addi	a0,a0,48 # 8598 <schedule_dm+0x74a>
     6570:	00001097          	auipc	ra,0x1
     6574:	b42080e7          	jalr	-1214(ra) # 70b2 <exec>
   for(int i = 0; i < 50000; i++){
@@ -10370,7 +10370,7 @@ badarg(char *s)
     6582:	fec42783          	lw	a5,-20(s0)
     6586:	0007871b          	sext.w	a4,a5
     658a:	67b1                	lui	a5,0xc
-    658c:	34f78793          	addi	a5,a5,847 # c34f <__global_pointer$+0x134f>
+    658c:	34f78793          	addi	a5,a5,847 # c34f <__global_pointer$+0x1357>
     6590:	fce7d3e3          	bge	a5,a4,6556 <badarg+0x12>
   }
   
@@ -10405,7 +10405,7 @@ execout(char *s)
     65c4:	0007df63          	bgez	a5,65e2 <execout+0x44>
       printf("fork failed\n");
     65c8:	00002517          	auipc	a0,0x2
-    65cc:	fc850513          	addi	a0,a0,-56 # 8590 <schedule_dm+0x740>
+    65cc:	fc050513          	addi	a0,a0,-64 # 8588 <schedule_dm+0x73a>
     65d0:	00001097          	auipc	ra,0x1
     65d4:	ff0080e7          	jalr	-16(ra) # 75c0 <printf>
       exit(1);
@@ -10436,7 +10436,7 @@ execout(char *s)
     660c:	97ba                	add	a5,a5,a4
     660e:	873e                	mv	a4,a5
     6610:	4785                	li	a5,1
-    6612:	00f70023          	sb	a5,0(a4) # b000 <__global_pointer$>
+    6612:	00f70023          	sb	a5,0(a4) # b000 <__global_pointer$+0x8>
       while(1){
     6616:	bfd1                	j	65ea <execout+0x4c>
           break;
@@ -10468,17 +10468,17 @@ execout(char *s)
     664a:	a5c080e7          	jalr	-1444(ra) # 70a2 <close>
       char *args[] = { "echo", "x", 0 };
     664e:	00002797          	auipc	a5,0x2
-    6652:	f5278793          	addi	a5,a5,-174 # 85a0 <schedule_dm+0x750>
+    6652:	f4a78793          	addi	a5,a5,-182 # 8598 <schedule_dm+0x74a>
     6656:	fcf43023          	sd	a5,-64(s0)
     665a:	00002797          	auipc	a5,0x2
-    665e:	e3678793          	addi	a5,a5,-458 # 8490 <schedule_dm+0x640>
+    665e:	e2e78793          	addi	a5,a5,-466 # 8488 <schedule_dm+0x63a>
     6662:	fcf43423          	sd	a5,-56(s0)
     6666:	fc043823          	sd	zero,-48(s0)
       exec("echo", args);
     666a:	fc040793          	addi	a5,s0,-64
     666e:	85be                	mv	a1,a5
     6670:	00002517          	auipc	a0,0x2
-    6674:	f3050513          	addi	a0,a0,-208 # 85a0 <schedule_dm+0x750>
+    6674:	f2850513          	addi	a0,a0,-216 # 8598 <schedule_dm+0x74a>
     6678:	00001097          	auipc	ra,0x1
     667c:	a3a080e7          	jalr	-1478(ra) # 70b2 <exec>
       exit(0);
@@ -10528,7 +10528,7 @@ countfree()
     66ce:	0007df63          	bgez	a5,66ec <countfree+0x36>
     printf("pipe() failed in countfree()\n");
     66d2:	00004517          	auipc	a0,0x4
-    66d6:	bae50513          	addi	a0,a0,-1106 # a280 <schedule_dm+0x2430>
+    66d6:	ba650513          	addi	a0,a0,-1114 # a278 <schedule_dm+0x242a>
     66da:	00001097          	auipc	ra,0x1
     66de:	ee6080e7          	jalr	-282(ra) # 75c0 <printf>
     exit(1);
@@ -10549,7 +10549,7 @@ countfree()
     6700:	0007df63          	bgez	a5,671e <countfree+0x68>
     printf("fork failed in countfree()\n");
     6704:	00004517          	auipc	a0,0x4
-    6708:	b9c50513          	addi	a0,a0,-1124 # a2a0 <schedule_dm+0x2450>
+    6708:	b9450513          	addi	a0,a0,-1132 # a298 <schedule_dm+0x244a>
     670c:	00001097          	auipc	ra,0x1
     6710:	eb4080e7          	jalr	-332(ra) # 75c0 <printf>
     exit(1);
@@ -10597,7 +10597,7 @@ countfree()
     6760:	fd442783          	lw	a5,-44(s0)
     6764:	4605                	li	a2,1
     6766:	00002597          	auipc	a1,0x2
-    676a:	d2a58593          	addi	a1,a1,-726 # 8490 <schedule_dm+0x640>
+    676a:	d2258593          	addi	a1,a1,-734 # 8488 <schedule_dm+0x63a>
     676e:	853e                	mv	a0,a5
     6770:	00001097          	auipc	ra,0x1
     6774:	92a080e7          	jalr	-1750(ra) # 709a <write>
@@ -10607,7 +10607,7 @@ countfree()
     677e:	faf70be3          	beq	a4,a5,6734 <countfree+0x7e>
         printf("write() failed in countfree()\n");
     6782:	00004517          	auipc	a0,0x4
-    6786:	b3e50513          	addi	a0,a0,-1218 # a2c0 <schedule_dm+0x2470>
+    6786:	b3650513          	addi	a0,a0,-1226 # a2b8 <schedule_dm+0x246a>
     678a:	00001097          	auipc	ra,0x1
     678e:	e36080e7          	jalr	-458(ra) # 75c0 <printf>
         exit(1);
@@ -10651,7 +10651,7 @@ countfree()
     67dc:	0007df63          	bgez	a5,67fa <countfree+0x144>
       printf("read() failed in countfree()\n");
     67e0:	00004517          	auipc	a0,0x4
-    67e4:	b0050513          	addi	a0,a0,-1280 # a2e0 <schedule_dm+0x2490>
+    67e4:	af850513          	addi	a0,a0,-1288 # a2d8 <schedule_dm+0x248a>
     67e8:	00001097          	auipc	ra,0x1
     67ec:	dd8080e7          	jalr	-552(ra) # 75c0 <printf>
       exit(1);
@@ -10711,7 +10711,7 @@ run(void f(char *), char *s) {
   printf("test %s: ", s);
     6846:	fd043583          	ld	a1,-48(s0)
     684a:	00004517          	auipc	a0,0x4
-    684e:	ab650513          	addi	a0,a0,-1354 # a300 <schedule_dm+0x24b0>
+    684e:	aae50513          	addi	a0,a0,-1362 # a2f8 <schedule_dm+0x24aa>
     6852:	00001097          	auipc	ra,0x1
     6856:	d6e080e7          	jalr	-658(ra) # 75c0 <printf>
   if((pid = fork()) < 0) {
@@ -10724,7 +10724,7 @@ run(void f(char *), char *s) {
     686e:	0007df63          	bgez	a5,688c <run+0x56>
     printf("runtest: fork error\n");
     6872:	00004517          	auipc	a0,0x4
-    6876:	a9e50513          	addi	a0,a0,-1378 # a310 <schedule_dm+0x24c0>
+    6876:	a9650513          	addi	a0,a0,-1386 # a308 <schedule_dm+0x24ba>
     687a:	00001097          	auipc	ra,0x1
     687e:	d46080e7          	jalr	-698(ra) # 75c0 <printf>
     exit(1);
@@ -10755,14 +10755,14 @@ run(void f(char *), char *s) {
     68ba:	cb91                	beqz	a5,68ce <run+0x98>
       printf("FAILED\n");
     68bc:	00004517          	auipc	a0,0x4
-    68c0:	a6c50513          	addi	a0,a0,-1428 # a328 <schedule_dm+0x24d8>
+    68c0:	a6450513          	addi	a0,a0,-1436 # a320 <schedule_dm+0x24d2>
     68c4:	00001097          	auipc	ra,0x1
     68c8:	cfc080e7          	jalr	-772(ra) # 75c0 <printf>
     68cc:	a809                	j	68de <run+0xa8>
     else
       printf("OK\n");
     68ce:	00004517          	auipc	a0,0x4
-    68d2:	a6250513          	addi	a0,a0,-1438 # a330 <schedule_dm+0x24e0>
+    68d2:	a5a50513          	addi	a0,a0,-1446 # a328 <schedule_dm+0x24da>
     68d6:	00001097          	auipc	ra,0x1
     68da:	cea080e7          	jalr	-790(ra) # 75c0 <printf>
     return xstatus == 0;
@@ -10804,7 +10804,7 @@ main(int argc, char *argv[])
     692a:	07a1                	addi	a5,a5,8
     692c:	639c                	ld	a5,0(a5)
     692e:	00004597          	auipc	a1,0x4
-    6932:	a0a58593          	addi	a1,a1,-1526 # a338 <schedule_dm+0x24e8>
+    6932:	a0258593          	addi	a1,a1,-1534 # a330 <schedule_dm+0x24e2>
     6936:	853e                	mv	a0,a5
     6938:	00000097          	auipc	ra,0x0
     693c:	2fc080e7          	jalr	764(ra) # 6c34 <strcmp>
@@ -10823,7 +10823,7 @@ main(int argc, char *argv[])
     695e:	07a1                	addi	a5,a5,8
     6960:	639c                	ld	a5,0(a5)
     6962:	00004597          	auipc	a1,0x4
-    6966:	9de58593          	addi	a1,a1,-1570 # a340 <schedule_dm+0x24f0>
+    6966:	9d658593          	addi	a1,a1,-1578 # a338 <schedule_dm+0x24ea>
     696a:	853e                	mv	a0,a5
     696c:	00000097          	auipc	ra,0x0
     6970:	2c8080e7          	jalr	712(ra) # 6c34 <strcmp>
@@ -10857,7 +10857,7 @@ main(int argc, char *argv[])
     69ba:	00e7df63          	bge	a5,a4,69d8 <main+0xe2>
     printf("Usage: usertests [-c] [testname]\n");
     69be:	00004517          	auipc	a0,0x4
-    69c2:	98a50513          	addi	a0,a0,-1654 # a348 <schedule_dm+0x24f8>
+    69c2:	98250513          	addi	a0,a0,-1662 # a340 <schedule_dm+0x24f2>
     69c6:	00001097          	auipc	ra,0x1
     69ca:	bfa080e7          	jalr	-1030(ra) # 75c0 <printf>
     exit(1);
@@ -10871,7 +10871,7 @@ main(int argc, char *argv[])
     char *s;
   } tests[] = {
     69d8:	00004717          	auipc	a4,0x4
-    69dc:	a5070713          	addi	a4,a4,-1456 # a428 <schedule_dm+0x25d8>
+    69dc:	a4870713          	addi	a4,a4,-1464 # a420 <schedule_dm+0x25d2>
     69e0:	c0040793          	addi	a5,s0,-1024
     69e4:	86ba                	mv	a3,a4
     69e6:	3b000713          	li	a4,944
@@ -10891,7 +10891,7 @@ main(int argc, char *argv[])
     69fe:	c7ed                	beqz	a5,6ae8 <main+0x1f2>
     printf("continuous usertests starting\n");
     6a00:	00004517          	auipc	a0,0x4
-    6a04:	97050513          	addi	a0,a0,-1680 # a370 <schedule_dm+0x2520>
+    6a04:	96850513          	addi	a0,a0,-1688 # a368 <schedule_dm+0x251a>
     6a08:	00001097          	auipc	ra,0x1
     6a0c:	bb8080e7          	jalr	-1096(ra) # 75c0 <printf>
     while(1){
@@ -10937,7 +10937,7 @@ main(int argc, char *argv[])
     6a68:	c78d                	beqz	a5,6a92 <main+0x19c>
         printf("SOME TESTS FAILED\n");
     6a6a:	00004517          	auipc	a0,0x4
-    6a6e:	92650513          	addi	a0,a0,-1754 # a390 <schedule_dm+0x2540>
+    6a6e:	91e50513          	addi	a0,a0,-1762 # a388 <schedule_dm+0x253a>
     6a72:	00001097          	auipc	ra,0x1
     6a76:	b4e080e7          	jalr	-1202(ra) # 75c0 <printf>
         if(continuous != 2)
@@ -10968,7 +10968,7 @@ main(int argc, char *argv[])
     6abc:	2781                	sext.w	a5,a5
     6abe:	85be                	mv	a1,a5
     6ac0:	00004517          	auipc	a0,0x4
-    6ac4:	8e850513          	addi	a0,a0,-1816 # a3a8 <schedule_dm+0x2558>
+    6ac4:	8e050513          	addi	a0,a0,-1824 # a3a0 <schedule_dm+0x2552>
     6ac8:	00001097          	auipc	ra,0x1
     6acc:	af8080e7          	jalr	-1288(ra) # 75c0 <printf>
         if(continuous != 2)
@@ -10986,7 +10986,7 @@ main(int argc, char *argv[])
 
   printf("usertests starting\n");
     6ae8:	00004517          	auipc	a0,0x4
-    6aec:	8e050513          	addi	a0,a0,-1824 # a3c8 <schedule_dm+0x2578>
+    6aec:	8d850513          	addi	a0,a0,-1832 # a3c0 <schedule_dm+0x2572>
     6af0:	00001097          	auipc	ra,0x1
     6af4:	ad0080e7          	jalr	-1328(ra) # 75c0 <printf>
   int free0 = countfree();
@@ -11043,7 +11043,7 @@ main(int argc, char *argv[])
     6b70:	cf91                	beqz	a5,6b8c <main+0x296>
     printf("SOME TESTS FAILED\n");
     6b72:	00004517          	auipc	a0,0x4
-    6b76:	81e50513          	addi	a0,a0,-2018 # a390 <schedule_dm+0x2540>
+    6b76:	81650513          	addi	a0,a0,-2026 # a388 <schedule_dm+0x253a>
     6b7a:	00001097          	auipc	ra,0x1
     6b7e:	a46080e7          	jalr	-1466(ra) # 75c0 <printf>
     exit(1);
@@ -11066,7 +11066,7 @@ main(int argc, char *argv[])
     6bb2:	863a                	mv	a2,a4
     6bb4:	85be                	mv	a1,a5
     6bb6:	00004517          	auipc	a0,0x4
-    6bba:	82a50513          	addi	a0,a0,-2006 # a3e0 <schedule_dm+0x2590>
+    6bba:	82250513          	addi	a0,a0,-2014 # a3d8 <schedule_dm+0x258a>
     6bbe:	00001097          	auipc	ra,0x1
     6bc2:	a02080e7          	jalr	-1534(ra) # 75c0 <printf>
     exit(1);
@@ -11076,7 +11076,7 @@ main(int argc, char *argv[])
   } else {
     printf("ALL TESTS PASSED\n");
     6bd0:	00004517          	auipc	a0,0x4
-    6bd4:	84050513          	addi	a0,a0,-1984 # a410 <schedule_dm+0x25c0>
+    6bd4:	83850513          	addi	a0,a0,-1992 # a408 <schedule_dm+0x25ba>
     6bd8:	00001097          	auipc	ra,0x1
     6bdc:	9e8080e7          	jalr	-1560(ra) # 75c0 <printf>
     exit(0);
@@ -11951,7 +11951,7 @@ printint(int fd, int xx, int base, int sgn)
     71d6:	0017871b          	addiw	a4,a5,1
     71da:	fee42623          	sw	a4,-20(s0)
     71de:	00003697          	auipc	a3,0x3
-    71e2:	60a68693          	addi	a3,a3,1546 # a7e8 <digits>
+    71e2:	60268693          	addi	a3,a3,1538 # a7e0 <digits>
     71e6:	02061713          	slli	a4,a2,0x20
     71ea:	9301                	srli	a4,a4,0x20
     71ec:	9736                	add	a4,a4,a3
@@ -12038,7 +12038,7 @@ printptr(int fd, uint64 x) {
     72b2:	fd043783          	ld	a5,-48(s0)
     72b6:	93f1                	srli	a5,a5,0x3c
     72b8:	00003717          	auipc	a4,0x3
-    72bc:	53070713          	addi	a4,a4,1328 # a7e8 <digits>
+    72bc:	52870713          	addi	a4,a4,1320 # a7e0 <digits>
     72c0:	97ba                	add	a5,a5,a4
     72c2:	0007c703          	lbu	a4,0(a5)
     72c6:	fdc42783          	lw	a5,-36(s0)
@@ -12209,7 +12209,7 @@ vprintf(int fd, const char *fmt, va_list ap)
     7476:	eb8d                	bnez	a5,74a8 <vprintf+0x1a6>
           s = "(null)";
     7478:	00003797          	auipc	a5,0x3
-    747c:	36878793          	addi	a5,a5,872 # a7e0 <schedule_dm+0x2990>
+    747c:	36078793          	addi	a5,a5,864 # a7d8 <schedule_dm+0x298a>
     7480:	fef43423          	sd	a5,-24(s0)
         while(*s != 0){
     7484:	a015                	j	74a8 <vprintf+0x1a6>
@@ -12399,7 +12399,7 @@ free(void *ap)
     7620:	fef43023          	sd	a5,-32(s0)
   for(p = freep; !(bp > p && bp < p->s.ptr); p = p->s.ptr)
     7624:	0000a797          	auipc	a5,0xa
-    7628:	a0c78793          	addi	a5,a5,-1524 # 11030 <freep>
+    7628:	a0478793          	addi	a5,a5,-1532 # 11028 <freep>
     762c:	639c                	ld	a5,0(a5)
     762e:	fef43423          	sd	a5,-24(s0)
     7632:	a815                	j	7666 <free+0x56>
@@ -12493,7 +12493,7 @@ free(void *ap)
     771a:	e398                	sd	a4,0(a5)
   freep = p;
     771c:	0000a797          	auipc	a5,0xa
-    7720:	91478793          	addi	a5,a5,-1772 # 11030 <freep>
+    7720:	90c78793          	addi	a5,a5,-1780 # 11028 <freep>
     7724:	fe843703          	ld	a4,-24(s0)
     7728:	e398                	sd	a4,0(a5)
 }
@@ -12555,7 +12555,7 @@ morecore(uint nu)
     779a:	e7a080e7          	jalr	-390(ra) # 7610 <free>
   return freep;
     779e:	0000a797          	auipc	a5,0xa
-    77a2:	89278793          	addi	a5,a5,-1902 # 11030 <freep>
+    77a2:	88a78793          	addi	a5,a5,-1910 # 11028 <freep>
     77a6:	639c                	ld	a5,0(a5)
 }
     77a8:	853e                	mv	a0,a5
@@ -12587,28 +12587,28 @@ malloc(uint nbytes)
     77cc:	fcf42e23          	sw	a5,-36(s0)
   if((prevp = freep) == 0){
     77d0:	0000a797          	auipc	a5,0xa
-    77d4:	86078793          	addi	a5,a5,-1952 # 11030 <freep>
+    77d4:	85878793          	addi	a5,a5,-1960 # 11028 <freep>
     77d8:	639c                	ld	a5,0(a5)
     77da:	fef43023          	sd	a5,-32(s0)
     77de:	fe043783          	ld	a5,-32(s0)
     77e2:	ef95                	bnez	a5,781e <malloc+0x6c>
     base.s.ptr = freep = prevp = &base;
     77e4:	0000a797          	auipc	a5,0xa
-    77e8:	83c78793          	addi	a5,a5,-1988 # 11020 <base>
+    77e8:	83478793          	addi	a5,a5,-1996 # 11018 <base>
     77ec:	fef43023          	sd	a5,-32(s0)
     77f0:	0000a797          	auipc	a5,0xa
-    77f4:	84078793          	addi	a5,a5,-1984 # 11030 <freep>
+    77f4:	83878793          	addi	a5,a5,-1992 # 11028 <freep>
     77f8:	fe043703          	ld	a4,-32(s0)
     77fc:	e398                	sd	a4,0(a5)
     77fe:	0000a797          	auipc	a5,0xa
-    7802:	83278793          	addi	a5,a5,-1998 # 11030 <freep>
+    7802:	82a78793          	addi	a5,a5,-2006 # 11028 <freep>
     7806:	6398                	ld	a4,0(a5)
     7808:	0000a797          	auipc	a5,0xa
-    780c:	81878793          	addi	a5,a5,-2024 # 11020 <base>
+    780c:	81078793          	addi	a5,a5,-2032 # 11018 <base>
     7810:	e398                	sd	a4,0(a5)
     base.s.size = 0;
     7812:	0000a797          	auipc	a5,0xa
-    7816:	80e78793          	addi	a5,a5,-2034 # 11020 <base>
+    7816:	80678793          	addi	a5,a5,-2042 # 11018 <base>
     781a:	0007a423          	sw	zero,8(a5)
   }
   for(p = prevp->s.ptr; ; prevp = p, p = p->s.ptr){
@@ -12658,7 +12658,7 @@ malloc(uint nbytes)
       }
       freep = prevp;
     788e:	00009797          	auipc	a5,0x9
-    7892:	7a278793          	addi	a5,a5,1954 # 11030 <freep>
+    7892:	79a78793          	addi	a5,a5,1946 # 11028 <freep>
     7896:	fe043703          	ld	a4,-32(s0)
     789a:	e398                	sd	a4,0(a5)
       return (void*)(p + 1);
@@ -12668,7 +12668,7 @@ malloc(uint nbytes)
     }
     if(p == freep)
     78a4:	00009797          	auipc	a5,0x9
-    78a8:	78c78793          	addi	a5,a5,1932 # 11030 <freep>
+    78a8:	78478793          	addi	a5,a5,1924 # 11028 <freep>
     78ac:	639c                	ld	a5,0(a5)
     78ae:	fe843703          	ld	a4,-24(s0)
     78b2:	02f71063          	bne	a4,a5,78d2 <malloc+0x120>
@@ -12837,698 +12837,696 @@ struct threads_sched_result schedule_default(struct threads_sched_args args)
 /* Weighted-Round-Robin Scheduling */
 struct threads_sched_result schedule_wrr(struct threads_sched_args args)
 {
-    7a2a:	7159                	addi	sp,sp,-112
-    7a2c:	f4a2                	sd	s0,104(sp)
-    7a2e:	f0a6                	sd	s1,96(sp)
-    7a30:	1880                	addi	s0,sp,112
+    7a2a:	711d                	addi	sp,sp,-96
+    7a2c:	eca2                	sd	s0,88(sp)
+    7a2e:	e8a6                	sd	s1,80(sp)
+    7a30:	1080                	addi	s0,sp,96
     7a32:	84aa                	mv	s1,a0
     struct threads_sched_result r;
     // TODO: implement the weighted round-robin scheduling algorithm
     static struct thread *last_thread = NULL;
     struct thread *selected_thread = NULL;
     7a34:	fe043423          	sd	zero,-24(s0)
-    int max_priority = -1;
-    7a38:	57fd                	li	a5,-1
-    7a3a:	fef42223          	sw	a5,-28(s0)
+    struct thread *first_eligible_thread = NULL; 
+    7a38:	fe043023          	sd	zero,-32(s0)
 
     // If last_thread is NULL or its remaining time is zero, reset the selection process
     if (last_thread == NULL || last_thread->remaining_time <= 0) {
-    7a3e:	00009797          	auipc	a5,0x9
-    7a42:	5fa78793          	addi	a5,a5,1530 # 11038 <last_thread.1226>
-    7a46:	639c                	ld	a5,0(a5)
-    7a48:	cb89                	beqz	a5,7a5a <schedule_wrr+0x30>
-    7a4a:	00009797          	auipc	a5,0x9
-    7a4e:	5ee78793          	addi	a5,a5,1518 # 11038 <last_thread.1226>
-    7a52:	639c                	ld	a5,0(a5)
-    7a54:	4fbc                	lw	a5,88(a5)
-    7a56:	00f04863          	bgtz	a5,7a66 <schedule_wrr+0x3c>
+    7a3c:	00009797          	auipc	a5,0x9
+    7a40:	5f478793          	addi	a5,a5,1524 # 11030 <last_thread.1226>
+    7a44:	639c                	ld	a5,0(a5)
+    7a46:	cb89                	beqz	a5,7a58 <schedule_wrr+0x2e>
+    7a48:	00009797          	auipc	a5,0x9
+    7a4c:	5e878793          	addi	a5,a5,1512 # 11030 <last_thread.1226>
+    7a50:	639c                	ld	a5,0(a5)
+    7a52:	4fbc                	lw	a5,88(a5)
+    7a54:	00f04863          	bgtz	a5,7a64 <schedule_wrr+0x3a>
         last_thread = NULL;
-    7a5a:	00009797          	auipc	a5,0x9
-    7a5e:	5de78793          	addi	a5,a5,1502 # 11038 <last_thread.1226>
-    7a62:	0007b023          	sd	zero,0(a5)
+    7a58:	00009797          	auipc	a5,0x9
+    7a5c:	5d878793          	addi	a5,a5,1496 # 11030 <last_thread.1226>
+    7a60:	0007b023          	sd	zero,0(a5)
     }
 
     struct thread *candidate = NULL;
-    7a66:	fc043c23          	sd	zero,-40(s0)
+    7a64:	fc043c23          	sd	zero,-40(s0)
     // Select the next thread to run based on weight and ensure round-robin fairness
     list_for_each_entry(candidate, args.run_queue, thread_list) {
-    7a6a:	649c                	ld	a5,8(s1)
-    7a6c:	639c                	ld	a5,0(a5)
-    7a6e:	fcf43423          	sd	a5,-56(s0)
-    7a72:	fc843783          	ld	a5,-56(s0)
-    7a76:	fd878793          	addi	a5,a5,-40
-    7a7a:	fcf43c23          	sd	a5,-40(s0)
-    7a7e:	a8a1                	j	7ad6 <schedule_wrr+0xac>
-        if (candidate != last_thread) {
-    7a80:	00009797          	auipc	a5,0x9
-    7a84:	5b878793          	addi	a5,a5,1464 # 11038 <last_thread.1226>
-    7a88:	639c                	ld	a5,0(a5)
-    7a8a:	fd843703          	ld	a4,-40(s0)
-    7a8e:	02f70963          	beq	a4,a5,7ac0 <schedule_wrr+0x96>
-            int priority = candidate->weight * TIME_QUANTUM;
-    7a92:	fd843783          	ld	a5,-40(s0)
-    7a96:	47bc                	lw	a5,72(a5)
-    7a98:	0017979b          	slliw	a5,a5,0x1
-    7a9c:	fcf42223          	sw	a5,-60(s0)
-            if (priority > max_priority) {
-    7aa0:	fc442703          	lw	a4,-60(s0)
-    7aa4:	fe442783          	lw	a5,-28(s0)
-    7aa8:	2701                	sext.w	a4,a4
-    7aaa:	2781                	sext.w	a5,a5
-    7aac:	00e7da63          	bge	a5,a4,7ac0 <schedule_wrr+0x96>
-                selected_thread = candidate;
-    7ab0:	fd843783          	ld	a5,-40(s0)
-    7ab4:	fef43423          	sd	a5,-24(s0)
-                max_priority = priority;
-    7ab8:	fc442783          	lw	a5,-60(s0)
-    7abc:	fef42223          	sw	a5,-28(s0)
+    7a68:	649c                	ld	a5,8(s1)
+    7a6a:	639c                	ld	a5,0(a5)
+    7a6c:	fcf43423          	sd	a5,-56(s0)
+    7a70:	fc843783          	ld	a5,-56(s0)
+    7a74:	fd878793          	addi	a5,a5,-40
+    7a78:	fcf43c23          	sd	a5,-40(s0)
+    7a7c:	a8a1                	j	7ad4 <schedule_wrr+0xaa>
+        // Check for the first eligible thread to use as a fallback
+        if (!first_eligible_thread && candidate->remaining_time > 0)
+    7a7e:	fe043783          	ld	a5,-32(s0)
+    7a82:	eb91                	bnez	a5,7a96 <schedule_wrr+0x6c>
+    7a84:	fd843783          	ld	a5,-40(s0)
+    7a88:	4fbc                	lw	a5,88(a5)
+    7a8a:	00f05663          	blez	a5,7a96 <schedule_wrr+0x6c>
+            first_eligible_thread = candidate;
+    7a8e:	fd843783          	ld	a5,-40(s0)
+    7a92:	fef43023          	sd	a5,-32(s0)
+        if ((!selected_thread || candidate->ID > selected_thread->ID) && candidate->remaining_time > 0)
+    7a96:	fe843783          	ld	a5,-24(s0)
+    7a9a:	cb89                	beqz	a5,7aac <schedule_wrr+0x82>
+    7a9c:	fd843783          	ld	a5,-40(s0)
+    7aa0:	5fd8                	lw	a4,60(a5)
+    7aa2:	fe843783          	ld	a5,-24(s0)
+    7aa6:	5fdc                	lw	a5,60(a5)
+    7aa8:	00e7db63          	bge	a5,a4,7abe <schedule_wrr+0x94>
+    7aac:	fd843783          	ld	a5,-40(s0)
+    7ab0:	4fbc                	lw	a5,88(a5)
+    7ab2:	00f05663          	blez	a5,7abe <schedule_wrr+0x94>
+            selected_thread = candidate;
+    7ab6:	fd843783          	ld	a5,-40(s0)
+    7aba:	fef43423          	sd	a5,-24(s0)
     list_for_each_entry(candidate, args.run_queue, thread_list) {
-    7ac0:	fd843783          	ld	a5,-40(s0)
-    7ac4:	779c                	ld	a5,40(a5)
-    7ac6:	faf43c23          	sd	a5,-72(s0)
-    7aca:	fb843783          	ld	a5,-72(s0)
-    7ace:	fd878793          	addi	a5,a5,-40
-    7ad2:	fcf43c23          	sd	a5,-40(s0)
-    7ad6:	fd843783          	ld	a5,-40(s0)
-    7ada:	02878713          	addi	a4,a5,40
-    7ade:	649c                	ld	a5,8(s1)
-    7ae0:	faf710e3          	bne	a4,a5,7a80 <schedule_wrr+0x56>
-            }
-        }
+    7abe:	fd843783          	ld	a5,-40(s0)
+    7ac2:	779c                	ld	a5,40(a5)
+    7ac4:	fcf43023          	sd	a5,-64(s0)
+    7ac8:	fc043783          	ld	a5,-64(s0)
+    7acc:	fd878793          	addi	a5,a5,-40
+    7ad0:	fcf43c23          	sd	a5,-40(s0)
+    7ad4:	fd843783          	ld	a5,-40(s0)
+    7ad8:	02878713          	addi	a4,a5,40
+    7adc:	649c                	ld	a5,8(s1)
+    7ade:	faf710e3          	bne	a4,a5,7a7e <schedule_wrr+0x54>
     }
-
+ 
     // Fall back to the last_thread if no other thread is selected and it still has remaining time
     if (!selected_thread && last_thread && last_thread->remaining_time > 0) {
-    7ae4:	fe843783          	ld	a5,-24(s0)
-    7ae8:	e795                	bnez	a5,7b14 <schedule_wrr+0xea>
-    7aea:	00009797          	auipc	a5,0x9
-    7aee:	54e78793          	addi	a5,a5,1358 # 11038 <last_thread.1226>
-    7af2:	639c                	ld	a5,0(a5)
-    7af4:	c385                	beqz	a5,7b14 <schedule_wrr+0xea>
-    7af6:	00009797          	auipc	a5,0x9
-    7afa:	54278793          	addi	a5,a5,1346 # 11038 <last_thread.1226>
-    7afe:	639c                	ld	a5,0(a5)
-    7b00:	4fbc                	lw	a5,88(a5)
-    7b02:	00f05963          	blez	a5,7b14 <schedule_wrr+0xea>
+    7ae2:	fe843783          	ld	a5,-24(s0)
+    7ae6:	e795                	bnez	a5,7b12 <schedule_wrr+0xe8>
+    7ae8:	00009797          	auipc	a5,0x9
+    7aec:	54878793          	addi	a5,a5,1352 # 11030 <last_thread.1226>
+    7af0:	639c                	ld	a5,0(a5)
+    7af2:	c385                	beqz	a5,7b12 <schedule_wrr+0xe8>
+    7af4:	00009797          	auipc	a5,0x9
+    7af8:	53c78793          	addi	a5,a5,1340 # 11030 <last_thread.1226>
+    7afc:	639c                	ld	a5,0(a5)
+    7afe:	4fbc                	lw	a5,88(a5)
+    7b00:	00f05963          	blez	a5,7b12 <schedule_wrr+0xe8>
         selected_thread = last_thread;
-    7b06:	00009797          	auipc	a5,0x9
-    7b0a:	53278793          	addi	a5,a5,1330 # 11038 <last_thread.1226>
-    7b0e:	639c                	ld	a5,0(a5)
-    7b10:	fef43423          	sd	a5,-24(s0)
+    7b04:	00009797          	auipc	a5,0x9
+    7b08:	52c78793          	addi	a5,a5,1324 # 11030 <last_thread.1226>
+    7b0c:	639c                	ld	a5,0(a5)
+    7b0e:	fef43423          	sd	a5,-24(s0)
     }
 
     // Set the scheduling result
     if (selected_thread) {
-    7b14:	fe843783          	ld	a5,-24(s0)
-    7b18:	c7b9                	beqz	a5,7b66 <schedule_wrr+0x13c>
+    7b12:	fe843783          	ld	a5,-24(s0)
+    7b16:	c7b9                	beqz	a5,7b64 <schedule_wrr+0x13a>
         int time_slice = selected_thread->weight * TIME_QUANTUM;
-    7b1a:	fe843783          	ld	a5,-24(s0)
-    7b1e:	47bc                	lw	a5,72(a5)
-    7b20:	0017979b          	slliw	a5,a5,0x1
-    7b24:	fcf42a23          	sw	a5,-44(s0)
+    7b18:	fe843783          	ld	a5,-24(s0)
+    7b1c:	47bc                	lw	a5,72(a5)
+    7b1e:	0017979b          	slliw	a5,a5,0x1
+    7b22:	fcf42a23          	sw	a5,-44(s0)
         if (time_slice > selected_thread->remaining_time) {
-    7b28:	fe843783          	ld	a5,-24(s0)
-    7b2c:	4fb8                	lw	a4,88(a5)
-    7b2e:	fd442783          	lw	a5,-44(s0)
-    7b32:	2781                	sext.w	a5,a5
-    7b34:	00f75763          	bge	a4,a5,7b42 <schedule_wrr+0x118>
+    7b26:	fe843783          	ld	a5,-24(s0)
+    7b2a:	4fb8                	lw	a4,88(a5)
+    7b2c:	fd442783          	lw	a5,-44(s0)
+    7b30:	2781                	sext.w	a5,a5
+    7b32:	00f75763          	bge	a4,a5,7b40 <schedule_wrr+0x116>
             time_slice = selected_thread->remaining_time;
-    7b38:	fe843783          	ld	a5,-24(s0)
-    7b3c:	4fbc                	lw	a5,88(a5)
-    7b3e:	fcf42a23          	sw	a5,-44(s0)
+    7b36:	fe843783          	ld	a5,-24(s0)
+    7b3a:	4fbc                	lw	a5,88(a5)
+    7b3c:	fcf42a23          	sw	a5,-44(s0)
         }
         r.scheduled_thread_list_member = &selected_thread->thread_list;
-    7b42:	fe843783          	ld	a5,-24(s0)
-    7b46:	02878793          	addi	a5,a5,40
-    7b4a:	f8f43c23          	sd	a5,-104(s0)
+    7b40:	fe843783          	ld	a5,-24(s0)
+    7b44:	02878793          	addi	a5,a5,40
+    7b48:	faf43023          	sd	a5,-96(s0)
         r.allocated_time = time_slice;
-    7b4e:	fd442783          	lw	a5,-44(s0)
-    7b52:	faf42023          	sw	a5,-96(s0)
+    7b4c:	fd442783          	lw	a5,-44(s0)
+    7b50:	faf42423          	sw	a5,-88(s0)
         last_thread = selected_thread;  // Update the last run thread
-    7b56:	00009797          	auipc	a5,0x9
-    7b5a:	4e278793          	addi	a5,a5,1250 # 11038 <last_thread.1226>
-    7b5e:	fe843703          	ld	a4,-24(s0)
-    7b62:	e398                	sd	a4,0(a5)
-    7b64:	a039                	j	7b72 <schedule_wrr+0x148>
+    7b54:	00009797          	auipc	a5,0x9
+    7b58:	4dc78793          	addi	a5,a5,1244 # 11030 <last_thread.1226>
+    7b5c:	fe843703          	ld	a4,-24(s0)
+    7b60:	e398                	sd	a4,0(a5)
+    7b62:	a039                	j	7b70 <schedule_wrr+0x146>
     } else {
         // Idle if no suitable thread is found
         r.scheduled_thread_list_member = args.run_queue;
-    7b66:	649c                	ld	a5,8(s1)
-    7b68:	f8f43c23          	sd	a5,-104(s0)
+    7b64:	649c                	ld	a5,8(s1)
+    7b66:	faf43023          	sd	a5,-96(s0)
         r.allocated_time = 1;
-    7b6c:	4785                	li	a5,1
-    7b6e:	faf42023          	sw	a5,-96(s0)
+    7b6a:	4785                	li	a5,1
+    7b6c:	faf42423          	sw	a5,-88(s0)
     }
 
     return r;
-    7b72:	f9843783          	ld	a5,-104(s0)
-    7b76:	faf43423          	sd	a5,-88(s0)
-    7b7a:	fa043783          	ld	a5,-96(s0)
-    7b7e:	faf43823          	sd	a5,-80(s0)
-    7b82:	4701                	li	a4,0
-    7b84:	fa843703          	ld	a4,-88(s0)
-    7b88:	4781                	li	a5,0
-    7b8a:	fb043783          	ld	a5,-80(s0)
-    7b8e:	863a                	mv	a2,a4
-    7b90:	86be                	mv	a3,a5
-    7b92:	8732                	mv	a4,a2
-    7b94:	87b6                	mv	a5,a3
+    7b70:	fa043783          	ld	a5,-96(s0)
+    7b74:	faf43823          	sd	a5,-80(s0)
+    7b78:	fa843783          	ld	a5,-88(s0)
+    7b7c:	faf43c23          	sd	a5,-72(s0)
+    7b80:	4701                	li	a4,0
+    7b82:	fb043703          	ld	a4,-80(s0)
+    7b86:	4781                	li	a5,0
+    7b88:	fb843783          	ld	a5,-72(s0)
+    7b8c:	863a                	mv	a2,a4
+    7b8e:	86be                	mv	a3,a5
+    7b90:	8732                	mv	a4,a2
+    7b92:	87b6                	mv	a5,a3
 }
-    7b96:	853a                	mv	a0,a4
-    7b98:	85be                	mv	a1,a5
-    7b9a:	7426                	ld	s0,104(sp)
-    7b9c:	7486                	ld	s1,96(sp)
-    7b9e:	6165                	addi	sp,sp,112
-    7ba0:	8082                	ret
+    7b94:	853a                	mv	a0,a4
+    7b96:	85be                	mv	a1,a5
+    7b98:	6466                	ld	s0,88(sp)
+    7b9a:	64c6                	ld	s1,80(sp)
+    7b9c:	6125                	addi	sp,sp,96
+    7b9e:	8082                	ret
 
-0000000000007ba2 <find_next_release_time>:
+0000000000007ba0 <find_next_release_time>:
 
 /* Shortest-Job-First Scheduling */
 int find_next_release_time(struct list_head *release_queue, int current_time) {
-    7ba2:	7139                	addi	sp,sp,-64
-    7ba4:	fc22                	sd	s0,56(sp)
-    7ba6:	0080                	addi	s0,sp,64
-    7ba8:	fca43423          	sd	a0,-56(s0)
-    7bac:	87ae                	mv	a5,a1
-    7bae:	fcf42223          	sw	a5,-60(s0)
+    7ba0:	7139                	addi	sp,sp,-64
+    7ba2:	fc22                	sd	s0,56(sp)
+    7ba4:	0080                	addi	s0,sp,64
+    7ba6:	fca43423          	sd	a0,-56(s0)
+    7baa:	87ae                	mv	a5,a1
+    7bac:	fcf42223          	sw	a5,-60(s0)
     struct release_queue_entry *next_release = NULL;
-    7bb2:	fe043423          	sd	zero,-24(s0)
+    7bb0:	fe043423          	sd	zero,-24(s0)
     int next_release_time = INT_MAX;
-    7bb6:	800007b7          	lui	a5,0x80000
-    7bba:	fff7c793          	not	a5,a5
-    7bbe:	fef42223          	sw	a5,-28(s0)
+    7bb4:	800007b7          	lui	a5,0x80000
+    7bb8:	fff7c793          	not	a5,a5
+    7bbc:	fef42223          	sw	a5,-28(s0)
 
     list_for_each_entry(next_release, release_queue, thread_list) {
-    7bc2:	fc843783          	ld	a5,-56(s0)
-    7bc6:	639c                	ld	a5,0(a5)
-    7bc8:	fcf43c23          	sd	a5,-40(s0)
-    7bcc:	fd843783          	ld	a5,-40(s0)
-    7bd0:	17e1                	addi	a5,a5,-8
-    7bd2:	fef43423          	sd	a5,-24(s0)
-    7bd6:	a081                	j	7c16 <find_next_release_time+0x74>
+    7bc0:	fc843783          	ld	a5,-56(s0)
+    7bc4:	639c                	ld	a5,0(a5)
+    7bc6:	fcf43c23          	sd	a5,-40(s0)
+    7bca:	fd843783          	ld	a5,-40(s0)
+    7bce:	17e1                	addi	a5,a5,-8
+    7bd0:	fef43423          	sd	a5,-24(s0)
+    7bd4:	a081                	j	7c14 <find_next_release_time+0x74>
         if (next_release->release_time > current_time &&
-    7bd8:	fe843783          	ld	a5,-24(s0)
-    7bdc:	4f98                	lw	a4,24(a5)
-    7bde:	fc442783          	lw	a5,-60(s0)
-    7be2:	2781                	sext.w	a5,a5
-    7be4:	00e7df63          	bge	a5,a4,7c02 <find_next_release_time+0x60>
+    7bd6:	fe843783          	ld	a5,-24(s0)
+    7bda:	4f98                	lw	a4,24(a5)
+    7bdc:	fc442783          	lw	a5,-60(s0)
+    7be0:	2781                	sext.w	a5,a5
+    7be2:	00e7df63          	bge	a5,a4,7c00 <find_next_release_time+0x60>
             next_release->release_time < next_release_time) {
-    7be8:	fe843783          	ld	a5,-24(s0)
-    7bec:	4f98                	lw	a4,24(a5)
+    7be6:	fe843783          	ld	a5,-24(s0)
+    7bea:	4f98                	lw	a4,24(a5)
         if (next_release->release_time > current_time &&
-    7bee:	fe442783          	lw	a5,-28(s0)
-    7bf2:	2781                	sext.w	a5,a5
-    7bf4:	00f75763          	bge	a4,a5,7c02 <find_next_release_time+0x60>
+    7bec:	fe442783          	lw	a5,-28(s0)
+    7bf0:	2781                	sext.w	a5,a5
+    7bf2:	00f75763          	bge	a4,a5,7c00 <find_next_release_time+0x60>
             next_release_time = next_release->release_time;
-    7bf8:	fe843783          	ld	a5,-24(s0)
-    7bfc:	4f9c                	lw	a5,24(a5)
-    7bfe:	fef42223          	sw	a5,-28(s0)
+    7bf6:	fe843783          	ld	a5,-24(s0)
+    7bfa:	4f9c                	lw	a5,24(a5)
+    7bfc:	fef42223          	sw	a5,-28(s0)
     list_for_each_entry(next_release, release_queue, thread_list) {
-    7c02:	fe843783          	ld	a5,-24(s0)
-    7c06:	679c                	ld	a5,8(a5)
-    7c08:	fcf43823          	sd	a5,-48(s0)
-    7c0c:	fd043783          	ld	a5,-48(s0)
-    7c10:	17e1                	addi	a5,a5,-8
-    7c12:	fef43423          	sd	a5,-24(s0)
-    7c16:	fe843783          	ld	a5,-24(s0)
-    7c1a:	07a1                	addi	a5,a5,8
-    7c1c:	fc843703          	ld	a4,-56(s0)
-    7c20:	faf71ce3          	bne	a4,a5,7bd8 <find_next_release_time+0x36>
+    7c00:	fe843783          	ld	a5,-24(s0)
+    7c04:	679c                	ld	a5,8(a5)
+    7c06:	fcf43823          	sd	a5,-48(s0)
+    7c0a:	fd043783          	ld	a5,-48(s0)
+    7c0e:	17e1                	addi	a5,a5,-8
+    7c10:	fef43423          	sd	a5,-24(s0)
+    7c14:	fe843783          	ld	a5,-24(s0)
+    7c18:	07a1                	addi	a5,a5,8
+    7c1a:	fc843703          	ld	a4,-56(s0)
+    7c1e:	faf71ce3          	bne	a4,a5,7bd6 <find_next_release_time+0x36>
         }
     }
 
     if (next_release_time == INT_MAX)
-    7c24:	fe442783          	lw	a5,-28(s0)
-    7c28:	0007871b          	sext.w	a4,a5
-    7c2c:	800007b7          	lui	a5,0x80000
-    7c30:	fff7c793          	not	a5,a5
-    7c34:	00f71463          	bne	a4,a5,7c3c <find_next_release_time+0x9a>
+    7c22:	fe442783          	lw	a5,-28(s0)
+    7c26:	0007871b          	sext.w	a4,a5
+    7c2a:	800007b7          	lui	a5,0x80000
+    7c2e:	fff7c793          	not	a5,a5
+    7c32:	00f71463          	bne	a4,a5,7c3a <find_next_release_time+0x9a>
         return -1; // No threads in the release queue
-    7c38:	57fd                	li	a5,-1
-    7c3a:	a801                	j	7c4a <find_next_release_time+0xa8>
+    7c36:	57fd                	li	a5,-1
+    7c38:	a801                	j	7c48 <find_next_release_time+0xa8>
 
     return next_release_time - current_time;
-    7c3c:	fe442703          	lw	a4,-28(s0)
-    7c40:	fc442783          	lw	a5,-60(s0)
-    7c44:	40f707bb          	subw	a5,a4,a5
-    7c48:	2781                	sext.w	a5,a5
+    7c3a:	fe442703          	lw	a4,-28(s0)
+    7c3e:	fc442783          	lw	a5,-60(s0)
+    7c42:	40f707bb          	subw	a5,a4,a5
+    7c46:	2781                	sext.w	a5,a5
 }
-    7c4a:	853e                	mv	a0,a5
-    7c4c:	7462                	ld	s0,56(sp)
-    7c4e:	6121                	addi	sp,sp,64
-    7c50:	8082                	ret
+    7c48:	853e                	mv	a0,a5
+    7c4a:	7462                	ld	s0,56(sp)
+    7c4c:	6121                	addi	sp,sp,64
+    7c4e:	8082                	ret
 
-0000000000007c52 <schedule_sjf>:
+0000000000007c50 <schedule_sjf>:
 
 
 struct threads_sched_result schedule_sjf(struct threads_sched_args args)
 {
-    7c52:	711d                	addi	sp,sp,-96
-    7c54:	eca2                	sd	s0,88(sp)
-    7c56:	e8a6                	sd	s1,80(sp)
-    7c58:	1080                	addi	s0,sp,96
-    7c5a:	84aa                	mv	s1,a0
+    7c50:	711d                	addi	sp,sp,-96
+    7c52:	eca2                	sd	s0,88(sp)
+    7c54:	e8a6                	sd	s1,80(sp)
+    7c56:	1080                	addi	s0,sp,96
+    7c58:	84aa                	mv	s1,a0
     struct threads_sched_result r;
     // TODO: implement the shortest-job-first scheduling algorithm
     struct thread *shortest_job = NULL;
-    7c5c:	fe043423          	sd	zero,-24(s0)
+    7c5a:	fe043423          	sd	zero,-24(s0)
     struct thread *t;
     int shortest_time = INT_MAX;
-    7c60:	800007b7          	lui	a5,0x80000
-    7c64:	fff7c793          	not	a5,a5
-    7c68:	fcf42e23          	sw	a5,-36(s0)
+    7c5e:	800007b7          	lui	a5,0x80000
+    7c62:	fff7c793          	not	a5,a5
+    7c66:	fcf42e23          	sw	a5,-36(s0)
 
     // Find the thread with the shortest remaining time that is ready to run
     list_for_each_entry(t, args.run_queue, thread_list) {
-    7c6c:	649c                	ld	a5,8(s1)
-    7c6e:	639c                	ld	a5,0(a5)
-    7c70:	fcf43823          	sd	a5,-48(s0)
-    7c74:	fd043783          	ld	a5,-48(s0)
-    7c78:	fd878793          	addi	a5,a5,-40 # ffffffff7fffffd8 <__BSS_END__+0xffffffff7ffeef98>
-    7c7c:	fef43023          	sd	a5,-32(s0)
-    7c80:	a82d                	j	7cba <schedule_sjf+0x68>
+    7c6a:	649c                	ld	a5,8(s1)
+    7c6c:	639c                	ld	a5,0(a5)
+    7c6e:	fcf43823          	sd	a5,-48(s0)
+    7c72:	fd043783          	ld	a5,-48(s0)
+    7c76:	fd878793          	addi	a5,a5,-40 # ffffffff7fffffd8 <__BSS_END__+0xffffffff7ffeefa0>
+    7c7a:	fef43023          	sd	a5,-32(s0)
+    7c7e:	a82d                	j	7cb8 <schedule_sjf+0x68>
         if (t->remaining_time < shortest_time) {
-    7c82:	fe043783          	ld	a5,-32(s0)
-    7c86:	4fb8                	lw	a4,88(a5)
-    7c88:	fdc42783          	lw	a5,-36(s0)
-    7c8c:	2781                	sext.w	a5,a5
-    7c8e:	00f75b63          	bge	a4,a5,7ca4 <schedule_sjf+0x52>
+    7c80:	fe043783          	ld	a5,-32(s0)
+    7c84:	4fb8                	lw	a4,88(a5)
+    7c86:	fdc42783          	lw	a5,-36(s0)
+    7c8a:	2781                	sext.w	a5,a5
+    7c8c:	00f75b63          	bge	a4,a5,7ca2 <schedule_sjf+0x52>
             shortest_time = t->remaining_time;
-    7c92:	fe043783          	ld	a5,-32(s0)
-    7c96:	4fbc                	lw	a5,88(a5)
-    7c98:	fcf42e23          	sw	a5,-36(s0)
+    7c90:	fe043783          	ld	a5,-32(s0)
+    7c94:	4fbc                	lw	a5,88(a5)
+    7c96:	fcf42e23          	sw	a5,-36(s0)
             shortest_job = t;
-    7c9c:	fe043783          	ld	a5,-32(s0)
-    7ca0:	fef43423          	sd	a5,-24(s0)
+    7c9a:	fe043783          	ld	a5,-32(s0)
+    7c9e:	fef43423          	sd	a5,-24(s0)
     list_for_each_entry(t, args.run_queue, thread_list) {
-    7ca4:	fe043783          	ld	a5,-32(s0)
-    7ca8:	779c                	ld	a5,40(a5)
-    7caa:	fcf43423          	sd	a5,-56(s0)
-    7cae:	fc843783          	ld	a5,-56(s0)
-    7cb2:	fd878793          	addi	a5,a5,-40
-    7cb6:	fef43023          	sd	a5,-32(s0)
-    7cba:	fe043783          	ld	a5,-32(s0)
-    7cbe:	02878713          	addi	a4,a5,40
-    7cc2:	649c                	ld	a5,8(s1)
-    7cc4:	faf71fe3          	bne	a4,a5,7c82 <schedule_sjf+0x30>
+    7ca2:	fe043783          	ld	a5,-32(s0)
+    7ca6:	779c                	ld	a5,40(a5)
+    7ca8:	fcf43423          	sd	a5,-56(s0)
+    7cac:	fc843783          	ld	a5,-56(s0)
+    7cb0:	fd878793          	addi	a5,a5,-40
+    7cb4:	fef43023          	sd	a5,-32(s0)
+    7cb8:	fe043783          	ld	a5,-32(s0)
+    7cbc:	02878713          	addi	a4,a5,40
+    7cc0:	649c                	ld	a5,8(s1)
+    7cc2:	faf71fe3          	bne	a4,a5,7c80 <schedule_sjf+0x30>
         }
     }
 
     if (shortest_job) {
-    7cc8:	fe843783          	ld	a5,-24(s0)
-    7ccc:	cf89                	beqz	a5,7ce6 <schedule_sjf+0x94>
+    7cc6:	fe843783          	ld	a5,-24(s0)
+    7cca:	cf89                	beqz	a5,7ce4 <schedule_sjf+0x94>
         r.scheduled_thread_list_member = &shortest_job->thread_list;
-    7cce:	fe843783          	ld	a5,-24(s0)
-    7cd2:	02878793          	addi	a5,a5,40
-    7cd6:	faf43423          	sd	a5,-88(s0)
+    7ccc:	fe843783          	ld	a5,-24(s0)
+    7cd0:	02878793          	addi	a5,a5,40
+    7cd4:	faf43423          	sd	a5,-88(s0)
         r.allocated_time = shortest_job->remaining_time;  // Allow the thread to run to completion
-    7cda:	fe843783          	ld	a5,-24(s0)
-    7cde:	4fbc                	lw	a5,88(a5)
-    7ce0:	faf42823          	sw	a5,-80(s0)
-    7ce4:	a039                	j	7cf2 <schedule_sjf+0xa0>
+    7cd8:	fe843783          	ld	a5,-24(s0)
+    7cdc:	4fbc                	lw	a5,88(a5)
+    7cde:	faf42823          	sw	a5,-80(s0)
+    7ce2:	a039                	j	7cf0 <schedule_sjf+0xa0>
     } else {
         // If no threads are ready, find the next release time or idle
         r.scheduled_thread_list_member = args.run_queue;
-    7ce6:	649c                	ld	a5,8(s1)
-    7ce8:	faf43423          	sd	a5,-88(s0)
+    7ce4:	649c                	ld	a5,8(s1)
+    7ce6:	faf43423          	sd	a5,-88(s0)
         r.allocated_time = 1;  // Default minimal quantum if unsure
-    7cec:	4785                	li	a5,1
-    7cee:	faf42823          	sw	a5,-80(s0)
+    7cea:	4785                	li	a5,1
+    7cec:	faf42823          	sw	a5,-80(s0)
     }
     return r;
-    7cf2:	fa843783          	ld	a5,-88(s0)
-    7cf6:	faf43c23          	sd	a5,-72(s0)
-    7cfa:	fb043783          	ld	a5,-80(s0)
-    7cfe:	fcf43023          	sd	a5,-64(s0)
-    7d02:	4701                	li	a4,0
-    7d04:	fb843703          	ld	a4,-72(s0)
-    7d08:	4781                	li	a5,0
-    7d0a:	fc043783          	ld	a5,-64(s0)
-    7d0e:	863a                	mv	a2,a4
-    7d10:	86be                	mv	a3,a5
-    7d12:	8732                	mv	a4,a2
-    7d14:	87b6                	mv	a5,a3
+    7cf0:	fa843783          	ld	a5,-88(s0)
+    7cf4:	faf43c23          	sd	a5,-72(s0)
+    7cf8:	fb043783          	ld	a5,-80(s0)
+    7cfc:	fcf43023          	sd	a5,-64(s0)
+    7d00:	4701                	li	a4,0
+    7d02:	fb843703          	ld	a4,-72(s0)
+    7d06:	4781                	li	a5,0
+    7d08:	fc043783          	ld	a5,-64(s0)
+    7d0c:	863a                	mv	a2,a4
+    7d0e:	86be                	mv	a3,a5
+    7d10:	8732                	mv	a4,a2
+    7d12:	87b6                	mv	a5,a3
 }
-    7d16:	853a                	mv	a0,a4
-    7d18:	85be                	mv	a1,a5
-    7d1a:	6466                	ld	s0,88(sp)
-    7d1c:	64c6                	ld	s1,80(sp)
-    7d1e:	6125                	addi	sp,sp,96
-    7d20:	8082                	ret
+    7d14:	853a                	mv	a0,a4
+    7d16:	85be                	mv	a1,a5
+    7d18:	6466                	ld	s0,88(sp)
+    7d1a:	64c6                	ld	s1,80(sp)
+    7d1c:	6125                	addi	sp,sp,96
+    7d1e:	8082                	ret
 
-0000000000007d22 <schedule_lst>:
+0000000000007d20 <schedule_lst>:
 
 /* MP3 Part 2 - Real-Time Scheduling*/
 /* Least-Slack-Time Scheduling */
 struct threads_sched_result schedule_lst(struct threads_sched_args args)
 {
-    7d22:	7119                	addi	sp,sp,-128
-    7d24:	fc86                	sd	ra,120(sp)
-    7d26:	f8a2                	sd	s0,112(sp)
-    7d28:	f4a6                	sd	s1,104(sp)
-    7d2a:	f0ca                	sd	s2,96(sp)
-    7d2c:	ecce                	sd	s3,88(sp)
-    7d2e:	0100                	addi	s0,sp,128
-    7d30:	84aa                	mv	s1,a0
+    7d20:	7119                	addi	sp,sp,-128
+    7d22:	fc86                	sd	ra,120(sp)
+    7d24:	f8a2                	sd	s0,112(sp)
+    7d26:	f4a6                	sd	s1,104(sp)
+    7d28:	f0ca                	sd	s2,96(sp)
+    7d2a:	ecce                	sd	s3,88(sp)
+    7d2c:	0100                	addi	s0,sp,128
+    7d2e:	84aa                	mv	s1,a0
     struct threads_sched_result r;
     // TODO: implement the least-slack-time scheduling algorithm
     struct thread *min_slack = NULL;
-    7d32:	fc043423          	sd	zero,-56(s0)
+    7d30:	fc043423          	sd	zero,-56(s0)
     int min_slack_time = INT_MAX;
-    7d36:	800007b7          	lui	a5,0x80000
-    7d3a:	fff7c793          	not	a5,a5
-    7d3e:	fcf42223          	sw	a5,-60(s0)
+    7d34:	800007b7          	lui	a5,0x80000
+    7d38:	fff7c793          	not	a5,a5
+    7d3c:	fcf42223          	sw	a5,-60(s0)
     struct thread *t;
 
     // Find the thread with the minimum slack time
     list_for_each_entry(t, args.run_queue, thread_list) {
-    7d42:	649c                	ld	a5,8(s1)
-    7d44:	639c                	ld	a5,0(a5)
-    7d46:	faf43823          	sd	a5,-80(s0)
-    7d4a:	fb043783          	ld	a5,-80(s0)
-    7d4e:	fd878793          	addi	a5,a5,-40 # ffffffff7fffffd8 <__BSS_END__+0xffffffff7ffeef98>
-    7d52:	faf43c23          	sd	a5,-72(s0)
-    7d56:	a8b5                	j	7dd2 <schedule_lst+0xb0>
+    7d40:	649c                	ld	a5,8(s1)
+    7d42:	639c                	ld	a5,0(a5)
+    7d44:	faf43823          	sd	a5,-80(s0)
+    7d48:	fb043783          	ld	a5,-80(s0)
+    7d4c:	fd878793          	addi	a5,a5,-40 # ffffffff7fffffd8 <__BSS_END__+0xffffffff7ffeefa0>
+    7d50:	faf43c23          	sd	a5,-72(s0)
+    7d54:	a8b5                	j	7dd0 <schedule_lst+0xb0>
         int slack_time = t->deadline - args.current_time - t->remaining_time;
-    7d58:	fb843783          	ld	a5,-72(s0)
-    7d5c:	47f8                	lw	a4,76(a5)
-    7d5e:	409c                	lw	a5,0(s1)
-    7d60:	40f707bb          	subw	a5,a4,a5
-    7d64:	0007871b          	sext.w	a4,a5
-    7d68:	fb843783          	ld	a5,-72(s0)
-    7d6c:	4fbc                	lw	a5,88(a5)
-    7d6e:	40f707bb          	subw	a5,a4,a5
-    7d72:	faf42623          	sw	a5,-84(s0)
+    7d56:	fb843783          	ld	a5,-72(s0)
+    7d5a:	47f8                	lw	a4,76(a5)
+    7d5c:	409c                	lw	a5,0(s1)
+    7d5e:	40f707bb          	subw	a5,a4,a5
+    7d62:	0007871b          	sext.w	a4,a5
+    7d66:	fb843783          	ld	a5,-72(s0)
+    7d6a:	4fbc                	lw	a5,88(a5)
+    7d6c:	40f707bb          	subw	a5,a4,a5
+    7d70:	faf42623          	sw	a5,-84(s0)
         if (min_slack == NULL || slack_time < min_slack_time ||
-    7d76:	fc843783          	ld	a5,-56(s0)
-    7d7a:	cb8d                	beqz	a5,7dac <schedule_lst+0x8a>
-    7d7c:	fac42703          	lw	a4,-84(s0)
-    7d80:	fc442783          	lw	a5,-60(s0)
-    7d84:	2701                	sext.w	a4,a4
-    7d86:	2781                	sext.w	a5,a5
-    7d88:	02f74263          	blt	a4,a5,7dac <schedule_lst+0x8a>
-    7d8c:	fac42703          	lw	a4,-84(s0)
-    7d90:	fc442783          	lw	a5,-60(s0)
-    7d94:	2701                	sext.w	a4,a4
-    7d96:	2781                	sext.w	a5,a5
-    7d98:	02f71263          	bne	a4,a5,7dbc <schedule_lst+0x9a>
+    7d74:	fc843783          	ld	a5,-56(s0)
+    7d78:	cb8d                	beqz	a5,7daa <schedule_lst+0x8a>
+    7d7a:	fac42703          	lw	a4,-84(s0)
+    7d7e:	fc442783          	lw	a5,-60(s0)
+    7d82:	2701                	sext.w	a4,a4
+    7d84:	2781                	sext.w	a5,a5
+    7d86:	02f74263          	blt	a4,a5,7daa <schedule_lst+0x8a>
+    7d8a:	fac42703          	lw	a4,-84(s0)
+    7d8e:	fc442783          	lw	a5,-60(s0)
+    7d92:	2701                	sext.w	a4,a4
+    7d94:	2781                	sext.w	a5,a5
+    7d96:	02f71263          	bne	a4,a5,7dba <schedule_lst+0x9a>
             (slack_time == min_slack_time && t->ID < min_slack->ID)) {
-    7d9c:	fb843783          	ld	a5,-72(s0)
-    7da0:	5fd8                	lw	a4,60(a5)
-    7da2:	fc843783          	ld	a5,-56(s0)
-    7da6:	5fdc                	lw	a5,60(a5)
-    7da8:	00f75a63          	bge	a4,a5,7dbc <schedule_lst+0x9a>
+    7d9a:	fb843783          	ld	a5,-72(s0)
+    7d9e:	5fd8                	lw	a4,60(a5)
+    7da0:	fc843783          	ld	a5,-56(s0)
+    7da4:	5fdc                	lw	a5,60(a5)
+    7da6:	00f75a63          	bge	a4,a5,7dba <schedule_lst+0x9a>
             min_slack = t;
-    7dac:	fb843783          	ld	a5,-72(s0)
-    7db0:	fcf43423          	sd	a5,-56(s0)
+    7daa:	fb843783          	ld	a5,-72(s0)
+    7dae:	fcf43423          	sd	a5,-56(s0)
             min_slack_time = slack_time;
-    7db4:	fac42783          	lw	a5,-84(s0)
-    7db8:	fcf42223          	sw	a5,-60(s0)
+    7db2:	fac42783          	lw	a5,-84(s0)
+    7db6:	fcf42223          	sw	a5,-60(s0)
     list_for_each_entry(t, args.run_queue, thread_list) {
-    7dbc:	fb843783          	ld	a5,-72(s0)
-    7dc0:	779c                	ld	a5,40(a5)
-    7dc2:	faf43023          	sd	a5,-96(s0)
-    7dc6:	fa043783          	ld	a5,-96(s0)
-    7dca:	fd878793          	addi	a5,a5,-40
-    7dce:	faf43c23          	sd	a5,-72(s0)
-    7dd2:	fb843783          	ld	a5,-72(s0)
-    7dd6:	02878713          	addi	a4,a5,40
-    7dda:	649c                	ld	a5,8(s1)
-    7ddc:	f6f71ee3          	bne	a4,a5,7d58 <schedule_lst+0x36>
+    7dba:	fb843783          	ld	a5,-72(s0)
+    7dbe:	779c                	ld	a5,40(a5)
+    7dc0:	faf43023          	sd	a5,-96(s0)
+    7dc4:	fa043783          	ld	a5,-96(s0)
+    7dc8:	fd878793          	addi	a5,a5,-40
+    7dcc:	faf43c23          	sd	a5,-72(s0)
+    7dd0:	fb843783          	ld	a5,-72(s0)
+    7dd4:	02878713          	addi	a4,a5,40
+    7dd8:	649c                	ld	a5,8(s1)
+    7dda:	f6f71ee3          	bne	a4,a5,7d56 <schedule_lst+0x36>
         }
     }
 
     if (min_slack) {
-    7de0:	fc843783          	ld	a5,-56(s0)
-    7de4:	cf89                	beqz	a5,7dfe <schedule_lst+0xdc>
+    7dde:	fc843783          	ld	a5,-56(s0)
+    7de2:	cf89                	beqz	a5,7dfc <schedule_lst+0xdc>
         r.scheduled_thread_list_member = &min_slack->thread_list;
-    7de6:	fc843783          	ld	a5,-56(s0)
-    7dea:	02878793          	addi	a5,a5,40
-    7dee:	f8f43023          	sd	a5,-128(s0)
+    7de4:	fc843783          	ld	a5,-56(s0)
+    7de8:	02878793          	addi	a5,a5,40
+    7dec:	f8f43023          	sd	a5,-128(s0)
         r.allocated_time = min_slack->remaining_time;
-    7df2:	fc843783          	ld	a5,-56(s0)
-    7df6:	4fbc                	lw	a5,88(a5)
-    7df8:	f8f42423          	sw	a5,-120(s0)
-    7dfc:	a839                	j	7e1a <schedule_lst+0xf8>
+    7df0:	fc843783          	ld	a5,-56(s0)
+    7df4:	4fbc                	lw	a5,88(a5)
+    7df6:	f8f42423          	sw	a5,-120(s0)
+    7dfa:	a839                	j	7e18 <schedule_lst+0xf8>
     } else {
         r.scheduled_thread_list_member = args.run_queue;
-    7dfe:	649c                	ld	a5,8(s1)
-    7e00:	f8f43023          	sd	a5,-128(s0)
+    7dfc:	649c                	ld	a5,8(s1)
+    7dfe:	f8f43023          	sd	a5,-128(s0)
         r.allocated_time = find_next_release_time(args.release_queue, args.current_time);
-    7e04:	689c                	ld	a5,16(s1)
-    7e06:	4098                	lw	a4,0(s1)
-    7e08:	85ba                	mv	a1,a4
-    7e0a:	853e                	mv	a0,a5
-    7e0c:	00000097          	auipc	ra,0x0
-    7e10:	d96080e7          	jalr	-618(ra) # 7ba2 <find_next_release_time>
-    7e14:	87aa                	mv	a5,a0
-    7e16:	f8f42423          	sw	a5,-120(s0)
+    7e02:	689c                	ld	a5,16(s1)
+    7e04:	4098                	lw	a4,0(s1)
+    7e06:	85ba                	mv	a1,a4
+    7e08:	853e                	mv	a0,a5
+    7e0a:	00000097          	auipc	ra,0x0
+    7e0e:	d96080e7          	jalr	-618(ra) # 7ba0 <find_next_release_time>
+    7e12:	87aa                	mv	a5,a0
+    7e14:	f8f42423          	sw	a5,-120(s0)
     }
 
     return r;
-    7e1a:	f8043783          	ld	a5,-128(s0)
-    7e1e:	f8f43823          	sd	a5,-112(s0)
-    7e22:	f8843783          	ld	a5,-120(s0)
-    7e26:	f8f43c23          	sd	a5,-104(s0)
-    7e2a:	4701                	li	a4,0
-    7e2c:	f9043703          	ld	a4,-112(s0)
-    7e30:	4781                	li	a5,0
-    7e32:	f9843783          	ld	a5,-104(s0)
-    7e36:	893a                	mv	s2,a4
-    7e38:	89be                	mv	s3,a5
-    7e3a:	874a                	mv	a4,s2
-    7e3c:	87ce                	mv	a5,s3
+    7e18:	f8043783          	ld	a5,-128(s0)
+    7e1c:	f8f43823          	sd	a5,-112(s0)
+    7e20:	f8843783          	ld	a5,-120(s0)
+    7e24:	f8f43c23          	sd	a5,-104(s0)
+    7e28:	4701                	li	a4,0
+    7e2a:	f9043703          	ld	a4,-112(s0)
+    7e2e:	4781                	li	a5,0
+    7e30:	f9843783          	ld	a5,-104(s0)
+    7e34:	893a                	mv	s2,a4
+    7e36:	89be                	mv	s3,a5
+    7e38:	874a                	mv	a4,s2
+    7e3a:	87ce                	mv	a5,s3
 }
-    7e3e:	853a                	mv	a0,a4
-    7e40:	85be                	mv	a1,a5
-    7e42:	70e6                	ld	ra,120(sp)
-    7e44:	7446                	ld	s0,112(sp)
-    7e46:	74a6                	ld	s1,104(sp)
-    7e48:	7906                	ld	s2,96(sp)
-    7e4a:	69e6                	ld	s3,88(sp)
-    7e4c:	6109                	addi	sp,sp,128
-    7e4e:	8082                	ret
+    7e3c:	853a                	mv	a0,a4
+    7e3e:	85be                	mv	a1,a5
+    7e40:	70e6                	ld	ra,120(sp)
+    7e42:	7446                	ld	s0,112(sp)
+    7e44:	74a6                	ld	s1,104(sp)
+    7e46:	7906                	ld	s2,96(sp)
+    7e48:	69e6                	ld	s3,88(sp)
+    7e4a:	6109                	addi	sp,sp,128
+    7e4c:	8082                	ret
 
-0000000000007e50 <schedule_dm>:
+0000000000007e4e <schedule_dm>:
 
 /* Deadline-Monotonic Scheduling */
 struct threads_sched_result schedule_dm(struct threads_sched_args args)
 {
-    7e50:	7135                	addi	sp,sp,-160
-    7e52:	ed06                	sd	ra,152(sp)
-    7e54:	e922                	sd	s0,144(sp)
-    7e56:	e526                	sd	s1,136(sp)
-    7e58:	e14a                	sd	s2,128(sp)
-    7e5a:	fcce                	sd	s3,120(sp)
-    7e5c:	1100                	addi	s0,sp,160
-    7e5e:	84aa                	mv	s1,a0
+    7e4e:	7135                	addi	sp,sp,-160
+    7e50:	ed06                	sd	ra,152(sp)
+    7e52:	e922                	sd	s0,144(sp)
+    7e54:	e526                	sd	s1,136(sp)
+    7e56:	e14a                	sd	s2,128(sp)
+    7e58:	fcce                	sd	s3,120(sp)
+    7e5a:	1100                	addi	s0,sp,160
+    7e5c:	84aa                	mv	s1,a0
     struct threads_sched_result r;
     // TODO: implement the deadline-monotonic scheduling algorithm
    struct thread *earliest_deadline_thread = NULL;
-    7e60:	fc043423          	sd	zero,-56(s0)
+    7e5e:	fc043423          	sd	zero,-56(s0)
     struct thread *t;
     int earliest_deadline = INT_MAX;
-    7e64:	800007b7          	lui	a5,0x80000
-    7e68:	fff7c793          	not	a5,a5
-    7e6c:	faf42e23          	sw	a5,-68(s0)
+    7e62:	800007b7          	lui	a5,0x80000
+    7e66:	fff7c793          	not	a5,a5
+    7e6a:	faf42e23          	sw	a5,-68(s0)
 
     // Find the earliest deadline real-time thread
     list_for_each_entry(t, args.run_queue, thread_list) {
-    7e70:	649c                	ld	a5,8(s1)
-    7e72:	639c                	ld	a5,0(a5)
-    7e74:	faf43423          	sd	a5,-88(s0)
-    7e78:	fa843783          	ld	a5,-88(s0)
-    7e7c:	fd878793          	addi	a5,a5,-40 # ffffffff7fffffd8 <__BSS_END__+0xffffffff7ffeef98>
-    7e80:	fcf43023          	sd	a5,-64(s0)
-    7e84:	a841                	j	7f14 <schedule_dm+0xc4>
+    7e6e:	649c                	ld	a5,8(s1)
+    7e70:	639c                	ld	a5,0(a5)
+    7e72:	faf43423          	sd	a5,-88(s0)
+    7e76:	fa843783          	ld	a5,-88(s0)
+    7e7a:	fd878793          	addi	a5,a5,-40 # ffffffff7fffffd8 <__BSS_END__+0xffffffff7ffeefa0>
+    7e7e:	fcf43023          	sd	a5,-64(s0)
+    7e82:	a841                	j	7f12 <schedule_dm+0xc4>
         if (t->is_real_time && t->period != -1 && t->current_deadline < earliest_deadline) {
-    7e86:	fc043783          	ld	a5,-64(s0)
-    7e8a:	43bc                	lw	a5,64(a5)
-    7e8c:	cb95                	beqz	a5,7ec0 <schedule_dm+0x70>
-    7e8e:	fc043783          	ld	a5,-64(s0)
-    7e92:	4bbc                	lw	a5,80(a5)
-    7e94:	873e                	mv	a4,a5
-    7e96:	57fd                	li	a5,-1
-    7e98:	02f70463          	beq	a4,a5,7ec0 <schedule_dm+0x70>
-    7e9c:	fc043783          	ld	a5,-64(s0)
-    7ea0:	4ff8                	lw	a4,92(a5)
-    7ea2:	fbc42783          	lw	a5,-68(s0)
-    7ea6:	2781                	sext.w	a5,a5
-    7ea8:	00f75c63          	bge	a4,a5,7ec0 <schedule_dm+0x70>
+    7e84:	fc043783          	ld	a5,-64(s0)
+    7e88:	43bc                	lw	a5,64(a5)
+    7e8a:	cb95                	beqz	a5,7ebe <schedule_dm+0x70>
+    7e8c:	fc043783          	ld	a5,-64(s0)
+    7e90:	4bbc                	lw	a5,80(a5)
+    7e92:	873e                	mv	a4,a5
+    7e94:	57fd                	li	a5,-1
+    7e96:	02f70463          	beq	a4,a5,7ebe <schedule_dm+0x70>
+    7e9a:	fc043783          	ld	a5,-64(s0)
+    7e9e:	4ff8                	lw	a4,92(a5)
+    7ea0:	fbc42783          	lw	a5,-68(s0)
+    7ea4:	2781                	sext.w	a5,a5
+    7ea6:	00f75c63          	bge	a4,a5,7ebe <schedule_dm+0x70>
             earliest_deadline = t->current_deadline;
-    7eac:	fc043783          	ld	a5,-64(s0)
-    7eb0:	4ffc                	lw	a5,92(a5)
-    7eb2:	faf42e23          	sw	a5,-68(s0)
+    7eaa:	fc043783          	ld	a5,-64(s0)
+    7eae:	4ffc                	lw	a5,92(a5)
+    7eb0:	faf42e23          	sw	a5,-68(s0)
             earliest_deadline_thread = t;
-    7eb6:	fc043783          	ld	a5,-64(s0)
-    7eba:	fcf43423          	sd	a5,-56(s0)
-    7ebe:	a081                	j	7efe <schedule_dm+0xae>
+    7eb4:	fc043783          	ld	a5,-64(s0)
+    7eb8:	fcf43423          	sd	a5,-56(s0)
+    7ebc:	a081                	j	7efc <schedule_dm+0xae>
         } else if (t->is_real_time && t->period != -1 && t->current_deadline == earliest_deadline && t->ID < earliest_deadline_thread->ID) {
-    7ec0:	fc043783          	ld	a5,-64(s0)
-    7ec4:	43bc                	lw	a5,64(a5)
-    7ec6:	cf85                	beqz	a5,7efe <schedule_dm+0xae>
-    7ec8:	fc043783          	ld	a5,-64(s0)
-    7ecc:	4bbc                	lw	a5,80(a5)
-    7ece:	873e                	mv	a4,a5
-    7ed0:	57fd                	li	a5,-1
-    7ed2:	02f70663          	beq	a4,a5,7efe <schedule_dm+0xae>
-    7ed6:	fc043783          	ld	a5,-64(s0)
-    7eda:	4ff8                	lw	a4,92(a5)
-    7edc:	fbc42783          	lw	a5,-68(s0)
-    7ee0:	2781                	sext.w	a5,a5
-    7ee2:	00e79e63          	bne	a5,a4,7efe <schedule_dm+0xae>
-    7ee6:	fc043783          	ld	a5,-64(s0)
-    7eea:	5fd8                	lw	a4,60(a5)
-    7eec:	fc843783          	ld	a5,-56(s0)
-    7ef0:	5fdc                	lw	a5,60(a5)
-    7ef2:	00f75663          	bge	a4,a5,7efe <schedule_dm+0xae>
+    7ebe:	fc043783          	ld	a5,-64(s0)
+    7ec2:	43bc                	lw	a5,64(a5)
+    7ec4:	cf85                	beqz	a5,7efc <schedule_dm+0xae>
+    7ec6:	fc043783          	ld	a5,-64(s0)
+    7eca:	4bbc                	lw	a5,80(a5)
+    7ecc:	873e                	mv	a4,a5
+    7ece:	57fd                	li	a5,-1
+    7ed0:	02f70663          	beq	a4,a5,7efc <schedule_dm+0xae>
+    7ed4:	fc043783          	ld	a5,-64(s0)
+    7ed8:	4ff8                	lw	a4,92(a5)
+    7eda:	fbc42783          	lw	a5,-68(s0)
+    7ede:	2781                	sext.w	a5,a5
+    7ee0:	00e79e63          	bne	a5,a4,7efc <schedule_dm+0xae>
+    7ee4:	fc043783          	ld	a5,-64(s0)
+    7ee8:	5fd8                	lw	a4,60(a5)
+    7eea:	fc843783          	ld	a5,-56(s0)
+    7eee:	5fdc                	lw	a5,60(a5)
+    7ef0:	00f75663          	bge	a4,a5,7efc <schedule_dm+0xae>
             earliest_deadline_thread = t;  // Tie-breaking by ID
-    7ef6:	fc043783          	ld	a5,-64(s0)
-    7efa:	fcf43423          	sd	a5,-56(s0)
+    7ef4:	fc043783          	ld	a5,-64(s0)
+    7ef8:	fcf43423          	sd	a5,-56(s0)
     list_for_each_entry(t, args.run_queue, thread_list) {
-    7efe:	fc043783          	ld	a5,-64(s0)
-    7f02:	779c                	ld	a5,40(a5)
-    7f04:	f8f43423          	sd	a5,-120(s0)
-    7f08:	f8843783          	ld	a5,-120(s0)
-    7f0c:	fd878793          	addi	a5,a5,-40
-    7f10:	fcf43023          	sd	a5,-64(s0)
-    7f14:	fc043783          	ld	a5,-64(s0)
-    7f18:	02878713          	addi	a4,a5,40
-    7f1c:	649c                	ld	a5,8(s1)
-    7f1e:	f6f714e3          	bne	a4,a5,7e86 <schedule_dm+0x36>
+    7efc:	fc043783          	ld	a5,-64(s0)
+    7f00:	779c                	ld	a5,40(a5)
+    7f02:	f8f43423          	sd	a5,-120(s0)
+    7f06:	f8843783          	ld	a5,-120(s0)
+    7f0a:	fd878793          	addi	a5,a5,-40
+    7f0e:	fcf43023          	sd	a5,-64(s0)
+    7f12:	fc043783          	ld	a5,-64(s0)
+    7f16:	02878713          	addi	a4,a5,40
+    7f1a:	649c                	ld	a5,8(s1)
+    7f1c:	f6f714e3          	bne	a4,a5,7e84 <schedule_dm+0x36>
         }
     }
 
     if (earliest_deadline_thread) {
-    7f22:	fc843783          	ld	a5,-56(s0)
-    7f26:	c7a5                	beqz	a5,7f8e <schedule_dm+0x13e>
+    7f20:	fc843783          	ld	a5,-56(s0)
+    7f24:	c7a5                	beqz	a5,7f8c <schedule_dm+0x13e>
         int time_to_deadline = earliest_deadline_thread->current_deadline - args.current_time;
-    7f28:	fc843783          	ld	a5,-56(s0)
-    7f2c:	4ff8                	lw	a4,92(a5)
-    7f2e:	409c                	lw	a5,0(s1)
-    7f30:	40f707bb          	subw	a5,a4,a5
-    7f34:	f8f42a23          	sw	a5,-108(s0)
+    7f26:	fc843783          	ld	a5,-56(s0)
+    7f2a:	4ff8                	lw	a4,92(a5)
+    7f2c:	409c                	lw	a5,0(s1)
+    7f2e:	40f707bb          	subw	a5,a4,a5
+    7f32:	f8f42a23          	sw	a5,-108(s0)
         if (earliest_deadline_thread->remaining_time > time_to_deadline) {
-    7f38:	fc843783          	ld	a5,-56(s0)
-    7f3c:	4fb8                	lw	a4,88(a5)
-    7f3e:	f9442783          	lw	a5,-108(s0)
-    7f42:	2781                	sext.w	a5,a5
-    7f44:	00e7db63          	bge	a5,a4,7f5a <schedule_dm+0x10a>
+    7f36:	fc843783          	ld	a5,-56(s0)
+    7f3a:	4fb8                	lw	a4,88(a5)
+    7f3c:	f9442783          	lw	a5,-108(s0)
+    7f40:	2781                	sext.w	a5,a5
+    7f42:	00e7db63          	bge	a5,a4,7f58 <schedule_dm+0x10a>
             // The real-time thread cannot complete before its deadline, so handle the deadline miss
             r.scheduled_thread_list_member = &earliest_deadline_thread->thread_list;
-    7f48:	fc843783          	ld	a5,-56(s0)
-    7f4c:	02878793          	addi	a5,a5,40
-    7f50:	f6f43423          	sd	a5,-152(s0)
+    7f46:	fc843783          	ld	a5,-56(s0)
+    7f4a:	02878793          	addi	a5,a5,40
+    7f4e:	f6f43423          	sd	a5,-152(s0)
             r.allocated_time = 0; // Could set to minimal quantum to allow cleanup or logging
-    7f54:	f6042823          	sw	zero,-144(s0)
-    7f58:	a0f1                	j	8024 <schedule_dm+0x1d4>
+    7f52:	f6042823          	sw	zero,-144(s0)
+    7f56:	a0f1                	j	8022 <schedule_dm+0x1d4>
         } else {
             // Schedule the real-time thread normally if it hasn't missed its deadline
             int time_slice = (time_to_deadline < earliest_deadline_thread->remaining_time) ? time_to_deadline : earliest_deadline_thread->remaining_time;
-    7f5a:	fc843783          	ld	a5,-56(s0)
-    7f5e:	4fbc                	lw	a5,88(a5)
-    7f60:	863e                	mv	a2,a5
-    7f62:	f9442783          	lw	a5,-108(s0)
-    7f66:	0007869b          	sext.w	a3,a5
-    7f6a:	0006071b          	sext.w	a4,a2
-    7f6e:	00d75363          	bge	a4,a3,7f74 <schedule_dm+0x124>
-    7f72:	87b2                	mv	a5,a2
-    7f74:	f8f42823          	sw	a5,-112(s0)
+    7f58:	fc843783          	ld	a5,-56(s0)
+    7f5c:	4fbc                	lw	a5,88(a5)
+    7f5e:	863e                	mv	a2,a5
+    7f60:	f9442783          	lw	a5,-108(s0)
+    7f64:	0007869b          	sext.w	a3,a5
+    7f68:	0006071b          	sext.w	a4,a2
+    7f6c:	00d75363          	bge	a4,a3,7f72 <schedule_dm+0x124>
+    7f70:	87b2                	mv	a5,a2
+    7f72:	f8f42823          	sw	a5,-112(s0)
             r.scheduled_thread_list_member = &earliest_deadline_thread->thread_list;
-    7f78:	fc843783          	ld	a5,-56(s0)
-    7f7c:	02878793          	addi	a5,a5,40
-    7f80:	f6f43423          	sd	a5,-152(s0)
+    7f76:	fc843783          	ld	a5,-56(s0)
+    7f7a:	02878793          	addi	a5,a5,40
+    7f7e:	f6f43423          	sd	a5,-152(s0)
             r.allocated_time = time_slice;
-    7f84:	f9042783          	lw	a5,-112(s0)
-    7f88:	f6f42823          	sw	a5,-144(s0)
-    7f8c:	a861                	j	8024 <schedule_dm+0x1d4>
+    7f82:	f9042783          	lw	a5,-112(s0)
+    7f86:	f6f42823          	sw	a5,-144(s0)
+    7f8a:	a861                	j	8022 <schedule_dm+0x1d4>
         }
     } else {
         // If no real-time threads with a deadline are ready, find the thread with the smallest ID
         struct thread *smallest_id_thread = NULL;
-    7f8e:	fa043823          	sd	zero,-80(s0)
+    7f8c:	fa043823          	sd	zero,-80(s0)
         list_for_each_entry(t, args.run_queue, thread_list) {
-    7f92:	649c                	ld	a5,8(s1)
-    7f94:	639c                	ld	a5,0(a5)
-    7f96:	faf43023          	sd	a5,-96(s0)
-    7f9a:	fa043783          	ld	a5,-96(s0)
-    7f9e:	fd878793          	addi	a5,a5,-40
-    7fa2:	fcf43023          	sd	a5,-64(s0)
-    7fa6:	a81d                	j	7fdc <schedule_dm+0x18c>
+    7f90:	649c                	ld	a5,8(s1)
+    7f92:	639c                	ld	a5,0(a5)
+    7f94:	faf43023          	sd	a5,-96(s0)
+    7f98:	fa043783          	ld	a5,-96(s0)
+    7f9c:	fd878793          	addi	a5,a5,-40
+    7fa0:	fcf43023          	sd	a5,-64(s0)
+    7fa4:	a81d                	j	7fda <schedule_dm+0x18c>
             if (smallest_id_thread == NULL || t->ID < smallest_id_thread->ID) {
-    7fa8:	fb043783          	ld	a5,-80(s0)
-    7fac:	cb89                	beqz	a5,7fbe <schedule_dm+0x16e>
-    7fae:	fc043783          	ld	a5,-64(s0)
-    7fb2:	5fd8                	lw	a4,60(a5)
-    7fb4:	fb043783          	ld	a5,-80(s0)
-    7fb8:	5fdc                	lw	a5,60(a5)
-    7fba:	00f75663          	bge	a4,a5,7fc6 <schedule_dm+0x176>
+    7fa6:	fb043783          	ld	a5,-80(s0)
+    7faa:	cb89                	beqz	a5,7fbc <schedule_dm+0x16e>
+    7fac:	fc043783          	ld	a5,-64(s0)
+    7fb0:	5fd8                	lw	a4,60(a5)
+    7fb2:	fb043783          	ld	a5,-80(s0)
+    7fb6:	5fdc                	lw	a5,60(a5)
+    7fb8:	00f75663          	bge	a4,a5,7fc4 <schedule_dm+0x176>
                 smallest_id_thread = t;
-    7fbe:	fc043783          	ld	a5,-64(s0)
-    7fc2:	faf43823          	sd	a5,-80(s0)
+    7fbc:	fc043783          	ld	a5,-64(s0)
+    7fc0:	faf43823          	sd	a5,-80(s0)
         list_for_each_entry(t, args.run_queue, thread_list) {
-    7fc6:	fc043783          	ld	a5,-64(s0)
-    7fca:	779c                	ld	a5,40(a5)
-    7fcc:	f8f43c23          	sd	a5,-104(s0)
-    7fd0:	f9843783          	ld	a5,-104(s0)
-    7fd4:	fd878793          	addi	a5,a5,-40
-    7fd8:	fcf43023          	sd	a5,-64(s0)
-    7fdc:	fc043783          	ld	a5,-64(s0)
-    7fe0:	02878713          	addi	a4,a5,40
-    7fe4:	649c                	ld	a5,8(s1)
-    7fe6:	fcf711e3          	bne	a4,a5,7fa8 <schedule_dm+0x158>
+    7fc4:	fc043783          	ld	a5,-64(s0)
+    7fc8:	779c                	ld	a5,40(a5)
+    7fca:	f8f43c23          	sd	a5,-104(s0)
+    7fce:	f9843783          	ld	a5,-104(s0)
+    7fd2:	fd878793          	addi	a5,a5,-40
+    7fd6:	fcf43023          	sd	a5,-64(s0)
+    7fda:	fc043783          	ld	a5,-64(s0)
+    7fde:	02878713          	addi	a4,a5,40
+    7fe2:	649c                	ld	a5,8(s1)
+    7fe4:	fcf711e3          	bne	a4,a5,7fa6 <schedule_dm+0x158>
             }
         }
 
         if (smallest_id_thread) {
-    7fea:	fb043783          	ld	a5,-80(s0)
-    7fee:	cf89                	beqz	a5,8008 <schedule_dm+0x1b8>
+    7fe8:	fb043783          	ld	a5,-80(s0)
+    7fec:	cf89                	beqz	a5,8006 <schedule_dm+0x1b8>
             r.scheduled_thread_list_member = &smallest_id_thread->thread_list;
-    7ff0:	fb043783          	ld	a5,-80(s0)
-    7ff4:	02878793          	addi	a5,a5,40
-    7ff8:	f6f43423          	sd	a5,-152(s0)
+    7fee:	fb043783          	ld	a5,-80(s0)
+    7ff2:	02878793          	addi	a5,a5,40
+    7ff6:	f6f43423          	sd	a5,-152(s0)
             r.allocated_time = smallest_id_thread->remaining_time;
-    7ffc:	fb043783          	ld	a5,-80(s0)
-    8000:	4fbc                	lw	a5,88(a5)
-    8002:	f6f42823          	sw	a5,-144(s0)
-    8006:	a839                	j	8024 <schedule_dm+0x1d4>
+    7ffa:	fb043783          	ld	a5,-80(s0)
+    7ffe:	4fbc                	lw	a5,88(a5)
+    8000:	f6f42823          	sw	a5,-144(s0)
+    8004:	a839                	j	8022 <schedule_dm+0x1d4>
         } else {
             // If no thread is ready, perhaps idle or find the next release time
             r.scheduled_thread_list_member = args.run_queue;
-    8008:	649c                	ld	a5,8(s1)
-    800a:	f6f43423          	sd	a5,-152(s0)
+    8006:	649c                	ld	a5,8(s1)
+    8008:	f6f43423          	sd	a5,-152(s0)
             r.allocated_time = find_next_release_time(args.release_queue, args.current_time);
-    800e:	689c                	ld	a5,16(s1)
-    8010:	4098                	lw	a4,0(s1)
-    8012:	85ba                	mv	a1,a4
-    8014:	853e                	mv	a0,a5
-    8016:	00000097          	auipc	ra,0x0
-    801a:	b8c080e7          	jalr	-1140(ra) # 7ba2 <find_next_release_time>
-    801e:	87aa                	mv	a5,a0
-    8020:	f6f42823          	sw	a5,-144(s0)
+    800c:	689c                	ld	a5,16(s1)
+    800e:	4098                	lw	a4,0(s1)
+    8010:	85ba                	mv	a1,a4
+    8012:	853e                	mv	a0,a5
+    8014:	00000097          	auipc	ra,0x0
+    8018:	b8c080e7          	jalr	-1140(ra) # 7ba0 <find_next_release_time>
+    801c:	87aa                	mv	a5,a0
+    801e:	f6f42823          	sw	a5,-144(s0)
         }
     }
 
     return r;
-    8024:	f6843783          	ld	a5,-152(s0)
-    8028:	f6f43c23          	sd	a5,-136(s0)
-    802c:	f7043783          	ld	a5,-144(s0)
-    8030:	f8f43023          	sd	a5,-128(s0)
-    8034:	4701                	li	a4,0
-    8036:	f7843703          	ld	a4,-136(s0)
-    803a:	4781                	li	a5,0
-    803c:	f8043783          	ld	a5,-128(s0)
-    8040:	893a                	mv	s2,a4
-    8042:	89be                	mv	s3,a5
-    8044:	874a                	mv	a4,s2
-    8046:	87ce                	mv	a5,s3
+    8022:	f6843783          	ld	a5,-152(s0)
+    8026:	f6f43c23          	sd	a5,-136(s0)
+    802a:	f7043783          	ld	a5,-144(s0)
+    802e:	f8f43023          	sd	a5,-128(s0)
+    8032:	4701                	li	a4,0
+    8034:	f7843703          	ld	a4,-136(s0)
+    8038:	4781                	li	a5,0
+    803a:	f8043783          	ld	a5,-128(s0)
+    803e:	893a                	mv	s2,a4
+    8040:	89be                	mv	s3,a5
+    8042:	874a                	mv	a4,s2
+    8044:	87ce                	mv	a5,s3
 }
-    8048:	853a                	mv	a0,a4
-    804a:	85be                	mv	a1,a5
-    804c:	60ea                	ld	ra,152(sp)
-    804e:	644a                	ld	s0,144(sp)
-    8050:	64aa                	ld	s1,136(sp)
-    8052:	690a                	ld	s2,128(sp)
-    8054:	79e6                	ld	s3,120(sp)
-    8056:	610d                	addi	sp,sp,160
-    8058:	8082                	ret
+    8046:	853a                	mv	a0,a4
+    8048:	85be                	mv	a1,a5
+    804a:	60ea                	ld	ra,152(sp)
+    804c:	644a                	ld	s0,144(sp)
+    804e:	64aa                	ld	s1,136(sp)
+    8050:	690a                	ld	s2,128(sp)
+    8052:	79e6                	ld	s3,120(sp)
+    8054:	610d                	addi	sp,sp,160
+    8056:	8082                	ret

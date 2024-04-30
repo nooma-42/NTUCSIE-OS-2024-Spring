@@ -38,24 +38,24 @@ struct threads_sched_result schedule_wrr(struct threads_sched_args args)
     // TODO: implement the weighted round-robin scheduling algorithm
     static struct thread *last_thread = NULL;
     struct thread *selected_thread = NULL;
-    int max_priority = -1;
+    struct thread *candidate = NULL;
 
     // If last_thread is NULL or its remaining time is zero, reset the selection process
     if (last_thread == NULL || last_thread->remaining_time <= 0) {
         last_thread = NULL;
     }
 
-    struct thread *candidate = NULL;
-    // Select the next thread to run based on weight and ensure round-robin fairness
-    list_for_each_entry(candidate, args.run_queue, thread_list) {
-        if (candidate != last_thread) {
-            int priority = candidate->weight * TIME_QUANTUM;
-            if (priority > max_priority) {
+    // Find the first thread that is ready to run
+    candidate = list_entry(args.run_queue, struct thread, thread_list); // 
+    if (!last_thread && candidate->remaining_time > 0)
+        selected_thread = candidate;
+    else
+        list_for_each_entry(candidate, args.run_queue, thread_list) {
+            if (candidate->remaining_time > 0) {
                 selected_thread = candidate;
-                max_priority = priority;
+                break;
             }
         }
-    }
 
     // Fall back to the last_thread if no other thread is selected and it still has remaining time
     if (!selected_thread && last_thread && last_thread->remaining_time > 0) {
