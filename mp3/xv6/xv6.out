@@ -1,23 +1,19 @@
-riscv64-linux-gnu-ld: warning: cannot find entry symbol main; defaulting to 0000000000000000
-nmeta 46 (boot, super, log blocks 30 inode blocks 13, bitmap blocks 1) blocks 954 total 1000
-balloc: first 857 blocks have been allocated
-balloc: write bitmap block at sector 45
-*** Now run 'gdb' in another window.
 
 xv6 kernel is booting
 
 init: starting sh
-$ task3
-Thread ID: 2, Remaining Time: 7
-dispatch thread#2 at 0: allocated_time=7
-thread#2 finish at 7
-Thread ID: 1, Remaining Time: 5
-Thread ID: 3, Remaining Time: 5
-dispatch thread#1 at 7: allocated_time=5
-thread#1 finish at 12
-Thread ID: 3, Remaining Time: 5
-dispatch thread#3 at 12: allocated_time=5
-thread#3 finish at 17
+$ task4
+dispatch thread#4 at 0: allocated_time=1
+dispatch thread#3 at 1: allocated_time=1
+dispatch thread#2 at 2: allocated_time=1
+dispatch thread#1 at 3: allocated_time=1
+thread#1 finish at 4
+dispatch thread#2 at 4: allocated_time=1
+thread#2 finish at 5
+dispatch thread#3 at 5: allocated_time=2
+thread#3 finish at 7
+dispatch thread#4 at 7: allocated_time=3
+thread#4 finish at 10
 
 exited
-$ qemu-system-riscv64: terminating on signal 15 from pid 55671 (make)
+$ qemu-system-riscv64: terminating on signal 15 from pid 63300 (make)

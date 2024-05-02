@@ -78,41 +78,12 @@ struct threads_sched_result schedule_wrr(struct threads_sched_args args)
     return r;
 }
 
-struct threads_sched_result schedule_sjf(struct threads_sched_args args)
-{
-    struct threads_sched_result r;
-    // TODO: implement the shortest-job-first scheduling algorithm
-    struct thread *shortest_job = NULL;
-    struct thread *t;
-    int shortest_time = INT_MAX;
-
-    // Find the thread with the shortest remaining time that is ready to run
-    list_for_each_entry(t, args.run_queue, thread_list) {
-        // printf("Thread ID: %d, Remaining Time: %d\n", t->ID, t->remaining_time);
-        if (t->remaining_time < shortest_time) {
-            shortest_time = t->remaining_time;
-            shortest_job = t;
-        }
-    }
-
-    if (shortest_job) {
-        r.scheduled_thread_list_member = &shortest_job->thread_list;
-        r.allocated_time = shortest_job->remaining_time;  // Allow the thread to run to completion
-    } else {
-        // If no threads are ready, find the next release time or idle
-        r.scheduled_thread_list_member = args.run_queue;
-        r.allocated_time = 1;  // Default minimal quantum if unsure
-    }
-    return r;
-}
-
 int find_next_release_time(struct list_head *release_queue, int current_time) {
     struct release_queue_entry *next_release = NULL;
     int next_release_time = INT_MAX;
 
     list_for_each_entry(next_release, release_queue, thread_list) {
-        if (next_release->release_time > current_time &&
-            next_release->release_time < next_release_time) {
+        if (next_release->release_time > current_time && next_release->release_time < next_release_time) {
             next_release_time = next_release->release_time;
         }
     }
@@ -122,6 +93,70 @@ int find_next_release_time(struct list_head *release_queue, int current_time) {
 
     return next_release_time - current_time;
 }
+
+
+
+int find_earliest_impactful_release_time(struct list_head *release_queue, struct list_head *run_queue, int current_time) {
+    struct release_queue_entry *entry;
+    int earliest_impactful_time = INT_MAX;
+    int shortest_current_time = INT_MAX;
+
+    // Find the shortest remaining time among currently running tasks
+    struct thread *t;
+    list_for_each_entry(t, run_queue, thread_list) {
+        if (t->remaining_time < shortest_current_time) {
+            shortest_current_time = t->remaining_time;
+        }
+    }
+
+    // Check the release queue for the next task that might preempt the current shortest job
+    list_for_each_entry(entry, release_queue, thread_list) {
+        if (entry->release_time > current_time && entry->release_time < earliest_impactful_time) {
+            if (entry->thrd->remaining_time < shortest_current_time) {
+                earliest_impactful_time = entry->release_time;
+            }
+        }
+    }
+
+    // Calculate the difference between the current time and the earliest impactful release time
+    return earliest_impactful_time == INT_MAX ? -1 : earliest_impactful_time - current_time;
+}
+
+
+struct threads_sched_result schedule_sjf(struct threads_sched_args args) {
+    struct threads_sched_result r;
+    struct thread *shortest_job = NULL;
+    struct thread *current;
+    int shortest_time = INT_MAX;
+    int earliest_impactful_time = find_earliest_impactful_release_time(args.release_queue, args.run_queue, args.current_time);
+
+    // Determine the shortest job from the run queue
+    list_for_each_entry(current, args.run_queue, thread_list) {
+        if (current->remaining_time < shortest_time) {
+            shortest_time = current->remaining_time;
+            shortest_job = current;
+        }
+    }
+
+    if (shortest_job) {
+        int time_to_allocate = shortest_job->remaining_time;
+        // Reduce the time slice if an impactful task is arriving sooner
+        if (earliest_impactful_time != -1 && earliest_impactful_time < time_to_allocate) {
+            time_to_allocate = earliest_impactful_time;
+        }
+
+        r.scheduled_thread_list_member = &shortest_job->thread_list;
+        r.allocated_time = time_to_allocate;
+    } else {
+        // If no current tasks are ready, wait for the next impactful task
+        r.scheduled_thread_list_member = args.run_queue;
+        r.allocated_time = earliest_impactful_time != -1 ? earliest_impactful_time : 1;  // Minimal quantum if unsure
+    }
+
+    return r;
+}
+
+
 
 /* MP3 Part 2 - Real-Time Scheduling*/
 /* Least-Slack-Time Scheduling */
