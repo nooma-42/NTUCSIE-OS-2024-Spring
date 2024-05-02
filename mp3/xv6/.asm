@@ -2847,12 +2847,12 @@ void __schedule()
     1810:	00001797          	auipc	a5,0x1
     1814:	c0878793          	addi	a5,a5,-1016 # 2418 <release_queue>
     1818:	fef43423          	sd	a5,-24(s0)
-#ifdef THREAD_SCHEDULER_WRR
-    r = schedule_wrr(args);
-#endif
-
 #ifdef THREAD_SCHEDULER_SJF
     r = schedule_sjf(args);
+#endif
+
+#ifdef THREAD_SCHEDULER_LST
+    r = schedule_lst(args);
     181c:	fd843783          	ld	a5,-40(s0)
     1820:	faf43023          	sd	a5,-96(s0)
     1824:	fe043783          	ld	a5,-32(s0)
@@ -2862,7 +2862,7 @@ void __schedule()
     1834:	fa040793          	addi	a5,s0,-96
     1838:	853e                	mv	a0,a5
     183a:	00000097          	auipc	ra,0x0
-    183e:	5e8080e7          	jalr	1512(ra) # 1e22 <schedule_sjf>
+    183e:	720080e7          	jalr	1824(ra) # 1f5a <schedule_lst>
     1842:	872a                	mv	a4,a0
     1844:	87ae                	mv	a5,a1
     1846:	fce43423          	sd	a4,-56(s0)
