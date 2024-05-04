@@ -156,38 +156,64 @@ struct threads_sched_result schedule_sjf(struct threads_sched_args args) {
     return r;
 }
 
-
+int min(int a, int b) {
+    return (a < b) ? a : b;
+}
 
 /* MP3 Part 2 - Real-Time Scheduling*/
 /* Least-Slack-Time Scheduling */
-struct threads_sched_result schedule_lst(struct threads_sched_args args)
-{
+struct threads_sched_result schedule_lst(struct threads_sched_args args) {
     struct threads_sched_result r;
-    // TODO: implement the least-slack-time scheduling algorithm
-    struct thread *min_slack = NULL;
+    struct thread *min_slack_thread = NULL;
     int min_slack_time = INT_MAX;
     struct thread *t;
-
-    // Find the thread with the minimum slack time
+    // int ddl;
+    // Determine the thread with the minimum slack time
     list_for_each_entry(t, args.run_queue, thread_list) {
-        int slack_time = t->deadline - args.current_time - t->remaining_time;
-        if (min_slack == NULL || slack_time < min_slack_time ||
-            (slack_time == min_slack_time && t->ID < min_slack->ID)) {
-            min_slack = t;
+        int slack_time = t->current_deadline - args.current_time - t->remaining_time;
+        if (slack_time < min_slack_time || (slack_time == min_slack_time && t->ID < (min_slack_thread ? min_slack_thread->ID : INT_MAX))) {
+            min_slack_thread = t;
             min_slack_time = slack_time;
+            // ddl = t->current_deadline;
         }
     }
 
-    if (min_slack) {
-        r.scheduled_thread_list_member = &min_slack->thread_list;
-        r.allocated_time = min_slack->remaining_time;
+    // Calculate the next event time, initially very large
+    int next_significant_event_time = INT_MAX;
+
+    // Analyze each upcoming release to determine if and when they should preempt the current thread
+    struct release_queue_entry *entry;
+    list_for_each_entry(entry, args.release_queue, thread_list) {
+        if (entry->release_time > args.current_time) {
+            struct thread *upcoming_thread = entry->thrd;
+            int upcoming_slack_time = upcoming_thread->current_deadline - entry->release_time - upcoming_thread->remaining_time;
+            /* printf("current ddl: %d\n", ddl);
+            printf("upcoming slack time: %d\n", upcoming_slack_time);
+            printf("%d %d %d\n", upcoming_thread->current_deadline, args.current_time, upcoming_thread->remaining_time);
+             */
+            // Check if this upcoming thread will impose an earlier preemption due to tighter slack time
+            if (upcoming_slack_time < min_slack_time) {
+                next_significant_event_time = min(next_significant_event_time, entry->release_time);
+            } else if (upcoming_slack_time == min_slack_time && upcoming_thread->ID < (min_slack_thread ? min_slack_thread->ID : INT_MAX))
+                next_significant_event_time = min(next_significant_event_time, entry->release_time);
+        }
+    }
+
+    // Decide the allocated time based on current minimum slack or upcoming preemption needs
+    if (min_slack_thread) {
+        int allocated_time = (next_significant_event_time == INT_MAX) ? min_slack_thread->remaining_time : next_significant_event_time - args.current_time;
+        r.scheduled_thread_list_member = &min_slack_thread->thread_list;
+        r.allocated_time = allocated_time;
     } else {
+        // No runnable threads, prepare to sleep or wait based on next known event
         r.scheduled_thread_list_member = args.run_queue;
-        r.allocated_time = find_next_release_time(args.release_queue, args.current_time);
+        r.allocated_time = next_significant_event_time != INT_MAX ? next_significant_event_time - args.current_time : 1;
     }
 
     return r;
 }
+
+
 
 /* Deadline-Monotonic Scheduling */
 struct threads_sched_result schedule_dm(struct threads_sched_args args)
