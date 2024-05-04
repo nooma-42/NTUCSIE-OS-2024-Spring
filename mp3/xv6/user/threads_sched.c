@@ -150,7 +150,7 @@ struct threads_sched_result schedule_sjf(struct threads_sched_args args) {
     } else {
         // If no current tasks are ready, wait for the next impactful task
         r.scheduled_thread_list_member = args.run_queue;
-        r.allocated_time = earliest_impactful_time != -1 ? earliest_impactful_time : 1;  // Minimal quantum if unsure
+        r.allocated_time = earliest_impactful_time != -1 ? earliest_impactful_time : find_next_release_time(args.release_queue, args.current_time);
     }
 
     return r;
@@ -207,62 +207,73 @@ struct threads_sched_result schedule_lst(struct threads_sched_args args) {
     } else {
         // No runnable threads, prepare to sleep or wait based on next known event
         r.scheduled_thread_list_member = args.run_queue;
-        r.allocated_time = next_significant_event_time != INT_MAX ? next_significant_event_time - args.current_time : 1;
+        r.allocated_time = next_significant_event_time != INT_MAX ? next_significant_event_time - args.current_time : find_next_release_time(args.release_queue, args.current_time);
     }
 
     return r;
 }
 
+int find_earliest_impactful_release_time_dm(struct list_head *release_queue, int current_time, int current_deadline) {
+    struct release_queue_entry *entry;
+    int earliest_impactful_event = INT_MAX;
+    struct thread *earliest_deadline_thread = NULL;
+    earliest_deadline_thread->ID = INT_MAX;
 
-
-/* Deadline-Monotonic Scheduling */
-struct threads_sched_result schedule_dm(struct threads_sched_args args)
-{
-    struct threads_sched_result r;
-    // TODO: implement the deadline-monotonic scheduling algorithm
-   struct thread *earliest_deadline_thread = NULL;
-    struct thread *t;
-    int earliest_deadline = INT_MAX;
-
-    // Find the earliest deadline real-time thread
-    list_for_each_entry(t, args.run_queue, thread_list) {
-        if (t->is_real_time && t->period != -1 && t->current_deadline < earliest_deadline) {
-            earliest_deadline = t->current_deadline;
-            earliest_deadline_thread = t;
-        } else if (t->is_real_time && t->period != -1 && t->current_deadline == earliest_deadline && t->ID < earliest_deadline_thread->ID) {
-            earliest_deadline_thread = t;  // Tie-breaking by ID
+    // Look for the smallest deadline that is less than the current task's deadline
+    list_for_each_entry(entry, release_queue, thread_list) {
+        if (entry->release_time > current_time && entry->thrd->period < current_deadline) {
+            if (entry->release_time < earliest_impactful_event) {
+                earliest_impactful_event = entry->release_time;
+            }
+        } 
+        // or the smallest deadline that is equal to the current task's deadline but has a smaller ID
+        else if (entry->release_time > current_time && entry->thrd->period == current_deadline) {
+            if (entry->release_time < earliest_impactful_event && entry->thrd->ID < earliest_deadline_thread->ID) {
+                earliest_impactful_event = entry->release_time;
+                earliest_deadline_thread = entry->thrd;
+            }
         }
     }
 
+    // If a task is found that might preempt the current task, determine when it will happen
+    return earliest_impactful_event == INT_MAX ? -1 : earliest_impactful_event;
+}
+
+
+struct threads_sched_result schedule_dm(struct threads_sched_args args) {
+    struct threads_sched_result r;
+    struct thread *earliest_deadline_thread = NULL;
+    struct thread *t;
+    int earliest_deadline = INT_MAX;
+
+    // Determine the earliest deadline among current tasks
+    list_for_each_entry(t, args.run_queue, thread_list) {
+        if (t->is_real_time && t->period < earliest_deadline) {
+            earliest_deadline_thread = t;
+            earliest_deadline = t->period;
+        }
+    }
+
+    // Find the earliest impactful deadline from other tasks
+    int earliest_impactful_deadline = find_earliest_impactful_release_time_dm(args.release_queue, args.current_time, earliest_deadline);
+
     if (earliest_deadline_thread) {
         int time_to_deadline = earliest_deadline_thread->current_deadline - args.current_time;
-        if (earliest_deadline_thread->remaining_time > time_to_deadline) {
-            // The real-time thread cannot complete before its deadline, so handle the deadline miss
+        
+        // If the thread is already past its deadline, allocate no time (handle deadline miss)
+        if (time_to_deadline < 0) {
             r.scheduled_thread_list_member = &earliest_deadline_thread->thread_list;
-            r.allocated_time = 0; // Could set to minimal quantum to allow cleanup or logging
+            r.allocated_time = 0;
         } else {
-            // Schedule the real-time thread normally if it hasn't missed its deadline
-            int time_slice = (time_to_deadline < earliest_deadline_thread->remaining_time) ? time_to_deadline : earliest_deadline_thread->remaining_time;
+            // Allocate time based on the smallest of the task's remaining time or the next impactful deadline
+            int allocated_time = (earliest_impactful_deadline != -1 && (earliest_impactful_deadline - args.current_time) < earliest_deadline_thread->remaining_time) ? earliest_impactful_deadline - args.current_time : earliest_deadline_thread->remaining_time;
             r.scheduled_thread_list_member = &earliest_deadline_thread->thread_list;
-            r.allocated_time = time_slice;
+            r.allocated_time = allocated_time;
         }
     } else {
-        // If no real-time threads with a deadline are ready, find the thread with the smallest ID
-        struct thread *smallest_id_thread = NULL;
-        list_for_each_entry(t, args.run_queue, thread_list) {
-            if (smallest_id_thread == NULL || t->ID < smallest_id_thread->ID) {
-                smallest_id_thread = t;
-            }
-        }
-
-        if (smallest_id_thread) {
-            r.scheduled_thread_list_member = &smallest_id_thread->thread_list;
-            r.allocated_time = smallest_id_thread->remaining_time;
-        } else {
-            // If no thread is ready, perhaps idle or find the next release time
-            r.scheduled_thread_list_member = args.run_queue;
-            r.allocated_time = find_next_release_time(args.release_queue, args.current_time);
-        }
+        // If no immediate tasks, schedule the next possible task
+        r.scheduled_thread_list_member = args.run_queue;
+        r.allocated_time = find_next_release_time(args.release_queue, args.current_time);
     }
 
     return r;
