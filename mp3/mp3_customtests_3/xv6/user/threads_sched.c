@@ -273,6 +273,21 @@ struct threads_sched_result schedule_dm(struct threads_sched_args args) {
     int earliest_deadline = INT_MAX;
     int earliest_impactful_deadline; 
     
+    // Check if any thread has passed its deadline and choose the one with the smallest ID
+    list_for_each_entry(t, args.run_queue, thread_list) {
+        if (t->is_real_time && args.current_time >= t->current_deadline) {
+            struct thread *thread_with_smallest_id = t;
+            list_for_each_entry(t, args.run_queue, thread_list) {
+                if (t->is_real_time && args.current_time >= t->current_deadline && t->ID < thread_with_smallest_id->ID) {
+                    thread_with_smallest_id = t;
+                }
+            }
+            r.scheduled_thread_list_member = &thread_with_smallest_id->thread_list;
+            r.allocated_time = 0;
+            return r;
+        }
+    }
+
     // Determine the earliest deadline among current tasks
     list_for_each_entry(t, args.run_queue, thread_list) {
         if (t->is_real_time && t->period < earliest_deadline) {

@@ -21,4 +21,4 @@ dispatch thread#2 at 14: allocated_time=5
 dispatch thread#1 at 19: allocated_time=6
 thread#1 finish one cycle at 25: 0 cycles left
 thread#2 misses a deadline at 23
-$ qemu-system-riscv64: terminating on signal 15 from pid 40971 (make)
+$ qemu-system-riscv64: terminating on signal 15 from pid 42373 (make)
