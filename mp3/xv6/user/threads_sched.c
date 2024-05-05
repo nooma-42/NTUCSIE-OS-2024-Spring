@@ -100,7 +100,6 @@ int find_earliest_impactful_release_time(struct list_head *release_queue, struct
     struct release_queue_entry *entry;
     int earliest_impactful_time = INT_MAX;
     int shortest_current_time = INT_MAX;
-
     // Find the shortest remaining time among currently running tasks
     struct thread *t;
     list_for_each_entry(t, run_queue, thread_list) {
@@ -213,30 +212,45 @@ struct threads_sched_result schedule_lst(struct threads_sched_args args) {
     return r;
 }
 
-int find_earliest_impactful_release_time_dm(struct list_head *release_queue, int current_time, int current_deadline) {
-    struct release_queue_entry *entry;
-    int earliest_impactful_event = INT_MAX;
-    struct thread *earliest_deadline_thread = NULL;
-    earliest_deadline_thread->ID = INT_MAX;
+typedef struct {
+    int earliest_impactful_event;
+    struct thread *thread;
+} ImpactfulEvent;
 
+ImpactfulEvent find_earliest_impactful_release_time_dm(struct list_head *release_queue, struct list_head*run_queue, int current_time, int current_period) {
+    struct release_queue_entry *entry;
+    struct thread *t;
+    int earliest_impactful_event = INT_MAX;
+    int earliest_impactful_thread_ID = INT_MAX;    
+    
     // Look for the smallest deadline that is less than the current task's deadline
     list_for_each_entry(entry, release_queue, thread_list) {
-        if (entry->release_time > current_time && entry->thrd->period < current_deadline) {
+        if (entry->release_time > current_time && entry->thrd->period < current_period) {
             if (entry->release_time < earliest_impactful_event) {
                 earliest_impactful_event = entry->release_time;
+                t = entry->thrd;
+                earliest_impactful_thread_ID = entry->thrd->ID;
             }
         } 
         // or the smallest deadline that is equal to the current task's deadline but has a smaller ID
-        else if (entry->release_time > current_time && entry->thrd->period == current_deadline) {
-            if (entry->release_time < earliest_impactful_event && entry->thrd->ID < earliest_deadline_thread->ID) {
+        else if (entry->release_time > current_time && entry->thrd->period == current_period) {
+            
+            //printf("ID %d, entry release time: %d\n", entry->thrd->ID, entry->release_time);
+            if (entry->release_time < earliest_impactful_event) {
                 earliest_impactful_event = entry->release_time;
-                earliest_deadline_thread = entry->thrd;
+                t = entry->thrd;
+                earliest_impactful_thread_ID = entry->thrd->ID;
+            } else if (entry->release_time == earliest_impactful_event && entry->thrd->ID < earliest_impactful_thread_ID) {
+                earliest_impactful_event = entry->release_time;
+                t = entry->thrd;
+                earliest_impactful_thread_ID = entry->thrd->ID;
             }
         }
     }
-
+    //printf("earliest_impactful_event: %d\n", earliest_impactful_event);
     // If a task is found that might preempt the current task, determine when it will happen
-    return earliest_impactful_event == INT_MAX ? -1 : earliest_impactful_event;
+    earliest_impactful_event = earliest_impactful_event == INT_MAX ? -1 : earliest_impactful_event;
+    return (ImpactfulEvent) {earliest_impactful_event, t};
 }
 
 
@@ -245,17 +259,22 @@ struct threads_sched_result schedule_dm(struct threads_sched_args args) {
     struct thread *earliest_deadline_thread = NULL;
     struct thread *t;
     int earliest_deadline = INT_MAX;
-
+    int earliest_impactful_deadline; 
+    
     // Determine the earliest deadline among current tasks
     list_for_each_entry(t, args.run_queue, thread_list) {
         if (t->is_real_time && t->period < earliest_deadline) {
+            earliest_deadline_thread = t;
+            earliest_deadline = t->period;
+        } else if (t->is_real_time && t->period == earliest_deadline && t->ID < earliest_deadline_thread->ID) {
             earliest_deadline_thread = t;
             earliest_deadline = t->period;
         }
     }
 
     // Find the earliest impactful deadline from other tasks
-    int earliest_impactful_deadline = find_earliest_impactful_release_time_dm(args.release_queue, args.current_time, earliest_deadline);
+    ImpactfulEvent earliest_impactful_event = find_earliest_impactful_release_time_dm(args.release_queue, args.run_queue, args.current_time, earliest_deadline_thread ? earliest_deadline_thread->period : INT_MAX);
+    earliest_impactful_deadline = earliest_impactful_event.earliest_impactful_event;
 
     if (earliest_deadline_thread) {
         int time_to_deadline = earliest_deadline_thread->current_deadline - args.current_time;
@@ -266,7 +285,12 @@ struct threads_sched_result schedule_dm(struct threads_sched_args args) {
             r.allocated_time = 0;
         } else {
             // Allocate time based on the smallest of the task's remaining time or the next impactful deadline
-            int allocated_time = (earliest_impactful_deadline != -1 && (earliest_impactful_deadline - args.current_time) < earliest_deadline_thread->remaining_time) ? earliest_impactful_deadline - args.current_time : earliest_deadline_thread->remaining_time;
+            int allocated_time;
+            if (earliest_impactful_deadline != -1 && (earliest_impactful_deadline - args.current_time) < earliest_deadline_thread->remaining_time){
+                allocated_time = earliest_impactful_deadline - args.current_time;
+            } else {
+                allocated_time = earliest_deadline_thread->remaining_time;
+            }
             r.scheduled_thread_list_member = &earliest_deadline_thread->thread_list;
             r.allocated_time = allocated_time;
         }
