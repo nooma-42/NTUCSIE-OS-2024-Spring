@@ -5,8 +5,7 @@ xv6 kernel is booting
 init: starting sh
 $ custom_rttask6
 run_queue is empty, sleep for 1 ticks
-dispatch thread#15 at 1: allocated_time=1
-dispatch thread#14 at 2: allocated_time=1
-dispatch thread#15 at 3: allocated_time=21
-thread#15 misses a deadline at 24
-$ qemu-system-riscv64: terminating on signal 15 from pid 11153 (make)
+dispatch thread#15 at 1: allocated_time=22
+thread#15 finish one cycle at 23: 0 cycles left
+thread#2 misses a deadline at 23
+$ qemu-system-riscv64: terminating on signal 15 from pid 29910 (make)
