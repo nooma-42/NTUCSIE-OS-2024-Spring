@@ -4109,7 +4109,7 @@ ImpactfulEvent find_earliest_impactful_release_time_dm(struct list_head *release
     23ae:	2781                	sext.w	a5,a5
     23b0:	02e79a63          	bne	a5,a4,23e4 <find_earliest_impactful_release_time_dm+0xf4>
             //printf("ID %d, entry release time: %d\n", entry->thrd->ID, entry->release_time);
-            // or the smallest deadline that is equal to the current task's deadline but has a smaller ID
+            // or the smallest deadline that is equal to the current task's deadline
             if (entry->release_time < earliest_impactful_event){
     23b4:	fe843783          	ld	a5,-24(s0)
     23b8:	4f98                	lw	a4,24(a5)
@@ -4144,6 +4144,7 @@ ImpactfulEvent find_earliest_impactful_release_time_dm(struct list_head *release
             }
         }
     }
+    // At the end, decide preempt or not by ID
     if (t){
     2406:	fe043783          	ld	a5,-32(s0)
     240a:	cf8d                	beqz	a5,2444 <find_earliest_impactful_release_time_dm+0x154>
