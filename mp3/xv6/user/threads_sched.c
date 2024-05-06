@@ -30,6 +30,22 @@ struct threads_sched_result schedule_default(struct threads_sched_args args)
     return r;
 }
 
+int find_next_release_time(struct list_head *release_queue, int current_time) {
+    struct release_queue_entry *next_release = NULL;
+    int next_release_time = INT_MAX;
+
+    list_for_each_entry(next_release, release_queue, thread_list) {
+        if (next_release->release_time > current_time && next_release->release_time < next_release_time) {
+            next_release_time = next_release->release_time;
+        }
+    }
+
+    if (next_release_time == INT_MAX)
+        return -1; // No threads in the release queue
+
+    return next_release_time - current_time;
+}
+
 /* MP3 Part 1 - Non-Real-Time Scheduling */
 /* Weighted-Round-Robin Scheduling */
 struct threads_sched_result schedule_wrr(struct threads_sched_args args)
@@ -72,28 +88,11 @@ struct threads_sched_result schedule_wrr(struct threads_sched_args args)
     } else {
         // Idle if no suitable thread is found
         r.scheduled_thread_list_member = args.run_queue;
-        r.allocated_time = 1;
+        r.allocated_time = find_next_release_time(args.release_queue, args.current_time);
     }
 
     return r;
 }
-
-int find_next_release_time(struct list_head *release_queue, int current_time) {
-    struct release_queue_entry *next_release = NULL;
-    int next_release_time = INT_MAX;
-
-    list_for_each_entry(next_release, release_queue, thread_list) {
-        if (next_release->release_time > current_time && next_release->release_time < next_release_time) {
-            next_release_time = next_release->release_time;
-        }
-    }
-
-    if (next_release_time == INT_MAX)
-        return -1; // No threads in the release queue
-
-    return next_release_time - current_time;
-}
-
 
 
 int find_earliest_impactful_release_time(struct list_head *release_queue, struct list_head *run_queue, int current_time) {
@@ -166,30 +165,27 @@ struct threads_sched_result schedule_lst(struct threads_sched_args args) {
     struct thread *min_slack_thread = NULL;
     int min_slack_time = INT_MAX;
     struct thread *t;
-    // int ddl;
+
     // Determine the thread with the minimum slack time
     list_for_each_entry(t, args.run_queue, thread_list) {
         int slack_time = t->current_deadline - args.current_time - t->remaining_time;
         if (slack_time < min_slack_time || (slack_time == min_slack_time && t->ID < (min_slack_thread ? min_slack_thread->ID : INT_MAX))) {
             min_slack_thread = t;
             min_slack_time = slack_time;
-            // ddl = t->current_deadline;
         }
     }
+    //printf("id %d, cur ddl %d, ddl,cur time %d, rem time %d, slack time %d\n", min_slack_thread->ID, min_slack_thread->current_deadline, args.current_time, min_slack_thread->remaining_time, min_slack_time);
 
     // Calculate the next event time, initially very large
     int next_significant_event_time = INT_MAX;
-
     // Analyze each upcoming release to determine if and when they should preempt the current thread
     struct release_queue_entry *entry;
     list_for_each_entry(entry, args.release_queue, thread_list) {
         if (entry->release_time > args.current_time) {
             struct thread *upcoming_thread = entry->thrd;
-            int upcoming_slack_time = upcoming_thread->current_deadline - entry->release_time - upcoming_thread->remaining_time;
-            /* printf("current ddl: %d\n", ddl);
-            printf("upcoming slack time: %d\n", upcoming_slack_time);
-            printf("%d %d %d\n", upcoming_thread->current_deadline, args.current_time, upcoming_thread->remaining_time);
-             */
+
+            //printf("upcoming_thread->ID: %d ddl: %d release_time: %d remaining_time: %d\n", upcoming_thread->ID, upcoming_thread->current_deadline, entry->release_time, upcoming_thread->remaining_time);
+            int upcoming_slack_time = upcoming_thread->current_deadline - entry->release_time - upcoming_thread->processing_time;
             // Check if this upcoming thread will impose an earlier preemption due to tighter slack time
             if (upcoming_slack_time < min_slack_time) {
                 next_significant_event_time = min(next_significant_event_time, entry->release_time);
@@ -200,9 +196,30 @@ struct threads_sched_result schedule_lst(struct threads_sched_args args) {
 
     // Decide the allocated time based on current minimum slack or upcoming preemption needs
     if (min_slack_thread) {
-        int allocated_time = (next_significant_event_time == INT_MAX) ? min_slack_thread->remaining_time : next_significant_event_time - args.current_time;
-        r.scheduled_thread_list_member = &min_slack_thread->thread_list;
-        r.allocated_time = allocated_time;
+        // Check if the thread has missed its deadline
+        if (args.current_time >= min_slack_thread->current_deadline && min_slack_thread->remaining_time > 0) {
+            struct thread *thread_with_smallest_id = min_slack_thread;
+            // Iterate again to find if there are other threads that also missed their deadlines and have smaller IDs
+            list_for_each_entry(t, args.run_queue, thread_list) {
+                if (args.current_time >= t->current_deadline && t->remaining_time > 0 && t->ID < thread_with_smallest_id->ID) {
+                    thread_with_smallest_id = t;
+                }
+            }
+            r.scheduled_thread_list_member = &thread_with_smallest_id->thread_list;
+            r.allocated_time = 0;
+        } else {
+            // Calculate time until the thread's deadline
+            int time_until_deadline = min_slack_thread->current_deadline - args.current_time;
+            
+            // Decide the allocated time based on current minimum slack or upcoming preemption needs
+            int allocated_time = min(min_slack_thread->remaining_time, time_until_deadline);
+            if (next_significant_event_time != INT_MAX) {
+                allocated_time = min(allocated_time, next_significant_event_time - args.current_time);
+            }
+
+            r.scheduled_thread_list_member = &min_slack_thread->thread_list;
+            r.allocated_time = allocated_time;
+        }
     } else {
         // No runnable threads, prepare to sleep or wait based on next known event
         r.scheduled_thread_list_member = args.run_queue;
@@ -217,11 +234,11 @@ typedef struct {
     struct thread *thread;
 } ImpactfulEvent;
 
-ImpactfulEvent find_earliest_impactful_release_time_dm(struct list_head *release_queue, struct list_head*run_queue, int current_time, int current_period) {
+ImpactfulEvent find_earliest_impactful_release_time_dm(struct list_head *release_queue, struct list_head*run_queue, int current_time, int current_period, int current_thread_ID) {
     struct release_queue_entry *entry;
-    struct thread *t;
+    struct thread *t = NULL;
     int earliest_impactful_event = INT_MAX;
-    int earliest_impactful_thread_ID = INT_MAX;    
+    int earliest_impactful_thread_ID = current_thread_ID;    
     
     // Look for the smallest deadline that is less than the current task's deadline
     list_for_each_entry(entry, release_queue, thread_list) {
@@ -232,19 +249,23 @@ ImpactfulEvent find_earliest_impactful_release_time_dm(struct list_head *release
                 earliest_impactful_thread_ID = entry->thrd->ID;
             }
         } 
-        // or the smallest deadline that is equal to the current task's deadline but has a smaller ID
         else if (entry->release_time > current_time && entry->thrd->period == current_period) {
-            
             //printf("ID %d, entry release time: %d\n", entry->thrd->ID, entry->release_time);
-            if (entry->release_time < earliest_impactful_event) {
+            // or the smallest deadline that is equal to the current task's deadline but has a smaller ID
+            if (entry->release_time < earliest_impactful_event){
                 earliest_impactful_event = entry->release_time;
                 t = entry->thrd;
                 earliest_impactful_thread_ID = entry->thrd->ID;
-            } else if (entry->release_time == earliest_impactful_event && entry->thrd->ID < earliest_impactful_thread_ID) {
-                earliest_impactful_event = entry->release_time;
-                t = entry->thrd;
-                earliest_impactful_thread_ID = entry->thrd->ID;
+                //printf("ID %d, entry release time: %d\n", entry->thrd->ID, entry->release_time);
             }
+        }
+    }
+    if (t){
+        //printf("test\n");
+        if (t-> period == current_period && earliest_impactful_thread_ID > current_thread_ID) {
+            earliest_impactful_event = INT_MAX;
+            t = NULL;
+            earliest_impactful_thread_ID = current_thread_ID;
         }
     }
     //printf("earliest_impactful_event: %d\n", earliest_impactful_event);
@@ -258,9 +279,25 @@ struct threads_sched_result schedule_dm(struct threads_sched_args args) {
     struct threads_sched_result r;
     struct thread *earliest_deadline_thread = NULL;
     struct thread *t;
+    struct thread *d;
     int earliest_deadline = INT_MAX;
     int earliest_impactful_deadline; 
     
+    // Check if any thread has passed its deadline and choose the one with the smallest ID
+    list_for_each_entry(d, args.run_queue, thread_list) {
+        if (d->is_real_time && args.current_time >= d->current_deadline) {
+            struct thread *thread_with_smallest_id = d;
+            list_for_each_entry(d, args.run_queue, thread_list) {
+                if (d->is_real_time && args.current_time >= d->current_deadline && d->ID < thread_with_smallest_id->ID) {
+                    thread_with_smallest_id = d;
+                }
+            }
+            r.scheduled_thread_list_member = &thread_with_smallest_id->thread_list;
+            r.allocated_time = 0;
+            return r;
+        }
+    }
+
     // Determine the earliest deadline among current tasks
     list_for_each_entry(t, args.run_queue, thread_list) {
         if (t->is_real_time && t->period < earliest_deadline) {
@@ -273,23 +310,24 @@ struct threads_sched_result schedule_dm(struct threads_sched_args args) {
     }
 
     // Find the earliest impactful deadline from other tasks
-    ImpactfulEvent earliest_impactful_event = find_earliest_impactful_release_time_dm(args.release_queue, args.run_queue, args.current_time, earliest_deadline_thread ? earliest_deadline_thread->period : INT_MAX);
+    ImpactfulEvent earliest_impactful_event = find_earliest_impactful_release_time_dm(args.release_queue, args.run_queue, args.current_time, earliest_deadline_thread ? earliest_deadline_thread->period : INT_MAX, earliest_deadline_thread->ID);
     earliest_impactful_deadline = earliest_impactful_event.earliest_impactful_event;
-
+    // printf("earliest_impactful_deadline: %d\n", earliest_impactful_deadline);
     if (earliest_deadline_thread) {
         int time_to_deadline = earliest_deadline_thread->current_deadline - args.current_time;
         
         // If the thread is already past its deadline, allocate no time (handle deadline miss)
-        if (time_to_deadline < 0) {
+        if (time_to_deadline <= 0) {
             r.scheduled_thread_list_member = &earliest_deadline_thread->thread_list;
             r.allocated_time = 0;
         } else {
             // Allocate time based on the smallest of the task's remaining time or the next impactful deadline
+            int remaining_time = min(earliest_deadline_thread->remaining_time, time_to_deadline);
             int allocated_time;
-            if (earliest_impactful_deadline != -1 && (earliest_impactful_deadline - args.current_time) < earliest_deadline_thread->remaining_time){
+            if (earliest_impactful_deadline != -1 && (earliest_impactful_deadline - args.current_time) < remaining_time){
                 allocated_time = earliest_impactful_deadline - args.current_time;
             } else {
-                allocated_time = earliest_deadline_thread->remaining_time;
+                allocated_time = remaining_time;
             }
             r.scheduled_thread_list_member = &earliest_deadline_thread->thread_list;
             r.allocated_time = allocated_time;

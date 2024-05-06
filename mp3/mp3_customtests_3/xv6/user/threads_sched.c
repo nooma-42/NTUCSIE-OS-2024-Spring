@@ -236,7 +236,7 @@ typedef struct {
 
 ImpactfulEvent find_earliest_impactful_release_time_dm(struct list_head *release_queue, struct list_head*run_queue, int current_time, int current_period, int current_thread_ID) {
     struct release_queue_entry *entry;
-    struct thread *t;
+    struct thread *t = NULL;
     int earliest_impactful_event = INT_MAX;
     int earliest_impactful_thread_ID = current_thread_ID;    
     
@@ -251,12 +251,22 @@ ImpactfulEvent find_earliest_impactful_release_time_dm(struct list_head *release
         } 
         else if (entry->release_time > current_time && entry->thrd->period == current_period) {
             //printf("ID %d, entry release time: %d\n", entry->thrd->ID, entry->release_time);
-            // or the smallest deadline that is equal to the current task's deadline but has a smaller ID
-            if (entry->release_time <= earliest_impactful_event && entry->thrd->ID < earliest_impactful_thread_ID) {
+            // or the smallest deadline that is equal to the current task's deadline
+            if (entry->release_time < earliest_impactful_event){
                 earliest_impactful_event = entry->release_time;
                 t = entry->thrd;
                 earliest_impactful_thread_ID = entry->thrd->ID;
+                //printf("ID %d, entry release time: %d\n", entry->thrd->ID, entry->release_time);
             }
+        }
+    }
+    // At the end, decide preempt or not by ID
+    if (t){
+        //printf("test\n");
+        if (t-> period == current_period && earliest_impactful_thread_ID > current_thread_ID) {
+            earliest_impactful_event = INT_MAX;
+            t = NULL;
+            earliest_impactful_thread_ID = current_thread_ID;
         }
     }
     //printf("earliest_impactful_event: %d\n", earliest_impactful_event);
@@ -270,16 +280,17 @@ struct threads_sched_result schedule_dm(struct threads_sched_args args) {
     struct threads_sched_result r;
     struct thread *earliest_deadline_thread = NULL;
     struct thread *t;
+    struct thread *d;
     int earliest_deadline = INT_MAX;
     int earliest_impactful_deadline; 
     
     // Check if any thread has passed its deadline and choose the one with the smallest ID
-    list_for_each_entry(t, args.run_queue, thread_list) {
-        if (t->is_real_time && args.current_time >= t->current_deadline) {
-            struct thread *thread_with_smallest_id = t;
-            list_for_each_entry(t, args.run_queue, thread_list) {
-                if (t->is_real_time && args.current_time >= t->current_deadline && t->ID < thread_with_smallest_id->ID) {
-                    thread_with_smallest_id = t;
+    list_for_each_entry(d, args.run_queue, thread_list) {
+        if (d->is_real_time && args.current_time >= d->current_deadline) {
+            struct thread *thread_with_smallest_id = d;
+            list_for_each_entry(d, args.run_queue, thread_list) {
+                if (d->is_real_time && args.current_time >= d->current_deadline && d->ID < thread_with_smallest_id->ID) {
+                    thread_with_smallest_id = d;
                 }
             }
             r.scheduled_thread_list_member = &thread_with_smallest_id->thread_list;
@@ -302,7 +313,7 @@ struct threads_sched_result schedule_dm(struct threads_sched_args args) {
     // Find the earliest impactful deadline from other tasks
     ImpactfulEvent earliest_impactful_event = find_earliest_impactful_release_time_dm(args.release_queue, args.run_queue, args.current_time, earliest_deadline_thread ? earliest_deadline_thread->period : INT_MAX, earliest_deadline_thread->ID);
     earliest_impactful_deadline = earliest_impactful_event.earliest_impactful_event;
-    //printf("earliest_impactful_deadline: %d\n", earliest_impactful_deadline);
+    // printf("earliest_impactful_deadline: %d\n", earliest_impactful_deadline);
     if (earliest_deadline_thread) {
         int time_to_deadline = earliest_deadline_thread->current_deadline - args.current_time;
         
