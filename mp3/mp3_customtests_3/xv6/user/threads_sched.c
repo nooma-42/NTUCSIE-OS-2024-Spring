@@ -251,7 +251,7 @@ ImpactfulEvent find_earliest_impactful_release_time_dm(struct list_head *release
         } 
         else if (entry->release_time > current_time && entry->thrd->period == current_period) {
             //printf("ID %d, entry release time: %d\n", entry->thrd->ID, entry->release_time);
-            // or the smallest deadline that is equal to the current task's deadline but has a smaller ID
+            // or the smallest deadline that is equal to the current task's deadline
             if (entry->release_time < earliest_impactful_event){
                 earliest_impactful_event = entry->release_time;
                 t = entry->thrd;
@@ -260,6 +260,7 @@ ImpactfulEvent find_earliest_impactful_release_time_dm(struct list_head *release
             }
         }
     }
+    // At the end, decide preempt or not by ID
     if (t){
         //printf("test\n");
         if (t-> period == current_period && earliest_impactful_thread_ID > current_thread_ID) {
