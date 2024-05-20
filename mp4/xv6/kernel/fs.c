@@ -429,11 +429,14 @@ bmap(struct inode *ip, uint bn)
   panic("bmap: out of range");
 }
 
+/* 
 // Truncate inode (discard contents).
 // Caller must hold ip->lock.
   // TODO: Large Files
   // You should modify itruc(),
   // so that it can handle doubly indrect inode.
+Truncating the file sets its length to zero and releases any data blocks associated with the file.
+ */
 void
 itrunc(struct inode *ip)
 {

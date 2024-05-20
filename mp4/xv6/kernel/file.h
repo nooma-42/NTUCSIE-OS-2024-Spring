@@ -20,8 +20,8 @@ struct inode {
   struct sleeplock lock; // protects everything below here
   int valid;          // inode has been read from disk?
   short type;         // copy of disk inode
-  short major;
-  short minor;
+  short major;        // Note: The major number identifies the driver associated with the device. It tells the kernel which driver to use to handle operations on this device.
+  short minor;        // Note: The minor number is used by the driver to identify a specific instance of the device. For example, if there are multiple disk drives or partitions, the minor number distinguishes between them.
   short nlink;
   uint size;
   uint addrs[NDIRECT+2]; // TODO: bigfile. If you modify dinode, don't forget here.

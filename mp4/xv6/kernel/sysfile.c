@@ -283,14 +283,14 @@ create(char *path, short type, short major, short minor)
   return ip;
 }
 
-uint64
-sys_open(void)
-{
   // TODO: Symbolic links to Files
   // open() should handle symbolic link
   // If the file is a symbolic link, and O_NOFOLLOW is not specified,
   // then you should read the path in the symbolic link,
   // and return the corresponding file.
+uint64
+sys_open(void)
+{
 
   char path[MAXPATH];
   int fd, omode;
@@ -310,11 +310,38 @@ sys_open(void)
       return -1;
     }
   } else {
-    if((ip = namei(path)) == 0){
+    // Note: translate path to inode
+    ip = namei(path);
+    // Note: reason to lock inode: there could be multiple processes trying to open the same file
+    if(ip)
+        ilock(ip);
+    int depth = 0;
+    while(ip && ip->type == T_SYMLINK && !(omode & O_NOFOLLOW)){
+      if(depth++ >= 20){ // TODO: check this # 
+          iput(ip);
+          end_op();
+          return -1;
+      }
+
+      char target[MAXPATH];
+      if(readi(ip, 0, (uint64)target, 0, sizeof(target)) < 0){
+          iunlockput(ip);
+          end_op();
+          return -1;
+      }
+      iunlockput(ip);
+      ip = namei(target);
+      if(ip){
+        ilock(ip); 
+        ip->nlink++;
+      }
+    }
+
+    if(ip == 0){
       end_op();
       return -1;
     }
-    ilock(ip);
+    
     if(ip->type == T_DIR && omode != O_RDONLY){
       iunlockput(ip);
       end_op();
@@ -491,9 +518,6 @@ sys_pipe(void)
   return 0;
 }
 
-uint64
-sys_symlink(void)
-{
   // TODO: symbolic link
   // You should implement this symlink system call.
   // char target[MAXPATH], path[MAXPATH];
@@ -501,10 +525,66 @@ sys_symlink(void)
 
   // if(argstr(0, target, MAXPATH) < 0 || argstr(1, path, MAXPATH) < 0)
   //   return -1;
-  
-  panic("You should implement symlink system call.");
+uint64
+sys_symlink(void)
+{
+    char target[MAXPATH], path[MAXPATH];
+    struct inode *ip;
+    struct inode *dp;
+    char name[DIRSIZ];
 
-  return 0;
+    if(argstr(0, target, MAXPATH) < 0 || argstr(1, path, MAXPATH) < 0)
+        return -1;
+
+    begin_op();
+
+    if((dp = nameiparent(path, name)) == 0){
+        end_op();
+        return -1;
+    }
+    ilock(dp);
+
+    // Check if the path already exists
+    if((ip = dirlookup(dp, name, 0)) != 0){
+        iunlockput(dp);
+        end_op();
+        return -1;
+    }
+
+    // Allocate inode for the symlink
+    if((ip = ialloc(dp->dev, T_SYMLINK)) == 0){
+        iunlockput(dp);
+        end_op();
+        return -1;
+    }
+
+    ilock(ip);
+    if(writei(ip, 0, (uint64)target, 0, strlen(target)) != strlen(target)){
+        iunlockput(ip);
+        iput(ip);
+        iunlockput(dp);
+        end_op();
+        return -1;
+    }
+
+    iunlock(ip);
+    if(dirlink(dp, name, ip->inum) < 0){
+        iunlockput(dp);
+        ip->nlink--;
+        iupdate(ip);
+        iput(ip);
+        end_op();
+        return -1;
+    } else {
+      // Successfully linked, increment nlink
+      ip->nlink++;
+      iupdate(ip);
+    }
+
+    iunlockput(dp);
+    end_op();
+
+    return 0;
 }
 
 uint64
