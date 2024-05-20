@@ -35,14 +35,7 @@ riscv64-linux-gnu-ld: warning: cannot find entry symbol _entry; defaulting to 00
 riscv64-linux-gnu-objdump -S kernel/kernel > kernel/kernel.asm
 riscv64-linux-gnu-objdump -t kernel/kernel | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > kernel/kernel.sym
 make[1]: Leaving directory '/home/xv6'
-Testing symbolic links to files (public): (10.8s) 
+Testing symbolic links to files (public): (9.9s) 
   Symbolic links to files: public testcase 1 (9 points): OK 
-  Symbolic links to files: public testcase 2 (9 points): FAIL 
-    ...
-         public testcase 1: ok
-         public testcase 2:
-         FAILURE: Failed to open 1
-         
-         $ qemu-system-riscv64: terminating on signal 15 from pid 3774 (make)
-    MISSING '^public testcase 2: ok$'
-Score: 9/18
+  Symbolic links to files: public testcase 2 (9 points): OK 
+Score: 18/18

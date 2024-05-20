@@ -324,16 +324,18 @@ sys_open(void)
       }
 
       char target[MAXPATH];
+      // Ensure the buffer is null-terminated
+      memset(target, 0, sizeof(target));
       if(readi(ip, 0, (uint64)target, 0, sizeof(target)) < 0){
           iunlockput(ip);
           end_op();
           return -1;
       }
+      //printf("sys_open: following symlink to %s\n", target);
       iunlockput(ip);
       ip = namei(target);
       if(ip){
         ilock(ip); 
-        ip->nlink++;
       }
     }
 
@@ -536,6 +538,7 @@ sys_symlink(void)
     if(argstr(0, target, MAXPATH) < 0 || argstr(1, path, MAXPATH) < 0)
         return -1;
 
+    //printf("sys_symlink: creating symlink from %s to %s\n", path, target);
     begin_op();
 
     if((dp = nameiparent(path, name)) == 0){
@@ -559,28 +562,36 @@ sys_symlink(void)
     }
 
     ilock(ip);
-    if(writei(ip, 0, (uint64)target, 0, strlen(target)) != strlen(target)){
+    int target_len = strlen(target);
+    if (target_len >= sizeof(target)) {
+        printf("sys_symlink: target path too long\n");
         iunlockput(ip);
         iput(ip);
         iunlockput(dp);
         end_op();
         return -1;
     }
-
-    iunlock(ip);
-    if(dirlink(dp, name, ip->inum) < 0){
+    if (writei(ip, 0, (uint64)target, 0, target_len + 1) != target_len + 1) {
+        iunlockput(ip);
         iunlockput(dp);
-        ip->nlink--;
-        iupdate(ip);
-        iput(ip);
         end_op();
         return -1;
-    } else {
-      // Successfully linked, increment nlink
-      ip->nlink++;
-      iupdate(ip);
     }
 
+    
+    if(dirlink(dp, name, ip->inum) < 0){
+        ip->nlink--;
+        iupdate(ip);
+        iunlockput(dp);
+        iunlockput(ip);
+        end_op();
+        return -1;
+    } 
+    
+    // Successfully linked, increment nlink
+    ip->nlink++;
+    iupdate(ip);
+    iunlockput(ip);
     iunlockput(dp);
     end_op();
 
