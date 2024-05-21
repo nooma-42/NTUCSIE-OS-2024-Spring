@@ -598,9 +598,89 @@ sys_symlink(void)
     return 0;
 }
 
-uint64
-sys_revreadlink(void) 
-{
+// Custom string comparison function
+int custom_strcmp(const char *s1, const char *s2) {
+  while (*s1 && (*s1 == *s2)) {
+    s1++;
+    s2++;
+  }
+  return *(unsigned char *)s1 - *(unsigned char *)s2;
+}
+
+// Custom string concatenation function
+void custom_strcat(char *dest, const char *src) {
+  while (*dest) dest++;
+  while (*src) *dest++ = *src++;
+  *dest = '\0';
+}
+
+// Custom string formatting function
+void custom_snprintf(char *str, int size, const char *s1, const char *s2) {
+  int len = 0;
+  while (*s1 && len < size - 1) {
+    *str++ = *s1++;
+    len++;
+  }
+  if (len < size - 1) {
+    *str++ = '/';
+    len++;
+  }
+  while (*s2 && len < size - 1) {
+    *str++ = *s2++;
+    len++;
+  }
+  *str = '\0';
+}
+
+// Helper function to recursively search for symbolic links
+void search_symlinks(struct inode *dp, char *target, char *current_path, char *result_buf, int *buf_len, int bufsize) {
+  struct dirent de;
+  struct inode *ip;
+  int off;
+  char path[MAXPATH];
+
+  for (off = 0; off < dp->size; off += sizeof(de)) {
+    if (readi(dp, 0, (uint64)&de, off, sizeof(de)) != sizeof(de))
+      continue;
+    if (de.inum == 0)
+      continue;
+
+    // Skip "." and ".."
+    if (custom_strcmp(de.name, ".") == 0 || custom_strcmp(de.name, "..") == 0)
+      continue;
+
+    // Build the current path
+    custom_snprintf(path, sizeof(path), current_path, de.name);
+
+    ip = iget(dp->dev, de.inum);
+    ilock(ip);
+
+    if (ip->type == T_SYMLINK) {
+      char link_target[MAXPATH];
+      memset(link_target, 0, sizeof(link_target));
+      if (readi(ip, 0, (uint64)link_target, 0, sizeof(link_target)) > 0) {
+        if (custom_strcmp(link_target, target) == 0) {
+          // Add the path to the result buffer if it fits
+          int path_len = strlen(path);
+          if (*buf_len + path_len + 1 < bufsize) {
+            if (*buf_len > 0) {
+              result_buf[*buf_len] = ' ';
+              (*buf_len)++;
+            }
+            memmove(result_buf + *buf_len, path, path_len);
+            *buf_len += path_len;
+          }
+        }
+      }
+    }
+
+    if (ip->type == T_DIR) {
+      search_symlinks(ip, target, path, result_buf, buf_len, bufsize);
+    }
+
+    iunlockput(ip);
+  }
+}
   // TODO: Find all symbolic links that point to 'target'
   // char target[MAXPATH];
   // uint64 bufaddr;
@@ -619,8 +699,32 @@ sys_revreadlink(void)
   //   return -1;
 
   // Return the number of bytes written to user buffer
-    
-  panic("sys_revreadlink is not implemented yet");
+uint64
+sys_revreadlink(void) 
+{
+  char target[MAXPATH];
+  uint64 bufaddr;
+  int bufsize;
 
-  return -1;
+  if (argstr(0, target, MAXPATH) < 0 || argaddr(1, &bufaddr) < 0 || argint(2, &bufsize) < 0)
+    return -1;
+
+  struct inode *root = namei("/");
+  if (!root)
+    return -1;
+  
+  ilock(root);
+
+  char result_buf[bufsize];
+  memset(result_buf, 0, sizeof(result_buf));
+  int buf_len = 0;
+
+  search_symlinks(root, target, "", result_buf, &buf_len, bufsize);
+
+  iunlock(root);
+
+  if (copyout(myproc()->pagetable, bufaddr, result_buf, buf_len) < 0)
+    return -1;
+
+  return buf_len;
 }
